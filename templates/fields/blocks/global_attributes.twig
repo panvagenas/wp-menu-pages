@@ -1,0 +1,17 @@
+{#
+ # ${FILE_NAME} description
+ #
+ # @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+ # @date 2015-11-19
+ # @since TODO ${VERSION}
+ # @copyright Copyright (c) 2015 Panagiotis Vagenas
+ #}
+{% spaceless %}
+
+    id="{{ id | e('html_attr') }}"
+    class="{{ class | e('html_attr') }}"
+    {% if style %}
+        style="{{ style | e('html_attr') }}"
+    {% endif %}
+
+{% endspaceless %}

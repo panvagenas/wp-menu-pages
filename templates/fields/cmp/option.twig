@@ -6,5 +6,6 @@
  # @since TODO ${VERSION}
  # @copyright Copyright (c) 2015 Panagiotis Vagenas
  #}
-{% extends "fields/inputs/input.twig" %}
-{% set type = 'text' %}
+{% spaceless %}
+    <option value="{{ option.value | e('html_attr') }}">{{ option.name | e }}</option>
+{% endspaceless %}

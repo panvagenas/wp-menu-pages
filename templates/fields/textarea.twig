@@ -6,19 +6,29 @@
  # @since TODO ${VERSION}
  # @copyright Copyright (c) 2015 Panagiotis Vagenas
  #}
-{% extends "fields/blocks/input.twig" %}
-{% set type = 'textarea' %}
+{% extends 'fields/abs/base.twig' %}
 
-{% block input %}
-    <textarea
-        cols="{{ cols | e('html_attr') | default(25) }}"
-        rows="{{ rows | e('html_attr') | default(5) }}"
-        {% block global_attributes %}
-            {{ parent() }}
-        {% endblock %}
-        {% block input_attributes %}
-            {{ parent() }}
-        {% endblock %}
-        >{{ value | e }}
-    </textarea>
-{% endblock %}
+{% spaceless %}
+
+    {% block body %}
+        <textarea
+
+            cols="{{ cols | e('html_attr') | default(25) }}"
+            rows="{{ rows | e('html_attr') | default(5) }}"
+
+            {% block global_attributes %}
+                {% include 'fields/blocks/global_attributes.twig' %}
+            {% endblock %}
+
+            {% block input_attributes %}
+                {% include 'fields/blocks/attributes.twig' %}
+            {% endblock %}
+
+            {% block additional_attributes %}
+                {% include 'fields/blocks/additional_attributes.twig' %}
+            {% endblock %}
+
+        >{{ value | e }}</textarea>
+    {% endblock %}
+
+{% endspaceless %}

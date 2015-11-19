@@ -6,20 +6,26 @@
  # @since TODO ${VERSION}
  # @copyright Copyright (c) 2015 Panagiotis Vagenas
  #}
+{% extends 'fields/abs/base.twig' %}
+
 {% spaceless %}
-    <button
-        type="{{ type | e('html_attr') | default('button') }}"
-        value="{{ value | e('html_attr') | default('submit') }}"
-        class="{{ class | e('html_attr') }} btn btn-{{ btn_type | e('html_attr') | default('default') }}"
-        name="{{ name | e('html_attr') | default(label) }}"
 
-        {% if autofocus %}
-            autofocus
-        {% endif %}
+    {% block body %}
+        <button
+            type="{{ type | e('html_attr') | default('button') }}"
+            value="{{ value | e('html_attr') | default('submit') }}"
+            class="{{ class | e('html_attr') }}"
+            name="{{ name | e('html_attr') | default(label) }}"
 
-        {% if disabled %}
-            disabled
-        {% endif %}
+            {% if autofocus %}
+                autofocus
+            {% endif %}
 
-    >{{ label }}</button>
+            {% if disabled %}
+                disabled
+            {% endif %}
+
+        >{{ label }}</button>
+    {% endblock %}
+
 {% endspaceless %}
