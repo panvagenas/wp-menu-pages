@@ -6,3 +6,19 @@
  # @since TODO ${VERSION}
  # @copyright Copyright (c) 2015 Panagiotis Vagenas
  #}
+{% extends "fields/blocks/input.twig" %}
+{% set type = 'textarea' %}
+
+{% block input %}
+    <textarea
+        cols="{{ cols | e('html_attr') | default(25) }}"
+        rows="{{ rows | e('html_attr') | default(5) }}"
+        {% block global_attributes %}
+            {{ parent() }}
+        {% endblock %}
+        {% block input_attributes %}
+            {{ parent() }}
+        {% endblock %}
+        >{{ value | e }}
+    </textarea>
+{% endblock %}

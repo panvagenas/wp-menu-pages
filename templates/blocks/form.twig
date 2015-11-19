@@ -6,3 +6,11 @@
  # @since TODO ${VERSION}
  # @copyright Copyright (c) 2015 Panagiotis Vagenas
  #}
+<form
+    class="form-horizontal"
+    method="{{ method | e('html_attr') | default('post') }}"
+    action="{{ action | e('html_attr') | default('#') }}"
+    enctype="{{ encType | e('html_attr') }}"
+>
+    {{ content | raw }}
+</form>

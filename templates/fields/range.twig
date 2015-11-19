@@ -6,3 +6,21 @@
  # @since TODO ${VERSION}
  # @copyright Copyright (c) 2015 Panagiotis Vagenas
  #}
+{% extends "fields/blocks/input.twig" %}
+{% set type = 'range' %}
+
+{% block input_attributes %}
+    {% if min %}
+        min="{{ min | number_format(0, '', '') | default(0) }}"
+    {% endif %}
+
+    {% if max %}
+        max="{{ max | number_format(0, '', '') | default(1) }}"
+    {% endif %}
+
+    {% if step %}
+        step="{{ step | number_format(0, '', '') | default(0.01) }}"
+    {% endif %}
+
+    {{ parent() }}
+{% endblock %}

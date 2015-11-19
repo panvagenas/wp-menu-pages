@@ -6,3 +6,9 @@
  # @since TODO ${VERSION}
  # @copyright Copyright (c) 2015 Panagiotis Vagenas
  #}
+{% extends "fields/select.twig" %}
+
+{% block input_attributes %}
+    multiple
+    {{ parent() }}
+{% endblock %}

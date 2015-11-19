@@ -6,3 +6,20 @@
  # @since TODO ${VERSION}
  # @copyright Copyright (c) 2015 Panagiotis Vagenas
  #}
+{% spaceless %}
+    <button
+        type="{{ type | e('html_attr') | default('button') }}"
+        value="{{ value | e('html_attr') | default('submit') }}"
+        class="{{ class | e('html_attr') }} btn btn-{{ btn_type | e('html_attr') | default('default') }}"
+        name="{{ name | e('html_attr') | default(label) }}"
+
+        {% if autofocus %}
+            autofocus
+        {% endif %}
+
+        {% if disabled %}
+            disabled
+        {% endif %}
+
+    >{{ label }}</button>
+{% endspaceless %}

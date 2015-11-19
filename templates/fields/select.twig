@@ -6,3 +6,20 @@
  # @since TODO ${VERSION}
  # @copyright Copyright (c) 2015 Panagiotis Vagenas
  #}
+{% extends "fields/blocks/input.twig" %}
+{% set type = 'select' %}
+
+{% block input %}
+    <select
+        {% block global_attributes %}
+            {{ parent() }}
+        {% endblock %}
+        {% block input_attributes %}
+            {{ parent() }}
+        {% endblock %}
+    >
+        {% for option in options %}
+            <option value="{{ option.value | e('html_attr') }}">{{ option.name | e }}</option>
+        {% endfor %}
+    </select>
+{% endblock %}
