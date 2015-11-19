@@ -25,6 +25,10 @@
                 disabled
             {% endif %}
 
+            {% block additional_attributes %}
+                {% include 'fields/blocks/additional_attributes.twig' %}
+            {% endblock %}
+
         >{{ label }}</button>
     {% endblock %}
 
