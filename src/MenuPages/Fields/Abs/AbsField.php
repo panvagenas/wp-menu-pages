@@ -9,7 +9,9 @@
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
 
-namespace Pan\MenuPages\Fields;
+namespace Pan\MenuPages\Fields\Abs;
+
+use Pan\MenuPages\Sections\Abs\AbsSection;
 
 /**
  * Class AbsField
@@ -21,5 +23,9 @@ namespace Pan\MenuPages\Fields;
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
 abstract class AbsField {
+    public abstract function getMarkUp();
 
+    public function attachTo(AbsSection $section){
+        $section->attachField($this);
+    }
 }

@@ -13,15 +13,15 @@
     {% block body %}
         <select
             {% block global_attributes %}
-                {% include 'fields/block/global_attributes.twig' %}
+                {% include 'fields/blocks/global_attributes.twig' %}
             {% endblock %}
 
             {% block input_attributes %}
-                {% include 'fields/block/attributes.twig' %}
+                {% include 'fields/blocks/attributes.twig' %}
             {% endblock %}
 
             {% block additional_attributes %}
-                {% include 'fields/block/additional_attributes.twig' %}
+                {% include 'fields/blocks/additional_attributes.twig' %}
             {% endblock %}
         >{{ options | raw }}</select>
     {% endblock %}
