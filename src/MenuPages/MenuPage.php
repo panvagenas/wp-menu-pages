@@ -12,6 +12,8 @@
 namespace Pan\MenuPages;
 
 use Pan\MenuPages\Sections\Abs\AbsSection;
+use Pan\MenuPages\Templates\Twig;
+use Pan\MenuPages\Trt\TrtCache;
 
 /**
  * Class MenuPage
@@ -23,7 +25,15 @@ use Pan\MenuPages\Sections\Abs\AbsSection;
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
 class MenuPage {
+    use TrtCache;
+
+    /**
+     * @var string
+     */
     protected $slug = '';
+    /**
+     * @var string
+     */
     protected $parent = '';
     /**
      * ```php
@@ -36,13 +46,35 @@ class MenuPage {
      */
     protected $sections = [ ];
 
-    public function attachSection(AbsSection $section){
-        $this->sections[] = $section;
+    /**
+     * @param AbsSection $section
+     *
+     * @return $this
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
+    public function attachSection( AbsSection $section ) {
+        if ( ! $this->hasSection( $section ) ) {
+            $this->sections[] = $section;
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param AbsSection $section
+     *
+     * @return bool
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
+    public function hasSection( AbsSection $section ) {
+        return array_key_exists( $section->getHashId(), $this->sections );
     }
 
     /**
      * @return array
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    MenuPage::$sections
      * @codeCoverageIgnore
      */
@@ -52,7 +84,7 @@ class MenuPage {
 
     /**
      * @return string
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    MenuPage::$slug
      * @codeCoverageIgnore
      */
@@ -64,7 +96,7 @@ class MenuPage {
      * @param string $slug
      *
      * @return $this
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @codeCoverageIgnore
      */
     public function setSlug( $slug ) {
@@ -75,7 +107,7 @@ class MenuPage {
 
     /**
      * @return string
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    MenuPage::$parent
      * @codeCoverageIgnore
      */
@@ -87,12 +119,25 @@ class MenuPage {
      * @param string $parent
      *
      * @return $this
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @codeCoverageIgnore
      */
     public function setParent( $parent ) {
         $this->parent = $parent;
 
         return $this;
+    }
+
+    /**
+     * @return Twig
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
+    public function getTwig() {
+        if ( ! $this->hasCacheKey( __METHOD__ ) ) {
+            $this->writeCache( __METHOD__, new Twig() );
+        }
+
+        return $this->readCache( __METHOD__ );
     }
 }

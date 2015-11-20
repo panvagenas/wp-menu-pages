@@ -12,8 +12,8 @@
 
 namespace Pan\MenuPages\Fields\Trt;
 
-use Respect\Validation\Validator;
 use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Validator;
 
 trait TrtValidation {
     protected $validators = [ ];
@@ -32,12 +32,12 @@ trait TrtValidation {
             }
         }
 
-        return compact($value, $valid, $errors);
+        return compact( $value, $valid, $errors );
     }
 
     /**
      * @return array
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    Validation::$validators
      * @codeCoverageIgnore
      */

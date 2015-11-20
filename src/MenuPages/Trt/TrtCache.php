@@ -2,36 +2,71 @@
 
 namespace Pan\MenuPages\Trt;
 
-use Pan\MenuPages\Ifc\IfcConstants;
-
+/**
+ * Class TrtCache
+ *
+ * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
+ * @date      ${YEAR}-${MONTH}-${DAY}
+ * @since     TODO ${VERSION}
+ * @package   Pan\MenuPages\Trt
+ * @copyright Copyright (c) ${YEAR} Panagiotis Vagenas
+ */
 trait TrtCache {
     use TrtIdentifiable;
 
+    /**
+     * @var array
+     */
     protected static $_cache = [ ];
 
-    protected function writeToCache( $key, $value ) {
+    /**
+     * @param $key
+     * @param $value
+     *
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
+    protected function writeCache( $key, $value ) {
         $this->initCache();
         self::$_cache[ $this->getHashId() ][ $key ] = $value;
     }
 
+    /**
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
     protected function initCache() {
         if ( ! isset( self::$_cache[ $this->getHashId() ] ) ) {
             self::$_cache[ $this->getHashId() ] = [ ];
         }
     }
 
-    protected function hasCacheKey( $key ) {
-        return isset( self::$_cache[ $this->getHashId() ][ $key ] );
-    }
-
-    protected function getCacheValue( $key = null ) {
+    /**
+     * @param null $key
+     *
+     * @return null
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
+    protected function readCache( $key = null ) {
         if ( $key === null ) {
             return self::$_cache[ $this->getHashId() ];
         }
-        if ( $this->hasFunctionCacheKey( $key ) ) {
+        if ( $this->hasCacheKey( $key ) ) {
             return self::$_cache[ $this->getHashId() ][ $key ];
         }
 
         return $key;
+    }
+
+    /**
+     * @param $key
+     *
+     * @return bool
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
+    protected function hasCacheKey( $key ) {
+        return isset( self::$_cache[ $this->getHashId() ][ $key ] );
     }
 }

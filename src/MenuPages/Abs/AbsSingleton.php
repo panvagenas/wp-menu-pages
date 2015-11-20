@@ -4,9 +4,16 @@ namespace Pan\MenuPages\Abs;
 
 class AbsSingleton {
     /**
+     * is not allowed to call from outside: private!
+     *
+     */
+    protected function __construct() {
+    }
+
+    /**
      * gets the instance via lazy initialization (created on first usage)
      *
-     * @return self
+     * @return $this
      */
     public static function getInstance() {
         static $instance = null;
@@ -15,13 +22,6 @@ class AbsSingleton {
         }
 
         return $instance;
-    }
-
-    /**
-     * is not allowed to call from outside: private!
-     *
-     */
-    protected function __construct() {
     }
 
     /**

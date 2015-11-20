@@ -12,12 +12,24 @@
 
 namespace Pan\MenuPages\Fields\Trt;
 
+/**
+ * Class TrtOptions
+ *
+ * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
+ * @date      ${YEAR}-${MONTH}-${DAY}
+ * @since     TODO ${VERSION}
+ * @package   Pan\MenuPages\Fields\Trt
+ * @copyright Copyright (c) ${YEAR} Panagiotis Vagenas
+ */
 trait TrtOptions {
-    protected $options = [];
+    /**
+     * @var array
+     */
+    protected $options = [ ];
 
     /**
      * @return array
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    HasOptions::$options
      * @codeCoverageIgnore
      */
@@ -29,13 +41,13 @@ trait TrtOptions {
      * @param array $options
      *
      * @return $this
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @codeCoverageIgnore
      */
     public function setOptions( $options ) {
         foreach ( $options as $index => $option ) {
-            if(!$this->isValidOptionSchema($option)){
-                unset($options[$index]);
+            if ( ! $this->isValidOptionSchema( $option ) ) {
+                unset( $options[ $index ] );
             }
         }
 
@@ -44,5 +56,12 @@ trait TrtOptions {
         return $this;
     }
 
-    abstract function isValidOptionSchema($options);
+    /**
+     * @param array $options
+     *
+     * @return bool
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
+    abstract function isValidOptionSchema( $options );
 }

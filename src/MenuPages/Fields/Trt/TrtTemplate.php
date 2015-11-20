@@ -2,25 +2,20 @@
 
 namespace Pan\MenuPages\Fields\Trt;
 
-use Pan\MenuPages\Templates\Ifc\IfcTemplateConstants;
-
+/**
+ * Class TrtTemplate
+ *
+ * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
+ * @date      ${YEAR}-${MONTH}-${DAY}
+ * @since     TODO ${VERSION}
+ * @package   Pan\MenuPages\Fields\Trt
+ * @copyright Copyright (c) ${YEAR} Panagiotis Vagenas
+ */
 trait TrtTemplate {
-    protected $templateName = IfcTemplateConstants::NO_TEMPLATE_PATH;
-
-    public function getTemplatePath() {
-        foreach ( (array)$this->getTemplateRoots() as $templatesRoot ) {
-            $path = $path = realpath( "{$templatesRoot}/{$this->templateName}" );
-            if ( file_exists( $path ) && is_file( $path ) && is_readable( $path ) ) {
-                return $path;
-            }
-        }
-
-        return '';
-    }
-
-    public function getTemplateName() {
-        return $this->templateName;
-    }
-
-    abstract function getTemplateRoots();
+    /**
+     * @return string
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
+    abstract public function getTemplateName();
 }
