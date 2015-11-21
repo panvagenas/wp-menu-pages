@@ -50,7 +50,7 @@ trait TrtGlobalAttributes {
      *
      * @param mixed $class
      *
-     * @return TrtGlobalAttributes
+     * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      * @codeCoverageIgnore
@@ -77,7 +77,7 @@ trait TrtGlobalAttributes {
      *
      * @param mixed $id
      *
-     * @return TrtGlobalAttributes
+     * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      * @codeCoverageIgnore
@@ -104,7 +104,7 @@ trait TrtGlobalAttributes {
      *
      * @param mixed $style
      *
-     * @return TrtGlobalAttributes
+     * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      * @codeCoverageIgnore

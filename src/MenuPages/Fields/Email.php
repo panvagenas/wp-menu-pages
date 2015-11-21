@@ -1,9 +1,9 @@
 <?php
 /**
- * Text.php description
+ * Email.php description
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
- * @date      2015-11-20
+ * @date      2015-11-21
  * @since     TODO ${VERSION}
  * @package   Pan\MenuPages\Fields
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
@@ -14,14 +14,14 @@ namespace Pan\MenuPages\Fields;
 use Pan\MenuPages\Fields\Abs\AbsInput;
 
 /**
- * Class Text
+ * Class Email
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
- * @date      2015-11-20
+ * @date      2015-11-21
  * @since     TODO ${VERSION}
  * @package   Pan\MenuPages\Fields
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class Text extends AbsInput {
-    protected $type = 'text';
+class Email extends AbsInput {
+    protected $type = 'email';
 }

@@ -48,7 +48,7 @@ trait TrtInputAttributes {
      *
      * @param mixed $autocomplete
      *
-     * @return TrtInputAttributes
+     * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      * @codeCoverageIgnore
@@ -75,7 +75,7 @@ trait TrtInputAttributes {
      *
      * @param mixed $autofocus
      *
-     * @return TrtInputAttributes
+     * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      * @codeCoverageIgnore
@@ -102,7 +102,7 @@ trait TrtInputAttributes {
      *
      * @param mixed $disabled
      *
-     * @return TrtInputAttributes
+     * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      * @codeCoverageIgnore
@@ -129,7 +129,7 @@ trait TrtInputAttributes {
      *
      * @param mixed $maxlength
      *
-     * @return TrtInputAttributes
+     * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      * @codeCoverageIgnore
@@ -156,7 +156,7 @@ trait TrtInputAttributes {
      *
      * @param mixed $name
      *
-     * @return TrtInputAttributes
+     * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      * @codeCoverageIgnore
@@ -183,7 +183,7 @@ trait TrtInputAttributes {
      *
      * @param mixed $placeholder
      *
-     * @return TrtInputAttributes
+     * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      * @codeCoverageIgnore
@@ -210,7 +210,7 @@ trait TrtInputAttributes {
      *
      * @param mixed $required
      *
-     * @return TrtInputAttributes
+     * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      * @codeCoverageIgnore
@@ -237,7 +237,7 @@ trait TrtInputAttributes {
      *
      * @param mixed $size
      *
-     * @return TrtInputAttributes
+     * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      * @codeCoverageIgnore
@@ -264,7 +264,7 @@ trait TrtInputAttributes {
      *
      * @param mixed $type
      *
-     * @return TrtInputAttributes
+     * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      * @codeCoverageIgnore
@@ -291,7 +291,7 @@ trait TrtInputAttributes {
      *
      * @param mixed $value
      *
-     * @return TrtInputAttributes
+     * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      * @codeCoverageIgnore

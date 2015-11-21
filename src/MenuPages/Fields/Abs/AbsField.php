@@ -11,6 +11,7 @@
 
 namespace Pan\MenuPages\Fields\Abs;
 
+use Pan\MenuPages\Fields\Trt\TrtGlobalAttributes;
 use Pan\MenuPages\Sections\Abs\AbsSection;
 use Pan\MenuPages\Trt\TrtIdentifiable;
 
@@ -24,7 +25,7 @@ use Pan\MenuPages\Trt\TrtIdentifiable;
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
 abstract class AbsField {
-    use TrtIdentifiable;
+    use TrtIdentifiable, TrtGlobalAttributes;
 
     protected $inputAttributes = [
         'accept',

@@ -72,6 +72,21 @@ abstract class AbsSection {
     }
 
     /**
+     * TODO Implement
+     * @return string
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
+    public function getMarkUp(){
+        $out = '';
+        foreach ( $this->fields as $field ) {
+            /** AbsField $field */
+            $out .= $field->getMarkUp();
+        }
+        return $out;
+    }
+
+    /**
      * @param AbsField $field
      *
      * @return bool
