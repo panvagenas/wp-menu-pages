@@ -11,8 +11,6 @@
 
 namespace Pan\MenuPages\Fields;
 
-use Pan\MenuPages\Fields\Trt\TrtOptions;
-
 /**
  * Class CheckBox
  *
@@ -24,16 +22,4 @@ use Pan\MenuPages\Fields\Trt\TrtOptions;
  */
 class MultiSelect extends Select {
     protected $multiple = 'multiple';
-    /**
-     * @return array
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
-     */
-    protected function getAttributesArray() {
-        $out = parent::getAttributesArray();
-
-        $out['options'] = $this->options;
-
-        return $out;
-    }
 }
