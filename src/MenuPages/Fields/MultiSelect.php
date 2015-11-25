@@ -12,7 +12,7 @@
 namespace Pan\MenuPages\Fields;
 
 /**
- * Class CheckBox
+ * Class MultiSelect
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-21
