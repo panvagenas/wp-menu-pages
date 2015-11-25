@@ -23,7 +23,16 @@
             {% block additional_attributes %}
                 {% include 'fields/blocks/additional_attributes.twig' %}
             {% endblock %}
-        >{{ options | raw }}</select>
+        >
+        {% for name, value in options %}
+            {% if value is iterable %}
+                {% set groupOptions = value %}
+                {% include 'fields/cmp/optgroup.twig' %}
+            {% else %}
+                {% include 'fields/cmp/option.twig' %}
+            {% endif %}
+        {% endfor %}
+        </select>
     {% endblock %}
 
 {% endspaceless %}

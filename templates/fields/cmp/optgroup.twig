@@ -8,5 +8,9 @@
  #}
 
 {% spaceless %}
-    <optgroup label="{{ label | e('html_attr') }}">{{ options | raw }}</optgroup>
+    <optgroup label="{{ name | e('html_attr') }}">
+        {% for name, value in groupOptions %}
+            {% include 'fields/cmp/option.twig' %}
+        {% endfor %}
+    </optgroup>
 {% endspaceless %}
