@@ -2,16 +2,16 @@
  # ${FILE_NAME} description
  #
  # @author Panagiotis Vagenas <pan.vagenas@gmail.com>
- # @date 2015-11-19
+ # @date 2015-11-18
  # @since TODO ${VERSION}
  # @copyright Copyright (c) 2015 Panagiotis Vagenas
  #}
-{% extends 'fields/abs/base.twig' %}
+{% extends 'fields/select.twig' %}
 
 {% spaceless %}
 
-    {% block body %}
-        <label for="{{ id | e('html_attr') }}" class="col-sm-2 control-label">{{ label | e }}</label>
+    {% block before %}
+        {% include 'fields/cmp/label.twig' %}
     {% endblock %}
 
 {% endspaceless %}

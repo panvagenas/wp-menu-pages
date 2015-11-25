@@ -29,13 +29,13 @@ class AbsInput extends AbsField{
     /**
      * @var string
      */
-    protected $templateName = 'fields/abs/input.twig';
+    protected $label;
 
     /**
      * @inheritDoc
      */
     public function getTemplateName() {
-        return $this->templateName;
+        return $this->label ? 'fields/abs/labeled-input.twig' : 'fields/abs/input.twig';
     }
 
     /**
@@ -57,5 +57,37 @@ class AbsInput extends AbsField{
         return $this->getTwig()
                     ->getTwigEnvironment()
                     ->render( $this->getTemplateName(), $this->getAttributesArray() );
+    }
+
+    protected function getAttributesArray() {
+        $par = parent::getAttributesArray();
+        $par['label'] = $this->label;
+
+        return  $par;
+    }
+
+    /**
+     * @return string
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     * @see    AbsInput::$label
+     * @codeCoverageIgnore
+     */
+    public function getLabel() {
+        return $this->label;
+    }
+
+    /**
+     * @param string $label
+     *
+     * @return $this
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     * @codeCoverageIgnore
+     */
+    public function setLabel( $label ) {
+        $this->label = $label;
+
+        return $this;
     }
 }

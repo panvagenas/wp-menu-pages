@@ -26,7 +26,6 @@ use Pan\MenuPages\Fields\Trt\TrtOptions;
 class Select extends AbsInput {
     use TrtOptions;
     protected $type = 'select';
-    protected $templateName = 'fields/select.twig';
 
     function isValidOptionSchema( $options, $_recursive = false ) {
         foreach ( $options as $name => $value ) {
@@ -56,4 +55,11 @@ class Select extends AbsInput {
 
         return $out;
     }
+    /**
+     * @inheritDoc
+     */
+    public function getTemplateName() {
+        return $this->label ? 'fields/labeled-select.twig' : 'fields/select.twig';
+    }
+
 }
