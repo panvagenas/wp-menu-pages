@@ -12,18 +12,21 @@
 
     {% block body %}
         <button
-            type="{{ type | e('html_attr') | default('button') }}"
-            value="{{ value | e('html_attr') | default('submit') }}"
-            class="{{ class | e('html_attr') }}"
-            name="{{ name | e('html_attr') | default(label) }}"
 
-            {% if autofocus %}
-                autofocus
-            {% endif %}
+            {% block global_attributes %}
+                {% include 'fields/blocks/global_attributes.twig' %}
+            {% endblock %}
 
-            {% if disabled %}
-                disabled
-            {% endif %}
+            {% block input_attributes %}
+                {% if autofocus %}
+                    autofocus
+                {% endif %}
+
+                {% if disabled %}
+                    disabled
+                {% endif %}
+                {% include 'fields/blocks/attributes.twig' %}
+            {% endblock %}
 
             {% block additional_attributes %}
                 {% include 'fields/blocks/additional_attributes.twig' %}
