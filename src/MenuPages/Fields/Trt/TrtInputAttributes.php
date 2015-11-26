@@ -61,10 +61,6 @@ trait TrtInputAttributes {
      * @var bool
      */
     protected $disabled;
-    /**
-     * @var string
-     */
-    protected $label;
 
     /**
      * @return boolean
@@ -143,33 +139,6 @@ trait TrtInputAttributes {
      */
     public function setDisabled( $disabled ) {
         $this->disabled = $disabled;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @see    TrtInputAttributes::$label
-     * @since  TODO ${VERSION}
-     * @codeCoverageIgnore
-     */
-    public function getLabel() {
-        return $this->label;
-    }
-
-    /**
-     * Setter for {@link TrtInputAttributes::$label}
-     *
-     * @param string $label
-     *
-     * @return $this
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
-     * @codeCoverageIgnore
-     */
-    public function setLabel( $label ) {
-        $this->label = $label;
 
         return $this;
     }

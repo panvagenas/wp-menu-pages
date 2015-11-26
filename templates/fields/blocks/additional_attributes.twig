@@ -8,9 +8,9 @@
  #}
 {% spaceless %}
 
-    {% for attribute in additional_attributes %}
-        {% if attribute.name and attribute.value %}
-            {{ attribute.name | e('html_attr') }}="{{ attribute.value | e('html_attr') }}"
+    {% for name, value in additional_attributes %}
+        {% if name and value %}
+            {{ name | e('html_attr') }}="{{ value | e('html_attr') }}"
         {% endif %}
     {% endfor %}
 
