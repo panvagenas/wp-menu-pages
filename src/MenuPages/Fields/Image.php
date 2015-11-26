@@ -11,8 +11,6 @@
 
 namespace Pan\MenuPages\Fields;
 
-use Pan\MenuPages\Fields\Abs\AbsInput;
-
 /**
  * Class Image
  *
@@ -22,7 +20,7 @@ use Pan\MenuPages\Fields\Abs\AbsInput;
  * @package   Pan\MenuPages\Fields
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class Image extends AbsInput{
+class Image extends File{
     protected $type = 'image';
     /**
      * @var string
