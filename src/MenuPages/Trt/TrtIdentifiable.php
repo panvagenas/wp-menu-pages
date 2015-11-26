@@ -13,4 +13,8 @@ trait TrtIdentifiable {
 
         return $this->hashId;
     }
+
+    public function __clone() {
+        $this->hashId = spl_object_hash($this);
+    }
 }
