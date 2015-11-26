@@ -21,32 +21,66 @@ namespace Pan\MenuPages\Fields\Trt;
  * @copyright Copyright (c) 2015 Panagiotis Vagenas.
  */
 trait TrtInputAttributes {
+    /**
+     * @var string
+     */
     protected $type;
+    /**
+     * @var string
+     */
     protected $name;
+    /**
+     * @var string|int|float
+     */
     protected $value;
+    /**
+     * @var bool
+     */
     protected $autocomplete;
+    /**
+     * @var int
+     */
     protected $maxlength;
+    /**
+     * @var string
+     */
     protected $placeholder;
+    /**
+     * @var int
+     */
     protected $size;
+    /**
+     * @var bool
+     */
     protected $required;
+    /**
+     * @var bool
+     */
     protected $autofocus;
+    /**
+     * @var bool
+     */
     protected $disabled;
+    /**
+     * @var string
+     */
+    protected $label;
 
     /**
-     * @return mixed
+     * @return boolean
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    TrtInputAttributes::$autocomplete
      * @since  TODO ${VERSION}
      * @codeCoverageIgnore
      */
-    public function getAutocomplete() {
+    public function isAutocomplete() {
         return $this->autocomplete;
     }
 
     /**
      * Setter for {@link TrtInputAttributes::$autocomplete}
      *
-     * @param mixed $autocomplete
+     * @param boolean $autocomplete
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
@@ -60,20 +94,20 @@ trait TrtInputAttributes {
     }
 
     /**
-     * @return mixed
+     * @return boolean
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    TrtInputAttributes::$autofocus
      * @since  TODO ${VERSION}
      * @codeCoverageIgnore
      */
-    public function getAutofocus() {
+    public function isAutofocus() {
         return $this->autofocus;
     }
 
     /**
      * Setter for {@link TrtInputAttributes::$autofocus}
      *
-     * @param mixed $autofocus
+     * @param boolean $autofocus
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
@@ -87,20 +121,20 @@ trait TrtInputAttributes {
     }
 
     /**
-     * @return mixed
+     * @return boolean
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    TrtInputAttributes::$disabled
      * @since  TODO ${VERSION}
      * @codeCoverageIgnore
      */
-    public function getDisabled() {
+    public function isDisabled() {
         return $this->disabled;
     }
 
     /**
      * Setter for {@link TrtInputAttributes::$disabled}
      *
-     * @param mixed $disabled
+     * @param boolean $disabled
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
@@ -114,7 +148,34 @@ trait TrtInputAttributes {
     }
 
     /**
-     * @return mixed
+     * @return string
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @see    TrtInputAttributes::$label
+     * @since  TODO ${VERSION}
+     * @codeCoverageIgnore
+     */
+    public function getLabel() {
+        return $this->label;
+    }
+
+    /**
+     * Setter for {@link TrtInputAttributes::$label}
+     *
+     * @param string $label
+     *
+     * @return $this
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     * @codeCoverageIgnore
+     */
+    public function setLabel( $label ) {
+        $this->label = $label;
+
+        return $this;
+    }
+
+    /**
+     * @return int
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    TrtInputAttributes::$maxlength
      * @since  TODO ${VERSION}
@@ -127,7 +188,7 @@ trait TrtInputAttributes {
     /**
      * Setter for {@link TrtInputAttributes::$maxlength}
      *
-     * @param mixed $maxlength
+     * @param int $maxlength
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
@@ -141,7 +202,7 @@ trait TrtInputAttributes {
     }
 
     /**
-     * @return mixed
+     * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    TrtInputAttributes::$name
      * @since  TODO ${VERSION}
@@ -154,7 +215,7 @@ trait TrtInputAttributes {
     /**
      * Setter for {@link TrtInputAttributes::$name}
      *
-     * @param mixed $name
+     * @param string $name
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
@@ -168,7 +229,7 @@ trait TrtInputAttributes {
     }
 
     /**
-     * @return mixed
+     * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    TrtInputAttributes::$placeholder
      * @since  TODO ${VERSION}
@@ -181,7 +242,7 @@ trait TrtInputAttributes {
     /**
      * Setter for {@link TrtInputAttributes::$placeholder}
      *
-     * @param mixed $placeholder
+     * @param string $placeholder
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
@@ -195,20 +256,20 @@ trait TrtInputAttributes {
     }
 
     /**
-     * @return mixed
+     * @return boolean
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    TrtInputAttributes::$required
      * @since  TODO ${VERSION}
      * @codeCoverageIgnore
      */
-    public function getRequired() {
+    public function isRequired() {
         return $this->required;
     }
 
     /**
      * Setter for {@link TrtInputAttributes::$required}
      *
-     * @param mixed $required
+     * @param boolean $required
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
@@ -222,7 +283,7 @@ trait TrtInputAttributes {
     }
 
     /**
-     * @return mixed
+     * @return int
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    TrtInputAttributes::$size
      * @since  TODO ${VERSION}
@@ -235,7 +296,7 @@ trait TrtInputAttributes {
     /**
      * Setter for {@link TrtInputAttributes::$size}
      *
-     * @param mixed $size
+     * @param int $size
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
@@ -249,7 +310,7 @@ trait TrtInputAttributes {
     }
 
     /**
-     * @return mixed
+     * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    TrtInputAttributes::$type
      * @since  TODO ${VERSION}
@@ -262,7 +323,7 @@ trait TrtInputAttributes {
     /**
      * Setter for {@link TrtInputAttributes::$type}
      *
-     * @param mixed $type
+     * @param string $type
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
@@ -276,7 +337,7 @@ trait TrtInputAttributes {
     }
 
     /**
-     * @return mixed
+     * @return float|int|string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    TrtInputAttributes::$value
      * @since  TODO ${VERSION}
@@ -289,7 +350,7 @@ trait TrtInputAttributes {
     /**
      * Setter for {@link TrtInputAttributes::$value}
      *
-     * @param mixed $value
+     * @param float|int|string $value
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>

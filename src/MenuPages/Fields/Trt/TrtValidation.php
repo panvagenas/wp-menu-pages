@@ -15,9 +15,28 @@ namespace Pan\MenuPages\Fields\Trt;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validator;
 
+/**
+ * Class TrtValidation
+ *
+ * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
+ * @date      ${YEAR}-${MONTH}-${DAY}
+ * @since     TODO ${VERSION}
+ * @package   Pan\MenuPages\Fields\Trt
+ * @copyright Copyright (c) ${YEAR} Panagiotis Vagenas
+ */
 trait TrtValidation {
+    /**
+     * @var array
+     */
     protected $validators = [ ];
 
+    /**
+     * @param $value
+     *
+     * @return array
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
     public function isValid( $value ) {
         $valid  = true;
         $errors = array();
@@ -45,6 +64,13 @@ trait TrtValidation {
         return $this->validators;
     }
 
+    /**
+     * @param Validator $validator
+     *
+     * @return $this
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
     public function attachValidator( Validator $validator ) {
         $this->validators[] = $validator;
 

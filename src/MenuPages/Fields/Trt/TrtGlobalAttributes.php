@@ -35,7 +35,7 @@ trait TrtGlobalAttributes {
     protected $style;
 
     /**
-     * @return mixed
+     * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    TrtGlobalAttributes::$class
      * @since  TODO ${VERSION}
@@ -48,7 +48,7 @@ trait TrtGlobalAttributes {
     /**
      * Setter for {@link TrtGlobalAttributes::$class}
      *
-     * @param mixed $class
+     * @param string $class
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
@@ -62,7 +62,7 @@ trait TrtGlobalAttributes {
     }
 
     /**
-     * @return mixed
+     * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    TrtGlobalAttributes::$id
      * @since  TODO ${VERSION}
@@ -75,7 +75,7 @@ trait TrtGlobalAttributes {
     /**
      * Setter for {@link TrtGlobalAttributes::$id}
      *
-     * @param mixed $id
+     * @param string $id
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
@@ -89,7 +89,7 @@ trait TrtGlobalAttributes {
     }
 
     /**
-     * @return mixed
+     * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    TrtGlobalAttributes::$style
      * @since  TODO ${VERSION}
@@ -102,7 +102,7 @@ trait TrtGlobalAttributes {
     /**
      * Setter for {@link TrtGlobalAttributes::$style}
      *
-     * @param mixed $style
+     * @param string $style
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
