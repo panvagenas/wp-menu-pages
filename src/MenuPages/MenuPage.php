@@ -45,6 +45,25 @@ class MenuPage {
      * @var array
      */
     protected $sections = [ ];
+    /**
+     * @var Options
+     */
+    protected $options;
+
+    public function __construct(Options $options) {
+        $this->options = $options;
+    }
+
+    /**
+     * @return Options
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @see    MenuPage::$options
+     * @since  TODO ${VERSION}
+     * @codeCoverageIgnore
+     */
+    public function getOptions() {
+        return $this->options;
+    }
 
     /**
      * @param AbsSection $section

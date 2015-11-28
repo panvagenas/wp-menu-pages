@@ -13,7 +13,7 @@ use Pan\MenuPages\Abs\AbsSingleton;
  * @package   Pan\MenuPages
  * @copyright Copyright (c) ${YEAR} Panagiotis Vagenas
  */
-final class WpMenuPages extends AbsSingleton {
+final class WpMenuPages {
     /**
      * ```php
      *  [
@@ -30,15 +30,35 @@ final class WpMenuPages extends AbsSingleton {
      * @var string
      */
     protected $basePath;
+    /**
+     * @var string
+     */
+    protected $optionsBaseName;
+    /**
+     * @var string
+     */
+    protected $pluginBasePath;
+    /**
+     * @var Options
+     */
+    protected $options;
 
     /**
      * WpMenuPages constructor.
      *
+     * @param string $optionsBaseName
+     * @param string $pluginBasePath
+     * @param array  $defaultOptions
+     *
+     * @throws \ErrorException
      * @since  TODO ${VERSION}
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
-    public function __construct() {
+    public function __construct($optionsBaseName, $pluginBasePath, array $defaultOptions) {
         $this->basePath = dirname( dirname( dirname( __FILE__ ) ) );
+        $this->optionsBaseName = $optionsBaseName;
+        $this->pluginBasePath = $pluginBasePath;
+        $this->options = Options::getInstance($this->optionsBaseName, $defaultOptions);
     }
 
     /**
@@ -53,18 +73,46 @@ final class WpMenuPages extends AbsSingleton {
     }
 
     /**
-     * Setter for {@link WpMenuPages::$basePath}
-     *
-     * @param string $basePath
-     *
-     * @return WpMenuPages
+     * @return array
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @see    WpMenuPages::$menuPages
      * @since  TODO ${VERSION}
      * @codeCoverageIgnore
      */
-    public function setBasePath( $basePath ) {
-        $this->basePath = $basePath;
+    public function getMenuPages() {
+        return $this->menuPages;
+    }
 
-        return $this;
+    /**
+     * @return Options
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @see    WpMenuPages::$options
+     * @since  TODO ${VERSION}
+     * @codeCoverageIgnore
+     */
+    public function getOptions() {
+        return $this->options;
+    }
+
+    /**
+     * @return string
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @see    WpMenuPages::$optionsBaseName
+     * @since  TODO ${VERSION}
+     * @codeCoverageIgnore
+     */
+    public function getOptionsBaseName() {
+        return $this->optionsBaseName;
+    }
+
+    /**
+     * @return string
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @see    WpMenuPages::$pluginBasePath
+     * @since  TODO ${VERSION}
+     * @codeCoverageIgnore
+     */
+    public function getPluginBasePath() {
+        return $this->pluginBasePath;
     }
 }
