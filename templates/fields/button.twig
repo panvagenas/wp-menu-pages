@@ -7,24 +7,23 @@
  # @copyright Copyright (c) 2015 Panagiotis Vagenas
  #}
 {% spaceless %}
-
     <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
 
-        {% if label %}
-            <label for="{{ id | e('html_attr') }}" class="col-sm-2 control-label">{{ label | e }}</label>
-            <div class="col-md-10">
-        {% endif %}
-
-            <textarea
-
-                cols="{{ cols | e('html_attr') | default(25) }}"
-                rows="{{ rows | e('html_attr') | default(5) }}"
+            <button
 
                 {% block global_attributes %}
                     {% include 'fields/blocks/global_attributes.twig' %}
                 {% endblock %}
 
                 {% block input_attributes %}
+                    {% if autofocus %}
+                        autofocus
+                    {% endif %}
+
+                    {% if disabled %}
+                        disabled
+                    {% endif %}
                     {% include 'fields/blocks/attributes.twig' %}
                 {% endblock %}
 
@@ -32,11 +31,9 @@
                     {% include 'fields/blocks/additional_attributes.twig' %}
                 {% endblock %}
 
-            >{{ value | e }}</textarea>
+            >{{ label }}</button>
 
-        {% if label %}
-            </div>
-        {% endif %}
-    </div>
+        </div>
 
+    </div
 {% endspaceless %}

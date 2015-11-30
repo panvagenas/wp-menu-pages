@@ -6,11 +6,15 @@
  # @since TODO ${VERSION}
  # @copyright Copyright (c) 2015 Panagiotis Vagenas
  #}
-{% extends 'fields/abs/base.twig' %}
-
 {% spaceless %}
 
-    {% block body %}
+    <div class="form-group">
+
+        {% if label %}
+            <label for="{{ id | e('html_attr') }}" class="col-sm-2 control-label">{{ label | e }}</label>
+            <div class="col-md-10">
+        {% endif %}
+
         <input
 
         {% block global_attributes %}
@@ -26,6 +30,9 @@
         {% endblock %}
 
         >
-    {% endblock %}
+        {% if label %}
+            </div>
+        {% endif %}
+    </div>
 
 {% endspaceless %}

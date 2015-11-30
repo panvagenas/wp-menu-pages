@@ -35,6 +35,6 @@ class Button extends AbsInput {
      * @inheritDoc
      */
     public function getTemplateName() {
-        return 'fields/abs/button.twig';
+        return 'fields/button.twig';
     }
 }

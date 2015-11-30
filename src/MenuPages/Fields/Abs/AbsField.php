@@ -57,6 +57,12 @@ abstract class AbsField {
         'type',
         'value',
         'width',
+        /***********************
+         * Global attributes
+         **********************/
+        'class',
+        'id',
+        'style',
     ];
 
     /**

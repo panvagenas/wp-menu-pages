@@ -35,7 +35,7 @@ class AbsInput extends AbsField{
      * @inheritDoc
      */
     public function getTemplateName() {
-        return $this->label ? 'fields/abs/labeled-input.twig' : 'fields/abs/input.twig';
+        return 'fields/input.twig';
     }
 
     /**
@@ -46,6 +46,7 @@ class AbsInput extends AbsField{
         $this->name  = $name;
         $this->value = $this->getValue();
         $section->attachField($this);
+        $this->setClass('form-control');
     }
 
     public function getValue(){

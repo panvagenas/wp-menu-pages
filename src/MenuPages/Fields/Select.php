@@ -59,7 +59,7 @@ class Select extends AbsInput {
      * @inheritDoc
      */
     public function getTemplateName() {
-        return $this->label ? 'fields/labeled-select.twig' : 'fields/select.twig';
+        return 'fields/select.twig';
     }
 
 }
