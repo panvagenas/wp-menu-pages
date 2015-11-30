@@ -41,11 +41,18 @@ class AbsInput extends AbsField{
     /**
      * @inheritDoc
      */
-    public function __construct( AbsSection $section, $name, $value = '' ) {
+    public function __construct( AbsSection $section, $name ) {
         parent::__construct( $section );
         $this->name  = $name;
-        $this->value = $value;
+        $this->value = $this->getValue();
         $section->attachField($this);
+    }
+
+    public function getValue(){
+        return $this->section->getOptions()->get($this->name);
+    }
+    public function getDefaultValue(){
+        return $this->section->getOptions()->def($this->name);
     }
 
     /**

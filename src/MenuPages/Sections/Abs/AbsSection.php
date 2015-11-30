@@ -57,6 +57,15 @@ abstract class AbsSection {
     }
 
     /**
+     * @return \Pan\MenuPages\Options
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
+    public function getOptions(){
+        return $this->menuPage->getOptions();
+    }
+
+    /**
      * @param AbsField $field
      *
      * @return $this
