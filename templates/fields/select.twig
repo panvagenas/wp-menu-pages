@@ -14,12 +14,42 @@
         {% endif %}
 
         <select
+            {% if multiple %}
+                multiple
+            {% endif %}
+
             {% block global_attributes %}
                 {% include 'fields/blocks/global_attributes.twig' %}
             {% endblock %}
 
             {% block input_attributes %}
-                {% include 'fields/blocks/attributes.twig' %}
+                type="{{ type | e('html_attr') }}"
+                name="{{ name | e('html_attr') }}"
+
+                {% if maxLength %}
+                    maxlength="{{ maxLength | number_format(0, '', '') }}"
+                {% endif %}
+
+                {% if placeholder %}
+                    placeholder="{{ placeholder | e('html_attr') }}"
+                {% endif %}
+
+                {% if size %}
+                    size="{{ size | number_format(0, '', '') }}"
+                {% endif %}
+
+                {% if required %}
+                    required="required"
+                {% endif %}
+
+                {% if autoFocus %}
+                    autofocus
+                {% endif %}
+
+                {% if disabled %}
+                    disabled
+                {% endif %}
+
                 {{ multiple }}
             {% endblock %}
 
@@ -27,6 +57,7 @@
                 {% include 'fields/blocks/additional_attributes.twig' %}
             {% endblock %}
         >
+            {% set selected = value %}
         {% for name, value in options %}
             {% if value is iterable %}
                 {% set groupOptions = value %}

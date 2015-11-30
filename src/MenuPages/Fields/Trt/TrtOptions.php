@@ -45,13 +45,9 @@ trait TrtOptions {
      * @codeCoverageIgnore
      */
     public function setOptions( $options ) {
-        foreach ( $options as $index => $option ) {
-            if ( ! $this->isValidOptionSchema( $option ) ) {
-                unset( $options[ $index ] );
-            }
+        if ( $this->isValidOptionSchema( $options ) ) {
+            $this->options = $options;
         }
-
-        $this->options = $options;
 
         return $this;
     }

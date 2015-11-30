@@ -58,7 +58,10 @@ class Twig {
         $this->cachePath      = $basePath . '/cache';
 
         $this->twigLoader      = new \Twig_Loader_Filesystem( $this->defaultPaths );
-        $this->twigEnvironment = new \Twig_Environment( $this->twigLoader );
+        // TODO Remove debug
+        $this->twigEnvironment = new \Twig_Environment( $this->twigLoader, ['debug' => true] );
+        $this->twigEnvironment->addExtension(new \Twig_Extension_Debug());
+
     }
 
     /**
