@@ -8,15 +8,13 @@
  #}
 {% spaceless %}
     <div class="form-group">
+
         <div class="col-sm-offset-2 col-sm-10">
 
             <button
 
-                {% block global_attributes %}
                     {% include 'fields/blocks/global_attributes.twig' %}
-                {% endblock %}
 
-                {% block input_attributes %}
                     {% if autofocus %}
                         autofocus
                     {% endif %}
@@ -25,11 +23,8 @@
                         disabled
                     {% endif %}
                     {% include 'fields/blocks/attributes.twig' %}
-                {% endblock %}
 
-                {% block additional_attributes %}
                     {% include 'fields/blocks/additional_attributes.twig' %}
-                {% endblock %}
 
             >{{ label }}</button>
 

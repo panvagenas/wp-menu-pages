@@ -27,8 +27,9 @@ class Button extends AbsInput {
     protected $type = 'button';
 
     public function __construct( AbsSection $section, $name, $label ) {
-        parent::__construct( $section, $name, $label );
+        parent::__construct( $section, $name );
         $this->label = $label;
+        $this->setClass($this->class . ' btn');
     }
 
     /**
