@@ -7,13 +7,12 @@
  # @copyright Copyright (c) 2015 Panagiotis Vagenas
  #}
 {% spaceless %}
+
     <div class="form-group">
 
         <div class="col-sm-offset-2 col-sm-10">
 
             <button
-
-                    {% include 'fields/blocks/global_attributes.twig' %}
 
                     {% if autofocus %}
                         autofocus
@@ -22,13 +21,23 @@
                     {% if disabled %}
                         disabled
                     {% endif %}
-                    {% include 'fields/blocks/attributes.twig' %}
 
-                    {% include 'fields/blocks/additional_attributes.twig' %}
+                    {% block global_attributes %}
+                        {% include 'fields/blocks/global_attributes.twig' %}
+                    {% endblock %}
+
+                    {% block input_attributes %}
+                        {% include 'fields/blocks/attributes.twig' %}
+                    {% endblock %}
+
+                    {% block additional_attributes %}
+                        {% include 'fields/blocks/additional_attributes.twig' %}
+                    {% endblock %}
 
             >{{ label }}</button>
 
         </div>
 
-    </div
+    </div>
+
 {% endspaceless %}
