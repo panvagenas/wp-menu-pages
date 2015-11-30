@@ -51,6 +51,7 @@ abstract class AbsField {
         'placeholder',
         'readonly',
         'required',
+        'selected',
         'size',
         'src',
         'step',
