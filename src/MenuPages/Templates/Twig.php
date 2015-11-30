@@ -11,6 +11,7 @@
 
 namespace Pan\MenuPages\Templates;
 
+use Pan\MenuPages\MenuPage;
 use Pan\MenuPages\Templates\Ifc\IfcTemplateConstants;
 use Pan\MenuPages\WpMenuPages;
 
@@ -43,13 +44,15 @@ class Twig {
     protected $cachePath;
 
     /**
-     * @inheritdoc
+     * Twig constructor.
+     *
+     * @param WpMenuPages $menuPages
      *
      * @since  TODO ${VERSION}
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
-    public function __construct() {
-        $basePath = WpMenuPages::getInstance()->getBasePath();
+    public function __construct(WpMenuPages $menuPages) {
+        $basePath = $menuPages->getBasePath();
 
         $this->defaultPaths[] = $basePath . '/' . IfcTemplateConstants::TEMPLATES_DIR;
         $this->cachePath      = $basePath . '/cache';

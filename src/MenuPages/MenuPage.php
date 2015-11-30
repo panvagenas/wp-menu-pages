@@ -50,8 +50,11 @@ class MenuPage {
      */
     protected $options;
 
-    public function __construct(Options $options) {
-        $this->options = $options;
+    protected $wpMenuPages;
+
+    public function __construct(WpMenuPages $menuPages) {
+        $this->wpMenuPages = $menuPages;
+        $this->options = $menuPages->getOptions();
     }
 
     /**
@@ -154,7 +157,7 @@ class MenuPage {
      */
     public function getTwig() {
         if ( ! $this->hasCacheKey( __METHOD__ ) ) {
-            $this->writeCache( __METHOD__, new Twig() );
+            $this->writeCache( __METHOD__, new Twig($this->wpMenuPages) );
         }
 
         return $this->readCache( __METHOD__ );
