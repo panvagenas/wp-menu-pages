@@ -24,7 +24,7 @@
 
             {% block input_attributes %}
                 type="{{ type | e('html_attr') }}"
-                name="{{ name | e('html_attr') }}"
+                name="{{ name | e('html_attr') }}{% if multiple %}[]{% endif %}"
 
                 {% if maxLength %}
                     maxlength="{{ maxLength | number_format(0, '', '') }}"
@@ -50,7 +50,9 @@
                     disabled
                 {% endif %}
 
-                {{ multiple }}
+                {% if multiple %}
+                    multiple="multiple"
+                {% endif %}
             {% endblock %}
 
             {% block additional_attributes %}
