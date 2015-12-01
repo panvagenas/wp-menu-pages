@@ -1,6 +1,6 @@
 <?php
 /**
- * Section.php description
+ * Panel.php description
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-20
@@ -15,7 +15,7 @@ use Pan\MenuPages\Fields\Abs\AbsField;
 use Pan\MenuPages\PageComponents\Abs\AbsMenuPageComponent;
 
 /**
- * Class Section
+ * Class Panel
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-20
@@ -23,7 +23,7 @@ use Pan\MenuPages\PageComponents\Abs\AbsMenuPageComponent;
  * @package   Pan\MenuPages\PageComponents
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class Section extends AbsMenuPageComponent {
+class Panel extends AbsMenuPageComponent {
     protected $fields = [ ];
 
     /**
@@ -55,7 +55,7 @@ class Section extends AbsMenuPageComponent {
     /**
      * @return array
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @see    AbsSection::$fields
+     * @see    AbsPanel::$fields
      * @codeCoverageIgnore
      */
     public function getFields() {

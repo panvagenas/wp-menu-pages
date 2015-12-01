@@ -6,10 +6,10 @@
  # @since TODO ${VERSION}
  # @copyright Copyright (c) 2015 Panagiotis Vagenas
  #}
-{% for sectionId, section in asside.sections %}
-    <div class="row section-{{ sectionId | e('html_attr') }}">
+{% for panelId, panel in asside.panels %}
+    <div class="row panel-{{ panelId | e('html_attr') }}">
         <div class="col-md-12">
-            {{ section.getMarkUp() | raw }}
+            {{ panel.getMarkUp() | raw }}
         </div>
     </div>
 {% endfor %}

@@ -25,25 +25,25 @@ use Pan\MenuPages\MenuPage;
  */
 class Aside extends AbsMenuPageComponent{
 
-    protected $sections = [];
+    protected $panels = [];
 
     public function __construct(MenuPage $menuPage) {
         parent::__construct($menuPage);
     }
 
-    public function addSection(Section $section){
-        if(!$this->hasSection($section)){
-            $this->sections[$section->getHashId()] = $section;
+    public function addPanel(Panel $panel){
+        if(!$this->hasPanel($panel)){
+            $this->panels[$panel->getHashId()] = $panel;
         }
 
         return $this;
     }
 
-    public function hasSection(Section $section){
-        return array_key_exists($section->getHashId(), $this->sections);
+    public function hasPanel(Panel $panel){
+        return array_key_exists($panel->getHashId(), $this->panels);
     }
 
-    public function getSections(){
-        return $this->sections;
+    public function getPanels(){
+        return $this->panels;
     }
 }

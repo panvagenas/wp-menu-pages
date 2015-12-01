@@ -11,7 +11,7 @@
 
 namespace Pan\MenuPages\Fields;
 
-use Pan\MenuPages\PageComponents\Section;
+use Pan\MenuPages\PageComponents\Panel;
 
 /**
  * Class Submit
@@ -25,8 +25,8 @@ use Pan\MenuPages\PageComponents\Section;
 class Submit extends Button{
     protected $type = 'submit';
 
-    public function __construct( Section $section, $name, $label ) {
-        parent::__construct( $section, $name, $label );
+    public function __construct( Panel $panel, $name, $label ) {
+        parent::__construct( $panel, $name, $label );
         $this->setClass($this->class . ' btn-primary');
     }
 }

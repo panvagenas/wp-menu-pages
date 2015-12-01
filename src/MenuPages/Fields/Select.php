@@ -15,7 +15,7 @@ use Pan\MenuPages\Fields\Abs\AbsField;
 use Pan\MenuPages\Fields\Trt\TrtGlobalInputAttributes;
 use Pan\MenuPages\Fields\Trt\TrtOptions;
 use Pan\MenuPages\Fields\Trt\TrtTemplate;
-use Pan\MenuPages\PageComponents\Section;
+use Pan\MenuPages\PageComponents\Panel;
 
 /**
  * Class CheckBox
@@ -46,8 +46,8 @@ class Select extends AbsField {
     /**
      * @inheritDoc
      */
-    public function __construct( Section $section, $name ) {
-        parent::__construct( $section );
+    public function __construct( Panel $panel, $name ) {
+        parent::__construct( $panel );
         $this->name  = $name;
         $this->value = $this->getValue();
         $this->setClass('form-control');
@@ -77,10 +77,10 @@ class Select extends AbsField {
     }
 
     public function getValue(){
-        return $this->section->getOptions()->get($this->name);
+        return $this->panel->getOptions()->get($this->name);
     }
     public function getDefaultValue(){
-        return $this->section->getOptions()->def($this->name);
+        return $this->panel->getOptions()->def($this->name);
     }
 
     /**

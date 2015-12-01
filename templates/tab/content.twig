@@ -10,16 +10,16 @@
     {% for tabId, tab in tabs %}
 
         <div role="tabpanel" class="tab-pane active" id="{{ tabId | e('html_attr') }}">
-            {% for sectionId, section in tab.sections %}
-                <div id="{{ sectionId | e('html_attr') }}">
+            {% for panelId, panel in tab.panels %}
+                <div id="{{ panelId | e('html_attr') }}">
                     <h2>
-                        {{ section.title }}
-                        {% if section.subtitle %}
-                            <small>{{ section.subtitle }}</small>
+                        {{ panel.title }}
+                        {% if panel.subtitle %}
+                            <small>{{ panel.subtitle }}</small>
                         {% endif %}
                     </h2>
 
-                    {% for fieldId, field in section.fields %}
+                    {% for fieldId, field in panel.fields %}
                         {% include field.getTemplateName %}
                     {% endfor %}
                 </div>

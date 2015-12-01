@@ -28,7 +28,7 @@ class Tab extends AbsMenuPageComponent{
     protected $active = false;
     protected $icon = '';
     protected $title;
-    protected $sections = [];
+    protected $panels = [];
 
     public function __construct(MenuPage $menuPage, $title, $active = false, $icon = '') {
         parent::__construct($menuPage);
@@ -37,20 +37,20 @@ class Tab extends AbsMenuPageComponent{
         $this->icon   = $icon;
     }
 
-    public function addSection(Section $section){
-        if(!$this->hasSection($section)){
-            $this->sections[$section->getHashId()] = $section;
+    public function addPanel(Panel $panel){
+        if(!$this->hasPanel($panel)){
+            $this->panels[$panel->getHashId()] = $panel;
         }
 
         return $this;
     }
 
-    public function hasSection(Section $section){
-        return array_key_exists($section->getHashId(), $this->sections);
+    public function hasPanel(Panel $panel){
+        return array_key_exists($panel->getHashId(), $this->panels);
     }
 
-    public function getSections(){
-        return $this->sections;
+    public function getPanels(){
+        return $this->panels;
     }
 
     public function isActive() {

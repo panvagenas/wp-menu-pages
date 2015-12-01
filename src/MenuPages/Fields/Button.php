@@ -12,7 +12,7 @@
 namespace Pan\MenuPages\Fields;
 
 use Pan\MenuPages\Fields\Abs\AbsInput;
-use Pan\MenuPages\PageComponents\Section;
+use Pan\MenuPages\PageComponents\Panel;
 
 /**
  * Class Button
@@ -26,8 +26,8 @@ use Pan\MenuPages\PageComponents\Section;
 class Button extends AbsInput {
     protected $type = 'button';
 
-    public function __construct( Section $section, $name, $label ) {
-        parent::__construct( $section, $name );
+    public function __construct( Panel $panel, $name, $label ) {
+        parent::__construct( $panel, $name );
         $this->label = $label;
         $this->setClass($this->class . ' btn');
     }

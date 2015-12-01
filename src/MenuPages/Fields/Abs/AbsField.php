@@ -12,7 +12,7 @@
 namespace Pan\MenuPages\Fields\Abs;
 
 use Pan\MenuPages\Fields\Trt\TrtGlobalAttributes;
-use Pan\MenuPages\PageComponents\Section;
+use Pan\MenuPages\PageComponents\Panel;
 use Pan\MenuPages\Trt\TrtIdentifiable;
 
 /**
@@ -28,32 +28,32 @@ abstract class AbsField {
     use TrtIdentifiable, TrtGlobalAttributes;
 
     /**
-     * @var Section
+     * @var Panel
      */
-    protected $section;
+    protected $panel;
 
     /**
      * AbsField constructor.
      *
-     * @param Section $section
+     * @param Panel $panel
      *
      * @since  TODO ${VERSION}
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
-    public function __construct( Section $section ) {
-        $this->section = $section;
-        $this->section->attachField( $this );
+    public function __construct( Panel $panel ) {
+        $this->panel = $panel;
+        $this->panel->attachField( $this );
     }
 
     /**
-     * @return Section
+     * @return Panel
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @see    AbsField::$section
+     * @see    AbsField::$panel
      * @since  TODO ${VERSION}
      * @codeCoverageIgnore
      */
-    public function getSection() {
-        return $this->section;
+    public function getPanel() {
+        return $this->panel;
     }
 
     /**
@@ -62,6 +62,6 @@ abstract class AbsField {
      * @since  TODO ${VERSION}
      */
     public function getTwig() {
-        return $this->section->getTwig();
+        return $this->panel->getTwig();
     }
 }

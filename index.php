@@ -36,24 +36,24 @@ $menuPage = new \Pan\MenuPages\MenuPage( $wpMenuPages, 'Page title', 'Page subti
 $tabA = new \Pan\MenuPages\PageComponents\Tab( $menuPage, 'Tab 1', true );
 $tabB = new \Pan\MenuPages\PageComponents\Tab( $menuPage, 'Tab 2', false );
 
-$sectionATabA = new \Pan\MenuPages\PageComponents\Section( $menuPage );
-$sectionBTabA = new \Pan\MenuPages\PageComponents\Section( $menuPage );
-$sectionATabB = new \Pan\MenuPages\PageComponents\Section( $menuPage );
+$panelATabA = new \Pan\MenuPages\PageComponents\Panel( $menuPage );
+$panelBTabA = new \Pan\MenuPages\PageComponents\Panel( $menuPage );
+$panelATabB = new \Pan\MenuPages\PageComponents\Panel( $menuPage );
 
-$tabA->addSection( $sectionATabA )->addSection( $sectionATabB );
-$tabB->addSection( $sectionBTabA );
+$tabA->addPanel( $panelATabA )->addPanel( $panelATabB );
+$tabB->addPanel( $panelBTabA );
 
-$textFld     = new \Pan\MenuPages\Fields\Text( $sectionATabA, 'text_field' );
+$textFld     = new \Pan\MenuPages\Fields\Text( $panelATabA, 'text_field' );
 $textFld->setLabel('Text Field 1 Label');
 
-$textAreaFld = new \Pan\MenuPages\Fields\TextArea( $sectionATabA, 'text_area_field' );
+$textAreaFld = new \Pan\MenuPages\Fields\TextArea( $panelATabA, 'text_area_field' );
 
-$textFld2 = new \Pan\MenuPages\Fields\Text( $sectionATabB, 'text_field2' );
+$textFld2 = new \Pan\MenuPages\Fields\Text( $panelATabB, 'text_field2' );
 
-$passwordFld = new \Pan\MenuPages\Fields\Password( $sectionBTabA, 'password_field' );
+$passwordFld = new \Pan\MenuPages\Fields\Password( $panelBTabA, 'password_field' );
 
-$submit = new \Pan\MenuPages\Fields\Submit( $sectionBTabA, 'submit', 'Submit' );
-$reset  = new \Pan\MenuPages\Fields\Reset( $sectionBTabA, 'reset', 'Reset' );
+$submit = new \Pan\MenuPages\Fields\Submit( $panelBTabA, 'submit', 'Submit' );
+$reset  = new \Pan\MenuPages\Fields\Reset( $panelBTabA, 'reset', 'Reset' );
 
 
 echo $menuPage->getMarkUp();
