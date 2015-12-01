@@ -59,24 +59,6 @@ class AbsInput extends AbsField{
      * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
-     */
-    public function getMarkUp() {
-        return $this->getTwig()
-                    ->getTwigEnvironment()
-                    ->render( $this->getTemplateName(), $this->getAttributesArray() );
-    }
-
-    protected function getAttributesArray() {
-        $par = parent::getAttributesArray();
-        $par['label'] = $this->label;
-
-        return  $par;
-    }
-
-    /**
-     * @return string
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
      * @see    AbsInput::$label
      * @codeCoverageIgnore
      */

@@ -44,18 +44,6 @@ class Select extends AbsInput {
     }
 
     /**
-     * @return array
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
-     */
-    protected function getAttributesArray() {
-        $out = parent::getAttributesArray();
-
-        $out['options'] = $this->options;
-
-        return $out;
-    }
-    /**
      * @inheritDoc
      */
     public function getTemplateName() {

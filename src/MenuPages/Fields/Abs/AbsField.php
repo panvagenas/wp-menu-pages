@@ -27,45 +27,6 @@ use Pan\MenuPages\Trt\TrtIdentifiable;
 abstract class AbsField {
     use TrtIdentifiable, TrtGlobalAttributes;
 
-    protected $inputAttributes = [
-        'accept',
-        'alt',
-        'autocomplete',
-        'autofocus',
-        'checked',
-        'disabled',
-        'form',
-        'formaction',
-        'formenctype',
-        'formmethod',
-        'formnovalidate',
-        'formtarget',
-        'height',
-        'list',
-        'max',
-        'min',
-        'maxlength',
-        'multiple',
-        'name',
-        'pattern',
-        'placeholder',
-        'readonly',
-        'required',
-        'selected',
-        'size',
-        'src',
-        'step',
-        'type',
-        'value',
-        'width',
-        /***********************
-         * Global attributes
-         **********************/
-        'class',
-        'id',
-        'style',
-    ];
-
     /**
      * @var Section
      */
@@ -85,13 +46,6 @@ abstract class AbsField {
     }
 
     /**
-     * @return string
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
-     */
-    public abstract function getMarkUp();
-
-    /**
      * @return Section
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    AbsField::$section
@@ -109,20 +63,5 @@ abstract class AbsField {
      */
     public function getTwig() {
         return $this->section->getTwig();
-    }
-
-    /**
-     * @return array
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
-     */
-    protected function getAttributesArray(){
-        $out = [];
-        foreach ( $this->inputAttributes as $inputAttribute ) {
-            if(isset($this->{$inputAttribute})){
-                $out[$inputAttribute] = $this->{$inputAttribute};
-            }
-        }
-        return $out;
     }
 }

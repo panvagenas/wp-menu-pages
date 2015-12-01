@@ -38,50 +38,6 @@ class Number extends AbsInput{
     protected $step;
 
     /**
-     * @return array
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
-     */
-    protected function getAttributesArray() {
-        $out = parent::getAttributesArray();
-
-        $out['additional_attributes'] = [];
-
-        if(isset($this->min)){
-            $out['additional_attributes']['min'] = $this->min;
-        }
-        if(isset($this->max)){
-            $out['additional_attributes']['max'] = $this->max;
-        }
-        if(isset($this->step)){
-            $out['additional_attributes']['step'] = $this->step;
-        }
-
-        return $out;
-    }
-
-    /**
-     * @return string
-     * @see    Number::$type
-     * @codeCoverageIgnore
-     */
-    public function getType() {
-        return $this->type;
-    }
-
-    /**
-     * @param string $type
-     *
-     * @return $this
-     * @codeCoverageIgnore
-     */
-    public function setType( $type ) {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
      * @return int
      * @see    Number::$min
      * @codeCoverageIgnore

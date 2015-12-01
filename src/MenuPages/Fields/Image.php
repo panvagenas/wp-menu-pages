@@ -40,35 +40,6 @@ class Image extends File{
     protected $src;
 
     /**
-     * @return array
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
-     */
-    protected function getAttributesArray() {
-        $out = parent::getAttributesArray();
-
-        $out['additional_attributes'] = [];
-        $out['additional_attributes']['style'] = '';
-
-        if(isset($this->alt)){
-            $out['additional_attributes']['alt'] = $this->alt;
-        }
-        if(isset($this->height)){
-            $out['additional_attributes']['height'] = $this->height;
-            $out['additional_attributes']['style'] .= "height:{$this->height}px;";
-        }
-        if(isset($this->width)){
-            $out['additional_attributes']['width'] = $this->width;
-            $out['additional_attributes']['style'] .= "width:{$this->width}px;";
-        }
-        if(isset($this->src)){
-            $out['additional_attributes']['src'] = $this->src;
-        }
-
-        return $out;
-    }
-
-    /**
      * @return string
      * @see    Image::$alt
      * @codeCoverageIgnore

@@ -30,22 +30,6 @@ class File extends AbsInput{
     protected $accept;
 
     /**
-     * @return array
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
-     */
-    protected function getAttributesArray() {
-        $out = parent::getAttributesArray();
-
-        if(isset($this->accept)){
-            $out['additional_attributes'] = [];
-            $out['additional_attributes']['accept'] = $this->accept;
-        }
-
-        return $out;
-    }
-
-    /**
      * @return string
      * @see    File::$accept
      * @codeCoverageIgnore

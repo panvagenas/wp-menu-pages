@@ -33,19 +33,6 @@ class TextArea extends AbsInput {
      */
     protected $cols = 25;
 
-    /**
-     * @return array
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
-     */
-    protected function getAttributesArray() {
-        $out = parent::getAttributesArray();
-
-        $out['rows'] = $this->rows;
-        $out['cols'] = $this->cols;
-
-        return $out;
-    }
     public function getTemplateName() {
         return 'fields/textarea.twig';
     }
