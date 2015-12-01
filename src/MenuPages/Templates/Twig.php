@@ -11,7 +11,6 @@
 
 namespace Pan\MenuPages\Templates;
 
-use Pan\MenuPages\MenuPage;
 use Pan\MenuPages\Templates\Ifc\IfcTemplateConstants;
 use Pan\MenuPages\WpMenuPages;
 

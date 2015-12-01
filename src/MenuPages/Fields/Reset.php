@@ -11,7 +11,7 @@
 
 namespace Pan\MenuPages\Fields;
 
-use Pan\MenuPages\Sections\Abs\AbsSection;
+use Pan\MenuPages\PageComponents\Section;
 
 /**
  * Class Reset
@@ -24,7 +24,7 @@ use Pan\MenuPages\Sections\Abs\AbsSection;
  */
 class Reset extends Button{
     protected $type = 'reset';
-    public function __construct( AbsSection $section, $name, $label ) {
+    public function __construct( Section $section, $name, $label ) {
         parent::__construct( $section, $name, $label );
         $this->setClass($this->class . ' btn-warning');
     }

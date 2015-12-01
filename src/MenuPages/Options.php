@@ -180,7 +180,7 @@ class Options {
     }
 
     /**
-     * prevent from being unserialized
+     * prevent from being un-serialized
      *
      * @return void
      */

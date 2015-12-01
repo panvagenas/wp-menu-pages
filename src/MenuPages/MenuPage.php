@@ -11,7 +11,10 @@
 
 namespace Pan\MenuPages;
 
-use Pan\MenuPages\Sections\Abs\AbsSection;
+use Pan\MenuPages\PageComponents\Abs\AbsMenuPageComponent;
+use Pan\MenuPages\PageComponents\Alert;
+use Pan\MenuPages\PageComponents\Aside;
+use Pan\MenuPages\PageComponents\Tab;
 use Pan\MenuPages\Templates\Twig;
 use Pan\MenuPages\Trt\TrtCache;
 
@@ -36,25 +39,24 @@ class MenuPage {
      */
     protected $parent = '';
     /**
-     * ```php
-     *  [
-     *      $sectionId => Pan\MenuPages\Sections\Abs\AbsSection $section
-     *  ]
-     * ```
-     *
      * @var array
      */
-    protected $sections = [ ];
+    protected $components = [ ];
     /**
      * @var Options
      */
     protected $options;
 
     protected $wpMenuPages;
+    protected $title;
+    protected $subtitle;
+    protected $templateName = 'base.twig';
 
-    public function __construct(WpMenuPages $menuPages) {
+    public function __construct( WpMenuPages $menuPages, $title = '', $subtitle = '' ) {
         $this->wpMenuPages = $menuPages;
-        $this->options = $menuPages->getOptions();
+        $this->options     = $menuPages->getOptions();
+        $this->title       = $title;
+        $this->subtitle    = $subtitle;
     }
 
     /**
@@ -68,40 +70,69 @@ class MenuPage {
         return $this->options;
     }
 
+    public function getMarkUp() {
+        $context = [
+            'page'   => [ ],
+            'form'   => [ ],
+            'tabs'   => [ ],
+            'aside'  => [ ],
+            'alerts' => [ ],
+        ];
+
+        if ( $this->title ) {
+            $context['page']['title'] = $this->title;
+        }
+        if ( $this->subtitle ) {
+            $context['page']['subtitle'] = $this->subtitle;
+        }
+
+        foreach ( $this->components as $componentId => $component ) {
+            if ( $component instanceof Tab ) {
+                $context['tabs'][] = $component;
+            } elseif ( $component instanceof Aside ) {
+                $context['aside'][] = $component;
+            } elseif ($component instanceof Alert){
+                $context['alerts'][] = $component;
+            }
+        }
+
+        return $this->getTwig()->getTwigEnvironment()->render($this->templateName, $context);
+    }
+
     /**
-     * @param AbsSection $section
+     * @param AbsMenuPageComponent $component
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      */
-    public function attachSection( AbsSection $section ) {
-        if ( ! $this->hasSection( $section ) ) {
-            $this->sections[] = $section;
+    public function attachComponent( AbsMenuPageComponent $component ) {
+        if ( ! $this->hasComponent( $component ) ) {
+            $this->components[] = $component;
         }
 
         return $this;
     }
 
     /**
-     * @param AbsSection $section
+     * @param AbsMenuPageComponent $component
      *
      * @return bool
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      */
-    public function hasSection( AbsSection $section ) {
-        return array_key_exists( $section->getHashId(), $this->sections );
+    public function hasComponent( AbsMenuPageComponent $component ) {
+        return array_key_exists( $component->getHashId(), $this->components );
     }
 
     /**
-     * @return array
+     * @return array Of AbsMenuPageComponent
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @see    MenuPage::$sections
+     * @see    MenuPage::$components
      * @codeCoverageIgnore
      */
-    public function getSections() {
-        return $this->sections;
+    public function getComponents() {
+        return $this->components;
     }
 
     /**
@@ -157,7 +188,7 @@ class MenuPage {
      */
     public function getTwig() {
         if ( ! $this->hasCacheKey( __METHOD__ ) ) {
-            $this->writeCache( __METHOD__, new Twig($this->wpMenuPages) );
+            $this->writeCache( __METHOD__, new Twig( $this->wpMenuPages ) );
         }
 
         return $this->readCache( __METHOD__ );

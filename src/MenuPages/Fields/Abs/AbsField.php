@@ -12,7 +12,7 @@
 namespace Pan\MenuPages\Fields\Abs;
 
 use Pan\MenuPages\Fields\Trt\TrtGlobalAttributes;
-use Pan\MenuPages\Sections\Abs\AbsSection;
+use Pan\MenuPages\PageComponents\Section;
 use Pan\MenuPages\Trt\TrtIdentifiable;
 
 /**
@@ -67,19 +67,19 @@ abstract class AbsField {
     ];
 
     /**
-     * @var AbsSection
+     * @var Section
      */
     protected $section;
 
     /**
      * AbsField constructor.
      *
-     * @param AbsSection $section
+     * @param Section $section
      *
      * @since  TODO ${VERSION}
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
-    public function __construct( AbsSection $section ) {
+    public function __construct( Section $section ) {
         $this->section = $section;
         $this->section->attachField( $this );
     }
@@ -92,7 +92,7 @@ abstract class AbsField {
     public abstract function getMarkUp();
 
     /**
-     * @return AbsSection
+     * @return Section
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    AbsField::$section
      * @since  TODO ${VERSION}

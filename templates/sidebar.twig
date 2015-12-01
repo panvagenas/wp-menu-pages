@@ -6,10 +6,10 @@
  # @since TODO ${VERSION}
  # @copyright Copyright (c) 2015 Panagiotis Vagenas
  #}
-{% for sideBarId, sideBar in asside %}
-    <div class="row sidebar-{{ sideBarId | e('html_attr') }}">
+{% for sectionId, section in asside.sections %}
+    <div class="row section-{{ sectionId | e('html_attr') }}">
         <div class="col-md-12">
-            {{ sidebar.getMarkUp() | raw }}
+            {{ section.getMarkUp() | raw }}
         </div>
     </div>
 {% endfor %}

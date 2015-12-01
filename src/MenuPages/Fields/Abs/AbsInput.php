@@ -13,7 +13,7 @@ namespace Pan\MenuPages\Fields\Abs;
 
 use Pan\MenuPages\Fields\Trt\TrtInputAttributes;
 use Pan\MenuPages\Fields\Trt\TrtTemplate;
-use Pan\MenuPages\Sections\Abs\AbsSection;
+use Pan\MenuPages\PageComponents\Section;
 
 /**
  * Class AbsInput
@@ -41,7 +41,7 @@ class AbsInput extends AbsField{
     /**
      * @inheritDoc
      */
-    public function __construct( AbsSection $section, $name ) {
+    public function __construct( Section $section, $name ) {
         parent::__construct( $section );
         $this->name  = $name;
         $this->value = $this->getValue();

@@ -2,8 +2,6 @@
 
 namespace Pan\MenuPages;
 
-use Pan\MenuPages\Abs\AbsSingleton;
-
 /**
  * Class WpMenuPages
  *

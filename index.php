@@ -12,13 +12,14 @@ if ( isset( $_POST['submit'] ) ) {
 require_once 'vendor/autoload.php';
 
 $defaults = [
-    'text_demo'      => 'Text Demo',
-    'text_area_demo' => 'Text Area Demo',
-    'date_demo'      => '2015-11-10',
-    'submit'         => 'submit',
-    'reset'          => 'reset',
-    'select'         => 2,
-    'multi_select'   => [ 1, 11 ],
+    'text_field'      => 'Text Field 1 Demo',
+    'text_area_field' => 'Text Area Demo',
+    'text_field2'     => 'Text Field 2 Demo',
+    'password_field'  => '',
+    'submit'          => 'submit',
+    'reset'           => 'reset',
+    'select'          => 2,
+    'multi_select'    => [ 1, 11 ],
 ];
 
 $selectOptions = [
@@ -30,92 +31,29 @@ $selectOptions = [
 
 $wpMenuPages = new \Pan\MenuPages\WpMenuPages( 'test', __DIR__, $defaults );
 
-$menuPage = new \Pan\MenuPages\MenuPage( $wpMenuPages );
+$menuPage = new \Pan\MenuPages\MenuPage( $wpMenuPages, 'Page title', 'Page subtitle' );
 
-$twig = $menuPage->getTwig()->getTwigEnvironment();
+$tabA = new \Pan\MenuPages\PageComponents\Tab( $menuPage, 'Tab 1', true );
+$tabB = new \Pan\MenuPages\PageComponents\Tab( $menuPage, 'Tab 2', false );
 
-$mainSection = new \Pan\MenuPages\Sections\SectionMain( $menuPage );
+$sectionATabA = new \Pan\MenuPages\PageComponents\Section( $menuPage );
+$sectionBTabA = new \Pan\MenuPages\PageComponents\Section( $menuPage );
+$sectionATabB = new \Pan\MenuPages\PageComponents\Section( $menuPage );
 
-$textField     = new \Pan\MenuPages\Fields\Text( $mainSection, 'text_demo' );
-$textAreaField = new \Pan\MenuPages\Fields\TextArea( $mainSection, 'text_area_demo' );
-$dateField     = new \Pan\MenuPages\Fields\Date( $mainSection, 'date_demo' );
-$select        = new \Pan\MenuPages\Fields\Select( $mainSection, 'select' );
-$multiSelect   = new \Pan\MenuPages\Fields\MultiSelect( $mainSection, 'multi_select' );
+$tabA->addSection( $sectionATabA )->addSection( $sectionATabB );
+$tabB->addSection( $sectionBTabA );
 
-$submit = new \Pan\MenuPages\Fields\Submit( $mainSection, 'submit', 'Submit' );
-$reset  = new \Pan\MenuPages\Fields\Reset( $mainSection, 'reset', 'Reset' );
+$textFld     = new \Pan\MenuPages\Fields\Text( $sectionATabA, 'text_field' );
+$textFld->setLabel('Text Field 1 Label');
 
-$textField->setLabel( 'Text Demo Label' );
-$textAreaField->setLabel( 'Text Area Demo Label' );
-$dateField->setLabel( 'Date Demo Label' );
-$select->setOptions($selectOptions);
-$multiSelect->setOptions($selectOptions);
+$textAreaFld = new \Pan\MenuPages\Fields\TextArea( $sectionATabA, 'text_area_field' );
 
-$submit->setClass( 'btn btn-lg btn-success col-md-5 pull-right' );
-$reset->setClass( 'btn btn-lg btn-warning col-md-5 pull-right' );
+$textFld2 = new \Pan\MenuPages\Fields\Text( $sectionATabB, 'text_field2' );
 
-//$mainContent = $twig->render( 'blocks/form.twig', [ 'content' => $mainSection->getMarkUp() ] );
-//
-//echo $twig->render( 'base.twig', [ 'main' => [ 'content' => $mainContent ] ] );
+$passwordFld = new \Pan\MenuPages\Fields\Password( $sectionBTabA, 'password_field' );
 
-class testFieldClass extends stdClass{
-    protected $label = 'The field label';
-    function getLabel(){
-        return $this->label;
-    }
-}
-$tabInstance = new stdClass();
-$tabInstance2 = new stdClass();
-$sectionInstance = new stdClass();
-$fieldInstance = new testFieldClass();
-
-$fieldInstance->getTemplateName = 'fields/input.twig';
-
-$fieldInstance->type = 'text';
-$fieldInstance->name = 'text-input-name';
-$fieldInstance->id = 'field-id';
-$fieldInstance->value = 'Text field value';
-$fieldInstance->class = 'form-control';
-$fieldInstance->placeholder = 'This is the placeholder';
-
-$sectionInstance->title = 'The section title';
-$sectionInstance->subtitle = 'and the section subtitle';
-$sectionInstance->fields = [
-    $fieldInstance->id => $fieldInstance
-];
-
-$tabInstance->navTitle = 'Tab title';
-$tabInstance->tabId = 'the-tab-id';
-$tabInstance->sections = [
-    'sectionId' => $sectionInstance
-];
-
-$tabInstance2->navTitle = 'Tab title 2';
-$tabInstance2->tabId = 'the-tab-id2';
-$tabInstance2->sections = [
-    'sectionId' => $sectionInstance
-];
+$submit = new \Pan\MenuPages\Fields\Submit( $sectionBTabA, 'submit', 'Submit' );
+$reset  = new \Pan\MenuPages\Fields\Reset( $sectionBTabA, 'reset', 'Reset' );
 
 
-$menuPageTwigSchema = [
-    'page'  => [
-        'title'    => 'The page title',
-        'subtitle' => 'and the subtitle',
-    ],
-    'form'  => [
-        'method'  => 'post',
-        'action'  => '#',
-        'encType' => '',
-    ],
-    'tabs'  => [
-        'tabId' => $tabInstance,
-        'tabId2' => $tabInstance2
-        // ... more instances of tab
-    ],
-//    'aside' => [
-//        $sideBarId => $sideBarInstance
-//        // ... more instances of sidebar
-//    ],
-];
-
-echo $twig->render('base.twig', $menuPageTwigSchema);
+echo $menuPage->getMarkUp();
