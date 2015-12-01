@@ -14,11 +14,11 @@
 
             <button
 
-                    {% if autofocus %}
+                    {% if field.autofocus %}
                         autofocus
                     {% endif %}
 
-                    {% if disabled %}
+                    {% if field.disabled %}
                         disabled
                     {% endif %}
 
@@ -34,7 +34,7 @@
                         {% include 'fields/blocks/additional_attributes.twig' %}
                     {% endblock %}
 
-            >{{ label }}</button>
+            >{{ field.label }}</button>
 
         </div>
 

@@ -8,7 +8,7 @@
  #}
 {% spaceless %}
 
-    {% for name, value in additional_attributes %}
+    {% for name, value in field.additional_attributes %}
         {% if name and value %}
             {{ name | e('html_attr') }}="{{ value | e('html_attr') }}"
         {% endif %}

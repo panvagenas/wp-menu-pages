@@ -8,70 +8,63 @@
  #}
 {% spaceless %}
     <div class="form-group">
-        {% if label %}
-            <label for="{{ id | e('html_attr') }}" class="col-sm-2 control-label">{{ label | e }}</label>
-            <div class="col-md-10">
-        {% endif %}
+        {% if field.label %}
+        <label for="{{ field.id | e('html_attr') }}" class="col-sm-2 control-label">{{ field.label | e }}</label>
 
-        <select
-            {% if multiple %}
-                multiple
+        <div class="col-md-10">
             {% endif %}
 
-            {% block global_attributes %}
-                {% include 'fields/blocks/global_attributes.twig' %}
-            {% endblock %}
-
-            {% block input_attributes %}
-                type="{{ type | e('html_attr') }}"
-                name="{{ name | e('html_attr') }}{% if multiple %}[]{% endif %}"
-
-                {% if maxLength %}
-                    maxlength="{{ maxLength | number_format(0, '', '') }}"
+            <select
+                {% if field.multiple %}
+                    multiple
                 {% endif %}
 
-                {% if placeholder %}
-                    placeholder="{{ placeholder | e('html_attr') }}"
-                {% endif %}
+                {% block field.global_attributes %}
+                    {% include 'fields/blocks/global_attributes.twig' %}
+                {% endblock %}
 
-                {% if size %}
-                    size="{{ size | number_format(0, '', '') }}"
-                {% endif %}
+                {% block input_attributes %}
+                    type="{{ field.type | e('html_attr') }}"
+                    name="{{ field.name | e('html_attr') }}{% if field.multiple %}[]{% endif %}"
 
-                {% if required %}
-                    required="required"
-                {% endif %}
+                    {% if field.size %}
+                        size="{{ field.size | number_format(0, '', '') }}"
+                    {% endif %}
 
-                {% if autoFocus %}
-                    autofocus
-                {% endif %}
+                    {% if field.required %}
+                        required="required"
+                    {% endif %}
 
-                {% if disabled %}
-                    disabled
-                {% endif %}
+                    {% if field.autoFocus %}
+                        autofocus
+                    {% endif %}
 
-                {% if multiple %}
-                    multiple="multiple"
-                {% endif %}
-            {% endblock %}
+                    {% if field.disabled %}
+                        disabled
+                    {% endif %}
 
-            {% block additional_attributes %}
-                {% include 'fields/blocks/additional_attributes.twig' %}
-            {% endblock %}
-        >
-            {% set selected = value %}
-        {% for name, value in options %}
-            {% if value is iterable %}
-                {% set groupOptions = value %}
-                {% include 'fields/cmp/optgroup.twig' %}
-            {% else %}
-                {% include 'fields/cmp/option.twig' %}
-            {% endif %}
-        {% endfor %}
-        </select>
+                    {% if field.multiple %}
+                        multiple="multiple"
+                    {% endif %}
+                {% endblock %}
 
-        {% if label %}
-            </div>
+                {% block additional_attributes %}
+                    {% include 'fields/blocks/additional_attributes.twig' %}
+                {% endblock %}
+            >
+                {% set selected = field.value %}
+                {% for name, value in field.options %}
+                    {% if field.value is iterable %}
+                        {% set groupOptions = field.value %}
+                        {% include 'fields/cmp/optgroup.twig' %}
+                    {% else %}
+                        {% include 'fields/cmp/option.twig' %}
+                    {% endif %}
+                {% endfor %}
+            </select>
+
+            {% if label %}
+        </div>
         {% endif %}
     </div>
 {% endspaceless %}

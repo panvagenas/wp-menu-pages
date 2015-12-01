@@ -1,0 +1,30 @@
+{#
+ # ${FILE_NAME} description
+ #
+ # @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+ # @date 2015-11-18
+ # @since TODO ${VERSION}
+ # @copyright Copyright (c) 2015 Panagiotis Vagenas
+ #}
+<div class="tab-content">
+    {% for tabId, tab in tabs %}
+
+        <div role="tabpanel" class="tab-pane active" id="{{ tabId | e('html_attr') }}">
+            {% for sectionId, section in tab.sections %}
+                <div id="{{ sectionId | e('html_attr') }}">
+                    <h2>
+                        {{ section.title }}
+                        {% if section.subtitle %}
+                            <small>{{ section.subtitle }}</small>
+                        {% endif %}
+                    </h2>
+
+                    {% for fieldId, field in section.fields %}
+                        {% include field.getTemplateName %}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+
+    {% endfor %}
+</div>

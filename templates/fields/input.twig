@@ -10,8 +10,8 @@
 
     <div class="form-group">
 
-        {% if label %}
-            <label for="{{ id | e('html_attr') }}" class="col-sm-2 control-label">{{ label | e }}</label>
+        {% if field.label %}
+            <label for="{{ id | e('html_attr') }}" class="col-sm-2 control-label">{{ field.label | e }}</label>
             <div class="col-md-10">
         {% endif %}
 
@@ -30,7 +30,7 @@
         {% endblock %}
 
         >
-        {% if label %}
+        {% if field.label %}
             </div>
         {% endif %}
 

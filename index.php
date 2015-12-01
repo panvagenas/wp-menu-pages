@@ -54,6 +54,68 @@ $multiSelect->setOptions($selectOptions);
 $submit->setClass( 'btn btn-lg btn-success col-md-5 pull-right' );
 $reset->setClass( 'btn btn-lg btn-warning col-md-5 pull-right' );
 
-$mainContent = $twig->render( 'blocks/form.twig', [ 'content' => $mainSection->getMarkUp() ] );
+//$mainContent = $twig->render( 'blocks/form.twig', [ 'content' => $mainSection->getMarkUp() ] );
+//
+//echo $twig->render( 'base.twig', [ 'main' => [ 'content' => $mainContent ] ] );
 
-echo $twig->render( 'base.twig', [ 'main' => [ 'content' => $mainContent ] ] );
+class testFieldClass extends stdClass{
+    protected $label = 'The field label';
+    function getLabel(){
+        return $this->label;
+    }
+}
+$tabInstance = new stdClass();
+$tabInstance2 = new stdClass();
+$sectionInstance = new stdClass();
+$fieldInstance = new testFieldClass();
+
+$fieldInstance->getTemplateName = 'fields/input.twig';
+
+$fieldInstance->type = 'text';
+$fieldInstance->name = 'text-input-name';
+$fieldInstance->id = 'field-id';
+$fieldInstance->value = 'Text field value';
+$fieldInstance->class = 'form-control';
+$fieldInstance->placeholder = 'This is the placeholder';
+
+$sectionInstance->title = 'The section title';
+$sectionInstance->subtitle = 'and the section subtitle';
+$sectionInstance->fields = [
+    $fieldInstance->id => $fieldInstance
+];
+
+$tabInstance->navTitle = 'Tab title';
+$tabInstance->tabId = 'the-tab-id';
+$tabInstance->sections = [
+    'sectionId' => $sectionInstance
+];
+
+$tabInstance2->navTitle = 'Tab title 2';
+$tabInstance2->tabId = 'the-tab-id2';
+$tabInstance2->sections = [
+    'sectionId' => $sectionInstance
+];
+
+
+$menuPageTwigSchema = [
+    'page'  => [
+        'title'    => 'The page title',
+        'subtitle' => 'and the subtitle',
+    ],
+    'form'  => [
+        'method'  => 'post',
+        'action'  => '#',
+        'encType' => '',
+    ],
+    'tabs'  => [
+        'tabId' => $tabInstance,
+        'tabId2' => $tabInstance2
+        // ... more instances of tab
+    ],
+//    'aside' => [
+//        $sideBarId => $sideBarInstance
+//        // ... more instances of sidebar
+//    ],
+];
+
+echo $twig->render('base.twig', $menuPageTwigSchema);
