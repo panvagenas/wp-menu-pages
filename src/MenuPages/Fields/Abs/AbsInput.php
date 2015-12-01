@@ -11,6 +11,7 @@
 
 namespace Pan\MenuPages\Fields\Abs;
 
+use Pan\MenuPages\Fields\Trt\TrtGlobalInputAttributes;
 use Pan\MenuPages\Fields\Trt\TrtInputAttributes;
 use Pan\MenuPages\Fields\Trt\TrtTemplate;
 use Pan\MenuPages\PageComponents\Section;
@@ -25,7 +26,7 @@ use Pan\MenuPages\PageComponents\Section;
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
 class AbsInput extends AbsField{
-    use TrtTemplate, TrtInputAttributes;
+    use TrtTemplate, TrtInputAttributes, TrtGlobalInputAttributes;
     /**
      * @var string
      */
