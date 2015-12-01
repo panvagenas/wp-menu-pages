@@ -18,10 +18,51 @@
         <input
 
         {% block global_attributes %}
-            {% include 'fields/blocks/global_attributes.twig' %}
+            id="{{ field.id | e('html_attr') }}"
+            class="{{ field.class | e('html_attr') }}"
+
+            {% if field.style %}
+                style="{{ field.style | e('html_attr') }}"
+            {% endif %}
+
+            {% if field.label %}
+                title="{{ field.label | e('html_attr') }}"
+            {% endif %}
         {% endblock %}
 
         {% block input_attributes %}
+            type="{{ field.type | e('html_attr') }}"
+            name="{{ field.name | e('html_attr') }}"
+            value="{{ field.value | e('html_attr') }}"
+
+            {% if field.autoComplete %}
+                autocomplete="{{ field.autoComplete | e('html_attr') }}"
+            {% endif %}
+
+            {% if field.maxLength %}
+                maxlength="{{ field.maxLength | number_format(0, '', '') }}"
+            {% endif %}
+
+            {% if field.placeholder %}
+                placeholder="{{ field.placeholder | e('html_attr') }}"
+            {% endif %}
+
+            {% if field.size %}
+                size="{{ field.size | number_format(0, '', '') }}"
+            {% endif %}
+
+            {% if field.required %}
+                required="required"
+            {% endif %}
+
+            {% if field.autoFocus %}
+                autofocus
+            {% endif %}
+
+            {% if field.disabled %}
+                disabled
+            {% endif %}
+
             {% if field.alt %}
                 alt="{{ field.alt | e('html_attr') }}"
             {% endif %}
@@ -53,8 +94,6 @@
             {% if field.step %}
                 step="{{ field.step | number_format(4, '', '') }}"
             {% endif %}
-
-            {% include 'fields/blocks/attributes.twig' %}
         {% endblock %}
 
         {% block additional_attributes %}
