@@ -4,7 +4,7 @@ namespace Pan\MenuPages\PageComponents\Abs;
 
 use Pan\MenuPages\Fields\Abs\AbsField;
 
-abstract class AbsMenuPageFieldsComponent extends AbsMenuPageComponent{
+abstract class AbsMenuPageFieldsComponent extends AbsMenuPageComponent {
     protected $fields = [ ];
 
     /**

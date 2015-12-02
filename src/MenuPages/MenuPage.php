@@ -91,12 +91,12 @@ class MenuPage {
                 $context['tabs'][] = $component;
             } elseif ( $component instanceof Aside ) {
                 $context['aside'] = $component;
-            } elseif ($component instanceof Alert){
+            } elseif ( $component instanceof Alert ) {
                 $context['alerts'][] = $component;
             }
         }
 
-        return $this->getTwig()->getTwigEnvironment()->render($this->templateName, $context);
+        return $this->getTwig()->getTwigEnvironment()->render( $this->templateName, $context );
     }
 
     /**

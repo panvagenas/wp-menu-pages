@@ -22,6 +22,6 @@ use Pan\MenuPages\Fields\Abs\AbsInput;
  * @package   Pan\MenuPages\Fields
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class Search extends AbsInput{
+class Search extends AbsInput {
     protected $type = 'search';
 }

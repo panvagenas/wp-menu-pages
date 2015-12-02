@@ -50,6 +50,28 @@ class Options {
     }
 
     /**
+     * @param       $optionsBaseName
+     * @param array $defaults
+     *
+     * @return mixed
+     * @throws \ErrorException
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
+    public static function getInstance( $optionsBaseName, array $defaults = [ ] ) {
+        static $instance = [ ];
+        if ( ! isset( $instance[ $optionsBaseName ] ) ) {
+            if ( empty( $defaults ) ) {
+                throw new \ErrorException( 'You always must pass the default option values when instantiating '
+                                           . __CLASS__ );
+            }
+            $instance[ $optionsBaseName ] = new static( $optionsBaseName, $defaults );
+        }
+
+        return $instance[ $optionsBaseName ];
+    }
+
+    /**
      * @param $name
      *
      * @return mixed
@@ -62,6 +84,17 @@ class Options {
             return $this->options[ $name ];
         }
         throw new \ErrorException( 'Invalid option in ' . __METHOD__ );
+    }
+
+    /**
+     * @param $name
+     *
+     * @return bool
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
+    public function exists( $name ) {
+        return isset( $this->options[ $name ] );
     }
 
     /**
@@ -83,6 +116,15 @@ class Options {
     }
 
     /**
+     * @return bool
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
+    protected function save() {
+        return update_option( $this->optionsBaseName, $this->options );
+    }
+
+    /**
      * @param $name
      *
      * @return mixed
@@ -95,26 +137,6 @@ class Options {
             return $this->defaults[ $name ];
         }
         throw new \ErrorException( 'Invalid option in ' . __METHOD__ );
-    }
-
-    /**
-     * @param $name
-     *
-     * @return bool
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
-     */
-    public function exists( $name ) {
-        return isset( $this->options[ $name ] );
-    }
-
-    /**
-     * @return bool
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
-     */
-    protected function save() {
-        return update_option( $this->optionsBaseName, $this->options );
     }
 
     /**
@@ -148,27 +170,6 @@ class Options {
      */
     public function getOptionsBaseName() {
         return $this->optionsBaseName;
-    }
-
-    /**
-     * @param       $optionsBaseName
-     * @param array $defaults
-     *
-     * @return mixed
-     * @throws \ErrorException
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
-     */
-    public static function getInstance( $optionsBaseName, array $defaults = [ ] ) {
-        static $instance = [ ];
-        if ( ! isset( $instance[ $optionsBaseName ] ) ) {
-            if ( empty( $defaults ) ) {
-                throw new \ErrorException( 'You always must pass the default option values when instantiating ' . __CLASS__ );
-            }
-            $instance[ $optionsBaseName ] = new static( $optionsBaseName, $defaults );
-        }
-
-        return $instance[ $optionsBaseName ];
     }
 
     /**

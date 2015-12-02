@@ -50,16 +50,16 @@ class Twig {
      * @since  TODO ${VERSION}
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
-    public function __construct(WpMenuPages $menuPages) {
+    public function __construct( WpMenuPages $menuPages ) {
         $basePath = $menuPages->getBasePath();
 
         $this->defaultPaths[] = $basePath . '/' . IfcTemplateConstants::TEMPLATES_DIR;
         $this->cachePath      = $basePath . '/cache';
 
-        $this->twigLoader      = new \Twig_Loader_Filesystem( $this->defaultPaths );
+        $this->twigLoader = new \Twig_Loader_Filesystem( $this->defaultPaths );
         // TODO Remove debug
-        $this->twigEnvironment = new \Twig_Environment( $this->twigLoader, ['debug' => true] );
-        $this->twigEnvironment->addExtension(new \Twig_Extension_Debug());
+        $this->twigEnvironment = new \Twig_Environment( $this->twigLoader, [ 'debug' => true ] );
+        $this->twigEnvironment->addExtension( new \Twig_Extension_Debug() );
 
     }
 

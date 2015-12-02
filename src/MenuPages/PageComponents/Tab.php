@@ -29,8 +29,8 @@ class Tab extends AbsMenuPageFieldsComponent {
     protected $icon = '';
     protected $title;
 
-    public function __construct(MenuPage $menuPage, $title, $active = false, $icon = '') {
-        parent::__construct($menuPage);
+    public function __construct( MenuPage $menuPage, $title, $active = false, $icon = '' ) {
+        parent::__construct( $menuPage );
         $this->title  = $title;
         $this->active = $active;
         $this->icon   = $icon;

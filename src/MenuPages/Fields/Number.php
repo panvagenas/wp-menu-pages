@@ -22,7 +22,7 @@ use Pan\MenuPages\Fields\Abs\AbsInput;
  * @package   Pan\MenuPages\Fields
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class Number extends AbsInput{
+class Number extends AbsInput {
     protected $type = 'number';
     /**
      * @var int
@@ -53,7 +53,7 @@ class Number extends AbsInput{
      * @codeCoverageIgnore
      */
     public function setMin( $min ) {
-        $this->min = (int)$min;
+        $this->min = (int) $min;
 
         return $this;
     }
@@ -74,7 +74,7 @@ class Number extends AbsInput{
      * @codeCoverageIgnore
      */
     public function setMax( $max ) {
-        $this->max = (int)$max;
+        $this->max = (int) $max;
 
         return $this;
     }
@@ -95,7 +95,7 @@ class Number extends AbsInput{
      * @codeCoverageIgnore
      */
     public function setStep( $step ) {
-        $this->step = is_int($step) ? (int)$step : (float)$step;
+        $this->step = is_int( $step ) ? (int) $step : (float) $step;
 
         return $this;
     }

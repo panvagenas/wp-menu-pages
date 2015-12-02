@@ -29,7 +29,7 @@ class Button extends AbsInput {
     public function __construct( Panel $panel, $name, $label ) {
         parent::__construct( $panel, $name );
         $this->label = $label;
-        $this->setClass($this->class . ' btn');
+        $this->setClass( $this->class . ' btn' );
     }
 
     /**

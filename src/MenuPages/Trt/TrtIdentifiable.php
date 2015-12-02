@@ -7,7 +7,7 @@ trait TrtIdentifiable {
 
 
     public function getHashId() {
-        if ( !$this->hashId ) {
+        if ( ! $this->hashId ) {
             $this->hashId = spl_object_hash( $this );
         }
 
@@ -15,6 +15,6 @@ trait TrtIdentifiable {
     }
 
     public function __clone() {
-        $this->hashId = spl_object_hash($this);
+        $this->hashId = spl_object_hash( $this );
     }
 }

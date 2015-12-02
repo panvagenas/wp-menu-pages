@@ -20,7 +20,7 @@ namespace Pan\MenuPages\Fields;
  * @package   Pan\MenuPages\Fields
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class Image extends File{
+class Image extends File {
     protected $type = 'image';
     /**
      * @var string
@@ -55,7 +55,7 @@ class Image extends File{
      * @codeCoverageIgnore
      */
     public function setAlt( $alt ) {
-        $this->alt = (string)$alt;
+        $this->alt = (string) $alt;
 
         return $this;
     }
@@ -76,7 +76,7 @@ class Image extends File{
      * @codeCoverageIgnore
      */
     public function setHeight( $height ) {
-        $this->height = (int)$height;
+        $this->height = (int) $height;
 
         return $this;
     }
@@ -97,7 +97,7 @@ class Image extends File{
      * @codeCoverageIgnore
      */
     public function setWidth( $width ) {
-        $this->width = (int)$width;
+        $this->width = (int) $width;
 
         return $this;
     }

@@ -22,11 +22,11 @@ use Pan\MenuPages\PageComponents\Panel;
  * @package   Pan\MenuPages\Fields
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class Submit extends Button{
+class Submit extends Button {
     protected $type = 'submit';
 
     public function __construct( Panel $panel, $name, $label ) {
         parent::__construct( $panel, $name, $label );
-        $this->setClass($this->class . ' btn-primary');
+        $this->setClass( $this->class . ' btn-primary' );
     }
 }

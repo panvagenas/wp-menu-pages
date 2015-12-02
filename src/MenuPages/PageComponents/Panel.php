@@ -23,12 +23,12 @@ use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
  * @package   Pan\MenuPages\PageComponents
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class Panel extends AbsMenuPageFieldsComponent{
+class Panel extends AbsMenuPageFieldsComponent {
     protected $title;
 
-    public function __construct(MenuPage $menuPage, $title) {
-        parent::__construct($menuPage);
-        $this->title  = $title;
+    public function __construct( MenuPage $menuPage, $title ) {
+        parent::__construct( $menuPage );
+        $this->title = $title;
     }
 
     public function getTitle() {

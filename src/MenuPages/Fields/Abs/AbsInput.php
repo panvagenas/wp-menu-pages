@@ -25,7 +25,7 @@ use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
  * @package   Pan\MenuPages\Fields\Abs
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class AbsInput extends AbsField{
+class AbsInput extends AbsField {
     use TrtTemplate, TrtInputAttributes, TrtGlobalInputAttributes;
     /**
      * @var string
@@ -46,14 +46,15 @@ class AbsInput extends AbsField{
         parent::__construct( $component );
         $this->name  = $name;
         $this->value = $this->getValue();
-        $this->setClass('form-control');
+        $this->setClass( 'form-control' );
     }
 
-    public function getValue(){
-        return $this->menuPageComponent->getOptions()->get($this->name);
+    public function getValue() {
+        return $this->menuPageComponent->getOptions()->get( $this->name );
     }
-    public function getDefaultValue(){
-        return $this->menuPageComponent->getOptions()->def($this->name);
+
+    public function getDefaultValue() {
+        return $this->menuPageComponent->getOptions()->def( $this->name );
     }
 
     /**

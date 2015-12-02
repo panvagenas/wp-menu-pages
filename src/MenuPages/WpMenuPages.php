@@ -52,11 +52,11 @@ final class WpMenuPages {
      * @since  TODO ${VERSION}
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
-    public function __construct($optionsBaseName, $pluginBasePath, array $defaultOptions) {
-        $this->basePath = dirname( dirname( dirname( __FILE__ ) ) );
+    public function __construct( $optionsBaseName, $pluginBasePath, array $defaultOptions ) {
+        $this->basePath        = dirname( dirname( dirname( __FILE__ ) ) );
         $this->optionsBaseName = $optionsBaseName;
-        $this->pluginBasePath = $pluginBasePath;
-        $this->options = Options::getInstance($this->optionsBaseName, $defaultOptions);
+        $this->pluginBasePath  = $pluginBasePath;
+        $this->options         = Options::getInstance( $this->optionsBaseName, $defaultOptions );
     }
 
     /**

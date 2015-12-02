@@ -2,9 +2,9 @@
 
 namespace Pan\MenuPages\PageComponents\Abs;
 
+use Pan\MenuPages\MenuPage;
 use Pan\MenuPages\Templates\Twig;
 use Pan\MenuPages\Trt\TrtIdentifiable;
-use Pan\MenuPages\MenuPage;
 
 abstract class AbsMenuPageComponent {
     use TrtIdentifiable;
@@ -18,12 +18,12 @@ abstract class AbsMenuPageComponent {
     protected $id;
 
     public function __construct( MenuPage $menuPage ) {
-        $this->id = str_replace('\\', '__', get_class($this).'-'.$this->getHashId());
+        $this->id       = str_replace( '\\', '__', get_class( $this ) . '-' . $this->getHashId() );
         $this->menuPage = $menuPage;
-        $this->menuPage->attachComponent($this);
+        $this->menuPage->attachComponent( $this );
     }
 
-    public function getOptions(){
+    public function getOptions() {
         return $this->menuPage->getOptions();
     }
 
@@ -32,7 +32,7 @@ abstract class AbsMenuPageComponent {
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      */
-    public function getTwig(){
+    public function getTwig() {
         return $this->menuPage->getTwig();
     }
 

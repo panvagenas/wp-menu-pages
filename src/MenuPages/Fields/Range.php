@@ -20,6 +20,6 @@ namespace Pan\MenuPages\Fields;
  * @package   Pan\MenuPages\Fields
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class Range extends Number{
+class Range extends Number {
     protected $type = 'range';
 }

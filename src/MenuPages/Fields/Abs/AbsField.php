@@ -42,7 +42,7 @@ abstract class AbsField {
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
     public function __construct( AbsMenuPageFieldsComponent $component ) {
-        $this->id = str_replace('\\', '__', get_class($this).'-'.$this->getHashId());
+        $this->id = str_replace( '\\', '__', get_class( $this ) . '-' . $this->getHashId() );
 
         $this->menuPageComponent = $component;
         $this->menuPageComponent->attachField( $this );

@@ -22,7 +22,7 @@ use Pan\MenuPages\Fields\Abs\AbsInput;
  * @package   Pan\MenuPages\Fields
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class File extends AbsInput{
+class File extends AbsInput {
     protected $type = 'file';
     /**
      * @var string
@@ -45,7 +45,7 @@ class File extends AbsInput{
      * @codeCoverageIgnore
      */
     public function setAccept( $accept ) {
-        $this->accept = (string)$accept;
+        $this->accept = (string) $accept;
 
         return $this;
     }

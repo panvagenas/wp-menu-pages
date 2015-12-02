@@ -22,10 +22,11 @@ use Pan\MenuPages\PageComponents\Panel;
  * @package   Pan\MenuPages\Fields
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class Reset extends Button{
+class Reset extends Button {
     protected $type = 'reset';
+
     public function __construct( Panel $panel, $name, $label ) {
         parent::__construct( $panel, $name, $label );
-        $this->setClass($this->class . ' btn-warning');
+        $this->setClass( $this->class . ' btn-warning' );
     }
 }

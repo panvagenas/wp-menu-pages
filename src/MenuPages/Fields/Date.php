@@ -22,6 +22,6 @@ use Pan\MenuPages\Fields\Abs\AbsInput;
  * @package   Pan\MenuPages\Fields
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class Date extends AbsInput{
+class Date extends AbsInput {
     protected $type = 'date';
 }

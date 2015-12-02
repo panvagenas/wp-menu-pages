@@ -50,7 +50,7 @@ class Select extends AbsField {
         parent::__construct( $panel );
         $this->name  = $name;
         $this->value = $this->getValue();
-        $this->setClass('form-control');
+        $this->setClass( 'form-control' );
     }
 
     /**
@@ -76,11 +76,12 @@ class Select extends AbsField {
         return true;
     }
 
-    public function getValue(){
-        return $this->menuPageComponent->getOptions()->get($this->name);
+    public function getValue() {
+        return $this->menuPageComponent->getOptions()->get( $this->name );
     }
-    public function getDefaultValue(){
-        return $this->menuPageComponent->getOptions()->def($this->name);
+
+    public function getDefaultValue() {
+        return $this->menuPageComponent->getOptions()->def( $this->name );
     }
 
     /**
