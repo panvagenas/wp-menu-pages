@@ -41,6 +41,8 @@ abstract class AbsField {
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
     public function __construct( Panel $panel ) {
+        $this->id = str_replace('\\', '__', get_class($this).'-'.$this->getHashId());
+
         $this->panel = $panel;
         $this->panel->attachField( $this );
     }

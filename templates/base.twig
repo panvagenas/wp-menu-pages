@@ -16,8 +16,11 @@
     <title>Bootstrap 101 Template</title>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">
+    <!--    <link rel="stylesheet" href="wp-menu-pages/assets/css/bootstrap.min.css">-->
+    <!--    <link rel="stylesheet" href="wp-menu-pages/assets/css/bootstrap-theme.min.css">-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/yeti/bootstrap.min.css" rel="stylesheet"
+          integrity="sha256-gJ9rCvTS5xodBImuaUYf1WfbdDKq54HCPz9wk8spvGs= sha512-weqt+X3kGDDAW9V32W7bWc6aSNCMGNQsdOpfJJz/qD/Yhp+kNeR+YyvvWojJ+afETB31L0C4eO0pcygxfTgjgw=="
+          crossorigin="anonymous">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -28,30 +31,65 @@
 </head>
 <body>
 
-<div class="container wp-menu-pages">
+<div class="container-fluid wp-menu-pages">
+    {##
+     # Page header
+     #}
     <div class="page-header">
         <h1>
             {{ page.title }}
-            {% if page.subtitle %}<small>{{ page.subtitle }}</small>{% endif %}
+            {% if page.subtitle %}
+                <small>{{ page.subtitle }}</small>{% endif %}
         </h1>
     </div>
     <div class="row">
+        {##
+         # Alerts
+         #}
         <div class="col-md-12 alerts-wrapper">
             {% include 'alerts.twig' %}
         </div>
+        {##
+         # Main
+         #}
         <div class="{% if aside %}col-md-9{% else %}col-md-12{% endif %}">
-            {% include 'tab/nav.twig' %}
-
-            <form
-                class="form-horizontal"
-                method="{{ form.method | e('html_attr') | default('post') }}"
-                action="{{ form.action | e('html_attr') | default('') }}"
-                enctype="{{ form.encType | e('html_attr') }}"
-            >
-                {% include 'tab/content.twig' %}
-            </form>
+            {##
+             # Main content
+             #}
+            <div class="panel panel-default">
+                {##
+                 # Panel Heading used for tabs navigation.
+                 #}
+                {# TODO If only one tab then things should be quite differrent hereafter #}
+                <div class="panel-heading" style="padding-bottom: 0; border-bottom: none;">
+                    {% include 'tab/nav.twig' %}
+                </div>
+                {##
+                 # Panel Body
+                 #}
+                <div class="panel-body">
+                    {% include 'tab/content.twig' %}
+                </div>
+                {##
+                 # Panel Footer
+                 # Here are the controls for each tab's form. These should include save, reset etc.
+                 # Also they should be tab specific controls and global controls like save all options.
+                 #}
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="pull-right">
+                            <button type="reset" class="btn btn-md btn-warning">Reset Options</button>
+                            <button type="submit" class="btn btn-md btn-primary">Save Options</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
+
+        {##
+         # Sidebar
+         #}
         {% if aside %}
             <div class="col-md-3">
                 {% include 'sidebar.twig' %}

@@ -10,9 +10,9 @@
 
     {% for tabId, tab in tabs %}
 
-        <li role="presentation" class="{% if tab.isActive %}active{% endif %}">
-            <a href="#{{ tabId | e('html_attr') }}"
-               aria-controls="{{ tabId | e('html_attr') }}"
+        <li role="presentation" class="{% if tab.active %}active{% endif %}">
+            <a href="#{{ tab.id | e('html_attr') }}"
+               aria-controls="{{ tab.id | e('html_attr') }}"
                role="tab" data-toggle="tab">
                 {% if tab.icon %}
                     <span class="glyphicon glyphicon-{{ tab.icon | e('html_attr') }}" aria-hidden="true"></span>

@@ -9,21 +9,12 @@
 <div class="tab-content">
     {% for tabId, tab in tabs %}
 
-        <div role="tabpanel" class="tab-pane active" id="{{ tabId | e('html_attr') }}">
-            {% for panelId, panel in tab.panels %}
-                <div id="{{ panelId | e('html_attr') }}">
-                    <h2>
-                        {{ panel.title }}
-                        {% if panel.subtitle %}
-                            <small>{{ panel.subtitle }}</small>
-                        {% endif %}
-                    </h2>
+        <div role="tabpanel" class="tab-pane fade{% if tab.active %} active in{% endif %}" id="{{ tab.id | e('html_attr') }}">
 
-                    {% for fieldId, field in panel.fields %}
-                        {% include field.getTemplateName %}
-                    {% endfor %}
-                </div>
+            {% for panelId, panel in tab.panels %}
+                {% include 'panels/panel-in-main.twig' %}
             {% endfor %}
+
         </div>
 
     {% endfor %}

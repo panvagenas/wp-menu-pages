@@ -1,0 +1,28 @@
+{#
+ # ${FILE_NAME} description
+ #
+ # @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+ # @date 2015-11-18
+ # @since TODO ${VERSION}
+ # @copyright Copyright (c) 2015 Panagiotis Vagenas
+ #}
+{% set collapsibleId = 'collapsible-' ~ panel.id | e('html_attr') %}
+{% set headingId = 'heading-' ~ panel.id | e('html_attr') %}
+
+<div class="panel panel-default {{ headingId }}">
+    <div class="panel-heading" role="tab" id="{{ headingId }}">
+        <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" href="#{{ collapsibleId }}"
+               aria-expanded="true" aria-controls="{{ collapsibleId }}">
+                {{ panel.title }}
+            </a>
+        </h4>
+    </div>
+    <div id="{{ collapsibleId }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="{{ headingId }}">
+        <div class="panel-body">
+            {% for fieldId, field in panel.fields %}
+                {% include field.getTemplateName %}
+            {% endfor %}
+        </div>
+    </div>
+</div>

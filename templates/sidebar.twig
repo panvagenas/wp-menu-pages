@@ -6,10 +6,8 @@
  # @since TODO ${VERSION}
  # @copyright Copyright (c) 2015 Panagiotis Vagenas
  #}
-{% for panelId, panel in asside.panels %}
-    <div class="row panel-{{ panelId | e('html_attr') }}">
-        <div class="col-md-12">
-            {{ panel.getMarkUp() | raw }}
-        </div>
-    </div>
-{% endfor %}
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    {% for panelId, panel in asside.panels %}
+        {% include 'panels/panel-in-sidebar.twig' %}
+    {% endfor %}
+</div>
