@@ -21,7 +21,11 @@
     <div id="{{ collapsibleId }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="{{ headingId }}">
         <div class="panel-body">
             {% for fieldId, field in panel.fields %}
-                {% include field.getTemplateName %}
+                {% if field.templateName %}
+                    {% include field.templateName %}
+                {% else %}
+                    {{ field.markUp }}
+                {% endif %}
             {% endfor %}
         </div>
     </div>

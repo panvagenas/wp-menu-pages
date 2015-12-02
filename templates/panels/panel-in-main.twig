@@ -22,7 +22,11 @@
     {% endif %}
 
     {% for fieldId, field in panel.fields %}
-        {% include field.getTemplateName %}
+        {% if field.templateName %}
+            {% include field.templateName %}
+        {% else %}
+            {{ field.markUp }}
+        {% endif %}
     {% endfor %}
 
 </form>
