@@ -12,6 +12,7 @@
 namespace Pan\MenuPages\Fields\Abs;
 
 use Pan\MenuPages\Fields\Trt\TrtGlobalAttributes;
+use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
 use Pan\MenuPages\PageComponents\Panel;
 use Pan\MenuPages\Trt\TrtIdentifiable;
 
@@ -28,34 +29,34 @@ abstract class AbsField {
     use TrtIdentifiable, TrtGlobalAttributes;
 
     /**
-     * @var Panel
+     * @var AbsMenuPageFieldsComponent $component
      */
-    protected $panel;
+    protected $menuPageComponent;
 
     /**
      * AbsField constructor.
      *
-     * @param Panel $panel
+     * @param AbsMenuPageFieldsComponent $component
      *
      * @since  TODO ${VERSION}
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
-    public function __construct( Panel $panel ) {
+    public function __construct( AbsMenuPageFieldsComponent $component ) {
         $this->id = str_replace('\\', '__', get_class($this).'-'.$this->getHashId());
 
-        $this->panel = $panel;
-        $this->panel->attachField( $this );
+        $this->menuPageComponent = $component;
+        $this->menuPageComponent->attachField( $this );
     }
 
     /**
      * @return Panel
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @see    AbsField::$panel
+     * @see    menuPageComponent::$panel
      * @since  TODO ${VERSION}
      * @codeCoverageIgnore
      */
-    public function getPanel() {
-        return $this->panel;
+    public function getMenuPageComponent() {
+        return $this->menuPageComponent;
     }
 
     /**
@@ -64,6 +65,6 @@ abstract class AbsField {
      * @since  TODO ${VERSION}
      */
     public function getTwig() {
-        return $this->panel->getTwig();
+        return $this->menuPageComponent->getTwig();
     }
 }

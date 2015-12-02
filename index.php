@@ -36,24 +36,26 @@ $tabB = new \Pan\MenuPages\PageComponents\Tab( $menuPage, 'Tab 2' );
 
 $tabB->setActive(true);
 
-$panelATabA = new \Pan\MenuPages\PageComponents\Panel( $menuPage );
-$panelBTabA = new \Pan\MenuPages\PageComponents\Panel( $menuPage );
-$panelATabB = new \Pan\MenuPages\PageComponents\Panel( $menuPage );
-
-$tabA->addPanel( $panelATabA )->addPanel( $panelATabB );
-$tabB->addPanel( $panelBTabA );
-
-$textFld     = new \Pan\MenuPages\Fields\Text( $panelATabA, 'text_field' );
+$textFld     = new \Pan\MenuPages\Fields\Text( $tabA, 'text_field' );
 $textFld->setLabel('Text Field 1 Label');
 
-$textAreaFld = new \Pan\MenuPages\Fields\TextArea( $panelATabA, 'text_area_field' );
+$textAreaFld = new \Pan\MenuPages\Fields\TextArea( $tabA, 'text_area_field' );
 $textAreaFld->setLabel('Text Area Demo');
 
-$textFld2 = new \Pan\MenuPages\Fields\Text( $panelATabB, 'text_field2' );
+$textFld2 = new \Pan\MenuPages\Fields\Text( $tabB, 'text_field2' );
 $textFld2->setLabel('Text Field 2 Demo');
 
-$passwordFld = new \Pan\MenuPages\Fields\Password( $panelBTabA, 'password_field' );
+$passwordFld = new \Pan\MenuPages\Fields\Password( $tabB, 'password_field' );
 $passwordFld->setLabel('Password Demo');
+
+$aside = new \Pan\MenuPages\PageComponents\Aside($menuPage);
+$panel1 = new \Pan\MenuPages\PageComponents\Panel($menuPage, 'The Title');
+$panel2 = new \Pan\MenuPages\PageComponents\Panel($menuPage, 'Another Title');
+
+$panel1->attachField($passwordFld);
+$panel2->attachField($textFld);
+
+$aside->addPanel($panel1)->addPanel($panel2);
 
 
 echo $menuPage->getMarkUp();

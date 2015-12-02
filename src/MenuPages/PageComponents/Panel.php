@@ -11,8 +11,8 @@
 
 namespace Pan\MenuPages\PageComponents;
 
-use Pan\MenuPages\Fields\Abs\AbsField;
-use Pan\MenuPages\PageComponents\Abs\AbsMenuPageComponent;
+use Pan\MenuPages\MenuPage;
+use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
 
 /**
  * Class Panel
@@ -23,42 +23,21 @@ use Pan\MenuPages\PageComponents\Abs\AbsMenuPageComponent;
  * @package   Pan\MenuPages\PageComponents
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class Panel extends AbsMenuPageComponent {
-    protected $fields = [ ];
+class Panel extends AbsMenuPageFieldsComponent{
+    protected $title;
 
-    /**
-     * @param AbsField $field
-     *
-     * @return $this
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
-     */
-    public function attachField( AbsField $field ) {
-        if ( ! $this->hasField( $field ) ) {
-            $this->fields[ $field->getHashId() ] = $field;
-        }
+    public function __construct(MenuPage $menuPage, $title) {
+        parent::__construct($menuPage);
+        $this->title  = $title;
+    }
+
+    public function getTitle() {
+        return $this->title;
+    }
+
+    public function setTitle( $title ) {
+        $this->title = $title;
 
         return $this;
-    }
-
-    /**
-     * @param AbsField $field
-     *
-     * @return bool
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
-     */
-    public function hasField( AbsField $field ) {
-        return array_key_exists( $field->getHashId(), $this->fields );
-    }
-
-    /**
-     * @return array
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @see    AbsPanel::$fields
-     * @codeCoverageIgnore
-     */
-    public function getFields() {
-        return $this->fields;
     }
 }

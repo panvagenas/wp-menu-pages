@@ -11,8 +11,8 @@
 
 namespace Pan\MenuPages\PageComponents;
 
-use Pan\MenuPages\PageComponents\Abs\AbsMenuPageComponent;
 use Pan\MenuPages\MenuPage;
+use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
 
 /**
  * Class Tab
@@ -23,34 +23,17 @@ use Pan\MenuPages\MenuPage;
  * @package   Pan\MenuPages\PageComponents
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class Tab extends AbsMenuPageComponent{
+class Tab extends AbsMenuPageFieldsComponent {
 
     protected $active = false;
     protected $icon = '';
     protected $title;
-    protected $panels = [];
 
     public function __construct(MenuPage $menuPage, $title, $active = false, $icon = '') {
         parent::__construct($menuPage);
         $this->title  = $title;
         $this->active = $active;
         $this->icon   = $icon;
-    }
-
-    public function addPanel(Panel $panel){
-        if(!$this->hasPanel($panel)){
-            $this->panels[$panel->getHashId()] = $panel;
-        }
-
-        return $this;
-    }
-
-    public function hasPanel(Panel $panel){
-        return array_key_exists($panel->getHashId(), $this->panels);
-    }
-
-    public function getPanels(){
-        return $this->panels;
     }
 
     public function isActive() {

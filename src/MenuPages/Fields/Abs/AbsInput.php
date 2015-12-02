@@ -14,7 +14,7 @@ namespace Pan\MenuPages\Fields\Abs;
 use Pan\MenuPages\Fields\Trt\TrtGlobalInputAttributes;
 use Pan\MenuPages\Fields\Trt\TrtInputAttributes;
 use Pan\MenuPages\Fields\Trt\TrtTemplate;
-use Pan\MenuPages\PageComponents\Panel;
+use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
 
 /**
  * Class AbsInput
@@ -42,18 +42,18 @@ class AbsInput extends AbsField{
     /**
      * @inheritDoc
      */
-    public function __construct( Panel $panel, $name ) {
-        parent::__construct( $panel );
+    public function __construct( AbsMenuPageFieldsComponent $component, $name ) {
+        parent::__construct( $component );
         $this->name  = $name;
         $this->value = $this->getValue();
         $this->setClass('form-control');
     }
 
     public function getValue(){
-        return $this->panel->getOptions()->get($this->name);
+        return $this->menuPageComponent->getOptions()->get($this->name);
     }
     public function getDefaultValue(){
-        return $this->panel->getOptions()->def($this->name);
+        return $this->menuPageComponent->getOptions()->def($this->name);
     }
 
     /**

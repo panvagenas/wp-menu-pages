@@ -77,10 +77,10 @@ class Select extends AbsField {
     }
 
     public function getValue(){
-        return $this->panel->getOptions()->get($this->name);
+        return $this->menuPageComponent->getOptions()->get($this->name);
     }
     public function getDefaultValue(){
-        return $this->panel->getOptions()->def($this->name);
+        return $this->menuPageComponent->getOptions()->def($this->name);
     }
 
     /**

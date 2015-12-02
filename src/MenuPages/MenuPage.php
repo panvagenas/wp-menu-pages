@@ -90,7 +90,7 @@ class MenuPage {
             if ( $component instanceof Tab ) {
                 $context['tabs'][] = $component;
             } elseif ( $component instanceof Aside ) {
-                $context['aside'][] = $component;
+                $context['aside'] = $component;
             } elseif ($component instanceof Alert){
                 $context['alerts'][] = $component;
             }

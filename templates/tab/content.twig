@@ -11,9 +11,21 @@
 
         <div role="tabpanel" class="tab-pane fade{% if tab.active %} active in{% endif %}" id="{{ tab.id | e('html_attr') }}">
 
-            {% for panelId, panel in tab.panels %}
-                {% include 'panels/panel-in-main.twig' %}
-            {% endfor %}
+            <form id="form-{{ tab.id | e('html_attr') }}" class="form-horizontal"
+                  method="{{ form.method | e('html_attr') | default('post') }}"
+                  action="{{ form.action | e('html_attr') | default('') }}"
+                  enctype="{{ form.encType | e('html_attr') }}"
+            >
+
+                {% for fieldId, field in tab.fields %}
+                    {% if field.templateName %}
+                        {% include field.templateName %}
+                    {% else %}
+                        {{ field.markUp }}
+                    {% endif %}
+                {% endfor %}
+
+            </form>
 
         </div>
 
