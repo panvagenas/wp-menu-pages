@@ -49,6 +49,9 @@ $passwordFld->setLabel('Password Demo');
 $selectField = new Pan\MenuPages\Fields\Select($tabA, 'select');
 $selectField->setLabel('Select Field Demo')->setOptions($selectOptions);
 
+$multiSelectField = new Pan\MenuPages\Fields\MultiSelect($tabA, 'multi_select');
+$multiSelectField->setLabel('Multi Select Field Demo')->setOptions($selectOptions);
+
 $aside = new \Pan\MenuPages\PageComponents\Aside($menuPage);
 $panel1 = new \Pan\MenuPages\PageComponents\Panel($menuPage, 'The Title');
 $panel2 = new \Pan\MenuPages\PageComponents\Panel($menuPage, 'Another Title');
@@ -57,6 +60,9 @@ $panel1->attachField($passwordFld);
 $panel2->attachField($textFld);
 
 $aside->addPanel($panel1)->addPanel($panel2);
+
+$fb = new \Pan\MenuPages\PageComponents\Social($menuPage, 'FaceBook', \Pan\MenuPages\PageComponents\Social::ICON_FACEBOOK, '#fb');
+$gh = new \Pan\MenuPages\PageComponents\Social($menuPage, 'GitHub', \Pan\MenuPages\PageComponents\Social::ICON_GITHUB, '#gh');
 
 
 echo $menuPage->getMarkUp();

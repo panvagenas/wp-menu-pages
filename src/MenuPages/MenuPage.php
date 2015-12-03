@@ -77,6 +77,7 @@ class MenuPage {
             'tabs'   => [ ],
             'aside'  => [ ],
             'alerts' => [ ],
+            'socials'=> [ ],
         ];
 
         if ( $this->title ) {
@@ -93,6 +94,8 @@ class MenuPage {
                 $context['aside'] = $component;
             } elseif ( $component instanceof Alert ) {
                 $context['alerts'][] = $component;
+            } elseif ( $component instanceof PageComponents\Social ) {
+                $context['socials'][] = $component;
             }
         }
 

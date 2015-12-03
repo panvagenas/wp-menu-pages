@@ -1,0 +1,7 @@
+<div class="socials">
+    {% for socialId, social in socials %}
+        <a href="{{ social.link | e('html_attr') }}" target="_blank">
+            <i class="fa fa-{{ social.icon | e('html_attr') }}" title="{{ social.name | e('html_attr') }}"></i>
+        </a>
+    {% endfor %}
+</div>
