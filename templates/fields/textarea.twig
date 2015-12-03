@@ -12,9 +12,9 @@
 
         {% if field.label %}
             <label for="{{ field.id | e('html_attr') }}" class="col-sm-2 control-label">{{ field.label | e }}</label>
-            <div class="col-md-8">
         {% endif %}
-
+        
+        <div class="col-md-8">
             <textarea
 
                 cols="{{ cols | e('html_attr') | default(25) }}"
@@ -22,7 +22,7 @@
 
                 {% block global_attributes %}
                     id="{{ field.id | e('html_attr') }}"
-                    class="{{ field.class | e('html_attr') }}"
+                    class="{{ field.class | e('html_attr') }} form-control"
 
                     {% if field.style %}
                         style="{{ field.style | e('html_attr') }}"
@@ -62,11 +62,9 @@
                     {% include 'fields/blocks/additional_attributes.twig' %}
                 {% endblock %}
 
-            >{{ value | e }}</textarea>
+                >{{ value | e }}</textarea>
 
-        {% if field.label %}
-            </div>
-        {% endif %}
+        </div>
 
     </div>
 

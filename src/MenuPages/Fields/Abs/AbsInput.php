@@ -46,7 +46,6 @@ class AbsInput extends AbsField {
         parent::__construct( $component );
         $this->name  = $name;
         $this->value = $this->getValue();
-        $this->setClass( 'form-control' );
     }
 
     public function getValue() {

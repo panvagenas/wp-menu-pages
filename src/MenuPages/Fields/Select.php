@@ -50,7 +50,6 @@ class Select extends AbsField {
         parent::__construct( $panel );
         $this->name  = $name;
         $this->value = $this->getValue();
-        $this->setClass( 'form-control' );
     }
 
     /**
