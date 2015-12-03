@@ -64,8 +64,14 @@ $aside = new \Pan\MenuPages\PageComponents\Aside($menuPage);
 $panel1 = new \Pan\MenuPages\PageComponents\Panel($menuPage, 'The Title');
 $panel2 = new \Pan\MenuPages\PageComponents\Panel($menuPage, 'Another Title');
 
-$panel1->attachField($passwordFld);
-$panel2->attachField($textFld);
+$passwordFld2 = clone $passwordFld;
+$passwordFld2->setLabel('')->setPlaceholder('Pass Field Demo');
+
+$textFld2 = clone $textFld;
+$textFld2->setLabel('')->setPlaceholder('Text Field Demo');
+
+$panel1->attachField($passwordFld2);
+$panel2->attachField($textFld2);
 
 $aside->addPanel($panel1)->addPanel($panel2);
 

@@ -23,6 +23,15 @@
             </div>
             <div id="{{ collapsibleId }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="{{ headingId }}">
                 <div class="panel-body">
+                    {% if panel.form %}
+                        <form id="form-{{ panel.id | e('html_attr') }}"
+                              class="{{ panel.form.class | e('html_attr') }}"
+                              method="{{ panel.form.method | e('html_attr') }}"
+                              action="{{ panel.form.action | e('html_attr') }}"
+                              enctype="{{ panel.form.encType | e('html_attr') }}"
+                        >
+                    {% endif %}
+
                     {% for fieldId, field in panel.fields %}
                         {% if field.templateName %}
                             {% include field.templateName %}
@@ -30,6 +39,10 @@
                             {{ field.markUp }}
                         {% endif %}
                     {% endfor %}
+
+                    {% if panel.form %}
+                        </form>
+                    {% endif %}
                 </div>
             </div>
         </div>

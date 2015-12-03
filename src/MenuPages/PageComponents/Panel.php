@@ -29,6 +29,7 @@ class Panel extends AbsMenuPageFieldsComponent {
     public function __construct( MenuPage $menuPage, $title ) {
         parent::__construct( $menuPage );
         $this->title = $title;
+        $this->form->setClass('');
     }
 
     public function getTitle() {

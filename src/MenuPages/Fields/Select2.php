@@ -44,7 +44,7 @@ class Select2 extends Select {
     }
     /**
      * 
-     * @param type $optionsData Should be assoc array like:
+     * @param array $optionsData Should be assoc array like:
      * <pre>
      * [
      *    0 => [
@@ -56,7 +56,8 @@ class Select2 extends Select {
      *         ],
      *    // ... more options
      * ]
-     * </pre>  
+     * </pre>
+     * @return $this
      */
     public function setData($optionsData){
         $this->setSelect2option('data', $optionsData);

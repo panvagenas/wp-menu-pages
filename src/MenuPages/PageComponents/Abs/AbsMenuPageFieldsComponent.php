@@ -3,9 +3,21 @@
 namespace Pan\MenuPages\PageComponents\Abs;
 
 use Pan\MenuPages\Fields\Abs\AbsField;
+use Pan\MenuPages\MenuPage;
+use Pan\MenuPages\PageComponents\Elements\Form;
 
 abstract class AbsMenuPageFieldsComponent extends AbsMenuPageComponent {
     protected $fields = [ ];
+    /**
+     * @var Form
+     */
+    protected $form;
+
+    public function __construct( MenuPage $menuPage ) {
+        parent::__construct( $menuPage );
+        $this->form = new Form();
+    }
+
 
     /**
      * @param AbsField $field
@@ -41,5 +53,32 @@ abstract class AbsMenuPageFieldsComponent extends AbsMenuPageComponent {
      */
     public function getFields() {
         return $this->fields;
+    }
+
+    /**
+     * @return Form
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @see    AbsMenuPageFieldsComponent::$form
+     * @since  TODO ${VERSION}
+     * @codeCoverageIgnore
+     */
+    public function getForm() {
+        return $this->form;
+    }
+
+    /**
+     * Setter for {@link AbsMenuPageFieldsComponent::$form}
+     *
+     * @param Form $form
+     *
+     * @return $this
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     * @codeCoverageIgnore
+     */
+    public function setForm( $form ) {
+        $this->form = $form;
+
+        return $this;
     }
 }

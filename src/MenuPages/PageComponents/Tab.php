@@ -24,9 +24,17 @@ use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
 class Tab extends AbsMenuPageFieldsComponent {
-
+    /**
+     * @var bool
+     */
     protected $active = false;
+    /**
+     * @var string
+     */
     protected $icon = '';
+    /**
+     * @var string
+     */
     protected $title;
 
     public function __construct( MenuPage $menuPage, $title, $active = false, $icon = '' ) {
