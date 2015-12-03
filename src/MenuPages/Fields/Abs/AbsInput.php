@@ -10,7 +10,7 @@
  */
 
 namespace Pan\MenuPages\Fields\Abs;
-
+use Pan\MenuPages\Fields\Trt\TrtInputAttributes;
 use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
 
 /**
@@ -23,7 +23,8 @@ use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
 abstract class AbsInput extends AbsInputBase {
-
+    use TrtInputAttributes;
+    
     /**
      * @inheritDoc
      */

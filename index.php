@@ -31,10 +31,8 @@ $wpMenuPages = new \Pan\MenuPages\WpMenuPages( 'test', __DIR__, $defaults );
 
 $menuPage = new \Pan\MenuPages\MenuPage( $wpMenuPages, 'Page title', 'Page subtitle' );
 
-$tabA = new \Pan\MenuPages\PageComponents\Tab( $menuPage, 'Tab 1' );
-$tabB = new \Pan\MenuPages\PageComponents\Tab( $menuPage, 'Tab 2' );
-
-$tabB->setActive(true);
+$tabA = new \Pan\MenuPages\PageComponents\Tab( $menuPage, 'Tab 1', true );
+$tabB = new \Pan\MenuPages\PageComponents\Tab( $menuPage, 'Tab 2', false );
 
 $textFld     = new \Pan\MenuPages\Fields\Text( $tabA, 'text_field' );
 $textFld->setLabel('Text Field 1 Label');
@@ -47,6 +45,9 @@ $textFld2->setLabel('Text Field 2 Demo');
 
 $passwordFld = new \Pan\MenuPages\Fields\Password( $tabB, 'password_field' );
 $passwordFld->setLabel('Password Demo');
+
+$selectField = new Pan\MenuPages\Fields\Select($tabA, 'select');
+$selectField->setLabel('Select Field Demo')->setOptions($selectOptions);
 
 $aside = new \Pan\MenuPages\PageComponents\Aside($menuPage);
 $panel1 = new \Pan\MenuPages\PageComponents\Panel($menuPage, 'The Title');

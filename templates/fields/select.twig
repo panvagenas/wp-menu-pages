@@ -60,8 +60,8 @@
                 >
                 {% set selected = field.value %}
                 {% for name, value in field.options %}
-                    {% if field.value is iterable %}
-                        {% set groupOptions = field.value %}
+                    {% if value is iterable %}
+                        {% set groupOptions = value %}
                         {% include 'fields/cmp/optgroup.twig' %}
                     {% else %}
                         {% include 'fields/cmp/option.twig' %}

@@ -3,12 +3,11 @@
 namespace Pan\MenuPages\Fields\Abs;
 
 use Pan\MenuPages\Fields\Trt\TrtGlobalInputAttributes;
-use Pan\MenuPages\Fields\Trt\TrtInputAttributes;
 use Pan\MenuPages\Fields\Trt\TrtTemplate;
 use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
 
 abstract class AbsInputBase extends AbsField {
-    use TrtTemplate, TrtInputAttributes, TrtGlobalInputAttributes;
+    use TrtTemplate, TrtGlobalInputAttributes;
     /**
      * @var string
      */

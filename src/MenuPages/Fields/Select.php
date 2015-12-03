@@ -11,11 +11,9 @@
 
 namespace Pan\MenuPages\Fields;
 
-use Pan\MenuPages\Fields\Abs\AbsField;
-use Pan\MenuPages\Fields\Trt\TrtGlobalInputAttributes;
+use Pan\MenuPages\Fields\Abs\AbsInputBase;
 use Pan\MenuPages\Fields\Trt\TrtOptions;
-use Pan\MenuPages\Fields\Trt\TrtTemplate;
-use Pan\MenuPages\PageComponents\Panel;
+use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
 
 /**
  * Class CheckBox
@@ -26,12 +24,9 @@ use Pan\MenuPages\PageComponents\Panel;
  * @package   Pan\MenuPages\Fields
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class Select extends AbsField {
-    use TrtTemplate, TrtGlobalInputAttributes, TrtOptions;
-    /**
-     * @var string
-     */
-    protected $label;
+class Select extends AbsInputBase {
+    use TrtOptions;
+
     /**
      *
      * @var string
@@ -46,13 +41,11 @@ class Select extends AbsField {
      */
     protected $size;
 
-
     /**
      * @inheritDoc
      */
-    public function __construct( Panel $panel, $name ) {
-        parent::__construct( $panel );
-        $this->name  = $name;
+    public function __construct( AbsMenuPageFieldsComponent $component, $name ) {
+        parent::__construct( $component, $name );
         $this->value = $this->getValue();
     }
 
@@ -85,31 +78,6 @@ class Select extends AbsField {
 
     public function getDefaultValue() {
         return $this->menuPageComponent->getOptions()->def( $this->name );
-    }
-
-    /**
-     * @return string
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
-     * @see    AbsInput::$label
-     * @codeCoverageIgnore
-     */
-    public function getLabel() {
-        return $this->label;
-    }
-
-    /**
-     * @param string $label
-     *
-     * @return $this
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
-     * @codeCoverageIgnore
-     */
-    public function setLabel( $label ) {
-        $this->label = $label;
-
-        return $this;
     }
 
     /**
