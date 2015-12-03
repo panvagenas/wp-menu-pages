@@ -49,6 +49,14 @@ $passwordFld->setLabel('Password Demo');
 $selectField = new Pan\MenuPages\Fields\Select($tabA, 'select');
 $selectField->setLabel('Select Field Demo')->setOptions($selectOptions);
 
+$select2Field = new Pan\MenuPages\Fields\Select2($tabA, 'multi_select');
+$select2Field
+        ->setPlaceHolder('Please Choose At Least One')
+        ->setSelect2option('allow_empty', FALSE)
+        ->setMultiple(true)
+        ->setLabel('Select 2 Field Demo')
+        ->setOptions($selectOptions);
+
 $multiSelectField = new Pan\MenuPages\Fields\MultiSelect($tabA, 'multi_select');
 $multiSelectField->setLabel('Multi Select Field Demo')->setOptions($selectOptions);
 

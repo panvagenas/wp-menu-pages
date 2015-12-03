@@ -57,6 +57,8 @@
                 {% block additional_attributes %}
                     {% include 'fields/blocks/additional_attributes.twig' %}
                 {% endblock %}
+                
+                data-type="select2"
                 >
                 {% set selected = field.value %}
                 {% for name, value in field.options %}
@@ -68,7 +70,11 @@
                     {% endif %}
                 {% endfor %}
             </select>
-
+            <script type="text/javascript">
+                (function($){
+                    $('#{{ field.id | e('html_attr') }}').select2({{ field.select2options | json_encode | raw }});
+                })(jQuery);
+            </script>
         </div>
     </div>
 {% endspaceless %}
