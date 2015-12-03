@@ -32,6 +32,10 @@ class Select extends AbsField {
      * @var string
      */
     protected $label;
+    /**
+     *
+     * @var string
+     */
     protected $type = 'select';
     /**
      * @var bool
