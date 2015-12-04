@@ -44,19 +44,31 @@ final class WpMenuPages {
     /**
      * WpMenuPages constructor.
      *
-     * @param string $optionsBaseName
-     * @param string $pluginBasePath
-     * @param array  $defaultOptions
+     * @param string        $pluginBasePath
+     * @param array|Options $options
+     * @param string        $optionsBaseName
      *
      * @throws \ErrorException
      * @since  TODO ${VERSION}
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
-    public function __construct( $optionsBaseName, $pluginBasePath, array $defaultOptions ) {
+    public function __construct(  $pluginBasePath, $options, $optionsBaseName = '' ) {
         $this->basePath        = dirname( dirname( dirname( __FILE__ ) ) );
         $this->optionsBaseName = $optionsBaseName;
+
+        if(empty($pluginBasePath)){
+            throw new \InvalidArgumentException('Invalid argument $pluginBasePath in ' . __METHOD__);
+        }
+
         $this->pluginBasePath  = $pluginBasePath;
-        $this->options         = Options::getInstance( $this->optionsBaseName, $defaultOptions );
+
+        if ( $options instanceof Options ) {
+            $this->options = $options;
+        } elseif ( is_array( $options ) && !empty($optionsBaseName) ) {
+            $this->options = Options::getInstance( $this->optionsBaseName, $options );
+        } else {
+            throw new \InvalidArgumentException('Invalid argument $options in ' . __METHOD__);
+        }
     }
 
     /**

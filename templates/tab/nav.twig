@@ -15,7 +15,7 @@
                aria-controls="{{ tab.id | e('html_attr') }}"
                role="tab" data-toggle="tab">
                 {% if tab.icon %}
-                    <span class="glyphicon glyphicon-{{ tab.icon | e('html_attr') }}" aria-hidden="true"></span>
+                    <i class="fa fa-{{ tab.icon | e('html_attr') }}" aria-hidden="true"></i>
                 {% endif %}
                 {{ tab.title }}
             </a>

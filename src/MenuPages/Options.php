@@ -61,6 +61,10 @@ class Options {
     public static function getInstance( $optionsBaseName, array $defaults = [ ] ) {
         static $instance = [ ];
         if ( ! isset( $instance[ $optionsBaseName ] ) ) {
+            if ( empty( $optionsBaseName ) ) {
+                throw new \ErrorException( 'You always must pass the options basename when instantiating '
+                                           . __CLASS__ );
+            }
             if ( empty( $defaults ) ) {
                 throw new \ErrorException( 'You always must pass the default option values when instantiating '
                                            . __CLASS__ );

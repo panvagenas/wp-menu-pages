@@ -27,12 +27,17 @@ $selectOptions = [
     'Opt Group 2' => [ 'Opt Group 2 Option 1' => 21, 'Opt Group 2 Option 2' => 22 ],
 ];
 
-$wpMenuPages = new \Pan\MenuPages\WpMenuPages( 'test', __DIR__, $defaults );
+$options = \Pan\MenuPages\Options::getInstance('test', $defaults);
+
+$wpMenuPages = new \Pan\MenuPages\WpMenuPages( __DIR__, $options );
 
 $menuPage = new \Pan\MenuPages\MenuPage( $wpMenuPages, 'Page title', 'Page subtitle' );
 
 $tabA = new \Pan\MenuPages\PageComponents\Tab( $menuPage, 'Tab 1', true );
 $tabB = new \Pan\MenuPages\PageComponents\Tab( $menuPage, 'Tab 2', false );
+
+$tabA->setIcon('gear');
+$tabB->setIcon('gears');
 
 $textFld     = new \Pan\MenuPages\Fields\Text( $tabA, 'text_field' );
 $textFld->setLabel('Text Field 1 Label');
