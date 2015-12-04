@@ -15,7 +15,7 @@
         {% endif %}
 
         <div class="col-md-8 {% if not field.label %}col-md-offset-2{% endif %}">
-            <div class="btn-group" data-toggle="buttons">
+            <div class="btn-group btn-{{ field.type | e('html_attr') }}" data-toggle="buttons">
                 {% for name, value in field.options %}
                     {% set id = (field.id ~ '--' ~ name ~ '--' ~ value) | e('html_attr') %}
 
