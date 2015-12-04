@@ -4,3 +4,4 @@
 .git* export-ignore
 .coveralls.yml export-ignore
 .travis.yml export-ignore
+/assets/config.json export-ignore
