@@ -20,6 +20,7 @@ $defaults = [
     'multi_select'    => [ 1, 11 ],
     'checkbox'        => [ 1, 2 ],
     'radio'           => 3,
+    'switch' => 1
 ];
 
 $selectOptions = [
@@ -95,6 +96,8 @@ $radio = new \Pan\MenuPages\Fields\Radio( $tabA, 'radio' );
 $radio->setOptions( [ 'First Option' => 1, 'Second Option' => 2, 'Third Option' => 3, ] )
       ->setLabel( 'Radio demo' )
       ->setButtonClass( \Pan\MenuPages\Fields\Radio::BUTTON_CLASS_DANGER );
+
+$switch = new \Pan\MenuPages\Fields\SwitchField($tabA, 'switch');
 
 
 echo $menuPage->getMarkUp();
