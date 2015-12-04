@@ -13,22 +13,12 @@ namespace Pan\MenuPages\Ifc;
  */
 interface IfcConstants {
     /**
-     *
+     * WP Menu Pages Version
      */
     const VERSION = '1.0.0';
 
     /**
-     *
+     * Bootstrap CSS CDN
      */
-    const CACHE_LEVEL_CLASS = 1;
-
-    /**
-     *
-     */
-    const CACHE_LEVEL_METHOD = 2;
-
-    /**
-     *
-     */
-    const CACHE_LEVEL_LINE = 3;
+    const CDN_BOOTSTRAP_CSS = 'https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/cosmo/bootstrap.min.css';
 }

@@ -8,6 +8,8 @@
 
 namespace Pan\MenuPages\PageComponents;
 
+use Pan\MenuPages\MenuPage;
+
 /**
  * Description of Social
  *
@@ -18,12 +20,12 @@ class Social extends Abs\AbsMenuPageComponent{
     const ICON_TWITTER = 'twitter';
     const ICON_WORDPRESS = 'wordpress';
     const ICON_GITHUB = 'github';
-    
+
     protected $icon;
     protected $name;
     protected $link;
-    
-    public function __construct(\Pan\MenuPages\MenuPage $menuPage, $name, $icon, $link) {
+
+    public function __construct( MenuPage $menuPage, $name, $icon, $link) {
         parent::__construct($menuPage);
         $this->name = $name;
         $this->icon = $icon;
