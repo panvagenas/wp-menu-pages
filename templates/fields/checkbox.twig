@@ -1,0 +1,63 @@
+{#
+ # ${FILE_NAME} description
+ #
+ # @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+ # @date 2015-11-18
+ # @since TODO ${VERSION}
+ # @copyright Copyright (c) 2015 Panagiotis Vagenas
+ #}
+{% spaceless %}
+
+    <div class="form-group">
+
+        {% if field.label %}
+            <label for="{{ field.id | e('html_attr') }}" class="col-md-2 control-label">{{ field.label | e }}</label>
+        {% endif %}
+
+        <div class="col-md-8 {% if not field.label %}col-md-offset-2{% endif %}">
+            <div class="btn-group" data-toggle="buttons">
+                {% for name, value in field.options %}
+                    {% set id = (field.id ~ '--' ~ name ~ '--' ~ value) | e('html_attr') %}
+
+                    <label for="{{ id }}"
+                           class="btn btn-{{ field.buttonClass | e('html_attr') | default('default') }} {% if field.isOptionChecked(value) %}active{% endif %}">
+                        <input
+                            id="{% if field.options | length > 1 %}{{ id }}{% else %}{{ field.id }}{% endif %}"
+                            class="{{ field.class | e('html_attr') }}"
+
+                            type="{{ field.type | e('html_attr') }}"
+                            value="{{ value | e('html_attr') }}"
+                            name="{{ field.name | e('html_attr') }}{% if field.options | length > 1 %}[]{% endif %}"
+
+                            title="{{ name | e('html_attr') }}"
+
+                            {% if field.isOptionChecked(value) %}
+                                checked="checked"
+                            {% endif %}
+
+                            {% if field.style %}
+                                style="{{ field.style | e('html_attr') }}"
+                            {% endif %}
+
+                            {% if field.required %}
+                                required="required"
+                            {% endif %}
+
+                            {% if field.autoFocus %}
+                                autofocus
+                            {% endif %}
+
+                            {% if field.disabled %}
+                                disabled
+                            {% endif %}
+
+                            autocomplete="off"
+
+                        > {{ name }}
+                    </label>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endspaceless %}

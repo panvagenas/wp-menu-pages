@@ -98,5 +98,17 @@
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    (function($){
+        $('.btn-save-options').click(function(e){
+            e.preventDefault();
+
+            $form = $('.tab-pane.active').find('form');
+
+            console.log($form.find('input[type="checkbox"]').serialize());
+            console.log($form.find('input[type="radio"]').serialize());
+        });
+    })(jQuery);
+</script>
 </body>
 </html>
