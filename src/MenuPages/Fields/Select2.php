@@ -11,6 +11,9 @@
 
 namespace Pan\MenuPages\Fields;
 
+use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
+use Pan\MenuPages\Scripts\Script;
+
 /**
  * Class Select2
  *
@@ -22,14 +25,19 @@ namespace Pan\MenuPages\Fields;
  */
 class Select2 extends Select {
     protected $select2options = [
-        
+
     ];
     protected $multiple;
-    
+
+    public function __construct( AbsMenuPageFieldsComponent $component, $name ) {
+        parent::__construct( $component, $name );
+        Script::getInstance($this->menuPageComponent->getMenuPage())->requireSelect2();
+    }
+
     public function getTemplateName() {
         return 'fields/select2.twig';
     }
-    
+
     public function setSelect2option($name, $value){
         $this->select2options[$name] = $value;
         return $this;
@@ -37,13 +45,13 @@ class Select2 extends Select {
     public function getSelect2options() {
         return $this->select2options;
     }
-    
+
     public function setPlaceHolder($placeholder){
         $this->setSelect2option('placeholder', $placeholder);
         return $this;
     }
     /**
-     * 
+     *
      * @param array $optionsData Should be assoc array like:
      * <pre>
      * [
@@ -70,7 +78,7 @@ class Select2 extends Select {
 
     public function setMultiple($multiple) {
         $this->multiple = $multiple ? 'multiple' : null;
-        
+
         return $this;
     }
 }

@@ -14,6 +14,9 @@ use Pan\MenuPages\Ifc\IfcConstants;
  * @copyright Copyright (c) ${YEAR} Panagiotis Vagenas.
  */
 interface IfcScripts extends IfcConstants{
+    const ASSETS_FOLDER = 'assets';
+    const CORE_JS_SLUG = 'wp-menu-pages-js';
+    const CORE_CSS_SLUG = 'wp-menu-pages-css';
     /**
      * Bootstrap CSS Slug
      */
@@ -33,10 +36,11 @@ interface IfcScripts extends IfcConstants{
      * Select2 JS Slug
      */
     const SLUG_SELECT2_JS = 'wp-menu-pages-select2-js';
+
     /**
-     * Bootstrap CSS CDN
+     * FontAwesome CSS Slug
      */
-    const CDN_BOOTSTRAP_CSS = 'https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/cosmo/bootstrap.min.css';
+    const SLUG_FONT_AWESOME_CSS = 'wp-menu-pages-font-awesome-css';
 
     /**
      * Bootstrap JS CDN
@@ -52,4 +56,9 @@ interface IfcScripts extends IfcConstants{
      * Select2 JS CDN
      */
     const CDN_SELECT2_JS = 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.full.min.js';
+
+    /**
+     * FontAwesome CSS CDN
+     */
+    const CDN_FONT_AWESOME_CSS = 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css';
 }

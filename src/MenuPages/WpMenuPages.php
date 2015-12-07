@@ -37,6 +37,14 @@ final class WpMenuPages {
      */
     protected $pluginBasePath;
     /**
+     * @var string
+     */
+    protected $pluginBaseFile;
+    /**
+     * @var string
+     */
+    protected $basePathRelToPlugin;
+    /**
      * @var Options
      */
     protected $options;
@@ -52,15 +60,26 @@ final class WpMenuPages {
      * @since  TODO ${VERSION}
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
-    public function __construct(  $pluginBasePath, $options, $optionsBaseName = '' ) {
+    public function __construct(  $pluginBasePath, $pluginBaseFile, $options, $optionsBaseName = '' ) {
         $this->basePath        = dirname( dirname( dirname( __FILE__ ) ) );
         $this->optionsBaseName = $optionsBaseName;
 
         if(empty($pluginBasePath)){
             throw new \InvalidArgumentException('Invalid argument $pluginBasePath in ' . __METHOD__);
         }
+        if(empty($pluginBaseFile)){
+            throw new \InvalidArgumentException('Invalid argument $pluginBaseFile in ' . __METHOD__);
+        }
 
-        $this->pluginBasePath  = $pluginBasePath;
+        $this->pluginBasePath = $pluginBasePath;
+        $this->pluginBaseFile = $pluginBaseFile;
+
+        /**
+         * FIXME This won't work with symlinks
+         */
+//        $basePathRelToPlugin = str_replace($this->pluginBasePath, '', $this->basePath);
+
+        $this->basePathRelToPlugin = 'vendor/panvagenas/wp-menu-pages';
 
         if ( $options instanceof Options ) {
             $this->options = $options;
@@ -124,5 +143,26 @@ final class WpMenuPages {
      */
     public function getPluginBasePath() {
         return $this->pluginBasePath;
+    }
+
+    /**
+     * @return string
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @see    WpMenuPages::$optionsBaseName
+     * @since  TODO ${VERSION}
+     * @codeCoverageIgnore
+     */
+    public function getPluginBaseFile() {
+        return $this->pluginBaseFile;
+    }
+    /**
+     * @return string
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @see    WpMenuPages::$optionsBaseName
+     * @since  TODO ${VERSION}
+     * @codeCoverageIgnore
+     */
+    public function getBasePathRelToPlugin() {
+        return $this->basePathRelToPlugin;
     }
 }
