@@ -85,6 +85,16 @@
                                                name="email">
                                     </div>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">
+                                        TexArea
+                                    </label>
+
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" rows="3"></textarea>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
 
@@ -241,7 +251,7 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
     (function ($) {

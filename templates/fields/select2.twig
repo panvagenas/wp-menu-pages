@@ -59,6 +59,9 @@
                 {% endblock %}
                 
                 data-type="select2"
+                {% for optionName, optionValue in field.select2options %}
+                    data-{{ optionName }}="{{ optionValue }}"
+                {% endfor %}
                 >
                 {% set selected = field.value %}
                 {% for name, value in field.options %}
@@ -70,11 +73,6 @@
                     {% endif %}
                 {% endfor %}
             </select>
-            <script type="text/javascript">
-                (function($){
-                    $('#{{ field.id | e('html_attr') }}').select2({{ field.select2options | json_encode | raw }});
-                })(jQuery);
-            </script>
         </div>
     </div>
 {% endspaceless %}

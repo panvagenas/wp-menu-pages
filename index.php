@@ -69,6 +69,14 @@ $select2Field
     ->setLabel( 'Select 2 Field Demo' )
     ->setOptions( $selectOptions );
 
+$select2Field = new Pan\MenuPages\Fields\Select2( $tabA, 'multi_select' );
+$select2Field
+    ->setPlaceHolder( 'Please Choose At Least One' )
+    ->setSelect2option( 'allow_empty', false )
+    ->setMultiple( false )
+    ->setLabel( 'Select 2 Field Demo' )
+    ->setOptions( $selectOptions );
+
 $multiSelectField = new Pan\MenuPages\Fields\MultiSelect( $tabA, 'multi_select' );
 $multiSelectField->setLabel( 'Multi Select Field Demo' )->setOptions( $selectOptions );
 
