@@ -110,10 +110,10 @@ class MenuPage {
         $this->position    = $position;
         $this->parent      = $parent;
 
-        $this->init();
+        add_action('admin_menu', [$this, 'init']);
     }
 
-    protected function init() {
+    public function init() {
         if ( $this->parent ) {
             $this->hookSuffix = add_submenu_page(
                 $this->parent,
@@ -139,6 +139,7 @@ class MenuPage {
         // TODO We should first check if request is for current page in order to avoid unecessary registrations
         $scripts->requireBootstrap();
         $scripts->requireWpMenuPagesScripts();
+        $scripts->requireFontAwesome();
 
         if ( ! has_action( 'admin_init', [ $scripts, 'init' ] ) ) {
             add_action( 'admin_init', [ $scripts, 'init' ] );
@@ -148,6 +149,7 @@ class MenuPage {
     }
 
     public function display() {
+        echo $this->getMarkUp();
     }
 
     /**

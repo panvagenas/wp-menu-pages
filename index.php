@@ -1,13 +1,17 @@
 <?php
+/*
+Plugin Name: WP Menu Pages
+Plugin URI:  http://wordpress.org/extend/plugins/health-check/
+Description: Checks the health of your WordPress install
+Version:     0.1-alpha
+Author:      The Health Check Team
+Author URI:  http://wordpress.org/extend/plugins/health-check/
+Text Domain: health-check
+Domain Path: /lang
+ */
+
+
 ini_set( 'display_errors', E_ALL );
-
-function get_option( $n, $d ) {
-    return $d;
-}
-
-if ( isset( $_POST['submit'] ) ) {
-    var_dump( $_POST );
-}
 
 require_once 'vendor/autoload.php';
 
@@ -32,9 +36,9 @@ $selectOptions = [
 
 $options = \Pan\MenuPages\Options::getInstance( 'test', $defaults );
 
-$wpMenuPages = new \Pan\MenuPages\WpMenuPages( __DIR__, $options );
+$wpMenuPages = new \Pan\MenuPages\WpMenuPages(__DIR__, __FILE__, $options);
 
-$menuPage = new \Pan\MenuPages\MenuPage( $wpMenuPages, 'Page title', 'Page subtitle' );
+$menuPage = new \Pan\MenuPages\MenuPage( $wpMenuPages, 'WP Menu Pages Settings', 'My Settings', 'wp-menu-pages' );
 
 $tabA = new \Pan\MenuPages\PageComponents\Tab( $menuPage, 'Tab 1', true );
 $tabB = new \Pan\MenuPages\PageComponents\Tab( $menuPage, 'Tab 2', false );
@@ -98,6 +102,3 @@ $radio->setOptions( [ 'First Option' => 1, 'Second Option' => 2, 'Third Option' 
       ->setButtonClass( \Pan\MenuPages\Fields\Radio::BUTTON_CLASS_DANGER );
 
 $switch = new \Pan\MenuPages\Fields\SwitchField($tabA, 'switch');
-
-
-echo $menuPage->getMarkUp();

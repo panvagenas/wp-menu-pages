@@ -79,7 +79,7 @@ final class WpMenuPages {
          */
 //        $basePathRelToPlugin = str_replace($this->pluginBasePath, '', $this->basePath);
 
-        $this->basePathRelToPlugin = 'vendor/panvagenas/wp-menu-pages';
+        $this->basePathRelToPlugin = '/wp-menu-pages';
 
         if ( $options instanceof Options ) {
             $this->options = $options;

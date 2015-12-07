@@ -109,24 +109,25 @@ class Script extends AbsSingleton {
     }
 
     public function requireBootstrap() {
-        $this->required[IfcScripts::SLUG_BOOTSTRAP_JS] = IfcScripts::SLUG_BOOTSTRAP_JS;
-        $this->required[IfcScripts::SLUG_BOOTSTRAP_CSS] = IfcScripts::SLUG_BOOTSTRAP_CSS;
+        $this->requiredScripts[IfcScripts::SLUG_BOOTSTRAP_JS] = IfcScripts::SLUG_BOOTSTRAP_JS;
+        $this->requiredStyles[IfcScripts::SLUG_BOOTSTRAP_CSS] = IfcScripts::SLUG_BOOTSTRAP_CSS;
         return $this;
     }
 
     public function requireFontAwesome(){
-        $this->required[IfcScripts::SLUG_FONT_AWESOME_CSS];
+        $this->requiredStyles[IfcScripts::SLUG_FONT_AWESOME_CSS] = IfcScripts::SLUG_FONT_AWESOME_CSS;
         return $this;
     }
 
     public function requireSelect2() {
-        $this->required[IfcScripts::SLUG_SELECT2_CSS] = IfcScripts::SLUG_SELECT2_CSS;
-        $this->required[IfcScripts::SLUG_SELECT2_JS] = IfcScripts::SLUG_SELECT2_JS;
+        $this->requiredStyles[IfcScripts::SLUG_SELECT2_CSS] = IfcScripts::SLUG_SELECT2_CSS;
+        $this->requiredScripts[IfcScripts::SLUG_SELECT2_JS] = IfcScripts::SLUG_SELECT2_JS;
         return $this;
     }
 
     public function requireWpMenuPagesScripts(){
-        $this->required[IfcScripts::CORE_JS_SLUG] = IfcScripts::CORE_JS_SLUG;
+        $this->requiredScripts[IfcScripts::CORE_JS_SLUG] = IfcScripts::CORE_JS_SLUG;
+        $this->requiredStyles[IfcScripts::CORE_CSS_SLUG] = IfcScripts::CORE_CSS_SLUG;
         return $this;
     }
 }
