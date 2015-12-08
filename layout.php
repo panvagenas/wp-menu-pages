@@ -11,9 +11,12 @@
     <title>Bootstrap 101 Template</title>
 
     <!-- Bootstrap -->
-<!--    <link rel="stylesheet" href="wp-menu-pages/assets/css/bootstrap.min.css">-->
-<!--    <link rel="stylesheet" href="wp-menu-pages/assets/css/bootstrap-theme.min.css">-->
-    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/yeti/bootstrap.min.css" rel="stylesheet" integrity="sha256-gJ9rCvTS5xodBImuaUYf1WfbdDKq54HCPz9wk8spvGs= sha512-weqt+X3kGDDAW9V32W7bWc6aSNCMGNQsdOpfJJz/qD/Yhp+kNeR+YyvvWojJ+afETB31L0C4eO0pcygxfTgjgw==" crossorigin="anonymous">
+    <!--    <link rel="stylesheet" href="wp-menu-pages/assets/css/bootstrap.min.css">-->
+    <!--    <link rel="stylesheet" href="wp-menu-pages/assets/css/bootstrap-theme.min.css">-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/yeti/bootstrap.min.css" rel="stylesheet"
+          integrity="sha256-gJ9rCvTS5xodBImuaUYf1WfbdDKq54HCPz9wk8spvGs= sha512-weqt+X3kGDDAW9V32W7bWc6aSNCMGNQsdOpfJJz/qD/Yhp+kNeR+YyvvWojJ+afETB31L0C4eO0pcygxfTgjgw=="
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -74,6 +77,54 @@
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active fade in" id="settings">
                             <form class="form-horizontal">
+
+                                <div class="form-group">
+                                    <label
+                                        for="Pan__MenuPages__Fields__MultiSelect-000000007454bb8d00007fdaddf105aa"
+                                        class="col-sm-2 control-label">Select2 Field Demo</label>
+
+                                    <div class="col-md-8">
+                                        <select multiple="multiple"
+                                                id="Pan__MenuPages__Fields__MultiSelect-000000007454bb8d00007fdaddf105aa"
+                                                class=" form-control select2" title="Multi Select Field Demo"
+                                                type="select" name="multi_select[]">
+                                            <option value="1" selected="selected">Option 1</option>
+                                            <option value="2">Option 2</option>
+                                            <optgroup label="Opt Group 1">
+                                                <option value="11" selected="selected">Opt Group 1 Option 1</option>
+                                                <option value="12">Opt Group 1 Option 2</option>
+                                            </optgroup>
+                                            <optgroup label="Opt Group 2">
+                                                <option value="21">Opt Group 2 Option 1</option>
+                                                <option value="22">Opt Group 2 Option 2</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label
+                                        for="Pan__MenuPages__Fields-000000007454bb8d00007fddddaddf105aa"
+                                        class="col-sm-2 control-label">Select2 Field Demo</label>
+
+                                    <div class="col-md-8">
+                                        <select
+                                                id="Pan__MenuPages__Fields-000000007454bb8d00007fddddaddf105aa"
+                                                class=" form-control select2" title="Multi Select Field Demo"
+                                                type="select" name="multi_select[]">
+                                            <option value="1" selected="selected">Option 1</option>
+                                            <option value="2">Option 2</option>
+                                            <optgroup label="Opt Group 1">
+                                                <option value="11" selected="selected">Opt Group 1 Option 1</option>
+                                                <option value="12">Opt Group 1 Option 2</option>
+                                            </optgroup>
+                                            <optgroup label="Opt Group 2">
+                                                <option value="21">Opt Group 2 Option 1</option>
+                                                <option value="22">Opt Group 2 Option 2</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
 
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-2 control-label">
@@ -252,6 +303,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.full.min.js"></script>
 
 <script type="text/javascript">
     (function ($) {
@@ -264,6 +317,8 @@
 
             $("#results").html('Results: ' + $form.serialize());
         });
+
+        $('.select2').select2();
     })(jQuery);
 </script>
 </body>
