@@ -46,6 +46,22 @@ abstract class AbsMenuPageFieldsComponent extends AbsMenuPageComponent {
     }
 
     /**
+     * @param string $name
+     *
+     * @return null|\Pan\MenuPages\Fields\Abs\AbsInputBase
+     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     */
+    public function getFieldByName($name){
+        foreach ( $this->fields as $field ) {
+            /** \Pan\MenuPages\Fields\Abs\AbsInputBase $field */
+            if($field->getName() === $name){
+                return $field;
+            }
+        }
+        return null;
+    }
+
+    /**
      * @return array
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    AbsPanel::$fields

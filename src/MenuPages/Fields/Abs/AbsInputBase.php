@@ -45,4 +45,22 @@ abstract class AbsInputBase extends AbsField {
 
         return $this;
     }
+
+    /**
+     * Should return a validation result array as in {@link \Pan\MenuPages\Fields\Trt\TrtValidation::isValid()}
+     * ```
+     * [
+     *      'value' => $value,
+     *      'valid' => $valid,
+     *      'errors' => $errors,
+     * ]
+     * ```
+     *
+     * @param $value
+     *
+     * @return array
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
+    abstract public function validate($value);
 }

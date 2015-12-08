@@ -8,12 +8,12 @@
  #}
 {% spaceless %}
 
-    <div class="form-group form-group-sm">
+    <div class="form-group">
 
         {% if field.label %}
             <label for="{{ field.id | e('html_attr') }}" class="col-sm-2 control-label">{{ field.label | e }}</label>
         {% endif %}
-        
+
         <div class="col-md-{% if field.label %}8{% else %}12{% endif %}">
             <textarea
 

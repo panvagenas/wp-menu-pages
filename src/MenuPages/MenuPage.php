@@ -12,9 +12,12 @@
 namespace Pan\MenuPages;
 
 use Pan\MenuPages\PageComponents\Abs\AbsMenuPageComponent;
+use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
 use Pan\MenuPages\PageComponents\Alert;
 use Pan\MenuPages\PageComponents\Aside;
 use Pan\MenuPages\PageComponents\Tab;
+use Pan\MenuPages\Scripts\AjaxHandler;
+use Pan\MenuPages\Scripts\Ifc\IfcScripts;
 use Pan\MenuPages\Scripts\Script;
 use Pan\MenuPages\Templates\Twig;
 use Pan\MenuPages\Trt\TrtCache;
@@ -31,10 +34,6 @@ use Pan\MenuPages\Trt\TrtCache;
 class MenuPage {
     use TrtCache;
 
-    /**
-     * @var string
-     */
-    protected $slug = '';
     /**
      * @var string
      */
@@ -111,6 +110,7 @@ class MenuPage {
         $this->parent      = $parent;
 
         add_action('admin_menu', [$this, 'init']);
+        $this->bindActions();
     }
 
     public function init() {
@@ -141,11 +141,32 @@ class MenuPage {
         $scripts->requireWpMenuPagesScripts();
         $scripts->requireFontAwesome();
 
+        add_action( 'admin_print_scripts-' . $this->hookSuffix, [ $scripts, 'printScripts' ] );
+    }
+
+    protected function bindActions(){
+        $scripts = Script::getInstance($this);
+
         if ( ! has_action( 'admin_init', [ $scripts, 'init' ] ) ) {
             add_action( 'admin_init', [ $scripts, 'init' ] );
         }
 
-        add_action( 'admin_print_scripts-' . $this->hookSuffix, [ Script::getInstance( $this ), 'printScripts' ] );
+        add_action(
+            'wp_ajax_'.IfcScripts::ACTION_SAVE_PREFIX.$this->menuSlug,
+            [AjaxHandler::getInstance($this), 'saveOptions']
+        );
+        add_action(
+            'wp_ajax_'.IfcScripts::ACTION_RESET_PREFIX.$this->menuSlug,
+            [AjaxHandler::getInstance($this), 'resetOptions']
+        );
+        add_action(
+            'wp_ajax_'.IfcScripts::ACTION_EXPORT_PREFIX.$this->menuSlug,
+            [AjaxHandler::getInstance($this), 'exportOptions']
+        );
+        add_action(
+            'wp_ajax_'.IfcScripts::ACTION_IMPORT_PREFIX.$this->menuSlug,
+            [AjaxHandler::getInstance($this), 'importOptions']
+        );
     }
 
     public function display() {
@@ -210,6 +231,18 @@ class MenuPage {
         return $this;
     }
 
+    public function getFieldByName($name){
+        foreach ( $this->components as $component ) {
+            if($component instanceof AbsMenuPageFieldsComponent){
+                $field = $component->getFieldByName($name);
+                if($field){
+                    return $field;
+                }
+            }
+        }
+        return null;
+    }
+
     /**
      * @param AbsMenuPageComponent $component
      *
@@ -234,24 +267,11 @@ class MenuPage {
     /**
      * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @see    MenuPage::$slug
+     * @see    MenuPage::$menuSlug
      * @codeCoverageIgnore
      */
-    public function getSlug() {
-        return $this->slug;
-    }
-
-    /**
-     * @param string $slug
-     *
-     * @return $this
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @codeCoverageIgnore
-     */
-    public function setSlug( $slug ) {
-        $this->slug = $slug;
-
-        return $this;
+    public function getMenuSlug() {
+        return $this->menuSlug;
     }
 
     /**

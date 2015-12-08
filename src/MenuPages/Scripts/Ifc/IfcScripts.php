@@ -17,10 +17,22 @@ interface IfcScripts extends IfcConstants{
     const ASSETS_FOLDER = 'assets';
     const CORE_JS_SLUG = 'wp-menu-pages-js';
     const CORE_CSS_SLUG = 'wp-menu-pages-css';
+    const CORE_JS_DEFINITIONS = 'wpMenuPagesDefinitions';
+
+    const ACTION_SAVE_PREFIX = 'wp-menu-pages-save-options-';
+    const ACTION_RESET_PREFIX = 'wp-menu-pages-reset-options-';
+    const ACTION_EXPORT_PREFIX = 'wp-menu-pages-export-options-';
+    const ACTION_IMPORT_PREFIX = 'wp-menu-pages-import-options-';
+
     /**
      * Bootstrap CSS Slug
      */
     const SLUG_BOOTSTRAP_CSS = 'wp-menu-pages-bs-css';
+
+    /**
+     * Bootstrap CSS Slug
+     */
+    const SLUG_BOOTSTRAP_THEME_CSS = 'wp-menu-pages-bs-theme-css';
 
     /**
      * Bootstrap JS Slug
