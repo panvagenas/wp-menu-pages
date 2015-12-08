@@ -31,10 +31,6 @@ final class WpMenuPages {
     /**
      * @var string
      */
-    protected $optionsBaseName;
-    /**
-     * @var string
-     */
     protected $pluginBasePath;
     /**
      * @var string
@@ -60,26 +56,21 @@ final class WpMenuPages {
      * @since  TODO ${VERSION}
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
-    public function __construct(  $pluginBasePath, $pluginBaseFile, $options, $optionsBaseName = '' ) {
-        $this->basePath        = dirname( dirname( dirname( __FILE__ ) ) );
-        $this->optionsBaseName = $optionsBaseName;
-
-        if(empty($pluginBasePath)){
-            throw new \InvalidArgumentException('Invalid argument $pluginBasePath in ' . __METHOD__);
-        }
+    public function __construct(  $pluginBaseFile, $options, $optionsBaseName = '', $relBasePath = '' ) {
         if(empty($pluginBaseFile)){
             throw new \InvalidArgumentException('Invalid argument $pluginBaseFile in ' . __METHOD__);
         }
 
-        $this->pluginBasePath = $pluginBasePath;
-        $this->pluginBaseFile = $pluginBaseFile;
+        $this->pluginBasePath = dirname($pluginBaseFile);
+        $this->pluginBaseFile = realpath($pluginBaseFile);
 
-        /**
-         * FIXME This won't work with symlinks
-         */
-//        $basePathRelToPlugin = str_replace($this->pluginBasePath, '', $this->basePath);
-
-        $this->basePathRelToPlugin = '/wp-menu-pages';
+        if($relBasePath){
+            $this->basePath = $this->pluginBasePath . '/' . $relBasePath;
+            $this->basePathRelToPlugin = $relBasePath;
+        } else {
+            $this->basePath = dirname( dirname( dirname( __FILE__ ) ) );
+            $this->basePathRelToPlugin = str_replace($this->pluginBasePath, '', $this->basePath);
+        }
 
         if ( $options instanceof Options ) {
             $this->options = $options;
@@ -126,17 +117,6 @@ final class WpMenuPages {
     /**
      * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @see    WpMenuPages::$optionsBaseName
-     * @since  TODO ${VERSION}
-     * @codeCoverageIgnore
-     */
-    public function getOptionsBaseName() {
-        return $this->optionsBaseName;
-    }
-
-    /**
-     * @return string
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    WpMenuPages::$pluginBasePath
      * @since  TODO ${VERSION}
      * @codeCoverageIgnore
@@ -148,7 +128,7 @@ final class WpMenuPages {
     /**
      * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @see    WpMenuPages::$optionsBaseName
+     * @see    WpMenuPages::$pluginBaseFile
      * @since  TODO ${VERSION}
      * @codeCoverageIgnore
      */
@@ -158,7 +138,7 @@ final class WpMenuPages {
     /**
      * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @see    WpMenuPages::$optionsBaseName
+     * @see    WpMenuPages::$basePathRelToPlugin
      * @since  TODO ${VERSION}
      * @codeCoverageIgnore
      */

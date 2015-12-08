@@ -31,12 +31,14 @@ class Script extends AbsSingleton {
     protected $requiredStyles = [];
     protected $pathToAssets;
     protected $pluginRelPathToAssets;
+    protected $pluginBaseFile;
 
     protected function __construct( MenuPage $menuPage ) {
         parent::__construct( $menuPage );
         $assetsFolder = IfcScripts::ASSETS_FOLDER;
         $this->pathToAssets = $this->menuPage->getWpMenuPages()->getBasePath() . "/$assetsFolder";
         $this->pluginRelPathToAssets = $this->menuPage->getWpMenuPages()->getBasePathRelToPlugin() . "/$assetsFolder";
+        $this->pluginBaseFile = $this->menuPage->getWpMenuPages()->getPluginBaseFile();
     }
 
     public function printScripts(){
@@ -50,7 +52,7 @@ class Script extends AbsSingleton {
     public function init(){
         $this->registerStyle(
             IfcScripts::SLUG_BOOTSTRAP_CSS,
-            plugins_url($this->pluginRelPathToAssets.'/css/bootstrap.min.css'),
+            plugins_url($this->pluginRelPathToAssets.'/css/bootstrap.min.css', $this->pluginBaseFile),
             [],
             IfcConstants::VERSION
         );
@@ -63,13 +65,13 @@ class Script extends AbsSingleton {
         );
         $this->registerStyle(
             IfcScripts::CORE_CSS_SLUG,
-            plugins_url($this->pluginRelPathToAssets.'/css/wp-menu-pages.css'),
+            plugins_url($this->pluginRelPathToAssets.'/css/wp-menu-pages.css', $this->pluginBaseFile),
             [IfcScripts::SLUG_BOOTSTRAP_CSS],
             IfcConstants::VERSION
         );
         $this->registerScript(
             IfcScripts::CORE_JS_SLUG,
-            plugins_url($this->pluginRelPathToAssets.'/js/wp-menu-pages.js'),
+            plugins_url($this->pluginRelPathToAssets.'/js/wp-menu-pages.js', $this->pluginBaseFile),
             ['jquery'],
             IfcConstants::VERSION,
             true
