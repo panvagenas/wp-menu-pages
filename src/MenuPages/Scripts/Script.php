@@ -130,8 +130,8 @@ class Script extends AbsSingleton {
 
     public function requireBootstrap() {
         $this->requiredScripts[IfcScripts::SLUG_BOOTSTRAP_JS] = IfcScripts::SLUG_BOOTSTRAP_JS;
-        $this->requiredStyles[IfcScripts::SLUG_BOOTSTRAP_CSS] = IfcScripts::SLUG_BOOTSTRAP_CSS;
         $this->requiredStyles[IfcScripts::SLUG_BOOTSTRAP_THEME_CSS] = IfcScripts::SLUG_BOOTSTRAP_THEME_CSS;
+        $this->requiredStyles[IfcScripts::SLUG_BOOTSTRAP_CSS] = IfcScripts::SLUG_BOOTSTRAP_CSS;
         return $this;
     }
 

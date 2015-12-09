@@ -307,4 +307,15 @@ class MenuPage {
     public function getWpMenuPages() {
         return $this->wpMenuPages;
     }
+
+    /**
+     * @return string
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     * @see    MenuPage::$capability
+     * @codeCoverageIgnore
+     */
+    public function getCapability() {
+        return $this->capability;
+    }
 }

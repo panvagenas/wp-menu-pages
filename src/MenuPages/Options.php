@@ -119,6 +119,18 @@ class Options {
         throw new \ErrorException( 'Invalid option in ' . __METHOD__ );
     }
 
+    public function setArray(array $newOptions){
+        foreach ( $newOptions as $name => $value ) {
+            if(!$this->exists($name)){
+                unset( $newOptions[ $name]);
+            }
+        }
+
+        $this->options = array_merge($this->options, $newOptions);
+
+        return $this->save();
+    }
+
     /**
      * @return bool
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>

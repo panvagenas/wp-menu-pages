@@ -98,11 +98,39 @@
     WpMenuPages.prototype.getAlertMarkUp = function(msg, type){
         return this.alertTemplate.replace('{{type}}', type).replace('{{msg}}', msg);
     };
-
+    /**
+     * Get options from active tab serialized
+     * @returns {*}
+     */
     WpMenuPages.prototype.getActiveTabOptions = function(){
         var $form = this.$activeTab.find('form');
         return $form.serialize();// TODO Implement
     };
+    /**
+     * Adds loading apperance to $element
+     * @param string|jQuery $element
+     * @param bool state
+     * @param bool disable
+     */
+    WpMenuPages.prototype.loading = function($element, state, disable){
+        if(!($element instanceof jQuery)){
+            $element = $($element);
+        }
+
+        $icon = $element.find('i');
+
+        if(state){
+            // start loading
+            $icon.addClass('loading');
+            if(disable){
+                $element.attr('disabled', 'disabled');
+            }
+            return;
+        }
+        // stop loading
+        $icon.removeClass('loading');
+        $element.attr('disabled', false);
+    }
 
     /**
      * Saves the options defined by newOptions. This needs a nonce in order to work.
@@ -120,8 +148,10 @@
 
         var $wpMenuPages = this;
 
+        this.loading(this.getSaveBtn(), true, true);
+
         var success = function(response){
-            if(response.responseJSON == undefined || response.responseJSON.success == false){
+            if(response.success == undefined || response.success == false){
                 error(response);
                 return false;
             }
@@ -133,11 +163,52 @@
             $wpMenuPages.alert('There was an error saving the options', 'danger');
         }
 
-        this.ajaxPost(data, undefined, error, success);
+        var complete = function(response){
+            $wpMenuPages.loading($wpMenuPages.getSaveBtn(), false);
+        }
+
+        this.ajaxPost(data, complete, error, success);
     };
-    WpMenuPages.prototype.resetOptions = function(tabId){};
-    WpMenuPages.prototype.exportOptions = function(tabId){};
-    WpMenuPages.prototype.importOptions = function(tabId){};
+    ;
+    /**
+     * Resets all options to defaults
+     */
+    WpMenuPages.prototype.resetOptions = function(){
+        var action = this.actionResetPrefix + this.context;
+        var data = {
+            'action' : action,
+            'nonce': wpMenuPagesDefinitions.nonce[action]
+        };
+
+        var $wpMenuPages = this;
+
+        this.loading(this.getResetBtn(), true, true);
+
+        var success = function(response){
+            if(response.success == undefined || response.success == false){
+                error(response);
+                return false;
+            }
+
+            $wpMenuPages.alert('All Options Reseted to Defaults', 'success');
+            // TODO Update options in tabs or reload page
+
+            return true;
+        };
+
+        var complete = function(response){
+            $wpMenuPages.loading($wpMenuPages.getResetBtn(), false);
+        }
+
+        var error = function(response){
+            $wpMenuPages.alert('There was an error reseting options', 'danger');
+        }
+
+        this.ajaxPost(data, complete, error, success);
+    };
+    WpMenuPages.prototype.tabResetOptions = function($tabName){};
+    WpMenuPages.prototype.exportOptions = function(){};
+    WpMenuPages.prototype.importOptions = function(){};
     WpMenuPages.prototype.getDefaultOptions = function(newOptions){};
 
 
@@ -153,7 +224,10 @@
         wpMenuPages.saveOptions(wpMenuPages.getActiveTabOptions(), $(this).data('nonce'));
     });
 
-    wpMenuPages.getResetBtn().click(function(){});
+    wpMenuPages.getResetBtn().click(function(){
+        wpMenuPages.resetOptions();
+    });
+
     wpMenuPages.getExportBtn().click(function(){});
     wpMenuPages.getImportBtn().click(function(){});
 

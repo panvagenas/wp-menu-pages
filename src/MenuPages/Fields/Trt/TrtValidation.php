@@ -51,7 +51,8 @@ trait TrtValidation {
             }
         }
 
-        return compact( $value, $valid, $errors );
+        $ret = compact( 'value', 'valid', 'errors' );
+        return $ret;
     }
 
     /**
