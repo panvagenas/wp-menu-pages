@@ -2,12 +2,13 @@
 
 namespace Pan\MenuPages\Fields\Abs;
 
+use Pan\MenuPages\Fields\Ifc\IfcValidation;
 use Pan\MenuPages\Fields\Trt\TrtGlobalInputAttributes;
 use Pan\MenuPages\Fields\Trt\TrtTemplate;
 use Pan\MenuPages\Fields\Trt\TrtValidation;
 use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
 
-abstract class AbsInputBase extends AbsField {
+abstract class AbsInputBase extends AbsField implements IfcValidation{
     use TrtTemplate, TrtGlobalInputAttributes;
     /**
      * @var string
@@ -46,22 +47,4 @@ abstract class AbsInputBase extends AbsField {
 
         return $this;
     }
-
-    /**
-     * Should return a validation result array as in {@link \Pan\MenuPages\Fields\Trt\TrtValidation::isValid()}
-     * ```
-     * [
-     *      'value' => $value,
-     *      'valid' => $valid,
-     *      'errors' => $errors,
-     * ]
-     * ```
-     *
-     * @param $value
-     *
-     * @return array
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
-     */
-    abstract public function validate($value);
 }

@@ -13,6 +13,7 @@ namespace Pan\MenuPages\Scripts;
 
 use Pan\MenuPages\Abs\AbsSingleton;
 use Pan\MenuPages\Fields\Abs\AbsInputBase;
+use Pan\MenuPages\Fields\Ifc\IfcValidation;
 use Pan\MenuPages\Fields\Trt\TrtValidation;
 use Pan\MenuPages\Scripts\Ifc\IfcScripts;
 
@@ -43,7 +44,7 @@ class AjaxHandler extends AbsSingleton {
 
         foreach ( $newOptions as $name => $value ) {
             $field = $this->menuPage->getFieldByName( $name );
-            if ( $field && $field instanceof AbsInputBase ) {
+            if ( $field && $field instanceof IfcValidation ) {
                 $validationResults[ $name ] = $field->validate( $value );
                 if ( $validationResults[ $name ]['valid'] ) {
                     $optionsObj->set( $name, $value );
