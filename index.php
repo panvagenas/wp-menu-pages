@@ -36,7 +36,7 @@ $selectOptions = [
 
 $options = \Pan\MenuPages\Options::getInstance( 'test', $defaults );
 
-$wpMenuPages = new \Pan\MenuPages\WpMenuPages(__DIR__, __FILE__, $options);
+$wpMenuPages = new \Pan\MenuPages\WpMenuPages(__FILE__, $options);
 
 $menuPage = new \Pan\MenuPages\MenuPage( $wpMenuPages, 'WP Menu Pages Settings', 'My Settings', 'wp-menu-pages' );
 

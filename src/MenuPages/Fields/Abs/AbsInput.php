@@ -11,6 +11,7 @@
 
 namespace Pan\MenuPages\Fields\Abs;
 use Pan\MenuPages\Fields\Trt\TrtInputAttributes;
+use Pan\MenuPages\Fields\Trt\TrtValidation;
 use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
 
 /**
@@ -23,7 +24,7 @@ use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
 abstract class AbsInput extends AbsInputBase {
-    use TrtInputAttributes;
+    use TrtInputAttributes, TrtValidation;
     
     /**
      * @inheritDoc
@@ -46,5 +47,12 @@ abstract class AbsInput extends AbsInputBase {
 
     public function getDefaultValue() {
         return $this->menuPageComponent->getOptions()->def( $this->name );
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function validate( $value ) {
+        return $this->isValid($value);
     }
 }

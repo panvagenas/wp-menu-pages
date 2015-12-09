@@ -4,6 +4,7 @@ namespace Pan\MenuPages\Fields\Abs;
 
 use Pan\MenuPages\Fields\Trt\TrtGlobalInputAttributes;
 use Pan\MenuPages\Fields\Trt\TrtTemplate;
+use Pan\MenuPages\Fields\Trt\TrtValidation;
 use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
 
 abstract class AbsInputBase extends AbsField {
