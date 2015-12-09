@@ -143,6 +143,10 @@
         $element.attr('disabled', false);
     }
 
+    WpMenuPages.prototype.markFieldInvalid = function($field, errors){};
+    WpMenuPages.prototype.markFieldValid = function($field){};
+    WpMenuPages.prototype.getVisibleFieldByName = function(fieldName){};
+
     /**
      * Saves the options defined by newOptions. This needs a nonce in order to work.
      *
@@ -162,7 +166,21 @@
 
         var success = function(response){
             if(response.success == undefined || response.success == false){
-                error(response);
+                if(response.data != undefined && response.data.options != undefined){
+                    var fields = response.data.options;
+                    for(fieldName in fields){
+                        if(fields[fieldName].valid){
+                            $wpMenuPages.markFieldValid($wpMenuPages.getVisibleFieldByName(fieldName));
+                            continue;
+                        }
+
+                        $wpMenuPages.markFieldInvalid(
+                            $wpMenuPages.getVisibleFieldByName(fieldName),
+                            fields[fieldName].errors
+                        );
+                    }
+                }
+                $wpMenuPages.alert('There was an error saving the options', 'danger');
                 return false;
             }
 

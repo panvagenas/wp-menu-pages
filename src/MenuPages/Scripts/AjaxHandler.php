@@ -13,6 +13,7 @@ namespace Pan\MenuPages\Scripts;
 
 use Pan\MenuPages\Abs\AbsSingleton;
 use Pan\MenuPages\Fields\Ifc\IfcValidation;
+use Pan\MenuPages\MenuPage;
 use Pan\MenuPages\Scripts\Ifc\IfcScripts;
 
 /**
@@ -24,6 +25,18 @@ use Pan\MenuPages\Scripts\Ifc\IfcScripts;
  * @since     TODO ${VERSION}
  */
 class AjaxHandler extends AbsSingleton {
+    /**
+     * AjaxHandler constructor.
+     *
+     * @param MenuPage $menuPage
+     *
+     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     */
+    protected function __construct( MenuPage $menuPage ) {
+        parent::__construct( $menuPage );
+        ini_set('display_errors', false);
+    }
+
     public function saveOptions() {
         // Check for nonce
         check_ajax_referer( IfcScripts::ACTION_SAVE_PREFIX . $this->menuPage->getMenuSlug(), 'nonce' );
@@ -66,16 +79,17 @@ class AjaxHandler extends AbsSingleton {
             unset( $newOptions[ $name ] );
         }
 
-        $validationResults['saved'] = ( ! empty( $newOptions ) && $optionsObj->setArray( $newOptions ) ) || $match;
+        $saved = ( ! empty( $newOptions ) && $optionsObj->setArray( $newOptions ) ) || $match;
+        $return = ['options' => $validationResults, 'saved' => $saved ];
 
         // Send response
-        if ( $allValid && $validationResults['saved'] ) {
-            wp_send_json_success( $validationResults );
+        if ( $allValid && $saved ) {
+            wp_send_json_success( $return );
 
             return;
         }
 
-        wp_send_json_error( $validationResults );
+        wp_send_json_error( $return );
     }
 
     public function resetOptions() {

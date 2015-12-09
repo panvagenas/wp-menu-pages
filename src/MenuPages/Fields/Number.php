@@ -12,6 +12,7 @@
 namespace Pan\MenuPages\Fields;
 
 use Pan\MenuPages\Fields\Abs\AbsInput;
+use Respect\Validation\Validator;
 
 /**
  * Class Tel
@@ -55,6 +56,8 @@ class Number extends AbsInput {
     public function setMin( $min ) {
         $this->min = (int) $min;
 
+        $this->attachValidator(Validator::numeric()->min($min), __METHOD__);
+
         return $this;
     }
 
@@ -75,6 +78,8 @@ class Number extends AbsInput {
      */
     public function setMax( $max ) {
         $this->max = (int) $max;
+
+        $this->attachValidator(Validator::numeric()->max($max), __METHOD__);
 
         return $this;
     }

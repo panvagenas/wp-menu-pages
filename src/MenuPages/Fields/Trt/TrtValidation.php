@@ -52,6 +52,7 @@ trait TrtValidation {
         }
 
         $ret = compact( 'value', 'valid', 'errors' );
+
         return $ret;
     }
 
@@ -72,7 +73,13 @@ trait TrtValidation {
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      */
-    public function attachValidator( Validator $validator ) {
+    public function attachValidator( Validator $validator, $key ) {
+        if ( $key ) {
+            $this->validators[ $key ] = $validator;
+
+            return $this;
+        }
+
         $this->validators[] = $validator;
 
         return $this;
