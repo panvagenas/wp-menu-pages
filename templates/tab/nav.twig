@@ -13,6 +13,7 @@
         <li role="presentation" class="{% if tab.active %}active{% endif %}">
             <a href="#{{ tab.id | e('html_attr') }}"
                aria-controls="{{ tab.id | e('html_attr') }}"
+               data-title="{{ tab.title | e('html_attr') }}"
                role="tab" data-toggle="tab">
                 {% if tab.icon %}
                     <i class="fa fa-{{ tab.icon | e('html_attr') }}" aria-hidden="true"></i>

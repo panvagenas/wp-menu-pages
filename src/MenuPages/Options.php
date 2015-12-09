@@ -11,6 +11,8 @@
 
 namespace Pan\MenuPages;
 
+use Pan\MenuPages\Ifc\IfcConstants;
+
 /**
  * Class Options
  *
@@ -46,7 +48,10 @@ class Options {
     protected function __construct( $optionsBaseName, array $defaults ) {
         $this->optionsBaseName = $optionsBaseName;
         $this->defaults        = $defaults;
-        $this->options         = get_option( $this->optionsBaseName, $this->defaults );
+
+        $this->defaults[ IfcConstants::CORE_OPTIONS_KEY ] = [ ];
+
+        $this->options = array_merge( $this->defaults, get_option( $this->optionsBaseName, $this->defaults ) );
     }
 
     /**
@@ -119,14 +124,14 @@ class Options {
         throw new \ErrorException( 'Invalid option in ' . __METHOD__ );
     }
 
-    public function setArray(array $newOptions){
+    public function setArray( array $newOptions ) {
         foreach ( $newOptions as $name => $value ) {
-            if(!$this->exists($name)){
-                unset( $newOptions[ $name]);
+            if ( ! $this->exists( $name ) ) {
+                unset( $newOptions[ $name ] );
             }
         }
 
-        $this->options = array_merge($this->options, $newOptions);
+        $this->options = array_merge( $this->options, $newOptions );
 
         return $this->save();
     }

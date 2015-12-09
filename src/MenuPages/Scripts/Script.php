@@ -27,86 +27,101 @@ use Pan\MenuPages\Scripts\Ifc\IfcScripts;
 class Script extends AbsSingleton {
     protected $registered = [ ];
     protected $enqueued = [ ];
-    protected $requiredScripts = [];
-    protected $requiredStyles = [];
+    protected $requiredScripts = [ ];
+    protected $requiredStyles = [ ];
     protected $pathToAssets;
     protected $pluginRelPathToAssets;
     protected $pluginBaseFile;
 
     protected function __construct( MenuPage $menuPage ) {
         parent::__construct( $menuPage );
-        $assetsFolder = IfcScripts::ASSETS_FOLDER;
-        $this->pathToAssets = $this->menuPage->getWpMenuPages()->getBasePath() . "/$assetsFolder";
+        $assetsFolder                = IfcScripts::ASSETS_FOLDER;
+        $this->pathToAssets          = $this->menuPage->getWpMenuPages()->getBasePath() . "/$assetsFolder";
         $this->pluginRelPathToAssets = $this->menuPage->getWpMenuPages()->getBasePathRelToPlugin() . "/$assetsFolder";
-        $this->pluginBaseFile = $this->menuPage->getWpMenuPages()->getPluginBaseFile();
+        $this->pluginBaseFile        = $this->menuPage->getWpMenuPages()->getPluginBaseFile();
     }
 
-    public function printScripts(){
+    public function printScripts() {
         foreach ( $this->requiredScripts as $scriptSlug ) {
-            $this->enqueueScript($scriptSlug);
+            $this->enqueueScript( $scriptSlug );
         }
         foreach ( $this->requiredStyles as $styleSlug ) {
-            $this->enqueueStyle($styleSlug);
+            $this->enqueueStyle( $styleSlug );
         }
 
-        wp_localize_script(IfcScripts::CORE_JS_SLUG, IfcScripts::CORE_JS_DEFINITIONS,
+        wp_localize_script( IfcScripts::CORE_JS_SLUG, IfcScripts::CORE_JS_DEFINITIONS,
             [
                 'context' => $this->menuPage->getMenuSlug(),
-                'nonce' => [
-                    IfcScripts::ACTION_SAVE_PREFIX.$this->menuPage->getMenuSlug() => wp_create_nonce(IfcScripts::ACTION_SAVE_PREFIX.$this->menuPage->getMenuSlug()),
-                    IfcScripts::ACTION_RESET_PREFIX.$this->menuPage->getMenuSlug() => wp_create_nonce(IfcScripts::ACTION_RESET_PREFIX.$this->menuPage->getMenuSlug()),
-                    IfcScripts::ACTION_IMPORT_PREFIX.$this->menuPage->getMenuSlug() => wp_create_nonce(IfcScripts::ACTION_IMPORT_PREFIX.$this->menuPage->getMenuSlug()),
-                    IfcScripts::ACTION_EXPORT_PREFIX.$this->menuPage->getMenuSlug() => wp_create_nonce(IfcScripts::ACTION_EXPORT_PREFIX.$this->menuPage->getMenuSlug()),
-                ]
+                'nonce'   => [
+                    IfcScripts::ACTION_SAVE_PREFIX
+                    . $this->menuPage->getMenuSlug() => wp_create_nonce( IfcScripts::ACTION_SAVE_PREFIX
+                                                                         . $this->menuPage->getMenuSlug() ),
+                    IfcScripts::ACTION_RESET_PREFIX
+                    . $this->menuPage->getMenuSlug() => wp_create_nonce( IfcScripts::ACTION_RESET_PREFIX
+                                                                         . $this->menuPage->getMenuSlug() ),
+                    IfcScripts::ACTION_IMPORT_PREFIX
+                    . $this->menuPage->getMenuSlug() => wp_create_nonce( IfcScripts::ACTION_IMPORT_PREFIX
+                                                                         . $this->menuPage->getMenuSlug() ),
+                    IfcScripts::ACTION_EXPORT_PREFIX
+                    . $this->menuPage->getMenuSlug() => wp_create_nonce( IfcScripts::ACTION_EXPORT_PREFIX
+                                                                         . $this->menuPage->getMenuSlug() ),
+                    IfcScripts::ACTION_UPDATE_CORE_OPTIONS_PREFIX
+                    . $this->menuPage->getMenuSlug() => wp_create_nonce( IfcScripts::ACTION_UPDATE_CORE_OPTIONS_PREFIX
+                                                                         . $this->menuPage->getMenuSlug() ),
+                ],
             ]
         );
     }
-    public function init(){
+
+    public function init() {
         $this->registerStyle(
             IfcScripts::SLUG_BOOTSTRAP_CSS,
-            plugins_url($this->pluginRelPathToAssets.'/bootstrap/dist/css/bootstrap.min.css', $this->pluginBaseFile),
-            [],
+            plugins_url( $this->pluginRelPathToAssets . '/bootstrap/dist/css/bootstrap.min.css',
+                $this->pluginBaseFile ),
+            [ ],
             IfcConstants::VERSION
         );
         $this->registerStyle(
             IfcScripts::SLUG_BOOTSTRAP_THEME_CSS,
-            plugins_url($this->pluginRelPathToAssets.'/bootstrap/dist/css/bootstrap-theme.min.css', $this->pluginBaseFile),
-            [IfcScripts::SLUG_BOOTSTRAP_CSS],
+            plugins_url( $this->pluginRelPathToAssets . '/bootstrap/dist/css/bootstrap-theme.min.css',
+                $this->pluginBaseFile ),
+            [ IfcScripts::SLUG_BOOTSTRAP_CSS ],
             IfcConstants::VERSION
         );
         $this->registerScript(
             IfcScripts::SLUG_BOOTSTRAP_JS,
             IfcScripts::CDN_BOOTSTRAP_JS,
-            ['jquery'],
+            [ 'jquery' ],
             IfcConstants::VERSION,
             true
         );
         $this->registerStyle(
             IfcScripts::CORE_CSS_SLUG,
-            plugins_url($this->pluginRelPathToAssets.'/css/wp-menu-pages.css', $this->pluginBaseFile),
-            [IfcScripts::SLUG_BOOTSTRAP_CSS],
+            plugins_url( $this->pluginRelPathToAssets . '/css/wp-menu-pages.css', $this->pluginBaseFile ),
+            [ IfcScripts::SLUG_BOOTSTRAP_CSS ],
             IfcConstants::VERSION
         );
         $this->registerScript(
             IfcScripts::CORE_JS_SLUG,
-            plugins_url($this->pluginRelPathToAssets.'/js/wp-menu-pages.js', $this->pluginBaseFile),
-            ['jquery'],
+            plugins_url( $this->pluginRelPathToAssets . '/js/wp-menu-pages.js', $this->pluginBaseFile ),
+            [ 'jquery' ],
             IfcConstants::VERSION,
             true
         );
 
-        $this->registerStyle(IfcScripts::SLUG_FONT_AWESOME_CSS,IfcScripts::CDN_FONT_AWESOME_CSS, [], IfcConstants::VERSION);
+        $this->registerStyle( IfcScripts::SLUG_FONT_AWESOME_CSS, IfcScripts::CDN_FONT_AWESOME_CSS, [ ],
+            IfcConstants::VERSION );
 
         $this->registerStyle(
             IfcScripts::SLUG_SELECT2_CSS,
             IfcScripts::CDN_SELECT2_CSS,
-            [],
+            [ ],
             IfcConstants::VERSION
         );
         $this->registerScript(
             IfcScripts::SLUG_SELECT2_JS,
             IfcScripts::CDN_SELECT2_JS,
-            ['jquery'],
+            [ 'jquery' ],
             IfcConstants::VERSION,
             true
         );
@@ -129,26 +144,30 @@ class Script extends AbsSingleton {
     }
 
     public function requireBootstrap() {
-        $this->requiredScripts[IfcScripts::SLUG_BOOTSTRAP_JS] = IfcScripts::SLUG_BOOTSTRAP_JS;
-        $this->requiredStyles[IfcScripts::SLUG_BOOTSTRAP_THEME_CSS] = IfcScripts::SLUG_BOOTSTRAP_THEME_CSS;
-        $this->requiredStyles[IfcScripts::SLUG_BOOTSTRAP_CSS] = IfcScripts::SLUG_BOOTSTRAP_CSS;
+        $this->requiredScripts[ IfcScripts::SLUG_BOOTSTRAP_JS ]       = IfcScripts::SLUG_BOOTSTRAP_JS;
+        $this->requiredStyles[ IfcScripts::SLUG_BOOTSTRAP_THEME_CSS ] = IfcScripts::SLUG_BOOTSTRAP_THEME_CSS;
+        $this->requiredStyles[ IfcScripts::SLUG_BOOTSTRAP_CSS ]       = IfcScripts::SLUG_BOOTSTRAP_CSS;
+
         return $this;
     }
 
-    public function requireFontAwesome(){
-        $this->requiredStyles[IfcScripts::SLUG_FONT_AWESOME_CSS] = IfcScripts::SLUG_FONT_AWESOME_CSS;
+    public function requireFontAwesome() {
+        $this->requiredStyles[ IfcScripts::SLUG_FONT_AWESOME_CSS ] = IfcScripts::SLUG_FONT_AWESOME_CSS;
+
         return $this;
     }
 
     public function requireSelect2() {
-        $this->requiredStyles[IfcScripts::SLUG_SELECT2_CSS] = IfcScripts::SLUG_SELECT2_CSS;
-        $this->requiredScripts[IfcScripts::SLUG_SELECT2_JS] = IfcScripts::SLUG_SELECT2_JS;
+        $this->requiredStyles[ IfcScripts::SLUG_SELECT2_CSS ] = IfcScripts::SLUG_SELECT2_CSS;
+        $this->requiredScripts[ IfcScripts::SLUG_SELECT2_JS ] = IfcScripts::SLUG_SELECT2_JS;
+
         return $this;
     }
 
-    public function requireWpMenuPagesScripts(){
-        $this->requiredScripts[IfcScripts::CORE_JS_SLUG] = IfcScripts::CORE_JS_SLUG;
-        $this->requiredStyles[IfcScripts::CORE_CSS_SLUG] = IfcScripts::CORE_CSS_SLUG;
+    public function requireWpMenuPagesScripts() {
+        $this->requiredScripts[ IfcScripts::CORE_JS_SLUG ] = IfcScripts::CORE_JS_SLUG;
+        $this->requiredStyles[ IfcScripts::CORE_CSS_SLUG ] = IfcScripts::CORE_CSS_SLUG;
+
         return $this;
     }
 }

@@ -11,6 +11,7 @@
 
 namespace Pan\MenuPages;
 
+use Pan\MenuPages\Ifc\IfcConstants;
 use Pan\MenuPages\PageComponents\Abs\AbsMenuPageComponent;
 use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
 use Pan\MenuPages\PageComponents\Alert;
@@ -33,6 +34,7 @@ use Pan\MenuPages\Trt\TrtCache;
  */
 class MenuPage {
     use TrtCache;
+    const OPT_ACTIVE_TAB = 'activeTab';
 
     /**
      * @var string
@@ -109,6 +111,13 @@ class MenuPage {
         $this->position    = $position;
         $this->parent      = $parent;
 
+        $coreOptions = $this->options->get(IfcConstants::CORE_OPTIONS_KEY);
+
+        if(!isset($coreOptions[$this->menuSlug])){
+            $coreOptions[$this->menuSlug] = [];
+            $this->options->set(IfcConstants::CORE_OPTIONS_KEY, $coreOptions);
+        }
+
         add_action('admin_menu', [$this, 'init']);
         $this->bindActions();
     }
@@ -167,6 +176,10 @@ class MenuPage {
             'wp_ajax_'.IfcScripts::ACTION_IMPORT_PREFIX.$this->menuSlug,
             [AjaxHandler::getInstance($this), 'importOptions']
         );
+        add_action(
+            'wp_ajax_'.IfcScripts::ACTION_UPDATE_CORE_OPTIONS_PREFIX.$this->menuSlug,
+            [AjaxHandler::getInstance($this), 'updateCoreOptions']
+        );
     }
 
     public function display() {
@@ -192,6 +205,7 @@ class MenuPage {
             'aside'   => [ ],
             'alerts'  => [ ],
             'socials' => [ ],
+            'pageOptions' => $this->options->get(IfcConstants::CORE_OPTIONS_KEY)[$this->menuSlug],
         ];
 
         if ( $this->title ) {
@@ -216,6 +230,21 @@ class MenuPage {
         return $this->getTwig()->getTwigEnvironment()->render( $this->templateName, $context );
     }
 
+    public function setPageOption($name, $value){
+        $coreOptions = $this->options->get(IfcConstants::CORE_OPTIONS_KEY);
+        $coreOptions[$this->menuSlug][$name] = $value;
+
+        return $this->options->set(IfcConstants::CORE_OPTIONS_KEY, $coreOptions);
+    }
+
+    public function getPageOption($name){
+        $coreOptions = $this->options->get(IfcConstants::CORE_OPTIONS_KEY);
+        if(isset($coreOptions[$this->menuSlug][$name])){
+            return $coreOptions[$this->menuSlug][$name];
+        }
+        return new \WP_Error('Option NOT Exists');
+    }
+
     /**
      * @param AbsMenuPageComponent $component
      *
@@ -226,6 +255,15 @@ class MenuPage {
     public function attachComponent( AbsMenuPageComponent $component ) {
         if ( ! $this->hasComponent( $component ) ) {
             $this->components[] = $component;
+        }
+
+        if($component instanceof Tab){
+            $activeTab = $this->getPageOption(self::OPT_ACTIVE_TAB);
+            if(!($activeTab instanceof \WP_Error)){
+                $component->setActive($activeTab == $component->getTitle());
+            } elseif ($component->isActive()){
+                $this->setPageOption(self::OPT_ACTIVE_TAB, $component->getTitle());
+            }
         }
 
         return $this;

@@ -9,10 +9,12 @@
         this.ctrlExportOptsSelector = '.btn-export-options';
         this.ctrlImportOptsSelector = '.btn-import-options';
 
-        this.$activeTab = jQuery('.tab-pane.active');
+        this.$activeTab = $('.tab-pane.active');
         var $wpMenuPages = this;
-        jQuery('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-            $wpMenuPages.$activeTab = jQuery(jQuery(e.target).attr('href'));
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            var $target = $(e.target);
+            $wpMenuPages.$activeTab = $($target.attr('href'));
+            $wpMenuPages.updateCoreOptions({activeTab: $target.data('title')});
         });
 
         this.ajaxUrl = ajaxurl;
@@ -22,6 +24,7 @@
         this.actionResetPrefix = this.actionPrefix+'reset-options-';
         this.actionExportPrefix = this.actionPrefix+'export-options-';
         this.actionImportPrefix = this.actionPrefix+'import-options-';
+        this.actionUpdateCoreOptionsPrefix = this.actionPrefix+'update-core-options-'
 
         this.alertsWrapperSelector = '.alerts-wrapper';
         this.$alertsWrapper = $(this.alertsWrapperSelector);
@@ -144,9 +147,8 @@
      * Saves the options defined by newOptions. This needs a nonce in order to work.
      *
      * @param newOptions
-     * @param ajaxNonce
      */
-    WpMenuPages.prototype.saveOptions = function(newOptions, ajaxNonce){
+    WpMenuPages.prototype.saveOptions = function(newOptions){
         var action = this.actionSavePrefix + this.context;
         var data = {
             'options': newOptions,
@@ -176,6 +178,24 @@
         }
 
         this.ajaxPost(data, complete, error, success);
+    };
+
+    /**
+     * Saves core options defined by newOptions. This needs a nonce in order to work.
+     *
+     * @param newOptions
+     */
+    WpMenuPages.prototype.updateCoreOptions = function(newOptions){
+        var action = this.actionUpdateCoreOptionsPrefix + this.context;
+        var data = {
+            'options': newOptions,
+            'action' : action,
+            'nonce': wpMenuPagesDefinitions.nonce[action]
+        };
+
+        var $wpMenuPages = this;
+
+        this.ajaxPost(data);
     };
     ;
     /**

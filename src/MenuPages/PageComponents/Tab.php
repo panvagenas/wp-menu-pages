@@ -38,10 +38,12 @@ class Tab extends AbsMenuPageFieldsComponent {
     protected $title;
 
     public function __construct( MenuPage $menuPage, $title, $active = false, $icon = '' ) {
-        parent::__construct( $menuPage );
+        // FIXME Until we find a better way to activate tabs from MenuPage we stick to set attrs before calling parent constructor
         $this->title  = $title;
         $this->active = $active;
         $this->icon   = $icon;
+
+        parent::__construct( $menuPage );
     }
 
     public function isActive() {

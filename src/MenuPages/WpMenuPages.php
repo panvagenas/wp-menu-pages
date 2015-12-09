@@ -2,6 +2,8 @@
 
 namespace Pan\MenuPages;
 
+use Pan\MenuPages\Ifc\IfcConstants;
+
 /**
  * Class WpMenuPages
  *

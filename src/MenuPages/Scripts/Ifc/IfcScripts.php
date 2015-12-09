@@ -23,6 +23,7 @@ interface IfcScripts extends IfcConstants{
     const ACTION_RESET_PREFIX = 'wp-menu-pages-reset-options-';
     const ACTION_EXPORT_PREFIX = 'wp-menu-pages-export-options-';
     const ACTION_IMPORT_PREFIX = 'wp-menu-pages-import-options-';
+    const ACTION_UPDATE_CORE_OPTIONS_PREFIX = 'wp-menu-pages-update-core-options-';
 
     /**
      * Bootstrap CSS Slug

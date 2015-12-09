@@ -120,11 +120,26 @@ class AjaxHandler extends AbsSingleton {
         wp_send_json_error( $result );
     }
 
+    public function updateCoreOptions(){
+        check_ajax_referer( IfcScripts::ACTION_UPDATE_CORE_OPTIONS_PREFIX . $this->menuPage->getMenuSlug(), 'nonce' );
+        $this->checkPermisions() or die;
+
+        $newOptions = (array)$_POST['options'];
+
+        foreach ( $newOptions as $name => $value ) {
+            $this->menuPage->setPageOption($name, $value);
+        }
+
+        wp_send_json_success();
+    }
+
     public function exportOptions() {
+        check_ajax_referer( IfcScripts::ACTION_EXPORT_PREFIX . $this->menuPage->getMenuSlug(), 'nonce' );
         $this->checkPermisions() or die;
     }
 
     public function importOptions() {
+        check_ajax_referer( IfcScripts::ACTION_IMPORT_PREFIX . $this->menuPage->getMenuSlug(), 'nonce' );
         $this->checkPermisions() or die;
     }
 

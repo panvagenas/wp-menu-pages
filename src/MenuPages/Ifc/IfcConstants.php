@@ -16,9 +16,5 @@ interface IfcConstants {
      * WP Menu Pages Version
      */
     const VERSION = '1.0.0';
-
-    /**
-     * Bootstrap CSS CDN
-     */
-    const CDN_BOOTSTRAP_CSS = 'https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/cosmo/bootstrap.min.css';
+    const CORE_OPTIONS_KEY = 'coreOptions';
 }
