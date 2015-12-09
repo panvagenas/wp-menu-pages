@@ -1,9 +1,11 @@
 <?php
 
-namespace Pan\MenuPages\Fields\Trt;
+namespace Pan\MenuPages\Fields\Ifc;
+
+use Pan\MenuPages\Templates\Twig;
 
 /**
- * Class TrtTemplate
+ * Interface IfcTemplate
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      ${YEAR}-${MONTH}-${DAY}
@@ -11,11 +13,18 @@ namespace Pan\MenuPages\Fields\Trt;
  * @package   Pan\MenuPages\Fields\Trt
  * @copyright Copyright (c) ${YEAR} Panagiotis Vagenas
  */
-trait TrtTemplate {
+interface IfcTemplate {
     /**
      * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      */
-    abstract public function getTemplateName();
+    public function getTemplateName();
+
+    /**
+     * @return Twig
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
+    public function getTwig();
 }
