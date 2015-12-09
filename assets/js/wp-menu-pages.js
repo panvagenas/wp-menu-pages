@@ -3,8 +3,9 @@
     var WpMenuPages = function(context){
         this.context = context;
 
-        this.ctrllSaveBtnSelector = '.btn-save-options';
-        this.ctrllResetBtnSelector = '.btn-reset-options';
+        this.ctrlSaveBtnSelector = '.btn-save-options';
+        this.ctrlResetBtnSelector = '.btn-reset-options';
+        this.ctrlTabResetBtnSelector = '.btn-tab-reset-options';
         this.ctrlExportOptsSelector = '.btn-export-options';
         this.ctrlImportOptsSelector = '.btn-import-options';
 
@@ -36,14 +37,21 @@
      * @returns {*|HTMLElement}
      */
     WpMenuPages.prototype.getSaveBtn = function(){
-        return $(this.ctrllSaveBtnSelector);
+        return $(this.ctrlSaveBtnSelector);
     };
     /**
      *
      * @returns {*|HTMLElement}
      */
     WpMenuPages.prototype.getResetBtn = function(){
-        return $(this.ctrllResetBtnSelector);
+        return $(this.ctrlResetBtnSelector);
+    };
+    /**
+     *
+     * @returns {*|HTMLElement}
+     */
+    WpMenuPages.prototype.getTabResetBtn = function(){
+        return $(this.ctrlTabResetBtnSelector);
     };
     /**
      *
@@ -171,18 +179,27 @@
     };
     ;
     /**
-     * Resets all options to defaults
+     * Resets options.
+     *
+     * If include is defined then only these options are reseted, if not then all options get their default value.
+     *
+     * @param include Serialized values of the options to reset
      */
-    WpMenuPages.prototype.resetOptions = function(){
+    WpMenuPages.prototype.resetOptions = function(include){
         var action = this.actionResetPrefix + this.context;
         var data = {
             'action' : action,
             'nonce': wpMenuPagesDefinitions.nonce[action]
         };
 
+        if(include){
+            data.include = include;
+        }
+
         var $wpMenuPages = this;
 
         this.loading(this.getResetBtn(), true, true);
+        this.loading(this.getTabResetBtn(), true, true);
 
         var success = function(response){
             if(response.success == undefined || response.success == false){
@@ -198,6 +215,7 @@
 
         var complete = function(response){
             $wpMenuPages.loading($wpMenuPages.getResetBtn(), false);
+            $wpMenuPages.loading($wpMenuPages.getTabResetBtn(), false);
         }
 
         var error = function(response){
@@ -206,10 +224,14 @@
 
         this.ajaxPost(data, complete, error, success);
     };
-    WpMenuPages.prototype.tabResetOptions = function($tabName){};
+    /**
+     * Resets options for active tab
+     */
+    WpMenuPages.prototype.activeTabResetOptions = function(){
+        this.resetOptions(this.getActiveTabOptions());
+    };
     WpMenuPages.prototype.exportOptions = function(){};
     WpMenuPages.prototype.importOptions = function(){};
-    WpMenuPages.prototype.getDefaultOptions = function(newOptions){};
 
 
     var wpMenuPages = new WpMenuPages(wpMenuPagesDefinitions.context);
@@ -227,6 +249,11 @@
     wpMenuPages.getResetBtn().click(function(){
         wpMenuPages.resetOptions();
     });
+
+    wpMenuPages.getTabResetBtn().click(function(){
+        wpMenuPages.activeTabResetOptions();
+    });
+
 
     wpMenuPages.getExportBtn().click(function(){});
     wpMenuPages.getImportBtn().click(function(){});

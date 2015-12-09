@@ -83,14 +83,26 @@ class AjaxHandler extends AbsSingleton {
 
         $this->checkPermisions() or die;
 
+        $include = [ ];
+        if ( isset( $_POST['include'] ) ) {
+            wp_parse_str( $_POST['include'], $include );
+        }
+
         $result = [ ];
 
         $options = $this->menuPage->getOptions();
 
         $result['defaults'] = $options->getDefaults();
 
-        $currentOptions = $options->getOptions();
-        $match          = true;
+        if ( empty( $include ) ) {
+            $include = $result['defaults'];
+        }
+
+        $result['defaults'] = array_intersect_key( $result['defaults'], $include );
+
+        $currentOptions = array_intersect_key( $options->getOptions(), $include );
+
+        $match = true;
         foreach ( $currentOptions as $name => $value ) {
             if ( $value != $result['defaults'][ $name ] ) {
                 $match = false;
@@ -116,7 +128,7 @@ class AjaxHandler extends AbsSingleton {
         $this->checkPermisions() or die;
     }
 
-    protected function checkPermisions(){
-        return current_user_can($this->menuPage->getCapability());
+    protected function checkPermisions() {
+        return current_user_can( $this->menuPage->getCapability() );
     }
 }
