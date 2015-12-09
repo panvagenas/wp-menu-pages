@@ -50,7 +50,6 @@ class AjaxHandler extends AbsSingleton {
         // Validate options
         $allValid          = true;
         $validationResults = [ ];
-        $validValues       = [ ];
         $optionsObj        = $this->menuPage->getOptions();
 
         $currentOptions = $optionsObj->getOptions();
@@ -64,6 +63,9 @@ class AjaxHandler extends AbsSingleton {
                 $match = false;
                 continue;
             }
+            $validationResults[$name]['valid'] = true;
+            $validationResults[$name]['value'] = $newOptions[ $name ];
+
             unset( $newOptions[ $name ] );
         }
 

@@ -24,7 +24,9 @@ $defaults = [
     'multi_select'    => [ 1, 11 ],
     'checkbox'        => [ 1, 2 ],
     'radio'           => 3,
-    'switch' => 1
+    'switch' => 1,
+    'number1' => 15,
+    'number2' => 10
 ];
 
 $selectOptions = [
@@ -89,6 +91,12 @@ $passwordFld2->setLabel( '' )->setPlaceholder( 'Pass Field Demo' );
 
 $textFld2 = clone $textFld;
 $textFld2->setLabel( '' )->setPlaceholder( 'Text Field Demo' );
+
+$number1 = new \Pan\MenuPages\Fields\Number($tabA, 'number1');
+$number1->setLabel('Number 1')->setMin(10)->setMax(20);
+
+$number2 = new \Pan\MenuPages\Fields\Number($tabA, 'number2');
+$number2->setLabel('Number 2')->setMin(20)->setMax(30);
 
 $panel1->attachField( $passwordFld2 );
 $panel2->attachField( $textFld2 );
