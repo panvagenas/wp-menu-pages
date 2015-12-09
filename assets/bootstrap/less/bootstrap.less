@@ -23,9 +23,11 @@
     color: @text-color;
     background-color: @body-bg;
 
-    .fa.loading {
-        animation: spin 1s infinite linear;
-        -webkit-animation: spin2 1s infinite linear;
+    .fa.loading:before {
+        animation: spin 2s infinite linear;
+        -webkit-animation: spin2 2s infinite linear;
+        font-family: FontAwesome;
+        content: '\f110';
     }
 
     @keyframes spin {
