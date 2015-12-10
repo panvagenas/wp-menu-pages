@@ -2,6 +2,7 @@
 
 namespace Pan\MenuPages\Fields\Abs;
 
+use Pan\MenuPages\Fields\Ifc\IfcInputConstants;
 use Pan\MenuPages\Fields\Ifc\IfcTemplate;
 use Pan\MenuPages\Fields\Ifc\IfcValidation;
 use Pan\MenuPages\Fields\Trt\TrtGlobalInputAttributes;
@@ -20,8 +21,17 @@ abstract class AbsInputBase extends AbsField implements IfcValidation, IfcTempla
      * @inheritDoc
      */
     public function __construct( AbsMenuPageFieldsComponent $component, $name ) {
+        if(!preg_match(IfcInputConstants::INPUT_NAME_REGEX, $name)){
+            throw new \InvalidArgumentException('Invalid parameter $name="'.$name.'" in '.__METHOD__);
+        }
+
+        if($component->getMenuPage()->getFieldByName($name)){
+            throw new \InvalidArgumentException('A field with the $name="'.$name.'" already registered');
+        }
+
         parent::__construct( $component );
         $this->name  = $name;
+        $this->id = $name;
     }
 
     /**
