@@ -37,12 +37,16 @@ trait TrtValidation {
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      */
-    public function isValid( $value ) {
+    public function isValid( $value, $fieldName = '' ) {
         $valid  = true;
         $errors = array();
 
         foreach ( $this->validators as $validator ) {
             /* @var Validator $validator */
+            if($fieldName){
+                $validator->setName('"'.$fieldName.'"');
+            }
+
             try {
                 $validator->check( $value );
             } catch ( ValidationException $exception ) {

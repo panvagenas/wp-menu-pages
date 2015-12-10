@@ -58,6 +58,6 @@ abstract class AbsInput extends AbsInputBase {
      * @inheritDoc
      */
     public function validate( $value ) {
-        return $this->isValid($value);
+        return $this->isValid($value, $this->label ?: $this->name);
     }
 }
