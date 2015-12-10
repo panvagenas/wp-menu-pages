@@ -20,7 +20,7 @@
 
                 {% block global_attributes %}
                     id="{{ field.id | e('html_attr') }}"
-                    class="{{ field.class | e('html_attr') }} form-control select2"
+                    class="{{ field.class | e('html_attr') }} form-control select2 wp-menu-pages-input"
                     {% if field.style %}
                         style="{{ field.style | e('html_attr') }}"
                     {% endif %}

@@ -189,6 +189,31 @@
         return this.$activeTab.find('[name="'+fieldName+'"]');
     };
 
+    WpMenuPages.prototype.updateOptionsValue = function(newValues){
+        if(newValues == undefined || newValues.length == 0){
+            return [];
+        }
+
+        for(var fieldName in newValues){
+            var $field = $('.wp-menu-pages-input[name="'+fieldName+'"]');
+            var value = newValues[fieldName];
+
+            if($field == undefined){
+                continue;
+            }
+
+            if($field.is('input')){
+                // handle different input types
+            }else if($field.is('select')){
+                // handle select-one and select-multiple
+                $field.val(value);
+            }else if($field.is('textarea')){
+                // handle textarea fields
+                $field.val(value);
+            }
+        }
+    };
+
     /**
      * Saves the options defined by newOptions. This needs a nonce in order to work.
      *
@@ -289,6 +314,9 @@
 
             $wpMenuPages.alert('All Options Reseted to Defaults', 'success');
             // TODO Update options in tabs or reload page
+            if(response.data != undefined && response.data.defaults != undefined){
+                $wpMenuPages.updateOptionsValue(response.data.defaults);
+            }
 
             return true;
         };

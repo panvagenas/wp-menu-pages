@@ -23,7 +23,7 @@
                            class="btn btn-{{ field.buttonClass | e('html_attr') | default('default') }} {% if field.isOptionChecked(value) %}active{% endif %}">
                         <input
                             id="{% if field.options | length > 1 %}{{ id }}{% else %}{{ field.id }}{% endif %}"
-                            class="{{ field.class | e('html_attr') }}"
+                            class="{{ field.class | e('html_attr') }} wp-menu-pages-input"
 
                             type="{{ field.type | e('html_attr') }}"
                             value="{{ value | e('html_attr') }}"
