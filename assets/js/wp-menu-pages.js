@@ -35,7 +35,7 @@
         this.alertsWrapperSelector = '.alerts-wrapper';
         this.$alertsWrapper = $(this.alertsWrapperSelector);
         this.alertTemplate =
-            '<div class="alert alert-{{type}} alert-dismissible fade" role="alert">' +
+            '<div class="alert alert-{{type}} alert-dismissible" role="alert" style="display: none;">' +
             '<button type="button" class="close" data-dismiss="alert" aria-label="Close"> ' +
             '<span aria-hidden="true">&times;</span> </button>' +
             '{{msg}}' +
@@ -102,10 +102,13 @@
      * @param msg The actual message
      * @param type The type of the alert. See bootstrap alerts
      */
-    WpMenuPages.prototype.alert = function (msg, type) {
+    WpMenuPages.prototype.alert = function (msg, type, timeout) {
         var $alert = $(this.getAlertMarkUp(msg, type));
         this.$alertsWrapper.append($alert);
-        $alert.fadeTo('fast', 1).addClass('in');
+        $alert.slideDown('fast');
+        if(timeout){
+            setTimeout(function() {$alert.slideUp(function(){$alert.remove()})}, timeout);
+        }
     };
     /**
      * Return the markup of an alert
@@ -251,7 +254,7 @@
             }
 
 
-            $wpMenuPages.alert('Options Saved!', 'success');
+            $wpMenuPages.alert('Options Saved!', 'success', 2000);
             return true;
         };
         var error = function () {
@@ -310,7 +313,7 @@
                 return false;
             }
 
-            $wpMenuPages.alert('All Options Reseted to Defaults', 'success');
+            $wpMenuPages.alert('All Options Reseted to Defaults', 'success', 2000);
             // TODO Update options in tabs or reload page
             if (response.data != undefined && response.data.defaults != undefined) {
                 $wpMenuPages.updateOptionsValue(response.data.defaults);
