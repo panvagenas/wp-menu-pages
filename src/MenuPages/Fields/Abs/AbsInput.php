@@ -25,7 +25,7 @@ use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
  */
 abstract class AbsInput extends AbsInputBase {
     use TrtInputAttributes, TrtValidation;
-    
+
     /**
      * @inheritDoc
      */
@@ -38,6 +38,11 @@ abstract class AbsInput extends AbsInputBase {
      */
     public function __construct( AbsMenuPageFieldsComponent $component, $name ) {
         parent::__construct( $component, $name );
+
+        if(!$this->menuPageComponent->getOptions()->exists($name)){
+            throw new \InvalidArgumentException('Option "'.$name.'" isn\'t defined');
+        }
+
         $this->value = $this->getValue();
     }
 
