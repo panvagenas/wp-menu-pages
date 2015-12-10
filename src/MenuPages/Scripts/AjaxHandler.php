@@ -34,6 +34,9 @@ class AjaxHandler extends AbsSingleton {
      */
     protected function __construct( MenuPage $menuPage ) {
         parent::__construct( $menuPage );
+    }
+
+    protected function hidePhpErrors(){
         ini_set('display_errors', false);
     }
 
@@ -42,6 +45,8 @@ class AjaxHandler extends AbsSingleton {
         check_ajax_referer( IfcScripts::ACTION_SAVE_PREFIX . $this->menuPage->getMenuSlug(), 'nonce' );
 
         $this->checkPermisions() or die;
+
+        $this->hidePhpErrors();
 
         // Get options from POST
         $newOptions = [ ];
@@ -54,6 +59,7 @@ class AjaxHandler extends AbsSingleton {
 
         $currentOptions = $optionsObj->getOptions();
         $match          = true;
+
         foreach ( $newOptions as $name => $value ) {
             if ( ! $optionsObj->exists( $name ) ) {
                 unset( $newOptions[ $name ] );
@@ -99,6 +105,8 @@ class AjaxHandler extends AbsSingleton {
 
         $this->checkPermisions() or die;
 
+        $this->hidePhpErrors();
+
         $include = [ ];
         if ( isset( $_POST['include'] ) ) {
             wp_parse_str( $_POST['include'], $include );
@@ -140,6 +148,8 @@ class AjaxHandler extends AbsSingleton {
         check_ajax_referer( IfcScripts::ACTION_UPDATE_CORE_OPTIONS_PREFIX . $this->menuPage->getMenuSlug(), 'nonce' );
         $this->checkPermisions() or die;
 
+        $this->hidePhpErrors();
+
         $newOptions = (array)$_POST['options'];
 
         foreach ( $newOptions as $name => $value ) {
@@ -152,6 +162,7 @@ class AjaxHandler extends AbsSingleton {
     public function exportOptions() {
         check_ajax_referer( IfcScripts::ACTION_EXPORT_PREFIX . $this->menuPage->getMenuSlug(), 'nonce' );
         $this->checkPermisions() or die;
+        $this->hidePhpErrors();
     }
 
     public function importOptions() {

@@ -122,7 +122,7 @@
      */
     WpMenuPages.prototype.getActiveTabOptions = function () {
         var $form = this.$activeTab.find('form');
-        return $form.serialize();// TODO Implement
+        return $form.serialize();
     };
     /**
      * Adds loading apperance to $element
@@ -162,11 +162,11 @@
     };
 
     WpMenuPages.prototype.markFieldInvalid = function ($field, errors) {
-        if(errors.length == 0 || !$field || $field.length == undefined || $field.length == 0){
+        if (errors.length == 0 || !$field || $field.length == undefined || $field.length == 0) {
             return;
         }
         var error = errors.join('<br />');
-        var helpBlockMarkUp = this.inputHelpBlockTemplate.replace('{{msg}}', error).replace('{{id}}', $field.attr('name')+'-error');
+        var helpBlockMarkUp = this.inputHelpBlockTemplate.replace('{{msg}}', error).replace('{{id}}', $field.attr('name') + '-error');
 
         var $formGroup = $field.closest('.form-group');
         $formGroup.addClass('has-error');
@@ -177,7 +177,7 @@
     };
 
     WpMenuPages.prototype.markFieldValid = function ($field) {
-        if(!$field || $field.length == undefined || $field.length == 0){
+        if (!$field || $field.length == undefined || $field.length == 0) {
             return;
         }
 
@@ -186,31 +186,29 @@
         $formGroup.find('.help-block').remove();
     };
     WpMenuPages.prototype.getVisibleFieldByName = function (fieldName) {
-        return this.$activeTab.find('[name="'+fieldName+'"]');
+        return this.$activeTab.find('[name="' + fieldName + '"]');
     };
 
-    WpMenuPages.prototype.updateOptionsValue = function(newValues){
-        if(newValues == undefined || newValues.length == 0){
+    WpMenuPages.prototype.updateOptionsValue = function (newValues) {
+        if (newValues == undefined || newValues.length == 0) {
             return [];
         }
 
-        for(var fieldName in newValues){
-            var $field = $('.wp-menu-pages-input[name="'+fieldName+'"]');
+        for (var fieldName in newValues) {
             var value = newValues[fieldName];
 
-            if($field == undefined){
+            var $field = $('.wp-menu-pages-input#' + fieldName);
+
+            if ($field == undefined || $field.length == 0) {
                 continue;
             }
 
-            if($field.is('input')){
-                // handle different input types
-            }else if($field.is('select')){
-                // handle select-one and select-multiple
-                $field.val(value);
-            }else if($field.is('textarea')){
-                // handle textarea fields
-                $field.val(value);
+            if ($field.attr('type') == 'radio') {
+                $('#'+fieldName+'[value="'+value+'"]').parent().button('toggle');
+                continue;
             }
+
+            $field.val(value);
         }
     };
 
@@ -314,7 +312,7 @@
 
             $wpMenuPages.alert('All Options Reseted to Defaults', 'success');
             // TODO Update options in tabs or reload page
-            if(response.data != undefined && response.data.defaults != undefined){
+            if (response.data != undefined && response.data.defaults != undefined) {
                 $wpMenuPages.updateOptionsValue(response.data.defaults);
             }
 
@@ -367,4 +365,47 @@
     });
 
     $("[rel='tooltip']").tooltip();
+})(jQuery);
+
+(function ($) {
+
+    $.fn.serialize = function (options) {
+        return $.param(this.serializeArray(options));
+    };
+
+    $.fn.serializeArray = function (options) {
+        var o = $.extend({
+            checkboxesAsBools: false
+        }, options || {});
+
+        var rselectTextarea = /select|textarea/i;
+        var rinput = /text|hidden|password|search/i;
+
+        return this.map(function () {
+                return this.elements ? $.makeArray(this.elements) : this;
+            })
+            .filter(function () {
+                return this.name && !this.disabled &&
+                    (this.checked
+                    || (o.checkboxesAsBools && this.type === 'checkbox')
+                    || rselectTextarea.test(this.nodeName)
+                    || rinput.test(this.type));
+            })
+            .map(function (i, elem) {
+                var val = $(this).val();
+                return val == null ?
+                    null :
+                    $.isArray(val) ?
+                        $.map(val, function (val, i) {
+                            return { name: elem.name, value: val };
+                        }) :
+                    {
+                        name: elem.name,
+                        value: (o.checkboxesAsBools && this.type === 'checkbox') ? //moar ternaries!
+                            (this.checked ? 'true' : 'false') :
+                            val
+                    };
+            }).get();
+    };
+
 })(jQuery);

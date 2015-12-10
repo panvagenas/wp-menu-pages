@@ -1,6 +1,6 @@
 <?php
 /**
- * CheckBox.php description
+ * Select.php description
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-21
@@ -17,7 +17,7 @@ use Pan\MenuPages\Fields\Trt\TrtValidation;
 use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
 
 /**
- * Class CheckBox
+ * Class Select
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-21

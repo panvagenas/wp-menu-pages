@@ -85,15 +85,15 @@
                     {% endif %}
 
                     {% if field.min %}
-                        min="{{ field.min | number_format(4, '', '') }}"
+                        min="{{ field.min }}"
                     {% endif %}
 
                     {% if field.max %}
-                        max="{{ field.max | number_format(4, '', '') }}"
+                        max="{{ field.max }}"
                     {% endif %}
 
                     {% if field.step %}
-                        step="{{ field.step | number_format(4, '', '') }}"
+                        step="{{ field.step }}"
                     {% endif %}
                 {% endblock %}
 

@@ -11,6 +11,7 @@
 
 namespace Pan\MenuPages;
 
+use Pan\MenuPages\Fields\Abs\AbsInputBase;
 use Pan\MenuPages\Ifc\IfcConstants;
 use Pan\MenuPages\PageComponents\Abs\AbsMenuPageComponent;
 use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
@@ -279,6 +280,21 @@ class MenuPage {
             }
         }
         return null;
+    }
+
+    public function getAllOptionFields(){
+        $fields = [];
+        foreach ( $this->components as $component ) {
+            if($component instanceof AbsMenuPageFieldsComponent){
+                $componentFields = $component->getFields();
+                foreach ( $componentFields as $field ) {
+                    if($field instanceof AbsInputBase){
+                        $fields[$field->getName()] = $field;
+                    }
+                }
+            }
+        }
+        return $fields;
     }
 
     /**

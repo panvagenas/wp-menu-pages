@@ -15,19 +15,18 @@
         {% endif %}
 
         <div class="col-md-8 {% if not field.label %}col-md-offset-2{% endif %}">
-            <div class="btn-group btn-{{ field.type | e('html_attr') }}" data-toggle="buttons">
+            <div class="btn-group btn-{{ field.id }}" data-toggle="buttons">
                 {% for name, value in field.options %}
-                    {% set id = (field.id ~ '--' ~ name ~ '--' ~ value) | e('html_attr') %}
-
-                    <label for="{{ id }}"
+                    {% set id = (field.id ~ '--' ~  value) | e('html_attr') %}
+                    <label for="{{ field.id }}" data-value="{{ value | e('html_attr') }}"
                            class="btn btn-{{ field.buttonClass | e('html_attr') | default('default') }} {% if field.isOptionChecked(value) %}active{% endif %}">
                         <input
-                            id="{% if field.options | length > 1 %}{{ id }}{% else %}{{ field.id }}{% endif %}"
+                            id="{{ field.id }}"
                             class="{{ field.class | e('html_attr') }} wp-menu-pages-input"
 
                             type="{{ field.type | e('html_attr') }}"
                             value="{{ value | e('html_attr') }}"
-                            name="{{ field.name | e('html_attr') }}{% if field.options | length > 1 %}[]{% endif %}"
+                            name="{{ field.name | e('html_attr') }}"
 
                             title="{{ name | e('html_attr') }}"
 
