@@ -163,6 +163,12 @@ class AjaxHandler extends AbsSingleton {
         check_ajax_referer( IfcScripts::ACTION_EXPORT_PREFIX . $this->menuPage->getMenuSlug(), 'nonce' );
         $this->checkPermisions() or die;
         $this->hidePhpErrors();
+
+        $response = [
+            'options' => json_encode($this->menuPage->getOptions()->getOptions()),
+            'name' => basename($this->menuPage->getWpMenuPages()->getPluginBaseFile())
+        ];
+        wp_send_json_success($response);
     }
 
     public function importOptions() {
