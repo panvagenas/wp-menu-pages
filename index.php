@@ -1,120 +1,132 @@
 <?php
 /*
-Plugin Name: WP Menu Pages
-Plugin URI:  http://wordpress.org/extend/plugins/health-check/
-Description: Checks the health of your WordPress install
-Version:     0.1-alpha
-Author:      The Health Check Team
-Author URI:  http://wordpress.org/extend/plugins/health-check/
-Text Domain: health-check
-Domain Path: /lang
- */
-
+Plugin Name: Wp Mn Pg
+Plugin URI: http://URI_Of_Page_Describing_Plugin_and_Updates
+Description: A brief description of the Plugin.
+Version: 1.0
+Author: vagenas
+Author URI: http://URI_Of_The_Plugin_Author
+License: A "Slug" license name e.g. GPL2
+*/
 
 ini_set( 'display_errors', E_ALL );
 
-require_once 'vendor/autoload.php';
+require_once 'wp-menu-pages/vendor/autoload.php';
 
 $defaults = [
-    'text_field'      => 'Text Field 1 Demo',
-    'text_area_field' => 'Text Area Demo',
-    'text_field2'     => 'Text Field 2 Demo',
-    'password_field'  => '',
-    'select'          => 2,
-    'multi_select'    => [ 1, 11 ],
-    'checkbox'        => [ 1, 2 ],
-    'radio'           => 3,
-    'switch' => 1,
-    'number1' => 15,
-    'number2' => 10
+    // File location
+    'xml_location'                               => '',
+    // File name
+    'xml_fileName'                               => 'skroutz.xml',
+    // Generation interval
+    'xml_interval'                               => 12,
+    // XML Generate Request Var
+    'xml_generate_var'                           => 'skroutz',
+    // XML Generate Request Var Value
+    'xml_generate_var_value'                     => uniqid('ddw', true).uniqid('oow', true),
+    // advanced options
+    'show_advanced'                              => 0,
+    /*********************
+     * Products relative
+     ********************/
+    // Include products
+    'products_include'                           => array( 'product' ),
+    // Availability when products in stock
+    'avail_inStock'                              => 1,
+    // Availability when products out stock
+    'avail_outOfStock'                           => 5,
+    // Availability when products out stock and backorders are allowed
+    'avail_backorders'                           => 5,
+    /*********************
+     * Custom fields
+     ********************/
+    'map_id'                                     => 1,
+    'map_name'                                   => 2,
+    'map_name_append_sku'                        => 1,
+    'map_link'                                   => 0,
+    'map_image'                                  => 3,
+    'map_category'                               => 'product',
+    'map_category_tree'                          => 0,
+    'map_price_with_vat'                         => 1,
+    'map_manufacturer'                           => 0,
+    'map_mpn'                                    => 0,
+    'map_size'                                   => array(2,1),
+    'map_size_use'                               => 0,
+    'map_color'                                  => array(),
+    'map_color_use'                              => 0,
+    /***********************************************
+     * Fashion store
+     ***********************************************/
+    'is_fashion_store'                           => 0,
+    /***********************************************
+     * ISBN
+     ***********************************************/
+    'map_isbn'                                   => 0,
+    'is_book_store'                              => 0,
 ];
 
-$selectOptions = [
-    'Option 1'    => 1,
-    'Option 2'    => 2,
-    'Opt Group 1' => [ 'Opt Group 1 Option 1' => 11, 'Opt Group 1 Option 2' => 12 ],
-    'Opt Group 2' => [ 'Opt Group 2 Option 1' => 21, 'Opt Group 2 Option 2' => 22 ],
+$productAttributesOptions = [
+    'Attr 1'    => 1,
+    'Attr 2'    => 2,
+    'Attr 3'    => 3,
 ];
 
-$options = \Pan\MenuPages\Options::getInstance( 'test', $defaults );
+$xml_interval_options = [
+    'Daily' => 24,
+    'Twice Daily' => 12,
+    'Hourly' => 1,
+];
 
-$wpMenuPages = new \Pan\MenuPages\WpMenuPages(__FILE__, $options);
+$availability = [
+    'Available' => 1,
+    '1-3 days' => 2,
+    '4-7 days' => 3,
+    'Preorder' => 4,
+];
+
+$availabilityDoNotInclude = array_merge($availability, ['Do Not Include' => 5]);
+
+$options = \Pan\MenuPages\Options::getInstance( 'skz', $defaults );
+
+$wpMenuPages = new \Pan\MenuPages\WpMenuPages( __FILE__, $options, '', 'wp-menu-pages' );
 
 $menuPage = new \Pan\MenuPages\MenuPage( $wpMenuPages, 'WP Menu Pages Settings', 'My Settings', 'wp-menu-pages' );
 
-$tabA = new \Pan\MenuPages\PageComponents\Tab( $menuPage, 'Tab 1', true );
-$tabB = new \Pan\MenuPages\PageComponents\Tab( $menuPage, 'Tab 2', false );
+$mainOptionsTab = new \Pan\MenuPages\PageComponents\Tab( $menuPage, 'General Options', true );
+$advOptionsTab = new \Pan\MenuPages\PageComponents\Tab( $menuPage, 'Advanced Options' );
+$mapOptionsTab = new \Pan\MenuPages\PageComponents\Tab( $menuPage, 'Map Options' );
 
-$tabA->setIcon( 'gear' );
-$tabB->setIcon( 'gears' );
+$xml_location = new \Pan\MenuPages\Fields\Text($mainOptionsTab, 'xml_location');
+$xml_fileName = new \Pan\MenuPages\Fields\Text($mainOptionsTab, 'xml_fileName');
+$xml_interval = new \Pan\MenuPages\Fields\Number($mainOptionsTab, 'xml_interval');
+$xml_generate_var = new \Pan\MenuPages\Fields\Text($advOptionsTab, 'xml_generate_var');
+$xml_generate_var_value = new \Pan\MenuPages\Fields\Text($advOptionsTab, 'xml_generate_var_value');
+$avail_inStock = new \Pan\MenuPages\Fields\Select($mainOptionsTab, 'avail_inStock');
+$avail_outOfStock = new \Pan\MenuPages\Fields\Select($mainOptionsTab, 'avail_outOfStock');
+$avail_backorders = new \Pan\MenuPages\Fields\Select($mainOptionsTab, 'avail_backorders');
 
-$textFld = new \Pan\MenuPages\Fields\Text( $tabA, 'text_field' );
-$textFld->setLabel( 'Text Field 1 Label' );
+$map_id = new \Pan\MenuPages\Fields\Select($mapOptionsTab, 'map_id');
+$map_name = new \Pan\MenuPages\Fields\Select($mapOptionsTab, 'map_name');
+$map_name_append_sku = new \Pan\MenuPages\Fields\SwitchField($mapOptionsTab, 'map_name_append_sku');
 
-$textAreaFld = new \Pan\MenuPages\Fields\TextArea( $tabA, 'text_area_field' );
-$textAreaFld->setLabel( 'Text Area Demo' );
+$is_fashion_store = new \Pan\MenuPages\Fields\SwitchField($mapOptionsTab, 'is_fashion_store');
+$map_size = new \Pan\MenuPages\Fields\MultiSelect($mapOptionsTab, 'map_size');
 
-$textFld2 = new \Pan\MenuPages\Fields\Text( $tabB, 'text_field2' );
-$textFld2->setLabel( 'Text Field 2 Demo' );
+$xml_location->setLabel('XML Location');
+$xml_fileName->setLabel('XML Filename');
+$xml_interval->setMin(1)->setMax(24)->setStep(1)->setLabel('XML Generation Interval');
 
-$passwordFld = new \Pan\MenuPages\Fields\Password( $tabB, 'password_field' );
-$passwordFld->setLabel( 'Password Demo' );
+$avail_inStock->setLabel('Availability in stock')->setOptions($availability);
+$avail_outOfStock->setLabel('Availability Out of Stock')->setOptions($availabilityDoNotInclude);
+$avail_backorders->setLabel('Availability Backorders')->setOptions($availabilityDoNotInclude);
 
-$selectField = new Pan\MenuPages\Fields\Select( $tabA, 'select' );
-$selectField->setLabel( 'Select Field Demo' )->setOptions( $selectOptions );
+$xml_generate_var->setLabel('XML Generate Var Name');
+$xml_generate_var_value->setLabel('XML Generate Var Value');
 
-$select2Field = new Pan\MenuPages\Fields\Select2( $tabA, 'multi_select' );
-$select2Field
-    ->setPlaceHolder( 'Please Choose At Least One' )
-    ->setSelect2option( 'allow_empty', false )
-    ->setMultiple( true )
-    ->setLabel( 'Select 2 Field Demo' )
-    ->setOptions( $selectOptions );
+$map_id->setLabel('Map Product ID')->setOptions($productAttributesOptions);
+$map_name->setLabel('Map Product Name')->setOptions($productAttributesOptions);
+$map_name_append_sku->setLabel('Append SKU to Product Name?');
 
-$select2Field = new Pan\MenuPages\Fields\Select2( $tabA, 'multi_select' );
-$select2Field
-    ->setPlaceHolder( 'Please Choose At Least One' )
-    ->setSelect2option( 'allow_empty', false )
-    ->setMultiple( false )
-    ->setLabel( 'Select 2 Field Demo' )
-    ->setOptions( $selectOptions );
+$is_fashion_store->setLabel('This Store Contains Fashio Products');
 
-$multiSelectField = new Pan\MenuPages\Fields\MultiSelect( $tabA, 'multi_select' );
-$multiSelectField->setLabel( 'Multi Select Field Demo' )->setOptions( $selectOptions );
-
-$aside  = new \Pan\MenuPages\PageComponents\Aside( $menuPage );
-$panel1 = new \Pan\MenuPages\PageComponents\Panel( $menuPage, 'The Title' );
-$panel2 = new \Pan\MenuPages\PageComponents\Panel( $menuPage, 'Another Title' );
-
-$passwordFld2 = clone $passwordFld;
-$passwordFld2->setLabel( '' )->setPlaceholder( 'Pass Field Demo' );
-
-$textFld2 = clone $textFld;
-$textFld2->setLabel( '' )->setPlaceholder( 'Text Field Demo' );
-
-$number1 = new \Pan\MenuPages\Fields\Number($tabA, 'number1');
-$number1->setLabel('Number 1')->setMin(10)->setMax(20);
-
-$number2 = new \Pan\MenuPages\Fields\Number($tabA, 'number2');
-$number2->setLabel('Number 2')->setMin(20)->setMax(30);
-
-$panel1->attachField( $passwordFld2 );
-$panel2->attachField( $textFld2 );
-
-$aside->addPanel( $panel1 )->addPanel( $panel2 );
-
-$fb = new \Pan\MenuPages\PageComponents\Social( $menuPage, 'FaceBook',
-    \Pan\MenuPages\PageComponents\Social::ICON_FACEBOOK, '#fb' );
-$gh = new \Pan\MenuPages\PageComponents\Social( $menuPage, 'GitHub', \Pan\MenuPages\PageComponents\Social::ICON_GITHUB,
-    '#gh' );
-
-$checkBox = new \Pan\MenuPages\Fields\CheckBox( $tabA, 'checkbox' );
-$checkBox->setOptions( [ 'First Option' => 1, 'Second Option' => 2, 'Third Option' => 3, ] )
-         ->setLabel( 'Checkbox demo' );
-
-$radio = new \Pan\MenuPages\Fields\Radio( $tabA, 'radio' );
-$radio->setOptions( [ 'First Option' => 1, 'Second Option' => 2, 'Third Option' => 3, ] )
-      ->setLabel( 'Radio demo' )
-      ->setButtonClass( \Pan\MenuPages\Fields\Radio::BUTTON_CLASS_DANGER );
-
-$switch = new \Pan\MenuPages\Fields\SwitchField($tabA, 'switch');
+$map_size->setLabel('Map Product Size')->setOptions($productAttributesOptions);
