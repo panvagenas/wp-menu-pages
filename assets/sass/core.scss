@@ -1,0 +1,63 @@
+.btn-group.btn-radio label.active:before {
+    font-family: FontAwesome;
+    content: "\f192";
+    margin-right: 5px;
+    margin-left: -10px;
+}
+
+.btn-group.btn-radio label:not(.active):before {
+    font-family: FontAwesome;
+    content: "\f10c";
+    margin-right: 5px;
+    margin-left: -10px;
+}
+
+.btn-group.btn-checkbox label.active:before {
+    font-family: FontAwesome;
+    content: "\f046";
+    margin-right: 5px;
+    margin-left: -10px;
+}
+
+.btn-group.btn-checkbox label:not(.active):before {
+    font-family: FontAwesome;
+    content: "\f096";
+    margin-right: 7px;
+    margin-left: -10px;
+}
+
+.btn-group-vertical.btn-radio label.active:before {
+    font-family: FontAwesome;
+    content: "\f192";
+    margin-right: 5px;
+    margin-left: -10px;
+}
+
+.btn-group-vertical.btn-radio label:not(.active):before {
+    font-family: FontAwesome;
+    content: "\f10c";
+    margin-right: 5px;
+    margin-left: -10px;
+}
+
+.btn-group-vertical.btn-checkbox label.active:before {
+    font-family: FontAwesome;
+    content: "\f046";
+    margin-right: 5px;
+    margin-left: -10px;
+}
+
+.btn-group-vertical.btn-checkbox label:not(.active):before {
+    font-family: FontAwesome;
+    content: "\f096";
+    margin-right: 7px;
+    margin-left: -10px;
+}
+
+.btn-group-vertical.btn-checkbox label{
+    text-align: left;
+}
+
+.nav {
+    padding-left: 10px;
+}

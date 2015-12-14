@@ -11,7 +11,7 @@ License: A "Slug" license name e.g. GPL2
 
 ini_set( 'display_errors', E_ALL );
 
-require_once 'wp-menu-pages/vendor/autoload.php';
+require_once 'vendor/autoload.php';
 
 $defaults = [
     // File location
@@ -88,7 +88,7 @@ $availabilityDoNotInclude = array_merge($availability, ['Do Not Include' => 5]);
 
 $options = \Pan\MenuPages\Options::getInstance( 'skz', $defaults );
 
-$wpMenuPages = new \Pan\MenuPages\WpMenuPages( __FILE__, $options, '', 'wp-menu-pages' );
+$wpMenuPages = new \Pan\MenuPages\WpMenuPages( __FILE__, $options );
 
 $menuPage = new \Pan\MenuPages\MenuPage( $wpMenuPages, 'WP Menu Pages Settings', 'My Settings', 'wp-menu-pages' );
 
@@ -103,7 +103,7 @@ $xml_generate_var = new \Pan\MenuPages\Fields\Text($advOptionsTab, 'xml_generate
 $xml_generate_var_value = new \Pan\MenuPages\Fields\Text($advOptionsTab, 'xml_generate_var_value');
 $avail_inStock = new \Pan\MenuPages\Fields\Select($mainOptionsTab, 'avail_inStock');
 $avail_outOfStock = new \Pan\MenuPages\Fields\Select($mainOptionsTab, 'avail_outOfStock');
-$avail_backorders = new \Pan\MenuPages\Fields\Select($mainOptionsTab, 'avail_backorders');
+$avail_backorders = new \Pan\MenuPages\Fields\Select2($mainOptionsTab, 'avail_backorders');
 
 $map_id = new \Pan\MenuPages\Fields\Select($mapOptionsTab, 'map_id');
 $map_name = new \Pan\MenuPages\Fields\Select($mapOptionsTab, 'map_name');
@@ -118,7 +118,7 @@ $xml_interval->setMin(1)->setMax(24)->setStep(1)->setLabel('XML Generation Inter
 
 $avail_inStock->setLabel('Availability in stock')->setOptions($availability);
 $avail_outOfStock->setLabel('Availability Out of Stock')->setOptions($availabilityDoNotInclude);
-$avail_backorders->setLabel('Availability Backorders')->setOptions($availabilityDoNotInclude);
+$avail_backorders->setLabel('Availability Backorders')->setOptions($availabilityDoNotInclude)->setMultiple(true);
 
 $xml_generate_var->setLabel('XML Generate Var Name');
 $xml_generate_var_value->setLabel('XML Generate Var Value');
