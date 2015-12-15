@@ -1,13 +1,4 @@
-/**!
- * © Panagiotis Vagenas <pan.vagenas@gmail.com>
- */
 
-@import "../bootstrap-sass/assets/stylesheets/bootstrap/mixins";
-@import "select2/core";
+@import "bootstrap";
 
-.wp-menu-pages-ns {
-    @import "variables";
-    @import "bootswatch";
-    @import "../bootstrap-sass/assets/stylesheets/bootstrap";
-    @import "core";
-}
+@import "core";

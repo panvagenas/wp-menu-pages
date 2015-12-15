@@ -74,20 +74,6 @@ class Script extends AbsSingleton {
     }
 
     public function init() {
-//        $this->registerStyle(
-//            IfcScripts::SLUG_BOOTSTRAP_CSS,
-//            plugins_url( $this->pluginRelPathToAssets . '/bootstrap/dist/css/bootstrap.min.css',
-//                $this->pluginBaseFile ),
-//            [ ],
-//            IfcConstants::VERSION
-//        );
-//        $this->registerStyle(
-//            IfcScripts::SLUG_BOOTSTRAP_THEME_CSS,
-//            plugins_url( $this->pluginRelPathToAssets . '/bootstrap/dist/css/bootstrap-theme.min.css',
-//                $this->pluginBaseFile ),
-//            [ IfcScripts::SLUG_BOOTSTRAP_CSS ],
-//            IfcConstants::VERSION
-//        );
         $this->registerScript(
             IfcScripts::SLUG_BOOTSTRAP_JS,
             IfcScripts::CDN_BOOTSTRAP_JS,
@@ -97,7 +83,7 @@ class Script extends AbsSingleton {
         );
         $this->registerStyle(
             IfcScripts::CORE_CSS_SLUG,
-            plugins_url( $this->pluginRelPathToAssets . '/css/wp-menu-pages.css', $this->pluginBaseFile ),
+            plugins_url( $this->pluginRelPathToAssets . '/css/wp-menu-pages.min.css', $this->pluginBaseFile ),
             [ ],
             IfcConstants::VERSION
         );
@@ -112,12 +98,12 @@ class Script extends AbsSingleton {
         $this->registerStyle( IfcScripts::SLUG_FONT_AWESOME_CSS, IfcScripts::CDN_FONT_AWESOME_CSS, [ ],
             IfcConstants::VERSION );
 
-//        $this->registerStyle(
-//            IfcScripts::SLUG_SELECT2_CSS,
-//            IfcScripts::CDN_SELECT2_CSS,
-//            [ ],
-//            IfcConstants::VERSION
-//        );
+        $this->registerStyle(
+            IfcScripts::SLUG_SELECT2_CSS,
+            plugins_url( $this->pluginRelPathToAssets . '/css/select2.min.css', $this->pluginBaseFile ),
+            [ ],
+            IfcConstants::VERSION
+        );
         $this->registerScript(
             IfcScripts::SLUG_SELECT2_JS,
             IfcScripts::CDN_SELECT2_JS,
@@ -145,8 +131,6 @@ class Script extends AbsSingleton {
 
     public function requireBootstrap() {
         $this->requiredScripts[ IfcScripts::SLUG_BOOTSTRAP_JS ]       = IfcScripts::SLUG_BOOTSTRAP_JS;
-        $this->requiredStyles[ IfcScripts::SLUG_BOOTSTRAP_THEME_CSS ] = IfcScripts::SLUG_BOOTSTRAP_THEME_CSS;
-        $this->requiredStyles[ IfcScripts::SLUG_BOOTSTRAP_CSS ]       = IfcScripts::SLUG_BOOTSTRAP_CSS;
 
         return $this;
     }

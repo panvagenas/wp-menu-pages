@@ -26,8 +26,11 @@ $brand-danger:          #FF0039 !default;
 //
 //## Settings for some of the most global styles.
 
-//** Background color for `<body>`.
-$body-bg:               #fff !default;
+//** Default bkg color
+$default-bg:            #fff !default;
+//** Background color for wp-menu-pages-ns namespace.
+//** We set this to transparent in order to use default WP bkg
+$body-bg:               transparentize($default-bg, 1) !default;
 //** Global text color on `<body>`.
 $text-color:            $gray-dark !default;
 
@@ -431,12 +434,12 @@ $nav-tabs-border-color:                     #ddd !default;
 
 $nav-tabs-link-hover-border-color:          $gray-lighter !default;
 
-$nav-tabs-active-link-hover-bg:             $body-bg !default;
+$nav-tabs-active-link-hover-bg: $default-bg !default;
 $nav-tabs-active-link-hover-color:          $gray !default;
 $nav-tabs-active-link-hover-border-color:   #ddd !default;
 
 $nav-tabs-justified-link-border-color:            #ddd !default;
-$nav-tabs-justified-active-link-border-color:     $body-bg !default;
+$nav-tabs-justified-active-link-border-color: $default-bg !default;
 
 //== Pills
 $nav-pills-border-radius:                   $border-radius-base !default;
@@ -705,7 +708,7 @@ $list-group-link-heading-color: #333 !default;
 
 $panel-bg:                    #fff !default;
 $panel-body-padding:          15px !default;
-$panel-heading-padding:       10px 0 !default;
+$panel-heading-padding:       10px 15px !default;
 $panel-footer-padding:        $panel-heading-padding !default;
 $panel-border-radius:         $border-radius-base !default;
 
@@ -745,7 +748,7 @@ $panel-danger-heading-bg:     $state-danger-bg !default;
 //** Padding around the thumbnail image
 $thumbnail-padding:           4px !default;
 //** Thumbnail background color
-$thumbnail-bg:                $body-bg !default;
+$thumbnail-bg: $default-bg !default;
 //** Thumbnail border color
 $thumbnail-border:            #ddd !default;
 //** Thumbnail border radius
