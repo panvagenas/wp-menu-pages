@@ -9,7 +9,7 @@ define(['jquery', 'mnp/domSelector'], function ($, domSelector) {
             if(typeof $field == 'string'){
                 $field = this.getByName($field);
             }
-            if (!$.isArray(errors) || errors.length == 0 || !$field || $field.length == undefined || $field.length == 0) {
+            if ( errors == undefined || errors.length == 0 || !$field || $field.length == undefined || $field.length == 0) {
                 return;
             }
             var error = errors.join('<br />');
@@ -43,11 +43,9 @@ define(['jquery', 'mnp/domSelector'], function ($, domSelector) {
             return context.find('.'+this.inputStandartClass+'[name="' + fieldName + '"]');
         },
         updateValues: function(newValues){
-            if (!$.isArray(newValues) || newValues == undefined || newValues.length == 0) {
+            if ( newValues == undefined || newValues.length == 0) {
                 return [];
             }
-
-            var button = require(['bootstrap/button']);
 
             for (var fieldName in newValues) {
                 var value = newValues[fieldName];
@@ -59,9 +57,13 @@ define(['jquery', 'mnp/domSelector'], function ($, domSelector) {
                 }
 
                 if ($field.attr('type') == 'radio') {
-                    $('#'+fieldName+'[value="'+value+'"]').parent().button('toggle');
+                    require(['bootstrap/button'], function(button){
+                        $('#'+fieldName+'[value="'+value+'"]').parent().button('toggle');
+                    });
                     continue;
                 }
+
+                // FIXME Select2 not updating just by assigning new values to input
 
                 $field.val(value);
             }

@@ -1939,7 +1939,7 @@ a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
     .wp-menu-pages-ns .btn-danger:focus, .wp-menu-pages-ns .btn-danger.focus {
       color: #fff;
       background-color: #cc002e;
-      border-color: #80001d; }
+      border-color: #80001c; }
     .wp-menu-pages-ns .btn-danger:hover {
       color: #fff;
       background-color: #cc002e;
@@ -1951,7 +1951,7 @@ a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
       .wp-menu-pages-ns .btn-danger:active:hover, .wp-menu-pages-ns .btn-danger:active:focus, .wp-menu-pages-ns .btn-danger:active.focus, .wp-menu-pages-ns .btn-danger.active:hover, .wp-menu-pages-ns .btn-danger.active:focus, .wp-menu-pages-ns .btn-danger.active.focus, .open > .wp-menu-pages-ns .btn-danger.dropdown-toggle:hover, .open > .wp-menu-pages-ns .btn-danger.dropdown-toggle:focus, .open > .wp-menu-pages-ns .btn-danger.dropdown-toggle.focus {
         color: #fff;
         background-color: #a80026;
-        border-color: #80001d; }
+        border-color: #80001c; }
     .wp-menu-pages-ns .btn-danger:active, .wp-menu-pages-ns .btn-danger.active, .open > .wp-menu-pages-ns .btn-danger.dropdown-toggle {
       background-image: none; }
     .wp-menu-pages-ns .btn-danger.disabled:hover, .wp-menu-pages-ns .btn-danger.disabled:focus, .wp-menu-pages-ns .btn-danger.disabled.focus, .wp-menu-pages-ns .btn-danger[disabled]:hover, .wp-menu-pages-ns .btn-danger[disabled]:focus, .wp-menu-pages-ns .btn-danger[disabled].focus, fieldset[disabled] .wp-menu-pages-ns .btn-danger:hover, fieldset[disabled] .wp-menu-pages-ns .btn-danger:focus, fieldset[disabled] .wp-menu-pages-ns .btn-danger.focus {

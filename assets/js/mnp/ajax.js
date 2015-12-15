@@ -19,7 +19,7 @@ define(['jquery', 'mnp/controls', 'mnp/domSelector', 'mnp/field', 'mnp/alert', '
             actionImportPrefix: actionImportPrefix,
             actionUpdateCoreOptionsPrefix: actionUpdateCoreOptionsPrefix,
 
-            post: function (data, complete, error, success, datatype) {
+            post: function (data, complete, error, success, dataType) {
                 $.ajax({
                     url: this.ajaxUrl,
                     method: 'POST',
@@ -27,7 +27,7 @@ define(['jquery', 'mnp/controls', 'mnp/domSelector', 'mnp/field', 'mnp/alert', '
                     success: success,
                     complete: complete,
                     error: error,
-                    dataType: datatype ? datatype : 'json'
+                    dataType: dataType ? dataType : 'json'
                 });
             },
 
@@ -123,8 +123,6 @@ define(['jquery', 'mnp/controls', 'mnp/domSelector', 'mnp/field', 'mnp/alert', '
                     data.include = include;
                 }
 
-                var $wpMenuPages = this;
-
                 controls.loading(domSelector.getResetBtn(), true, true);
                 controls.loading(domSelector.getTabResetBtn(), true, true);
 
@@ -134,8 +132,7 @@ define(['jquery', 'mnp/controls', 'mnp/domSelector', 'mnp/field', 'mnp/alert', '
                         return false;
                     }
 
-                    alert.success('All Options Reseted to Defaults', 2000);
-                    // TODO Update options in tabs or reload page
+                    alert.success('All Options Have Been Reset to Defaults', 2000);
                     if (response.data != undefined && response.data.defaults != undefined) {
                         field.updateValues(response.data.defaults);
                     }
