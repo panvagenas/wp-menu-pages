@@ -27,7 +27,6 @@ use Pan\MenuPages\Scripts\Ifc\IfcScripts;
 class Script extends AbsSingleton {
     protected $registered = [ ];
     protected $enqueued = [ ];
-    protected $requiredScripts = [ ];
     protected $requiredStyles = [ ];
     protected $pathToAssets;
     protected $pluginRelPathToAssets;
@@ -42,15 +41,15 @@ class Script extends AbsSingleton {
     }
 
     public function printScripts() {
-        foreach ( $this->requiredScripts as $scriptSlug ) {
-            $this->enqueueScript( $scriptSlug );
-        }
         foreach ( $this->requiredStyles as $styleSlug ) {
-            $this->enqueueStyle( $styleSlug );
+            wp_enqueue_style( $styleSlug );
         }
+
+        wp_enqueue_script( IfcScripts::CORE_JS_SLUG );
 
         wp_localize_script( IfcScripts::CORE_JS_SLUG, IfcScripts::CORE_JS_DEFINITIONS,
             [
+                'baseJsUrl'=> '/' . str_replace(trailingslashit($_SERVER['DOCUMENT_ROOT']), '', $this->pathToAssets) . "/js",
                 'context' => $this->menuPage->getMenuSlug(),
                 'nonce'   => [
                     IfcScripts::ACTION_SAVE_PREFIX
@@ -74,65 +73,40 @@ class Script extends AbsSingleton {
     }
 
     public function init() {
-        $this->registerScript(
-            IfcScripts::SLUG_BOOTSTRAP_JS,
-            IfcScripts::CDN_BOOTSTRAP_JS,
-            [ 'jquery' ],
-            IfcConstants::VERSION,
-            true
-        );
-        $this->registerStyle(
+        wp_register_style(
             IfcScripts::CORE_CSS_SLUG,
             plugins_url( $this->pluginRelPathToAssets . '/css/wp-menu-pages.min.css', $this->pluginBaseFile ),
             [ ],
             IfcConstants::VERSION
         );
-        $this->registerScript(
-            IfcScripts::CORE_JS_SLUG,
-            plugins_url( $this->pluginRelPathToAssets . '/js/wp-menu-pages.js', $this->pluginBaseFile ),
-            [ 'jquery' ],
-            IfcConstants::VERSION,
-            true
+
+        wp_register_style(
+            IfcScripts::SLUG_FONT_AWESOME_CSS,
+            IfcScripts::CDN_FONT_AWESOME_CSS,
+            [ ],
+            IfcConstants::VERSION
         );
 
-        $this->registerStyle( IfcScripts::SLUG_FONT_AWESOME_CSS, IfcScripts::CDN_FONT_AWESOME_CSS, [ ],
-            IfcConstants::VERSION );
-
-        $this->registerStyle(
+        wp_register_style(
             IfcScripts::SLUG_SELECT2_CSS,
             plugins_url( $this->pluginRelPathToAssets . '/css/select2.min.css', $this->pluginBaseFile ),
             [ ],
             IfcConstants::VERSION
         );
-        $this->registerScript(
-            IfcScripts::SLUG_SELECT2_JS,
-            IfcScripts::CDN_SELECT2_JS,
-            [ 'jquery' ],
-            IfcConstants::VERSION,
-            true
+
+        wp_register_script(
+            IfcScripts::REQUIRE_JS_SLUG,
+            plugins_url( $this->pluginRelPathToAssets . '/js/require.js', $this->pluginBaseFile ),
+            [ ],
+            IfcConstants::VERSION
         );
-    }
 
-    public function registerStyle( $handle, $src, $deps = array(), $ver = false, $media = 'all' ) {
-        return wp_register_style( $handle, $src, $deps, $ver, $media );
-    }
-
-    public function registerScript( $handle, $src, $deps = array(), $ver = false, $in_footer = false ) {
-        return wp_register_script( $handle, $src, $deps, $ver, $in_footer );
-    }
-
-    public function enqueueStyle( $handle, $src = false, $deps = array(), $ver = false, $media = 'all' ) {
-        wp_enqueue_style( $handle, $src, $deps, $ver, $media );
-    }
-
-    public function enqueueScript( $handle, $src = false, $deps = array(), $ver = false, $in_footer = false ) {
-        wp_enqueue_script( $handle, $src, $deps, $ver, $in_footer );
-    }
-
-    public function requireBootstrap() {
-        $this->requiredScripts[ IfcScripts::SLUG_BOOTSTRAP_JS ]       = IfcScripts::SLUG_BOOTSTRAP_JS;
-
-        return $this;
+        wp_register_script(
+            IfcScripts::CORE_JS_SLUG,
+            plugins_url( $this->pluginRelPathToAssets . '/js/app.js', $this->pluginBaseFile ),
+            [ IfcScripts::REQUIRE_JS_SLUG ],
+            IfcConstants::VERSION
+        );
     }
 
     public function requireFontAwesome() {
@@ -143,13 +117,11 @@ class Script extends AbsSingleton {
 
     public function requireSelect2() {
         $this->requiredStyles[ IfcScripts::SLUG_SELECT2_CSS ] = IfcScripts::SLUG_SELECT2_CSS;
-        $this->requiredScripts[ IfcScripts::SLUG_SELECT2_JS ] = IfcScripts::SLUG_SELECT2_JS;
 
         return $this;
     }
 
     public function requireWpMenuPagesScripts() {
-        $this->requiredScripts[ IfcScripts::CORE_JS_SLUG ] = IfcScripts::CORE_JS_SLUG;
         $this->requiredStyles[ IfcScripts::CORE_CSS_SLUG ] = IfcScripts::CORE_CSS_SLUG;
 
         return $this;

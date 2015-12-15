@@ -147,7 +147,6 @@ class MenuPage {
 
         $scripts = Script::getInstance($this);
         // TODO We should first check if request is for current page in order to avoid unecessary registrations
-        $scripts->requireBootstrap();
         $scripts->requireWpMenuPagesScripts();
         $scripts->requireFontAwesome();
 

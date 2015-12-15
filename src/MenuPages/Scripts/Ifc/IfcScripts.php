@@ -16,6 +16,7 @@ use Pan\MenuPages\Ifc\IfcConstants;
 interface IfcScripts extends IfcConstants{
     const ASSETS_FOLDER = 'assets';
     const CORE_JS_SLUG = 'wp-menu-pages-js';
+    const REQUIRE_JS_SLUG = 'require-js';
     const CORE_CSS_SLUG = 'wp-menu-pages-css';
     const CORE_JS_DEFINITIONS = 'wpMenuPagesDefinitions';
 
