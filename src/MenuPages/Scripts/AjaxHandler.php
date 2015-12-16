@@ -166,7 +166,7 @@ class AjaxHandler extends AbsSingleton {
 
         $response = [
             'options' => json_encode($this->menuPage->getOptions()->getOptions()),
-            'name' => basename($this->menuPage->getWpMenuPages()->getPluginBaseFile())
+            'name' => basename($this->menuPage->getOptions()->getOptionsBaseName())
         ];
         wp_send_json_success($response);
     }

@@ -41,13 +41,15 @@ define(['jquery', 'mnp/domSelector'], function ($, domSelector) {
                 })
             });
 
-            domSelector.getExportBtn().click(function (e) {
+            domSelector.getExportBtn().click(function () {
                 require(['mnp/ajax'], function(ajax){
                     ajax.exportOptions();
                 })
             });
             domSelector.getImportBtn().click(function () {
-                // TODO Implement
+                require(['dropzone'], function(dropzone){
+                    // TODO Implement
+                });
             });
         }
     };
