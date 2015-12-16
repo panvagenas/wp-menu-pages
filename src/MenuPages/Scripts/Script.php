@@ -94,16 +94,24 @@ class Script extends AbsSingleton {
             IfcConstants::VERSION
         );
 
+        if(IfcConstants::DEV){
+            $requireJsUrl = plugins_url( $this->pluginRelPathToAssets . '/js/require.js', $this->pluginBaseFile );
+            $appJs = plugins_url( $this->pluginRelPathToAssets . '/js/app.js', $this->pluginBaseFile );
+        } else {
+            $requireJsUrl = plugins_url( $this->pluginRelPathToAssets . '/js/dist/require.js', $this->pluginBaseFile );
+            $appJs = plugins_url( $this->pluginRelPathToAssets . '/js/dist/app.js', $this->pluginBaseFile );
+        }
+
         wp_register_script(
             IfcScripts::REQUIRE_JS_SLUG,
-            plugins_url( $this->pluginRelPathToAssets . '/js/require.js', $this->pluginBaseFile ),
+            $requireJsUrl,
             [ ],
             IfcConstants::VERSION
         );
 
         wp_register_script(
             IfcScripts::CORE_JS_SLUG,
-            plugins_url( $this->pluginRelPathToAssets . '/js/app.js', $this->pluginBaseFile ),
+            $appJs,
             [ IfcScripts::REQUIRE_JS_SLUG ],
             IfcConstants::VERSION
         );

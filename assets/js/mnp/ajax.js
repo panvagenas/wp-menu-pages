@@ -109,7 +109,7 @@ define(['jquery', 'mnp/controls', 'mnp/domSelector', 'mnp/field', 'mnp/alert', '
             },
 
             importOptions: function (newOptions) {
-                if(newOptions.length == 0){
+                if (newOptions.length == 0) {
                     return;
                 }
 
@@ -185,6 +185,18 @@ define(['jquery', 'mnp/controls', 'mnp/domSelector', 'mnp/field', 'mnp/alert', '
                 };
 
                 this.post(data, complete, error, success);
+            },
+
+            updateCoreOptions: function(newOptions){
+                var action = this.actionUpdateCoreOptionsPrefix + this.context;
+                var data = {
+                    'options': newOptions,
+                    'action': action,
+                    'nonce': wpMenuPagesDefinitions.nonce[action]
+                };
+
+                this.post(data);
             }
         };
-    })
+    }
+);

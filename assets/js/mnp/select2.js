@@ -41,6 +41,12 @@ define(['jquery', 'mnp/field'], function ($, field) {
             });
         },
 
+        maybeBindAll: function(){
+            if(this.hasElements){
+                this.bindAll();
+            }
+        },
+
         isSelect2: function(fieldName){
             return field.isSelect2(fieldName);
         }

@@ -23,6 +23,8 @@ define(['jquery', 'mnp/domSelector'], function ($, domSelector) {
         },
 
         bindControls: function(){
+            // TODO not a proper place for all these bindings
+
             domSelector.getSaveBtn().click(function(e){
                 e.preventDefault();
                 require(['mnp/ajax', 'mnp/form'], function(ajax, form){
@@ -74,6 +76,15 @@ define(['jquery', 'mnp/domSelector'], function ($, domSelector) {
                         }
                     })
                 });
+            });
+
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                var $target = $(e.target);
+                // FIXME We have to reconstruct select2 each time because if rendered while hidden then width and height are taking wrong values
+                require(['mnp/select2', 'mnp/ajax'], function(select2, ajax){
+                    select2.maybeBindAll();
+                    ajax.updateCoreOptions({activeTab: $target.data('title')});
+                })
             });
         }
     };

@@ -3,11 +3,9 @@ define(["jquery", 'mnp/select2', 'mnp/controls'], function ($, select2Handler, c
         controls.bindControls();
 
         /*******************************************************************************
-         * Load select 2 iff it's nececary
+         * Load select 2 iff it's necessary
          ******************************************************************************/
-        if(select2Handler.hasElements()){
-            select2Handler.bindAll();
-        }
+        select2Handler.maybeBindAll();
 
         /*******************************************************************************
          * Load bootstrap components only if they are required
