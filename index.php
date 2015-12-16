@@ -63,6 +63,8 @@ $defaults = [
      ***********************************************/
     'map_isbn'                                   => 0,
     'is_book_store'                              => 0,
+    'post_types' => [],
+    'taxonomies' => [],
 ];
 
 $productAttributesOptions = [
@@ -104,6 +106,8 @@ $xml_generate_var_value = new \Pan\MenuPages\Fields\Text($advOptionsTab, 'xml_ge
 $avail_inStock = new \Pan\MenuPages\Fields\Select($mainOptionsTab, 'avail_inStock');
 $avail_outOfStock = new \Pan\MenuPages\Fields\Select($mainOptionsTab, 'avail_outOfStock');
 $avail_backorders = new \Pan\MenuPages\Fields\Select2($mainOptionsTab, 'avail_backorders');
+$postTypes = new \Pan\MenuPages\Fields\PostType($mapOptionsTab, 'post_types');
+$taxonomies = new \Pan\MenuPages\Fields\Taxonomies($mapOptionsTab, 'taxonomies');
 
 $map_id = new \Pan\MenuPages\Fields\Select($mapOptionsTab, 'map_id');
 $map_name = new \Pan\MenuPages\Fields\Select($mapOptionsTab, 'map_name');
@@ -119,6 +123,8 @@ $xml_interval->setMin(1)->setMax(24)->setStep(1)->setLabel('XML Generation Inter
 $avail_inStock->setLabel('Availability in stock')->setOptions($availability);
 $avail_outOfStock->setLabel('Availability Out of Stock')->setOptions($availabilityDoNotInclude);
 $avail_backorders->setLabel('Availability Backorders')->setOptions($availabilityDoNotInclude)->setMultiple(true);
+$postTypes->setLabel('Post Types');
+$taxonomies->setLabel('Taxonomies');
 
 $xml_generate_var->setLabel('XML Generate Var Name');
 $xml_generate_var_value->setLabel('XML Generate Var Value');

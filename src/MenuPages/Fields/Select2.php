@@ -24,9 +24,7 @@ use Pan\MenuPages\Scripts\Script;
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
 class Select2 extends Select {
-    protected $select2options = [
-
-    ];
+    protected $select2options = [ ];
     protected $multiple;
 
     public function __construct( AbsMenuPageFieldsComponent $component, $name ) {
