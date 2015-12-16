@@ -50,7 +50,11 @@ class AjaxHandler extends AbsSingleton {
 
         // Get options from POST
         $newOptions = [ ];
-        wp_parse_str( $_POST['options'], $newOptions );
+        if(is_array($_POST['options'])){
+            $newOptions = $_POST['options'];
+        } else {
+            wp_parse_str( $_POST['options'], $newOptions );
+        }
 
         // Validate options
         $allValid          = true;
@@ -174,6 +178,63 @@ class AjaxHandler extends AbsSingleton {
     public function importOptions() {
         check_ajax_referer( IfcScripts::ACTION_IMPORT_PREFIX . $this->menuPage->getMenuSlug(), 'nonce' );
         $this->checkPermisions() or die;
+
+        $this->hidePhpErrors();
+
+        // Get options from POST
+        $newOptions = [ ];
+        if(is_array($_POST['options'])){
+            $newOptions = $_POST['options'];
+        } else {
+            wp_parse_str( $_POST['options'], $newOptions );
+        }
+
+        // Validate options
+        $allValid          = true;
+        $validationResults = [ ];
+        $optionsObj        = $this->menuPage->getOptions();
+
+        $currentOptions = $optionsObj->getOptions();
+        $match          = true;
+
+        foreach ( $newOptions as $name => $value ) {
+            if ( ! $optionsObj->exists( $name ) ) {
+                unset( $newOptions[ $name ] );
+                continue;
+            }
+            if ( $value != $currentOptions[ $name ] ) {
+                $match = false;
+                continue;
+            }
+            $validationResults[$name]['valid'] = true;
+            $validationResults[$name]['value'] = $newOptions[ $name ];
+
+            unset( $newOptions[ $name ] );
+        }
+
+        foreach ( $newOptions as $name => $value ) {
+            $field = $this->menuPage->getFieldByName( $name );
+            if ( $field && $field instanceof IfcValidation ) {
+                $validationResults[ $name ] = $field->validate( $value );
+                if ( $validationResults[ $name ]['valid'] ) {
+                    continue;
+                }
+                $allValid = false;
+            }
+            unset( $newOptions[ $name ] );
+        }
+
+        $saved = ( ! empty( $newOptions ) && $optionsObj->setArray( $newOptions ) ) || $match;
+        $return = ['validationResults' => $validationResults, 'saved' => $saved, 'options' => $newOptions ];
+
+        // Send response
+        if ( $allValid && $saved ) {
+            wp_send_json_success( $return );
+
+            return;
+        }
+
+        wp_send_json_error( $return );
     }
 
     protected function checkPermisions() {

@@ -5,6 +5,7 @@ define(['jquery'], function ($) {
         ctrlTabResetBtnSelector: '.btn-tab-reset-options',
         ctrlExportOptsSelector: '.btn-export-options',
         ctrlImportOptsSelector: '.btn-import-options',
+        ctrlAllControlsSelector: '.wp-menu-pages-control',
         activeTabSelector: '.tab-pane.active',
 
         getActiveTab: function () {
@@ -41,6 +42,10 @@ define(['jquery'], function ($) {
          */
         getImportBtn: function () {
             return $(this.ctrlImportOptsSelector);
+        },
+
+        getAllControls: function(){
+            return $(this.ctrlAllControlsSelector);
         }
     };
 })

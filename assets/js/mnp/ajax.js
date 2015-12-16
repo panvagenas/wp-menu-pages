@@ -34,9 +34,9 @@ define(['jquery', 'mnp/controls', 'mnp/domSelector', 'mnp/field', 'mnp/alert', '
             saveOptions: function (newOptions) {
                 var action = this.actionSavePrefix + this.context;
                 var data = {
-                    'options': newOptions,
-                    'action': action,
-                    'nonce': wpMenuPagesDefinitions.nonce[action]
+                    options: newOptions,
+                    action: action,
+                    nonce: wpMenuPagesDefinitions.nonce[action]
                 };
 
                 controls.loading(domSelector.getSaveBtn(), true, true);
@@ -77,8 +77,8 @@ define(['jquery', 'mnp/controls', 'mnp/domSelector', 'mnp/field', 'mnp/alert', '
             exportOptions: function () {
                 var action = this.actionExportPrefix + this.context;
                 var data = {
-                    'action': action,
-                    'nonce': wpMenuPagesDefinitions.nonce[action]
+                    action: action,
+                    nonce: wpMenuPagesDefinitions.nonce[action]
                 };
 
                 controls.loading(domSelector.getExportBtn(), true, true);
@@ -109,7 +109,42 @@ define(['jquery', 'mnp/controls', 'mnp/domSelector', 'mnp/field', 'mnp/alert', '
             },
 
             importOptions: function (newOptions) {
-                // TODO Implement
+                if(newOptions.length == 0){
+                    return;
+                }
+
+                var action = this.actionImportPrefix + this.context;
+                var data = {
+                    action: action,
+                    nonce: wpMenuPagesDefinitions.nonce[action],
+                    options: newOptions
+                };
+
+                controls.loading(domSelector.getAllControls(), true, true);
+
+                var success = function (response) {
+                    if (response.success == undefined || response.success == false) {
+                        error(response);
+                        return false;
+                    }
+
+                    alert.success('Options Import Successful', 2000);
+                    if (response.data != undefined && response.data.options != undefined) {
+                        field.updateValues(response.data.options);
+                    }
+
+                    return true;
+                };
+
+                var complete = function () {
+                    controls.loading(domSelector.getAllControls(), false);
+                };
+
+                var error = function () {
+                    alert.danger('There was an error while importing options');
+                };
+
+                this.post(data, complete, error, success);
             },
 
             resetOptions: function (include) {
