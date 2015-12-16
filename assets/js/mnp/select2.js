@@ -1,4 +1,4 @@
-define(['jquery'], function ($) {
+define(['jquery', 'mnp/field'], function ($, field) {
     return {
         domSelector: '.select2.wp-menu-pages-input',
         count: function () {
@@ -39,6 +39,10 @@ define(['jquery'], function ($) {
                     $element.select2(options);
                 });
             });
+        },
+
+        isSelect2: function(fieldName){
+            return field.isSelect2(fieldName);
         }
     };
 })

@@ -3,11 +3,11 @@ define(['jquery', 'mnp/domSelector'], function ($, domSelector) {
         helpBlockClass: 'help-block',
         helpBlockTemplate: '<span id="{{id}}" class="help-block">{{msg}}</span>',
         inputHasErrorClass: 'has-error',
-        inputStandartClass: 'wp-menu-pages-input',
+        inputStandardClass: 'wp-menu-pages-input',
 
         markInvalid: function($field, errors){
             if(typeof $field == 'string'){
-                $field = this.getByName($field);
+                $field = this.getByName($field, false);
             }
             if ( errors == undefined || errors.length == 0 || !$field || $field.length == undefined || $field.length == 0) {
                 return;
@@ -26,7 +26,7 @@ define(['jquery', 'mnp/domSelector'], function ($, domSelector) {
         },
         markValid: function($field){
             if(typeof $field == 'string'){
-                $field = this.getByName($field);
+                $field = this.getByName($field, false);
             }
 
             if (!$field || $field.length == undefined || $field.length == 0) {
@@ -40,8 +40,9 @@ define(['jquery', 'mnp/domSelector'], function ($, domSelector) {
         getByName: function(fieldName, fromActiveTab){
             fromActiveTab = fromActiveTab == undefined;
             var context = fromActiveTab ? domSelector.getActiveTab() : $('.wp-menu-pages-ns');
-            return context.find('.'+this.inputStandartClass+'[name="' + fieldName + '"]');
+            return context.find('.'+this.inputStandardClass+'#' + fieldName);
         },
+
         updateValues: function(newValues){
             if ( newValues == undefined || newValues.length == 0) {
                 return [];
@@ -50,23 +51,36 @@ define(['jquery', 'mnp/domSelector'], function ($, domSelector) {
             for (var fieldName in newValues) {
                 var value = newValues[fieldName];
 
-                var $field = $('.'+this.inputStandartClass+'#' + fieldName);
+                var $field = this.getByName(fieldName, false);
 
                 if ($field == undefined || $field.length == 0) {
                     continue;
                 }
 
                 if ($field.attr('type') == 'radio') {
-                    require(['bootstrap/button'], function(button){
-                        $('#'+fieldName+'[value="'+value+'"]').parent().button('toggle');
-                    });
+                    this.updateRadioValue(fieldName, value);
                     continue;
                 }
 
-                // FIXME Select2 not updating just by assigning new values to input
-
                 $field.val(value);
+
+                $field.trigger('change');
             }
+        },
+
+        updateRadioValue: function(name, value){
+            require(['bootstrap/button'], function(){
+                $('#'+name+'[value="'+value+'"]').parent().button('toggle');
+            });
+        },
+
+        isSelect2: function(field){
+            var $field = field instanceof jQuery ? field : this.getByName(field, false);
+            if($field && $field.length > 0){
+                return $field.is(domSelector.select2Selector);
+            }
+
+            return false;
         }
     };
 })

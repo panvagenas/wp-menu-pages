@@ -7,6 +7,7 @@ define(['jquery'], function ($) {
         ctrlImportOptsSelector: '.btn-import-options',
         ctrlAllControlsSelector: '.wp-menu-pages-control',
         activeTabSelector: '.tab-pane.active',
+        select2Selector: '.select2.wp-menu-pages-input',
 
         getActiveTab: function () {
             return $(this.activeTabSelector);

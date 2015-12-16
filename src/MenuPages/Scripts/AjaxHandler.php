@@ -13,6 +13,7 @@ namespace Pan\MenuPages\Scripts;
 
 use Pan\MenuPages\Abs\AbsSingleton;
 use Pan\MenuPages\Fields\Ifc\IfcValidation;
+use Pan\MenuPages\Ifc\IfcConstants;
 use Pan\MenuPages\MenuPage;
 use Pan\MenuPages\Scripts\Ifc\IfcScripts;
 
@@ -36,63 +37,26 @@ class AjaxHandler extends AbsSingleton {
         parent::__construct( $menuPage );
     }
 
-    protected function hidePhpErrors(){
-        ini_set('display_errors', false);
+    protected function hidePhpErrors() {
+        ini_set( 'display_errors', false );
     }
 
     public function saveOptions() {
         // Check for nonce
         check_ajax_referer( IfcScripts::ACTION_SAVE_PREFIX . $this->menuPage->getMenuSlug(), 'nonce' );
 
-        $this->checkPermisions() or die;
+        $this->checkPermissions() or die;
 
         $this->hidePhpErrors();
 
-        // Get options from POST
-        $newOptions = [ ];
-        if(is_array($_POST['options'])){
-            $newOptions = $_POST['options'];
-        } else {
-            wp_parse_str( $_POST['options'], $newOptions );
-        }
+        $newOptions = $this->mayeParseOptions( $_POST['options'] );
 
-        // Validate options
-        $allValid          = true;
-        $validationResults = [ ];
-        $optionsObj        = $this->menuPage->getOptions();
+        list( $newOptions, $validationResults, $allValid, $match ) = $this->validateOptions( $newOptions );
 
-        $currentOptions = $optionsObj->getOptions();
-        $match          = true;
+        $optionsObj = $this->menuPage->getOptions();
 
-        foreach ( $newOptions as $name => $value ) {
-            if ( ! $optionsObj->exists( $name ) ) {
-                unset( $newOptions[ $name ] );
-                continue;
-            }
-            if ( $value != $currentOptions[ $name ] ) {
-                $match = false;
-                continue;
-            }
-            $validationResults[$name]['valid'] = true;
-            $validationResults[$name]['value'] = $newOptions[ $name ];
-
-            unset( $newOptions[ $name ] );
-        }
-
-        foreach ( $newOptions as $name => $value ) {
-            $field = $this->menuPage->getFieldByName( $name );
-            if ( $field && $field instanceof IfcValidation ) {
-                $validationResults[ $name ] = $field->validate( $value );
-                if ( $validationResults[ $name ]['valid'] ) {
-                    continue;
-                }
-                $allValid = false;
-            }
-            unset( $newOptions[ $name ] );
-        }
-
-        $saved = ( ! empty( $newOptions ) && $optionsObj->setArray( $newOptions ) ) || $match;
-        $return = ['options' => $validationResults, 'saved' => $saved ];
+        $saved  = ( ! empty( $newOptions ) && $optionsObj->setArray( $newOptions ) ) || $match;
+        $return = [ 'options' => $validationResults, 'saved' => $saved ];
 
         // Send response
         if ( $allValid && $saved ) {
@@ -107,14 +71,11 @@ class AjaxHandler extends AbsSingleton {
     public function resetOptions() {
         check_ajax_referer( IfcScripts::ACTION_RESET_PREFIX . $this->menuPage->getMenuSlug(), 'nonce' );
 
-        $this->checkPermisions() or die;
+        $this->checkPermissions() or die;
 
         $this->hidePhpErrors();
 
-        $include = [ ];
-        if ( isset( $_POST['include'] ) ) {
-            wp_parse_str( $_POST['include'], $include );
-        }
+        $include = $this->mayeParseOptions($_POST['include']);
 
         $result = [ ];
 
@@ -148,16 +109,18 @@ class AjaxHandler extends AbsSingleton {
         wp_send_json_error( $result );
     }
 
-    public function updateCoreOptions(){
+    public function updateCoreOptions() {
         check_ajax_referer( IfcScripts::ACTION_UPDATE_CORE_OPTIONS_PREFIX . $this->menuPage->getMenuSlug(), 'nonce' );
-        $this->checkPermisions() or die;
+        $this->checkPermissions() or die;
 
         $this->hidePhpErrors();
 
-        $newOptions = (array)$_POST['options'];
+        $newOptions = (array) $_POST['options'];
 
         foreach ( $newOptions as $name => $value ) {
-            $this->menuPage->setPageOption($name, $value);
+            if($this->menuPage->isValidOption($name, $value)) {
+                $this->menuPage->setPageOption( $name, $value );
+            }
         }
 
         wp_send_json_success();
@@ -165,35 +128,59 @@ class AjaxHandler extends AbsSingleton {
 
     public function exportOptions() {
         check_ajax_referer( IfcScripts::ACTION_EXPORT_PREFIX . $this->menuPage->getMenuSlug(), 'nonce' );
-        $this->checkPermisions() or die;
+        $this->checkPermissions() or die;
         $this->hidePhpErrors();
 
+        $options = $this->menuPage->getOptions()->getOptions();
+        unset( $options[ IfcConstants::CORE_OPTIONS_KEY ] );
+
         $response = [
-            'options' => json_encode($this->menuPage->getOptions()->getOptions()),
-            'name' => basename($this->menuPage->getOptions()->getOptionsBaseName())
+            'options' => json_encode( $options ),
+            'name'    => basename( $this->menuPage->getOptions()->getOptionsBaseName() ),
         ];
-        wp_send_json_success($response);
+        wp_send_json_success( $response );
     }
 
     public function importOptions() {
         check_ajax_referer( IfcScripts::ACTION_IMPORT_PREFIX . $this->menuPage->getMenuSlug(), 'nonce' );
-        $this->checkPermisions() or die;
-
+        $this->checkPermissions() or die;
         $this->hidePhpErrors();
 
-        // Get options from POST
-        $newOptions = [ ];
-        if(is_array($_POST['options'])){
-            $newOptions = $_POST['options'];
-        } else {
-            wp_parse_str( $_POST['options'], $newOptions );
+        $newOptions = $this->mayeParseOptions( $_POST['options'] );
+
+        list( $newOptions, $validationResults, $allValid, $match ) = $this->validateOptions( $newOptions );
+
+        $optionsObj = $this->menuPage->getOptions();
+
+        $saved  = ( ! empty( $newOptions ) && $optionsObj->setArray( $newOptions ) ) || $match;
+        $return = [ 'validationResults' => $validationResults, 'saved' => $saved, 'options' => $newOptions ];
+
+        // Send response
+        if ( $allValid && $saved ) {
+            wp_send_json_success( $return );
+
+            return;
         }
 
-        // Validate options
-        $allValid          = true;
-        $validationResults = [ ];
-        $optionsObj        = $this->menuPage->getOptions();
+        wp_send_json_error( $return );
+    }
 
+    protected function mayeParseOptions( $options ) {
+        if ( is_array( $options ) ) {
+            return $options;
+        }
+
+        $return = [ ];
+        if ( is_string( $options ) ) {
+            wp_parse_str( $options, $return );
+        }
+
+        return $return;
+    }
+
+    protected function validateOptions( $newOptions ) {
+        $allValid       = true;
+        $optionsObj     = $this->menuPage->getOptions();
         $currentOptions = $optionsObj->getOptions();
         $match          = true;
 
@@ -206,8 +193,8 @@ class AjaxHandler extends AbsSingleton {
                 $match = false;
                 continue;
             }
-            $validationResults[$name]['valid'] = true;
-            $validationResults[$name]['value'] = $newOptions[ $name ];
+            $validationResults[ $name ]['valid'] = true;
+            $validationResults[ $name ]['value'] = $newOptions[ $name ];
 
             unset( $newOptions[ $name ] );
         }
@@ -224,20 +211,10 @@ class AjaxHandler extends AbsSingleton {
             unset( $newOptions[ $name ] );
         }
 
-        $saved = ( ! empty( $newOptions ) && $optionsObj->setArray( $newOptions ) ) || $match;
-        $return = ['validationResults' => $validationResults, 'saved' => $saved, 'options' => $newOptions ];
-
-        // Send response
-        if ( $allValid && $saved ) {
-            wp_send_json_success( $return );
-
-            return;
-        }
-
-        wp_send_json_error( $return );
+        return [$newOptions, $validationResults, $allValid, $match];
     }
 
-    protected function checkPermisions() {
+    protected function checkPermissions() {
         return current_user_can( $this->menuPage->getCapability() );
     }
 }

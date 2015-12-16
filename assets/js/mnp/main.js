@@ -17,8 +17,8 @@ define(["jquery", 'mnp/select2', 'mnp/controls'], function ($, select2Handler, c
             require(['bootstrap/tab']);
         }
 
-        var $collapsibles = $('.panel-collapse');
-        if ($collapsibles.length > 0) {
+        var $collapsible = $('.panel-collapse');
+        if ($collapsible.length > 0) {
             require(['bootstrap/collapse']);
         }
 
@@ -27,6 +27,11 @@ define(["jquery", 'mnp/select2', 'mnp/controls'], function ($, select2Handler, c
             require(['bootstrap/tooltip'], function (tooltip) {
                 $tooltiped.tooltip();
             });
+        }
+
+        var $dataToggledButtons = $('[data-toggle="buttons"]');
+        if ($dataToggledButtons.length > 0) {
+            require(['bootstrap/button']);
         }
     });
 });

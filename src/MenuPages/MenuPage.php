@@ -90,6 +90,10 @@ class MenuPage {
      */
     protected $hookSuffix;
 
+    protected $validCoreOptionKeys = [
+        self::OPT_ACTIVE_TAB
+    ];
+
     public function __construct(
         WpMenuPages $menuPages,
         $title,
@@ -235,6 +239,10 @@ class MenuPage {
         $coreOptions[$this->menuSlug][$name] = $value;
 
         return $this->options->set(IfcConstants::CORE_OPTIONS_KEY, $coreOptions);
+    }
+
+    public function isValidOption($name, $value){
+        return in_array($name, $this->validCoreOptionKeys) && is_string($value);
     }
 
     public function getPageOption($name){
