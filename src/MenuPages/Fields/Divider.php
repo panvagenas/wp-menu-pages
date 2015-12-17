@@ -1,6 +1,6 @@
 <?php
 /**
- * Raw.php description
+ * Divider.php description
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-21
@@ -11,11 +11,8 @@
 
 namespace Pan\MenuPages\Fields;
 
-use Pan\MenuPages\Fields\Abs\AbsField;
-use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
-
 /**
- * Class Raw
+ * Class Divider
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-21
@@ -23,14 +20,8 @@ use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
  * @package   Pan\MenuPages\Fields
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class Raw extends AbsField {
-    protected $content;
-
-    public function __construct( AbsMenuPageFieldsComponent $component ) {
-        parent::__construct( $component );
-        $this->setClass('col-md-12');
-    }
-
+class Divider extends Raw {
+    protected $content = '<hr />';
 
     /**
      * @return mixed

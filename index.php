@@ -190,3 +190,5 @@ $content = '<div class="jumbotron"><h1>Html allowed in <code>Raw</code> fields!<
 Clinias, verpa, et adgium.</p>
 </div>';
 $raw->setContent($content);
+
+$divider = new \Pan\MenuPages\Fields\Divider($tabOtherFields);
