@@ -11,8 +11,8 @@
 
 namespace Pan\MenuPages\PageComponents;
 
-use Pan\MenuPages\MenuPage;
 use Pan\MenuPages\PageComponents\Abs\AbsMenuPageComponent;
+use Pan\MenuPages\Pages\Abs\AbsMenuPage;
 
 /**
  * Class Aside
@@ -27,7 +27,7 @@ class Aside extends AbsMenuPageComponent {
 
     protected $panels = [ ];
 
-    public function __construct( MenuPage $menuPage ) {
+    public function __construct( AbsMenuPage $menuPage ) {
         parent::__construct( $menuPage );
     }
 

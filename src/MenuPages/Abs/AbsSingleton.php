@@ -2,18 +2,18 @@
 
 namespace Pan\MenuPages\Abs;
 
-use Pan\MenuPages\MenuPage;
+use Pan\MenuPages\Pages\Abs\AbsMenuPage;
 
 class AbsSingleton {
     /**
-     * @var MenuPage
+     * @var \Pan\MenuPages\Pages\Abs\AbsMenuPage
      */
     protected $menuPage;
     /**
      * is not allowed to call from outside: private!
      *
      */
-    protected function __construct(MenuPage $menuPage) {
+    protected function __construct(AbsMenuPage $menuPage) {
         $this->menuPage = $menuPage;
     }
 
@@ -22,7 +22,7 @@ class AbsSingleton {
      *
      * @return $this
      */
-    public static function getInstance(MenuPage $menuPage) {
+    public static function getInstance(AbsMenuPage $menuPage) {
         static $instance = null;
         if ( null === $instance ) {
             $instance = new static($menuPage);

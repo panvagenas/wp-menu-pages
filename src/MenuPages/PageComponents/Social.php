@@ -8,7 +8,7 @@
 
 namespace Pan\MenuPages\PageComponents;
 
-use Pan\MenuPages\MenuPage;
+use Pan\MenuPages\Pages\Abs\AbsMenuPage;
 
 /**
  * Description of Social
@@ -25,7 +25,7 @@ class Social extends Abs\AbsMenuPageComponent{
     protected $name;
     protected $link;
 
-    public function __construct( MenuPage $menuPage, $name, $icon, $link) {
+    public function __construct( AbsMenuPage $menuPage, $name, $icon, $link) {
         parent::__construct($menuPage);
         $this->name = $name;
         $this->icon = $icon;

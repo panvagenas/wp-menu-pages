@@ -14,7 +14,7 @@ namespace Pan\MenuPages\Scripts;
 use Pan\MenuPages\Abs\AbsSingleton;
 use Pan\MenuPages\Fields\Ifc\IfcValidation;
 use Pan\MenuPages\Ifc\IfcConstants;
-use Pan\MenuPages\MenuPage;
+use Pan\MenuPages\Pages\Abs\AbsMenuPage;
 use Pan\MenuPages\Scripts\Ifc\IfcScripts;
 
 /**
@@ -29,11 +29,11 @@ class AjaxHandler extends AbsSingleton {
     /**
      * AjaxHandler constructor.
      *
-     * @param MenuPage $menuPage
+     * @param AbsMenuPage $menuPage
      *
      * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
      */
-    protected function __construct( MenuPage $menuPage ) {
+    protected function __construct( AbsMenuPage $menuPage ) {
         parent::__construct( $menuPage );
     }
 
@@ -183,6 +183,7 @@ class AjaxHandler extends AbsSingleton {
         $optionsObj     = $this->menuPage->getOptions();
         $currentOptions = $optionsObj->getOptions();
         $match          = true;
+        $validationResults = [];
 
         foreach ( $newOptions as $name => $value ) {
             if ( ! $optionsObj->exists( $name ) ) {

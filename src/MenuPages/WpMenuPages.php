@@ -2,8 +2,6 @@
 
 namespace Pan\MenuPages;
 
-use Pan\MenuPages\Ifc\IfcConstants;
-
 /**
  * Class WpMenuPages
  *
@@ -18,7 +16,7 @@ final class WpMenuPages {
      * ```php
      *  [
      *      $pluginBaseName => [
-     *                              $menuPageId => Pan\MenuPages\MenuPage $menuPage
+     *                              $menuPageId => Pan\MenuPages\Pages\Abs\AbsMenuPage $menuPage
      *                         ]
      *  ]
      * ```
@@ -50,7 +48,7 @@ final class WpMenuPages {
     /**
      * WpMenuPages constructor.
      *
-     * @param string        $pluginBasePath
+     * @param string        $pluginBaseFile
      * @param array|Options $options
      * @param string        $optionsBaseName
      *
@@ -77,7 +75,7 @@ final class WpMenuPages {
         if ( $options instanceof Options ) {
             $this->options = $options;
         } elseif ( is_array( $options ) && !empty($optionsBaseName) ) {
-            $this->options = Options::getInstance( $this->optionsBaseName, $options );
+            $this->options = Options::getInstance( $optionsBaseName, $options );
         } else {
             throw new \InvalidArgumentException('Invalid argument $options in ' . __METHOD__);
         }

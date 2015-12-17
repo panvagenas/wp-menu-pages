@@ -11,9 +11,9 @@
 
 namespace Pan\MenuPages\Scripts;
 
-use Pan\MenuPages\Abs\AbsSingleton;
+use Pan\MenuPages\Abs\AbsMultiSingleton;
 use Pan\MenuPages\Ifc\IfcConstants;
-use Pan\MenuPages\MenuPage;
+use Pan\MenuPages\Pages\Abs\AbsMenuPage;
 use Pan\MenuPages\Scripts\Ifc\IfcScripts;
 
 /**
@@ -24,7 +24,7 @@ use Pan\MenuPages\Scripts\Ifc\IfcScripts;
  * @package   Pan\MenuPages\Scripts
  * @since     TODO ${VERSION}
  */
-class Script extends AbsSingleton {
+class Script extends AbsMultiSingleton {
     protected $registered = [ ];
     protected $enqueued = [ ];
     protected $requiredStyles = [ ];
@@ -32,7 +32,7 @@ class Script extends AbsSingleton {
     protected $pluginRelPathToAssets;
     protected $pluginBaseFile;
 
-    protected function __construct( MenuPage $menuPage ) {
+    protected function __construct( AbsMenuPage $menuPage ) {
         parent::__construct( $menuPage );
         $assetsFolder                = IfcScripts::ASSETS_FOLDER;
         $this->pathToAssets          = $this->menuPage->getWpMenuPages()->getBasePath() . "/$assetsFolder";

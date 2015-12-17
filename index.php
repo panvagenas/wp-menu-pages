@@ -19,12 +19,12 @@ $optionsObj = \Pan\MenuPages\Options::getInstance('wp_menu_pages_demo', $default
 
 $wpMenuPages = new \Pan\MenuPages\WpMenuPages(__FILE__, $optionsObj);
 
-$mainPage = new \Pan\MenuPages\MenuPage($wpMenuPages, 'My Settings', 'My Plugin Settings', 'my-settings');
-$subPage = new \Pan\MenuPages\MenuPage($wpMenuPages, 'My Plugin Settings - Sub Page Demo', 'Sub Page Demo', 'main-settings', 'my-settings');
+$mainPage = new \Pan\MenuPages\Pages\Page($wpMenuPages, 'My Settings');
+$subPage = new \Pan\MenuPages\Pages\SubPage($wpMenuPages, $mainPage, 'Sub Page Demo');
 
 $tabTextFieldsDemo = new \Pan\MenuPages\PageComponents\Tab($mainPage, 'Text Fields', true);
 $tabSelectFieldsDemo = new \Pan\MenuPages\PageComponents\Tab($mainPage,'Select Fields');
 $tabRadioFieldsDemo = new \Pan\MenuPages\PageComponents\Tab($mainPage, 'Radio Fields');
 
 $tabNumberFieldsDemo = new \Pan\MenuPages\PageComponents\Tab($subPage, 'Number Fields');
-
+$tabWpSpecificDemo = new \Pan\MenuPages\PageComponents\Tab($subPage, 'WordPress');

@@ -3,8 +3,8 @@
 namespace Pan\MenuPages\PageComponents\Abs;
 
 use Pan\MenuPages\Fields\Abs\AbsField;
-use Pan\MenuPages\MenuPage;
 use Pan\MenuPages\PageComponents\Elements\Form;
+use Pan\MenuPages\Pages\Abs\AbsMenuPage;
 
 abstract class AbsMenuPageFieldsComponent extends AbsMenuPageComponent {
     protected $fields = [ ];
@@ -13,7 +13,7 @@ abstract class AbsMenuPageFieldsComponent extends AbsMenuPageComponent {
      */
     protected $form;
 
-    public function __construct( MenuPage $menuPage ) {
+    public function __construct( AbsMenuPage $menuPage ) {
         parent::__construct( $menuPage );
         $this->form = new Form();
     }

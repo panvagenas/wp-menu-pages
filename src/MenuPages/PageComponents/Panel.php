@@ -11,8 +11,8 @@
 
 namespace Pan\MenuPages\PageComponents;
 
-use Pan\MenuPages\MenuPage;
 use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
+use Pan\MenuPages\Pages\Abs\AbsMenuPage;
 
 /**
  * Class Panel
@@ -26,7 +26,7 @@ use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
 class Panel extends AbsMenuPageFieldsComponent {
     protected $title;
 
-    public function __construct( MenuPage $menuPage, $title ) {
+    public function __construct( AbsMenuPage $menuPage, $title ) {
         parent::__construct( $menuPage );
         $this->title = $title;
         $this->form->setClass('');

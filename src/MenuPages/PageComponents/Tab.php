@@ -11,8 +11,8 @@
 
 namespace Pan\MenuPages\PageComponents;
 
-use Pan\MenuPages\MenuPage;
 use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
+use Pan\MenuPages\Pages\Abs\AbsMenuPage;
 
 /**
  * Class Tab
@@ -37,8 +37,8 @@ class Tab extends AbsMenuPageFieldsComponent {
      */
     protected $title;
 
-    public function __construct( MenuPage $menuPage, $title, $active = false, $icon = '' ) {
-        // FIXME Until we find a better way to activate tabs from MenuPage we stick to set attrs before calling parent constructor
+    public function __construct( AbsMenuPage $menuPage, $title, $active = false, $icon = '' ) {
+        // FIXME Until we find a better way to activate tabs from AbsMenuPage we stick to set attrs before calling parent constructor
         $this->title  = $title;
         $this->active = $active;
         $this->icon   = $icon;
