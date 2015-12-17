@@ -1,5 +1,7 @@
-define(["jquery", 'mnp/select2', 'mnp/controls'], function ($, select2Handler, controls) {
+define(['jquery', 'mnp/select2', 'mnp/controls'], function ($, select2Handler, controls) {
     $(function () {
+        require(['bootstrap/transition']);
+
         controls.bindControls();
 
         /*******************************************************************************
