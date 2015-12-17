@@ -26,8 +26,9 @@ use Pan\MenuPages\Pages\Abs\AbsMenuPage;
 class Panel extends AbsMenuPageFieldsComponent {
     protected $title;
 
-    public function __construct( AbsMenuPage $menuPage, $title ) {
-        parent::__construct( $menuPage );
+    public function __construct( Aside $aside, $title ) {
+        parent::__construct( $aside->getMenuPage() );
+        $aside->addPanel($this);
         $this->title = $title;
         $this->form->setClass('');
     }

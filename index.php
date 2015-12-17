@@ -100,6 +100,8 @@ $tabOtherFields  = new \Pan\MenuPages\PageComponents\Tab($mainPage, 'Other Field
 $tabNumberFieldsDemo = new \Pan\MenuPages\PageComponents\Tab($subPage, 'Number Fields');
 $tabWpSpecificDemo = new \Pan\MenuPages\PageComponents\Tab($subPage, 'WordPress');
 
+$aside = new \Pan\MenuPages\PageComponents\Aside($mainPage);
+
 $color = new \Pan\MenuPages\Fields\Color($tabMediaFields, 'color');
 $color->setLabel('Color Demo');
 
@@ -155,7 +157,7 @@ $select2 = new \Pan\MenuPages\Fields\Select2($tabSelectFields, 'select2');
 $select2->setLabel('Select2 Demo')->setOptions($selectOptions);
 
 $select2multiple = new \Pan\MenuPages\Fields\Select2($tabSelectFields, 'select2multiple');
-$select2multiple->setLabel('Select2 Multiple Demo')->setOptions($selectOptionGroups);
+$select2multiple->setLabel('Select2 Multiple Demo')->setOptions($selectOptionGroups)->setMultiple(true);
 
 $switch = new \Pan\MenuPages\Fields\SwitchField($tabRadioFields, 'switch');
 $switch->setLabel('Switch Demo');
@@ -192,3 +194,7 @@ Clinias, verpa, et adgium.</p>
 $raw->setContent($content);
 
 $divider = new \Pan\MenuPages\Fields\Divider($tabOtherFields);
+
+$panel = new \Pan\MenuPages\PageComponents\Panel($aside, 'Panel Demo');
+
+(new \Pan\MenuPages\Fields\Raw($panel))->setContent($content);
