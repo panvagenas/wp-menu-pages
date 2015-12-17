@@ -27,7 +27,10 @@ use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
  */
 class Select extends AbsInputBase {
     use TrtOptions, TrtValidation;
-
+    /**
+     * @var string|int|float
+     */
+    protected $value;
     /**
      *
      * @var string

@@ -3,7 +3,6 @@
 namespace Pan\MenuPages\Fields\Ifc;
 
 use Pan\MenuPages\Ifc\IfcConstants;
-use Pan\MenuPages\Templates\Twig;
 
 /**
  * Interface IfcInputConstants

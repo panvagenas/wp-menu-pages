@@ -31,7 +31,8 @@ trait TrtValidation {
     protected $validators = [ ];
 
     /**
-     * @param $value
+     * @param        $value
+     * @param string $fieldName
      *
      * @return array
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
@@ -72,6 +73,7 @@ trait TrtValidation {
 
     /**
      * @param Validator $validator
+     * @param           $key
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>

@@ -53,6 +53,7 @@ final class WpMenuPages {
      * @param string        $pluginBaseFile
      * @param array|Options $options
      * @param string        $optionsBaseName
+     * @param string        $relBasePath
      *
      * @throws \ErrorException
      * @since  TODO ${VERSION}

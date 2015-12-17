@@ -9,9 +9,11 @@ class AbsSingleton {
      * @var \Pan\MenuPages\Pages\Abs\AbsMenuPage
      */
     protected $menuPage;
+
     /**
      * is not allowed to call from outside: private!
      *
+     * @param AbsMenuPage $menuPage
      */
     protected function __construct(AbsMenuPage $menuPage) {
         $this->menuPage = $menuPage;
@@ -19,6 +21,8 @@ class AbsSingleton {
 
     /**
      * gets the instance via lazy initialization (created on first usage)
+     *
+     * @param AbsMenuPage $menuPage
      *
      * @return $this
      */
