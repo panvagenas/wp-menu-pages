@@ -1,0 +1,22 @@
+{#
+ # ${FILE_NAME} description
+ #
+ # @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+ # @date 2015-11-19
+ # @since TODO ${VERSION}
+ # @copyright Copyright (c) 2015 Panagiotis Vagenas
+ #}
+{% spaceless %}
+
+    <div class="form-group">
+
+        <div id="{{ field.id }}"
+             class="{{ field.class | e('html_attr') }} col-md-12"
+             {% if field.style %}style="{{ field.style | e('html_attr') }}"{% endif %}
+        >
+            {{ field.content | raw }}
+        </div>
+
+    </div>
+
+{% endspaceless %}

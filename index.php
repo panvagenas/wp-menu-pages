@@ -95,6 +95,7 @@ $tabDateTimeFields = new \Pan\MenuPages\PageComponents\Tab($mainPage, 'Date-Time
 $tabSelectFields = new \Pan\MenuPages\PageComponents\Tab($mainPage,'Select Fields');
 $tabRadioFields  = new \Pan\MenuPages\PageComponents\Tab($mainPage, 'Radio Fields');
 $tabMediaFields  = new \Pan\MenuPages\PageComponents\Tab($mainPage, 'Media Fields');
+$tabOtherFields  = new \Pan\MenuPages\PageComponents\Tab($mainPage, 'Other Fields');
 
 $tabNumberFieldsDemo = new \Pan\MenuPages\PageComponents\Tab($subPage, 'Number Fields');
 $tabWpSpecificDemo = new \Pan\MenuPages\PageComponents\Tab($subPage, 'WordPress');
@@ -182,3 +183,10 @@ $url->setLabel('Url Demo');
 
 $week = new \Pan\MenuPages\Fields\Week($tabDateTimeFields, 'week');
 $week->setLabel('Week Demo');
+
+$raw = new \Pan\MenuPages\Fields\Raw($tabOtherFields, 'raw');
+$content = '<div class="jumbotron"><h1>Html allowed in <code>Raw</code> fields!</h1>
+<p>Sunt quadraes manifestum peritus, clemens compateres. Capio noster ventus est.Pol, diatria!
+Clinias, verpa, et adgium.</p>
+</div>';
+$raw->setContent($content);

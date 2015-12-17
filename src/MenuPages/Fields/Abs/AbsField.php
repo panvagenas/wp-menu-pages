@@ -11,6 +11,7 @@
 
 namespace Pan\MenuPages\Fields\Abs;
 
+use Pan\MenuPages\Fields\Ifc\IfcTemplate;
 use Pan\MenuPages\Fields\Trt\TrtGlobalAttributes;
 use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
 use Pan\MenuPages\PageComponents\Panel;
@@ -25,7 +26,7 @@ use Pan\MenuPages\Trt\TrtIdentifiable;
  * @package   Pan\MenuPages\Fields
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-abstract class AbsField {
+abstract class AbsField implements IfcTemplate{
     use TrtIdentifiable, TrtGlobalAttributes;
 
     /**

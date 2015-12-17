@@ -3,12 +3,11 @@
 namespace Pan\MenuPages\Fields\Abs;
 
 use Pan\MenuPages\Fields\Ifc\IfcInputConstants;
-use Pan\MenuPages\Fields\Ifc\IfcTemplate;
 use Pan\MenuPages\Fields\Ifc\IfcValidation;
 use Pan\MenuPages\Fields\Trt\TrtGlobalInputAttributes;
 use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
 
-abstract class AbsInputBase extends AbsField implements IfcValidation, IfcTemplate{
+abstract class AbsInputBase extends AbsField implements IfcValidation{
     use TrtGlobalInputAttributes;
     /**
      * @var string
