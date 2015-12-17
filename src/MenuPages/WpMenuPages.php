@@ -2,6 +2,8 @@
 
 namespace Pan\MenuPages;
 
+use Pan\MenuPages\Pages\Abs\AbsMenuPage;
+
 /**
  * Class WpMenuPages
  *
@@ -144,5 +146,8 @@ final class WpMenuPages {
      */
     public function getBasePathRelToPlugin() {
         return $this->basePathRelToPlugin;
+    }
+    public function attachMenuPage(AbsMenuPage $menuPage){
+        $this->menuPages[$menuPage->getMenuSlug()] = $menuPage;
     }
 }

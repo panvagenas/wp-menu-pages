@@ -19,6 +19,7 @@ interface IfcScripts extends IfcConstants{
     const REQUIRE_JS_SLUG = 'require-js';
     const CORE_CSS_SLUG = 'wp-menu-pages-css';
     const CORE_JS_DEFINITIONS = 'wpMenuPagesDefinitions';
+    const CORE_JS_OBJECT = 'wpMenuPages';
 
     const ACTION_SAVE_PREFIX = 'wp-menu-pages-save-options-';
     const ACTION_RESET_PREFIX = 'wp-menu-pages-reset-options-';

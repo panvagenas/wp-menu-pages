@@ -47,29 +47,47 @@ class Script extends AbsMultiSingleton {
 
         wp_enqueue_script( IfcScripts::CORE_JS_SLUG );
 
-        wp_localize_script( IfcScripts::CORE_JS_SLUG, IfcScripts::CORE_JS_DEFINITIONS,
-            [
-                'baseJsUrl'=> '/' . str_replace(trailingslashit($_SERVER['DOCUMENT_ROOT']), '', $this->pathToAssets) . "/js",
-                'context' => $this->menuPage->getMenuSlug(),
-                'nonce'   => [
-                    IfcScripts::ACTION_SAVE_PREFIX
-                    . $this->menuPage->getMenuSlug() => wp_create_nonce( IfcScripts::ACTION_SAVE_PREFIX
-                                                                         . $this->menuPage->getMenuSlug() ),
-                    IfcScripts::ACTION_RESET_PREFIX
-                    . $this->menuPage->getMenuSlug() => wp_create_nonce( IfcScripts::ACTION_RESET_PREFIX
-                                                                         . $this->menuPage->getMenuSlug() ),
-                    IfcScripts::ACTION_IMPORT_PREFIX
-                    . $this->menuPage->getMenuSlug() => wp_create_nonce( IfcScripts::ACTION_IMPORT_PREFIX
-                                                                         . $this->menuPage->getMenuSlug() ),
-                    IfcScripts::ACTION_EXPORT_PREFIX
-                    . $this->menuPage->getMenuSlug() => wp_create_nonce( IfcScripts::ACTION_EXPORT_PREFIX
-                                                                         . $this->menuPage->getMenuSlug() ),
-                    IfcScripts::ACTION_UPDATE_CORE_OPTIONS_PREFIX
-                    . $this->menuPage->getMenuSlug() => wp_create_nonce( IfcScripts::ACTION_UPDATE_CORE_OPTIONS_PREFIX
-                                                                         . $this->menuPage->getMenuSlug() ),
+        $baseUri = '/' . str_replace(
+                trailingslashit($_SERVER['DOCUMENT_ROOT']),
+                ''
+                , $this->menuPage->getWpMenuPages()->getBasePath()
+            );
+        $uriPathToAssets = $baseUri . '/' . IfcScripts::ASSETS_FOLDER;
+        $uriPathToJs = $uriPathToAssets . '/js';
+        $uriPathToCss = $uriPathToAssets . '/css';
+
+        $options = $this->menuPage->getOptions();
+
+        wp_localize_script(IfcScripts::CORE_JS_SLUG, IfcScripts::CORE_JS_OBJECT, [
+            'options' => [
+                    'defaults' => $options->getDefaults(),
+                    'options' => $options->getOptions(),
+                    'baseName' => $options->getOptionsBaseName()
                 ],
-            ]
-        );
+            'pages' => array_keys($this->menuPage->getWpMenuPages()->getMenuPages()),
+            'wpUrl' => site_url(),
+            'baseUri'=> $baseUri,
+            'uriPathToAssets' => $uriPathToAssets,
+            'uriPathToCss' => $uriPathToCss,
+            'uriPathToJs' => $uriPathToJs,
+            'context' => $this->menuPage->getMenuSlug(),
+            'nonce'   => [
+                IfcScripts::ACTION_SAVE_PREFIX . $this->menuPage->getMenuSlug() =>
+                    wp_create_nonce( IfcScripts::ACTION_SAVE_PREFIX . $this->menuPage->getMenuSlug() ),
+
+                IfcScripts::ACTION_RESET_PREFIX . $this->menuPage->getMenuSlug() =>
+                    wp_create_nonce( IfcScripts::ACTION_RESET_PREFIX . $this->menuPage->getMenuSlug() ),
+
+                IfcScripts::ACTION_IMPORT_PREFIX . $this->menuPage->getMenuSlug() =>
+                    wp_create_nonce( IfcScripts::ACTION_IMPORT_PREFIX . $this->menuPage->getMenuSlug() ),
+
+                IfcScripts::ACTION_EXPORT_PREFIX . $this->menuPage->getMenuSlug() =>
+                    wp_create_nonce( IfcScripts::ACTION_EXPORT_PREFIX . $this->menuPage->getMenuSlug() ),
+
+                IfcScripts::ACTION_UPDATE_CORE_OPTIONS_PREFIX . $this->menuPage->getMenuSlug() =>
+                    wp_create_nonce( IfcScripts::ACTION_UPDATE_CORE_OPTIONS_PREFIX . $this->menuPage->getMenuSlug() ),
+            ],
+        ]);
     }
 
     public function init() {

@@ -107,6 +107,7 @@ abstract class AbsMenuPage {
         $this->position    = $position;
 
         $coreOptions = $this->options->get(IfcConstants::CORE_OPTIONS_KEY);
+        $menuPages->attachMenuPage($this);
 
         if(!isset($coreOptions[$this->menuSlug])){
             $coreOptions[$this->menuSlug] = [];

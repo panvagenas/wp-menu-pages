@@ -1,5 +1,5 @@
-define(['jquery', 'mnp/controls', 'mnp/domSelector', 'mnp/field', 'mnp/alert', 'fileSaver'],
-    function ($, controls, domSelector, field, alert, saveAs) {
+define(['jquery', 'mnp/controls', 'mnp/domSelector', 'mnp/field', 'mnp/alert', 'fileSaver', 'mnp/wpMenuPages'],
+    function ($, controls, domSelector, field, alert, saveAs, wpMenuPages) {
 
         var actionPrefix = 'wp-menu-pages-';
         var actionSavePrefix = actionPrefix + 'save-options-';
@@ -10,7 +10,7 @@ define(['jquery', 'mnp/controls', 'mnp/domSelector', 'mnp/field', 'mnp/alert', '
 
         return {
             ajaxUrl: ajaxurl,
-            context: wpMenuPagesDefinitions.context,
+            context: wpMenuPages.context,
 
             actionPrefix: 'wp-menu-pages-',
             actionSavePrefix: actionSavePrefix,
@@ -36,7 +36,7 @@ define(['jquery', 'mnp/controls', 'mnp/domSelector', 'mnp/field', 'mnp/alert', '
                 var data = {
                     options: newOptions,
                     action: action,
-                    nonce: wpMenuPagesDefinitions.nonce[action]
+                    nonce: wpMenuPages.nonce[action]
                 };
 
                 controls.loading(domSelector.getSaveBtn(), true, true);
@@ -45,6 +45,10 @@ define(['jquery', 'mnp/controls', 'mnp/domSelector', 'mnp/field', 'mnp/alert', '
                     if (response.data != undefined && response.data.options != undefined) {
                         var fields = response.data.options;
                         for (var fieldName in fields) {
+                            if(!fields.hasOwnProperty(fieldName)){
+                                continue;
+                            }
+
                             if (fields[fieldName].valid) {
                                 field.markValid(fieldName);
                                 continue;
@@ -78,7 +82,7 @@ define(['jquery', 'mnp/controls', 'mnp/domSelector', 'mnp/field', 'mnp/alert', '
                 var action = this.actionExportPrefix + this.context;
                 var data = {
                     action: action,
-                    nonce: wpMenuPagesDefinitions.nonce[action]
+                    nonce: wpMenuPages.nonce[action]
                 };
 
                 controls.loading(domSelector.getExportBtn(), true, true);
@@ -90,7 +94,7 @@ define(['jquery', 'mnp/controls', 'mnp/domSelector', 'mnp/field', 'mnp/alert', '
                     }
 
                     var blob = new Blob([response.data.options], {
-                        type: "application/json;charset=utf-8;",
+                        type: "application/json;charset=utf-8;"
                     });
                     saveAs(blob, response.data.name + '.json');
 
@@ -116,7 +120,7 @@ define(['jquery', 'mnp/controls', 'mnp/domSelector', 'mnp/field', 'mnp/alert', '
                 var action = this.actionImportPrefix + this.context;
                 var data = {
                     action: action,
-                    nonce: wpMenuPagesDefinitions.nonce[action],
+                    nonce: wpMenuPages.nonce[action],
                     options: newOptions
                 };
 
@@ -151,7 +155,7 @@ define(['jquery', 'mnp/controls', 'mnp/domSelector', 'mnp/field', 'mnp/alert', '
                 var action = this.actionResetPrefix + this.context;
                 var data = {
                     'action': action,
-                    'nonce': wpMenuPagesDefinitions.nonce[action]
+                    'nonce': wpMenuPages.nonce[action]
                 };
 
                 if (include) {
@@ -192,7 +196,7 @@ define(['jquery', 'mnp/controls', 'mnp/domSelector', 'mnp/field', 'mnp/alert', '
                 var data = {
                     'options': newOptions,
                     'action': action,
-                    'nonce': wpMenuPagesDefinitions.nonce[action]
+                    'nonce': wpMenuPages.nonce[action]
                 };
 
                 this.post(data);
