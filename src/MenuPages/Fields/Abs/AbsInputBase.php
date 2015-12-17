@@ -16,6 +16,7 @@ abstract class AbsInputBase extends AbsField implements IfcValidation, IfcTempla
      * @var string
      */
     protected $label;
+    protected $description;
 
     /**
      * @inheritDoc
@@ -55,6 +56,31 @@ abstract class AbsInputBase extends AbsField implements IfcValidation, IfcTempla
      */
     public function setLabel( $label ) {
         $this->label = $label;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     * @see    AbsInputBase::$description
+     * @codeCoverageIgnore
+     */
+    public function getDescription() {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     *
+     * @return $this
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     * @codeCoverageIgnore
+     */
+    public function setDescription( $description ) {
+        $this->description = $description;
 
         return $this;
     }

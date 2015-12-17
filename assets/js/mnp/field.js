@@ -1,7 +1,12 @@
 define(['jquery', 'mnp/domSelector'], function ($, domSelector) {
+    var helpBlockClass = 'help-block';
+    var helpBlockErrorClass = 'input-error';
+    var helpBlockErrorSelector = '.'+helpBlockClass+'.'+helpBlockErrorClass;
     return {
-        helpBlockClass: 'help-block',
-        helpBlockTemplate: '<span id="{{id}}" class="help-block">{{msg}}</span>',
+        helpBlockClass: helpBlockClass,
+        helpBlockErrorClass: helpBlockErrorClass,
+        helpBlockErrorSelector: helpBlockErrorSelector,
+        helpBlockTemplate: '<span id="{{id}}" class="'+helpBlockClass+' '+helpBlockErrorClass+'">{{msg}}</span>',
         inputHasErrorClass: 'has-error',
         inputStandardClass: 'wp-menu-pages-input',
 
@@ -20,7 +25,7 @@ define(['jquery', 'mnp/domSelector'], function ($, domSelector) {
             var $formGroup = $field.closest('.form-group');
             $formGroup.addClass(this.inputHasErrorClass);
 
-            $formGroup.find('.'+this.helpBlockClass).remove();
+            $formGroup.find(this.helpBlockErrorSelector).remove();
 
             $field.after(helpBlockMarkUp);
         },
@@ -35,7 +40,7 @@ define(['jquery', 'mnp/domSelector'], function ($, domSelector) {
 
             var $formGroup = $field.closest('.form-group');
             $formGroup.removeClass(this.inputHasErrorClass);
-            $formGroup.find('.'+this.helpBlockClass).remove();
+            $formGroup.find(this.helpBlockErrorSelector).remove();
         },
         getByName: function(fieldName, fromActiveTab){
             fromActiveTab = fromActiveTab == undefined;

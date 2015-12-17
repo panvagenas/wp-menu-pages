@@ -69,6 +69,12 @@
                 {% endfor %}
             </select>
 
+            {% if field.description %}
+                <span id="{{ field.id | e('html_attr') }}" class="help-block field-description">
+                        {{ field.description }}
+                    </span>
+            {% endif %}
+
         </div>
     </div>
 {% endspaceless %}
