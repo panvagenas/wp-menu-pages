@@ -2,34 +2,16 @@
 
 namespace Pan\MenuPages\PageElements\Abs;
 
-use Pan\MenuPages\Pages\Abs\AbsMenuPage;
+use Pan\MenuPages\Ifc\IfcDisplayable;
 use Pan\MenuPages\Trt\TrtIdentifiable;
 
-class AbsElement {
+abstract class AbsElement implements IfcDisplayable{
     use TrtIdentifiable;
 
-    /**
-     * @var \Pan\MenuPages\Pages\Abs\AbsMenuPage
-     */
-    protected $menuPage;
+    protected $templatesDir = '';
+    protected $templateName = '';
 
-    public function __construct( AbsMenuPage $menuPage ) {
-        $this->menuPage = $menuPage;
-        $this->menuPage->attachElement( $this );
-    }
-
-    /**
-     * @return AbsMenuPage
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
-     * @see    AbsMenuPageComponent::$menuPage
-     * @codeCoverageIgnore
-     */
-    public function getMenuPage() {
-        return $this->menuPage;
-    }
-
-    public function getOptions() {
-        return $this->menuPage->getOptions();
+    public function getTemplateName() {
+        return $this->templatesDir . '/' . $this->templateName;
     }
 }

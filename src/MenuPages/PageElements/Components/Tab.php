@@ -49,7 +49,13 @@ class Tab extends AbsComponent {
     protected $fieldsComponent;
     protected $markUp = '';
 
-    public function __construct( Tabs $container, $title, $active = false, $icon = '', AbsFieldsComponent $fieldsComponent = null ) {
+    public function __construct(
+        Tabs $container,
+        $title,
+        $active = false,
+        $icon = '',
+        AbsFieldsComponent $fieldsComponent = null
+    ) {
         parent::__construct( $container );
         $this->title  = $title;
         $this->active = $active;

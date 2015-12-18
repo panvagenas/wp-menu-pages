@@ -11,7 +11,6 @@
 
 namespace Pan\MenuPages\Pages;
 
-use Pan\MenuPages\PageComponents;
 use Pan\MenuPages\WpMenuPages;
 
 /**

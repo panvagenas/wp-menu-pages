@@ -3,6 +3,7 @@
 namespace Pan\MenuPages\PageElements\Components\Abs;
 
 use Pan\MenuPages\Fields\Abs\AbsField;
+use Pan\MenuPages\Fields\Abs\AbsInputBase;
 
 abstract class AbsFieldsComponent extends AbsComponent {
     protected $fields = [ ];
@@ -40,8 +41,8 @@ abstract class AbsFieldsComponent extends AbsComponent {
      * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
      */
     public function getFieldByName($name){
+        /** @var AbsInputBase $field */
         foreach ( $this->fields as $field ) {
-            /** \Pan\MenuPages\Fields\Abs\AbsInputBase $field */
             if($field->getName() === $name){
                 return $field;
             }
@@ -57,5 +58,13 @@ abstract class AbsFieldsComponent extends AbsComponent {
      */
     public function getFields() {
         return $this->fields;
+    }
+
+    public function getOptions(){
+        return $this->container->getOptions();
+    }
+
+    public function getMenuPage(){
+        return $this->container->getMenuPage();
     }
 }

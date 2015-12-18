@@ -12,6 +12,7 @@
 namespace Pan\MenuPages\Fields;
 
 use Pan\MenuPages\Fields\Abs\AbsInput;
+use Pan\MenuPages\PageElements\Components\Abs\AbsFieldsComponent;
 use Pan\MenuPages\PageElements\Containers\Collapsible;
 
 /**
@@ -26,8 +27,8 @@ use Pan\MenuPages\PageElements\Containers\Collapsible;
 class Button extends AbsInput {
     protected $type = 'button';
 
-    public function __construct( Collapsible $panel, $name, $label ) {
-        parent::__construct( $panel, $name );
+    public function __construct( AbsFieldsComponent $component, $name, $label ) {
+        parent::__construct( $component, $name );
         $this->label = $label;
         $this->setClass( $this->class . ' btn' );
     }

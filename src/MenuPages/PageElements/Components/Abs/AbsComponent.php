@@ -2,22 +2,19 @@
 
 namespace Pan\MenuPages\PageElements\Components\Abs;
 
-use Pan\MenuPages\Ifc\IfcDisplayable;
 use Pan\MenuPages\PageElements\Abs\AbsElement;
 use Pan\MenuPages\PageElements\Containers\Abs\AbsComponentsContainer;
 use Pan\MenuPages\Templates\Twig;
 
-abstract class AbsComponent extends AbsElement implements IfcDisplayable{
+abstract class AbsComponent extends AbsElement {
     /**
      * @var AbsComponentsContainer
      */
     protected $container;
 
     protected $templatesDir = 'components';
-    protected $templateName = '';
 
     public function __construct( AbsComponentsContainer $container ) {
-        parent::__construct( $container->getMenuPage() );
         $this->container = $container;
         $this->container->attachComponent($this);
     }
@@ -28,7 +25,7 @@ abstract class AbsComponent extends AbsElement implements IfcDisplayable{
      * @since  TODO ${VERSION}
      */
     public function getTwig() {
-        return $this->menuPage->getTwig();
+        return $this->container->getTwig();
     }
 
     public function getMarkUp( $echo = false ) {
@@ -41,9 +38,5 @@ abstract class AbsComponent extends AbsElement implements IfcDisplayable{
         }
 
         return $markup;
-    }
-
-    public function getTemplateName() {
-        return $this->templatesDir . '/' . $this->templateName;
     }
 }

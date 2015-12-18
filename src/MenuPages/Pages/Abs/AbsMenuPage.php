@@ -11,11 +11,12 @@
 
 namespace Pan\MenuPages\Pages\Abs;
 
-use Pan\MenuPages\Fields\Abs\AbsInputBase;
 use Pan\MenuPages\Ifc\IfcConstants;
 use Pan\MenuPages\Options;
-use Pan\MenuPages\PageElements\Abs\AbsElement;
 use Pan\MenuPages\PageElements\Components\Abs\AbsFieldsComponent;
+use Pan\MenuPages\PageElements\Components\Tab;
+use Pan\MenuPages\PageElements\Containers\Abs\AbsComponentsContainer;
+use Pan\MenuPages\PageElements\Containers\Abs\AbsContainer;
 use Pan\MenuPages\Scripts\AjaxHandler;
 use Pan\MenuPages\Scripts\Ifc\IfcScripts;
 use Pan\MenuPages\Scripts\Script;
@@ -37,7 +38,7 @@ abstract class AbsMenuPage {
     /**
      * @var array
      */
-    protected $elements = [ ];
+    protected $containers = [ ];
     /**
      * @var Options
      */
@@ -199,62 +200,44 @@ abstract class AbsMenuPage {
     }
 
     /**
-     * @param AbsElement $element
+     * @param AbsContainer $container
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      */
-    public function attachElement( AbsElement $element ) {
-        if(!$this->canAttachElement($element)){
-            return $this;
-        }
-
-        if ( ! $this->hasElement( $element ) ) {
-            $this->elements[] = $element;
+    public function attachContainer( AbsContainer $container ) {
+        if ( ! $this->hasContainer( $container ) ) {
+            $this->containers[] = $container;
         }
 
         return $this;
     }
 
-    abstract protected function canAttachElement(AbsElement $component);
+    public function getFieldByName($fieldName){
+        if(empty($fieldName) || !is_string($fieldName)){
+            return null;
+        }
 
-    public function getFieldByName($name){
-        foreach ( $this->elements as $component ) {
-            if( $component instanceof AbsFieldsComponent){
-                $field = $component->getFieldByName($name);
-                if($field){
-                    return $field;
+        /** @var AbsComponentsContainer $container */
+        foreach ( $this->containers as $container ) {
+            if($container instanceof AbsComponentsContainer){
+                foreach ( $container->getComponents() as $component ) {
+                    if($component instanceof AbsFieldsComponent || $component instanceof Tab) // FIXME
                 }
             }
         }
-        return null;
-    }
-
-    public function getAllOptionFields(){
-        $fields = [];
-        foreach ( $this->elements as $element ) {
-            if( $element instanceof AbsFieldsComponent){
-                $componentFields = $element->getFields();
-                foreach ( $componentFields as $field ) {
-                    if($field instanceof AbsInputBase){
-                        $fields[$field->getName()] = $field;
-                    }
-                }
-            }
-        }
-        return $fields;
     }
 
     /**
-     * @param AbsElement $element
+     * @param AbsContainer $container
      *
      * @return bool
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      */
-    public function hasElement( AbsElement $element ) {
-        return array_key_exists( $element->getHashId(), $this->elements );
+    public function hasContainer( AbsContainer $container ) {
+        return array_key_exists( $container->getHashId(), $this->containers );
     }
 
     /**
@@ -263,8 +246,8 @@ abstract class AbsMenuPage {
      * @see    MenuPage::$components
      * @codeCoverageIgnore
      */
-    public function getElements() {
-        return $this->elements;
+    public function getContainers() {
+        return $this->containers;
     }
 
     /**

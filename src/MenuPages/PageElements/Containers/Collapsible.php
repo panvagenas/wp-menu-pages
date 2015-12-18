@@ -18,8 +18,8 @@ class Collapsible extends AbsComponentsContainer {
      */
     protected $title = '';
 
-    public function __construct( AbsMenuPage $menuPage, $title ) {
-        parent::__construct( $menuPage );
+    public function __construct( AbsMenuPage $menuPage, $position, $title ) {
+        parent::__construct( $menuPage, $position );
         $this->title = $this->setTitle($title);
     }
 
