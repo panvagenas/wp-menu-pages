@@ -6,37 +6,40 @@
  * and open the template in the editor.
  */
 
-namespace Pan\MenuPages\PageComponents;
+namespace Pan\MenuPages\PageElements\Components;
 
-use Pan\MenuPages\Pages\Abs\AbsMenuPage;
+use Pan\MenuPages\PageElements\Components\Abs\AbsComponent;
+use Pan\MenuPages\PageElements\Containers\Abs\AbsComponentsContainer;
 
 /**
  * Description of Social
  *
  * @author vagenas
  */
-class Social extends Abs\AbsMenuPageComponent{
+class Social extends AbsComponent{
     const ICON_FACEBOOK = 'facebook';
     const ICON_TWITTER = 'twitter';
     const ICON_WORDPRESS = 'wordpress';
     const ICON_GITHUB = 'github';
 
     protected $icon;
-    protected $name;
+    protected $title;
     protected $link;
 
-    public function __construct( AbsMenuPage $menuPage, $name, $icon, $link) {
-        parent::__construct($menuPage);
-        $this->name = $name;
-        $this->icon = $icon;
-        $this->link = $link;
+    protected $templateName = 'social.twig';
+
+    public function __construct( AbsComponentsContainer $container, $link, $title = '', $icon = '') {
+        parent::__construct($container);
+        $this->title = $title;
+        $this->icon  = $icon;
+        $this->link  = $link;
     }
     function getIcon() {
         return $this->icon;
     }
 
-    function getName() {
-        return $this->name;
+    function getTitle() {
+        return $this->title;
     }
 
     function getLink() {

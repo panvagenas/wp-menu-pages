@@ -11,7 +11,7 @@
 
 namespace Pan\MenuPages\Fields;
 
-use Pan\MenuPages\PageComponents\Panel;
+use Pan\MenuPages\PageElements\Containers\Collapsible;
 
 /**
  * Class Reset
@@ -25,7 +25,7 @@ use Pan\MenuPages\PageComponents\Panel;
 class Reset extends Button {
     protected $type = 'reset';
 
-    public function __construct( Panel $panel, $name, $label ) {
+    public function __construct( Collapsible $panel, $name, $label ) {
         parent::__construct( $panel, $name, $label );
         $this->setClass( $this->class . ' btn-warning' );
     }

@@ -9,7 +9,9 @@
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
 
-namespace Pan\MenuPages\PageComponents\Elements;
+namespace Pan\MenuPages\PageElements\Components;
+
+use Pan\MenuPages\PageElements\Components\Abs\AbsFieldsComponent;
 
 /**
  * Class Form
@@ -20,7 +22,7 @@ namespace Pan\MenuPages\PageComponents\Elements;
  * @package   Pan\MenuPages\PageComponents\Elements
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class Form {
+class Form extends AbsFieldsComponent{
     /**
      * @var string
      */
@@ -41,6 +43,8 @@ class Form {
      * @var string
      */
     protected $class = 'form-horizontal';
+
+    protected $templateName = 'form.twig';
 
     /**
      * @return string

@@ -9,9 +9,9 @@
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
 
-namespace Pan\MenuPages\PageComponents;
+namespace Pan\MenuPages\PageElements\Components;
 
-use Pan\MenuPages\PageComponents\Abs\AbsMenuPageComponent;
+use Pan\MenuPages\PageElements\Components\Abs\AbsComponent;
 
 /**
  * Class Alert
@@ -22,7 +22,7 @@ use Pan\MenuPages\PageComponents\Abs\AbsMenuPageComponent;
  * @package   Pan\MenuPages\PageComponents
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class Alert extends AbsMenuPageComponent {
+class Alert extends AbsComponent {
     const TYPE_SUCCESS = 'success';
 
     const TYPE_INFO = 'info';
@@ -34,6 +34,8 @@ class Alert extends AbsMenuPageComponent {
     protected $type = self::TYPE_INFO;
     protected $dismissible = true;
     protected $content = '';
+
+    protected $templateName = 'alert.twig';
 
     /**
      * @return string

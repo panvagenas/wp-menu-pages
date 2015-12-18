@@ -11,7 +11,7 @@
 
 namespace Pan\MenuPages\Fields;
 
-use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
+use Pan\MenuPages\PageElements\Components\Abs\AbsFieldsComponent;
 
 /**
  * Class Taxonomies
@@ -23,7 +23,7 @@ use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
 class Taxonomies extends Select2 {
-    public function __construct( AbsMenuPageFieldsComponent $component, $name, $postType = 'post', $args = [ ] ) {
+    public function __construct( AbsFieldsComponent $component, $name, $postType = 'post', $args = [ ] ) {
         parent::__construct( $component, $name );
 
         $taxonomies = get_object_taxonomies( $postType );

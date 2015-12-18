@@ -1,0 +1,21 @@
+<div class="panel panel-default">
+
+    {% if el.header %}
+        <div class="panel-heading">
+            {{ el.header | raw }}
+        </div>
+    {% endif %}
+
+    {% if el.body %}
+        <div class="panel-body">
+            {{ el.body | raw }}
+        </div>
+    {% endif %}
+
+    {% if el.footer %}
+        <div class="panel-footer">
+            {{ el.footer | raw }}
+        </div>
+    {% endif %}
+
+</div>

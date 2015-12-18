@@ -14,9 +14,8 @@ namespace Pan\MenuPages\Pages\Abs;
 use Pan\MenuPages\Fields\Abs\AbsInputBase;
 use Pan\MenuPages\Ifc\IfcConstants;
 use Pan\MenuPages\Options;
-use Pan\MenuPages\PageComponents;
-use Pan\MenuPages\PageComponents\Abs\AbsMenuPageComponent;
-use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
+use Pan\MenuPages\PageElements\Abs\AbsElement;
+use Pan\MenuPages\PageElements\Components\Abs\AbsFieldsComponent;
 use Pan\MenuPages\Scripts\AjaxHandler;
 use Pan\MenuPages\Scripts\Ifc\IfcScripts;
 use Pan\MenuPages\Scripts\Script;
@@ -38,7 +37,7 @@ abstract class AbsMenuPage {
     /**
      * @var array
      */
-    protected $components = [ ];
+    protected $elements = [ ];
     /**
      * @var Options
      */
@@ -127,7 +126,7 @@ abstract class AbsMenuPage {
         }
 
         $scripts = Script::getInstance($this);
-        // TODO We should first check if request is for current page in order to avoid unecessary registrations
+        // TODO We should first check if request is for current page in order to avoid unnecessary registrations
         $scripts->requireWpMenuPagesScripts();
         $scripts->requireFontAwesome();
 
@@ -200,29 +199,29 @@ abstract class AbsMenuPage {
     }
 
     /**
-     * @param AbsMenuPageComponent $component
+     * @param AbsElement $element
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      */
-    public function attachComponent( AbsMenuPageComponent $component ) {
-        if(!$this->canAttachComponent($component)){
+    public function attachElement( AbsElement $element ) {
+        if(!$this->canAttachElement($element)){
             return $this;
         }
 
-        if ( ! $this->hasComponent( $component ) ) {
-            $this->components[] = $component;
+        if ( ! $this->hasElement( $element ) ) {
+            $this->elements[] = $element;
         }
 
         return $this;
     }
 
-    abstract protected function canAttachComponent(AbsMenuPageComponent $component);
+    abstract protected function canAttachElement(AbsElement $component);
 
     public function getFieldByName($name){
-        foreach ( $this->components as $component ) {
-            if($component instanceof AbsMenuPageFieldsComponent){
+        foreach ( $this->elements as $component ) {
+            if( $component instanceof AbsFieldsComponent){
                 $field = $component->getFieldByName($name);
                 if($field){
                     return $field;
@@ -234,9 +233,9 @@ abstract class AbsMenuPage {
 
     public function getAllOptionFields(){
         $fields = [];
-        foreach ( $this->components as $component ) {
-            if($component instanceof AbsMenuPageFieldsComponent){
-                $componentFields = $component->getFields();
+        foreach ( $this->elements as $element ) {
+            if( $element instanceof AbsFieldsComponent){
+                $componentFields = $element->getFields();
                 foreach ( $componentFields as $field ) {
                     if($field instanceof AbsInputBase){
                         $fields[$field->getName()] = $field;
@@ -248,24 +247,24 @@ abstract class AbsMenuPage {
     }
 
     /**
-     * @param AbsMenuPageComponent $component
+     * @param AbsElement $element
      *
      * @return bool
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      */
-    public function hasComponent( AbsMenuPageComponent $component ) {
-        return array_key_exists( $component->getHashId(), $this->components );
+    public function hasElement( AbsElement $element ) {
+        return array_key_exists( $element->getHashId(), $this->elements );
     }
 
     /**
-     * @return array Of AbsMenuPageComponent
+     * @return array Of AbsComponent
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    MenuPage::$components
      * @codeCoverageIgnore
      */
-    public function getComponents() {
-        return $this->components;
+    public function getElements() {
+        return $this->elements;
     }
 
     /**

@@ -13,10 +13,10 @@ namespace Pan\MenuPages\Pages;
 
 use Pan\MenuPages\Ifc\IfcConstants;
 use Pan\MenuPages\PageComponents;
-use Pan\MenuPages\PageComponents\Abs\AbsMenuPageComponent;
-use Pan\MenuPages\PageComponents\Alert;
-use Pan\MenuPages\PageComponents\Aside;
-use Pan\MenuPages\PageComponents\Tab;
+use Pan\MenuPages\PageElements\Components\Abs\AbsComponent;
+use Pan\MenuPages\PageElements\Components\Alert;
+use Pan\MenuPages\PageElements\Components\Tab;
+use Pan\MenuPages\PageElements\Containers\Aside;
 use Pan\MenuPages\Pages\Abs\AbsMenuPage;
 
 /**
@@ -63,14 +63,14 @@ class Page extends AbsMenuPage{
             $context['page']['subtitle'] = $this->subtitle;
         }
 
-        foreach ( $this->components as $componentId => $component ) {
+        foreach ( $this->elements as $componentId => $component ) {
             if ( $component instanceof Tab ) {
                 $context['tabs'][] = $component;
             } elseif ( $component instanceof Aside ) {
                 $context['aside'] = $component;
             } elseif ( $component instanceof Alert ) {
                 $context['alerts'][] = $component;
-            } elseif ( $component instanceof PageComponents\Social ) {
+            } elseif ( $component instanceof \Pan\MenuPages\PageElements\Components\Social ) {
                 $context['socials'][] = $component;
             }
         }
@@ -79,13 +79,13 @@ class Page extends AbsMenuPage{
     }
 
     /**
-     * @param AbsMenuPageComponent $component
+     * @param \Pan\MenuPages\PageElements\Components\Abs\AbsComponent $component
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      */
-    public function attachComponent( AbsMenuPageComponent $component ) {
+    public function attachComponent( AbsComponent $component ) {
         parent::attachComponent($component);
 
         if($component instanceof Tab){
@@ -100,7 +100,7 @@ class Page extends AbsMenuPage{
         return $this;
     }
 
-    protected function canAttachComponent(AbsMenuPageComponent $component){
+    protected function canAttachElement(AbsComponent $component){
         return true;
     }
 }

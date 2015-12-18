@@ -1,0 +1,9 @@
+<div class="alert alert-{{ el.type | e('html_attr') }} {% if el.dismissible %}alert-dismissible fade in{% endif %}"
+     role="alert">
+    {% if el.dismissible %}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    {% endif %}
+    {{ el.content | raw }}
+</div>

@@ -1,0 +1,10 @@
+<form id="form-{{ el.id | e('html_attr') }}"
+      class="{{ el.class | e('html_attr') }}"
+      method="{{ el.method | e('html_attr') }}"
+      action="{{ el.action | e('html_attr') }}"
+      enctype="{{ el.encType | e('html_attr') }}"
+>
+    {% for fieldId, field in el.fields %}
+        {{ field.markUp || raw }}
+    {% endfor %}
+</form>

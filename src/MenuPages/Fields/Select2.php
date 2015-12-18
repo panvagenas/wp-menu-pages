@@ -11,7 +11,7 @@
 
 namespace Pan\MenuPages\Fields;
 
-use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
+use Pan\MenuPages\PageElements\Components\Abs\AbsFieldsComponent;
 use Pan\MenuPages\Scripts\Script;
 
 /**
@@ -27,7 +27,7 @@ class Select2 extends Select {
     protected $select2options = [ ];
     protected $multiple;
 
-    public function __construct( AbsMenuPageFieldsComponent $component, $name ) {
+    public function __construct( AbsFieldsComponent $component, $name ) {
         parent::__construct( $component, $name );
         Script::getInstance($this->menuPageComponent->getMenuPage())->requireSelect2();
     }

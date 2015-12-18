@@ -90,17 +90,17 @@ $wpMenuPages = new \Pan\MenuPages\WpMenuPages(__FILE__, $optionsObj);
 $mainPage = new \Pan\MenuPages\Pages\Page($wpMenuPages, 'My Settings');
 $subPage = new \Pan\MenuPages\Pages\SubPage($wpMenuPages, $mainPage, 'Sub Page Demo');
 
-$tabTextFields = new \Pan\MenuPages\PageComponents\Tab($mainPage, 'Text Fields', true);
-$tabDateTimeFields = new \Pan\MenuPages\PageComponents\Tab($mainPage, 'Date-Time Fields');
-$tabSelectFields = new \Pan\MenuPages\PageComponents\Tab($mainPage,'Select Fields');
-$tabRadioFields  = new \Pan\MenuPages\PageComponents\Tab($mainPage, 'Radio Fields');
-$tabMediaFields  = new \Pan\MenuPages\PageComponents\Tab($mainPage, 'Media Fields');
-$tabOtherFields  = new \Pan\MenuPages\PageComponents\Tab($mainPage, 'Other Fields');
+$tabTextFields = new \Pan\MenuPages\PageElements\Components\Tab($mainPage, 'Text Fields', true);
+$tabDateTimeFields = new \Pan\MenuPages\PageElements\Components\Tab($mainPage, 'Date-Time Fields');
+$tabSelectFields = new \Pan\MenuPages\PageElements\Components\Tab($mainPage,'Select Fields');
+$tabRadioFields  = new \Pan\MenuPages\PageElements\Components\Tab($mainPage, 'Radio Fields');
+$tabMediaFields  = new \Pan\MenuPages\PageElements\Components\Tab($mainPage, 'Media Fields');
+$tabOtherFields  = new \Pan\MenuPages\PageElements\Components\Tab($mainPage, 'Other Fields');
 
-$tabNumberFieldsDemo = new \Pan\MenuPages\PageComponents\Tab($subPage, 'Number Fields');
-$tabWpSpecificDemo = new \Pan\MenuPages\PageComponents\Tab($subPage, 'WordPress');
+$tabNumberFieldsDemo = new \Pan\MenuPages\PageElements\Components\Tab($subPage, 'Number Fields');
+$tabWpSpecificDemo = new \Pan\MenuPages\PageElements\Components\Tab($subPage, 'WordPress');
 
-$aside = new \Pan\MenuPages\PageComponents\Aside($mainPage);
+$aside = new \Pan\MenuPages\PageElements\Containers\Aside($mainPage);
 
 $color = new \Pan\MenuPages\Fields\Color($tabMediaFields, 'color');
 $color->setLabel('Color Demo');
@@ -195,6 +195,6 @@ $raw->setContent($content);
 
 $divider = new \Pan\MenuPages\Fields\Divider($tabOtherFields);
 
-$panel = new \Pan\MenuPages\PageComponents\Panel($aside, 'Panel Demo');
+$panel = new \Pan\MenuPages\PageElements\Containers\Collapsible($aside, 'Collapsible Demo');
 
 (new \Pan\MenuPages\Fields\Raw($panel))->setContent($content);

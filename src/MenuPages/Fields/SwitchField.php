@@ -11,7 +11,7 @@
 
 namespace Pan\MenuPages\Fields;
 
-use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
+use Pan\MenuPages\PageElements\Components\Abs\AbsFieldsComponent;
 
 /**
  * Class SwitchField
@@ -28,12 +28,12 @@ class SwitchField extends Radio {
     /**
      * SwitchField constructor.
      *
-     * @param AbsMenuPageFieldsComponent $component
+     * @param AbsFieldsComponent         $component
      * @param                            $name
      *
      * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
-    public function __construct( AbsMenuPageFieldsComponent $component, $name ) {
+    public function __construct( AbsFieldsComponent $component, $name ) {
         parent::__construct( $component, $name );
 
         $this->setOptions(['No' => 0, 'Yes' => 1]);

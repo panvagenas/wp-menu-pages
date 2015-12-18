@@ -13,8 +13,8 @@ namespace Pan\MenuPages\Fields\Abs;
 
 use Pan\MenuPages\Fields\Ifc\IfcTemplate;
 use Pan\MenuPages\Fields\Trt\TrtGlobalAttributes;
-use Pan\MenuPages\PageComponents\Abs\AbsMenuPageFieldsComponent;
-use Pan\MenuPages\PageComponents\Panel;
+use Pan\MenuPages\PageElements\Components\Abs\AbsFieldsComponent;
+use Pan\MenuPages\PageElements\Containers\Collapsible;
 use Pan\MenuPages\Trt\TrtIdentifiable;
 
 /**
@@ -30,19 +30,19 @@ abstract class AbsField implements IfcTemplate{
     use TrtIdentifiable, TrtGlobalAttributes;
 
     /**
-     * @var AbsMenuPageFieldsComponent $component
+     * @var AbsFieldsComponent $component
      */
     protected $menuPageComponent;
 
     /**
      * AbsField constructor.
      *
-     * @param AbsMenuPageFieldsComponent $component
+     * @param AbsFieldsComponent $component
      *
      * @since  TODO ${VERSION}
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
-    public function __construct( AbsMenuPageFieldsComponent $component ) {
+    public function __construct( AbsFieldsComponent $component ) {
         $this->id = str_replace( '\\', '__', get_class( $this ) . '-' . $this->getHashId() );
 
         $this->menuPageComponent = $component;
@@ -50,7 +50,7 @@ abstract class AbsField implements IfcTemplate{
     }
 
     /**
-     * @return Panel
+     * @return Collapsible
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    menuPageComponent::$panel
      * @since  TODO ${VERSION}

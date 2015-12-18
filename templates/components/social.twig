@@ -1,0 +1,6 @@
+<a class="btn btn-default" href="{{ el.link | e('html_attr') }}" target="_blank">
+    {% if el.icon %}
+        <i class="fa fa-{{ el.icon | e('html_attr') }}" title="{{ el.title | e('html_attr') }}"></i>
+    {% endif %}
+    {{ el.title }}
+</a>
