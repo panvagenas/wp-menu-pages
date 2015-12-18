@@ -28,10 +28,6 @@ trait TrtGlobalAttributes {
     /**
      * @var string
      */
-    protected $id;
-    /**
-     * @var string
-     */
     protected $style;
 
     /**
@@ -57,33 +53,6 @@ trait TrtGlobalAttributes {
      */
     public function setClass( $class ) {
         $this->class = $class;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @see    TrtGlobalAttributes::$id
-     * @since  TODO ${VERSION}
-     * @codeCoverageIgnore
-     */
-    public function getId() {
-        return $this->id;
-    }
-
-    /**
-     * Setter for {@link TrtGlobalAttributes::$id}
-     *
-     * @param string $id
-     *
-     * @return $this
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
-     * @codeCoverageIgnore
-     */
-    public function setId( $id ) {
-        $this->id = $id;
 
         return $this;
     }

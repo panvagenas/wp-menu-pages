@@ -13,7 +13,6 @@ namespace Pan\MenuPages\Fields;
 
 use Pan\MenuPages\Fields\Abs\AbsInput;
 use Pan\MenuPages\PageElements\Components\Abs\AbsFieldsComponent;
-use Pan\MenuPages\PageElements\Containers\Collapsible;
 
 /**
  * Class Button

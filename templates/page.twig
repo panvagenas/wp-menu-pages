@@ -1,0 +1,48 @@
+{#
+ # ${FILE_NAME} description
+ #
+ # @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+ # @date 2015-11-18
+ # @since TODO ${VERSION}
+ # @copyright Copyright (c) 2015 Panagiotis Vagenas
+ #}
+<div class="wp-menu-pages-ns">
+    <div class="container-fluid">
+        {##
+         # Page header
+         #}
+        <div class="page-header">
+            {% include 'header.twig' %}
+        </div>
+        <div class="row">
+            {##
+             # Alerts
+             #}
+            <div class="col-md-12 alerts-wrapper">
+                {% include 'alerts.twig' %}
+            </div>
+            {##
+             # Main
+             #}
+            <div class="{% if aside %}col-md-8{% else %}col-md-12{% endif %}">
+                {##
+                 # Main content
+                 #}
+                {% for container in main %}
+                    {{ container.markUp | raw }}
+                {% endfor %}
+            </div>
+
+            {##
+             # Sidebar
+             #}
+            {% if aside %}
+                <div class="col-md-4">
+                    {% for container in aside %}
+                        {{ container.markUp | raw }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

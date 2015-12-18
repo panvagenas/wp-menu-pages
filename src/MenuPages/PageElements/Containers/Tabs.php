@@ -3,7 +3,6 @@
 namespace Pan\MenuPages\PageElements\Containers;
 
 use Pan\MenuPages\PageElements\Components\Form;
-use Pan\MenuPages\PageElements\Components\Tab;
 use Pan\MenuPages\PageElements\Containers\Abs\AbsComponentsContainer;
 
 class Tabs extends AbsComponentsContainer {

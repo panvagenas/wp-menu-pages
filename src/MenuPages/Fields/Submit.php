@@ -11,7 +11,7 @@
 
 namespace Pan\MenuPages\Fields;
 
-use Pan\MenuPages\PageElements\Containers\Collapsible;
+use Pan\MenuPages\PageElements\Components\Abs\AbsFieldsComponent;
 
 /**
  * Class Submit
@@ -25,8 +25,8 @@ use Pan\MenuPages\PageElements\Containers\Collapsible;
 class Submit extends Button {
     protected $type = 'submit';
 
-    public function __construct( Collapsible $panel, $name, $label ) {
-        parent::__construct( $panel, $name, $label );
+    public function __construct( AbsFieldsComponent $component, $name, $label ) {
+        parent::__construct( $component, $name, $label );
         $this->setClass( $this->class . ' btn-primary' );
     }
 }

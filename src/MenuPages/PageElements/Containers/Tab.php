@@ -9,11 +9,10 @@
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
 
-namespace Pan\MenuPages\PageElements\Components;
+namespace Pan\MenuPages\PageElements\Containers;
 
-use Pan\MenuPages\PageElements\Components\Abs\AbsComponent;
 use Pan\MenuPages\PageElements\Components\Abs\AbsFieldsComponent;
-use Pan\MenuPages\PageElements\Containers\Tabs;
+use Pan\MenuPages\PageElements\Containers\Abs\AbsComponentsContainer;
 
 /**
  * Class Tab
@@ -24,7 +23,7 @@ use Pan\MenuPages\PageElements\Containers\Tabs;
  * @package   Pan\MenuPages\PageComponents
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class Tab extends AbsComponent {
+class Tab extends AbsComponentsContainer {
     /**
      * @var bool
      */
@@ -43,11 +42,6 @@ class Tab extends AbsComponent {
      * @var Tabs
      */
     protected $container;
-    /**
-     * @var AbsFieldsComponent
-     */
-    protected $fieldsComponent;
-    protected $markUp = '';
 
     public function __construct(
         Tabs $container,
@@ -56,26 +50,11 @@ class Tab extends AbsComponent {
         $icon = '',
         AbsFieldsComponent $fieldsComponent = null
     ) {
-        parent::__construct( $container );
+        parent::__construct( $container->getMenuPage(), null );
+        $this->container = $container;
         $this->title  = $title;
         $this->active = $active;
         $this->icon   = $icon;
-
-        if($fieldsComponent){
-            $this->setFieldsComponent($fieldsComponent);
-        }
-    }
-
-    public function getMarkUp( $echo = false ) {
-        if($this->fieldsComponent){
-            return $this->fieldsComponent->getMarkUp($echo);
-        }
-
-        return $this->markUp;
-    }
-
-    public function setMarkUp( $markUp ) {
-        $this->markUp = $markUp;
     }
 
     public function isActive() {
@@ -104,29 +83,6 @@ class Tab extends AbsComponent {
 
     public function setTitle( $title ) {
         $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
-     * @see    Tab::$form
-     * @codeCoverageIgnore
-     */
-    public function getFieldsComponent() {
-        return $this->fieldsComponent;
-    }
-
-    /**
-     * @param AbsFieldsComponent $fieldsComponent
-     *
-     * @return $this
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
-     * @codeCoverageIgnore
-     */
-    public function setFieldsComponent( AbsFieldsComponent $fieldsComponent ) {
-        $this->fieldsComponent = $fieldsComponent;
 
         return $this;
     }

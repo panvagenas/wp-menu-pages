@@ -14,9 +14,9 @@ namespace Pan\MenuPages\Pages\Abs;
 use Pan\MenuPages\Ifc\IfcConstants;
 use Pan\MenuPages\Options;
 use Pan\MenuPages\PageElements\Components\Abs\AbsFieldsComponent;
-use Pan\MenuPages\PageElements\Components\Tab;
 use Pan\MenuPages\PageElements\Containers\Abs\AbsComponentsContainer;
 use Pan\MenuPages\PageElements\Containers\Abs\AbsContainer;
+use Pan\MenuPages\PageElements\Containers\Tab;
 use Pan\MenuPages\Scripts\AjaxHandler;
 use Pan\MenuPages\Scripts\Ifc\IfcScripts;
 use Pan\MenuPages\Scripts\Script;
@@ -58,7 +58,7 @@ abstract class AbsMenuPage {
     /**
      * @var string
      */
-    protected $templateName = 'base.twig';
+    protected $templateName = 'page.twig';
     /**
      * @var string
      */
@@ -223,10 +223,17 @@ abstract class AbsMenuPage {
         foreach ( $this->containers as $container ) {
             if($container instanceof AbsComponentsContainer){
                 foreach ( $container->getComponents() as $component ) {
-                    if($component instanceof AbsFieldsComponent || $component instanceof Tab) // FIXME
+                    if(
+                        ($component instanceof AbsFieldsComponent || $component instanceof Tab)
+                        && $field = $component->getFieldByName($fieldName)
+                    ){
+                        return $field;
+                    }
                 }
             }
         }
+
+        return null;
     }
 
     /**
