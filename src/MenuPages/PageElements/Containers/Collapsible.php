@@ -7,9 +7,6 @@ use Pan\MenuPages\PageElements\Containers\Abs\AbsComponentsContainer;
 use Pan\MenuPages\Pages\Abs\AbsMenuPage;
 
 class Collapsible extends AbsComponentsContainer {
-    const BLOCK_BODY = 'body';
-    const BLOCK_FOOTER = 'footer';
-
     protected $body = [];
     protected $footer = [];
     protected $templateName = 'collapsible.twig';
@@ -20,51 +17,12 @@ class Collapsible extends AbsComponentsContainer {
 
     public function __construct( AbsMenuPage $menuPage, $position, $title ) {
         parent::__construct( $menuPage, $position );
-        $this->title = $this->setTitle($title);
+        $this->setTitle($title);
     }
 
-    public function attachComponent( AbsComponent $component, $position ) {
-        if(!$this->isValidPosition($position, true)){
-            return false;
-        }
-
-        parent::attachComponent($component);
-
-        if($position === self::BLOCK_BODY){
-            $this->body[$component->getHashId()] = $component;
-        } elseif ($position === self::BLOCK_FOOTER){
-            $this->footer[$component->getHashId()] = $component;
-        }
-
-        return true;
-    }
-
-    protected function hasComponent( AbsComponent $component, $position ) {
-        if(parent::hasComponent($component)){
-            return true;
-        }
-
-        if($position === self::BLOCK_BODY){
-            return array_key_exists($component->getHashId(), $this->body);
-        }
-
-        if($position === self::BLOCK_FOOTER) {
-            return array_key_exists( $component->getHashId(), $this->footer );
-        }
-
-        return new \WP_Error('Invalid position');
-    }
-
-    protected function isValidPosition($position, $allowFail = false){
-        if(in_array($position, [self::BLOCK_BODY, self::BLOCK_FOOTER], true)){
-            return true;
-        }
-
-        if($allowFail){
-            return false;
-        }
-
-        throw new \InvalidArgumentException('Invalid $position');
+    public function attachComponent( AbsComponent $component ) {
+        $this->body[] = $component;
+        return parent::attachComponent( $component );
     }
 
     /**

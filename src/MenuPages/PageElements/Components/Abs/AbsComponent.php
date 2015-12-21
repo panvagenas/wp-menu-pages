@@ -31,7 +31,7 @@ abstract class AbsComponent extends AbsElement {
     public function getMarkUp( $echo = false ) {
         $markup = $this->getTwig()
                        ->getTwigEnvironment()
-                       ->render( $this->getTemplateName(), [ 'e' => $this ] );
+                       ->render( $this->getTemplateName(), [ 'el' => $this ] );
 
         if ( $echo ) {
             echo $markup;

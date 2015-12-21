@@ -24,7 +24,10 @@
     <div class="panel-body">
         <div class="tab-content">
             {% for tabId, tab in el.components %}
-                {{ tab.markUp | raw }}
+            <div role="tabpanel" class="tab-pane fade{% if tab.active %} active in{% endif %}"
+                 id="{{ tab.id | e('html_attr') }}">
+                    {% include tab.templateName %}
+            </div>
             {% endfor %}
         </div>
     </div>

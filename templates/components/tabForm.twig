@@ -1,0 +1,25 @@
+{#
+ # ${FILE_NAME} description
+ #
+ # @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+ # @date 2015-12-19
+ # @since TODO ${VERSION}
+ # @copyright Copyright (c) 2015 Panagiotis Vagenas
+ #}
+<form id="form-{{ tab.id | e('html_attr') }}"
+      class="form-horizontal"
+      method="POST"
+      action="#"
+      enctype="multipart/form-data"
+>
+
+    {% for fieldId, field in tab.fields %}
+        {% if field.templateName %}
+            {% include field.templateName %}
+        {% else %}
+            {{ field.markUp }}
+        {% endif %}
+    {% endfor %}
+
+</form>
+

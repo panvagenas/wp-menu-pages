@@ -5,6 +5,6 @@
       enctype="{{ el.encType | e('html_attr') }}"
 >
     {% for fieldId, field in el.fields %}
-        {{ field.markUp || raw }}
+        {% include field.templateName %}
     {% endfor %}
 </form>

@@ -30,7 +30,7 @@ trait TrtIdentifiable {
 
     public function getId() {
         if(!$this->id){
-            $this->id = $this->htmlId;
+            $this->id = $this->getHtmlId();
         }
 
         return $this->id;

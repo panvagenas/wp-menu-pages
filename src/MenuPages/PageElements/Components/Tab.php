@@ -9,10 +9,10 @@
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
 
-namespace Pan\MenuPages\PageElements\Containers;
+namespace Pan\MenuPages\PageElements\Components;
 
-use Pan\MenuPages\PageElements\Components\Abs\AbsFieldsComponent;
-use Pan\MenuPages\PageElements\Containers\Abs\AbsComponentsContainer;
+use Pan\MenuPages\PageElements\Components\Abs\AbsComponent;
+use Pan\MenuPages\PageElements\Containers\Tabs;
 
 /**
  * Class Tab
@@ -23,7 +23,7 @@ use Pan\MenuPages\PageElements\Containers\Abs\AbsComponentsContainer;
  * @package   Pan\MenuPages\PageComponents
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class Tab extends AbsComponentsContainer {
+class Tab extends AbsComponent {
     /**
      * @var bool
      */
@@ -37,20 +37,21 @@ class Tab extends AbsComponentsContainer {
      */
     protected $title;
 
-    protected $templateName = '';
+    protected $templateName = 'tab.twig';
     /**
      * @var Tabs
      */
     protected $container;
 
+    protected $content = '';
+
     public function __construct(
         Tabs $container,
         $title,
         $active = false,
-        $icon = '',
-        AbsFieldsComponent $fieldsComponent = null
+        $icon = ''
     ) {
-        parent::__construct( $container->getMenuPage(), null );
+        parent::__construct( $container );
         $this->container = $container;
         $this->title  = $title;
         $this->active = $active;
@@ -83,6 +84,33 @@ class Tab extends AbsComponentsContainer {
 
     public function setTitle( $title ) {
         $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @see    Tab::$content
+     * @since  TODO ${VERSION}
+     * @codeCoverageIgnore
+     */
+    public function getContent() {
+        return $this->content;
+    }
+
+    /**
+     * Setter for {@link Tab::$content}
+     *
+     * @param string $content
+     *
+     * @return $this
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     * @codeCoverageIgnore
+     */
+    public function setContent( $content ) {
+        $this->content = $content;
 
         return $this;
     }
