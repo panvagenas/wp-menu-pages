@@ -54,7 +54,7 @@ class TabForm extends AbsFieldsComponent {
         $this->title  = $title;
 
         $tabState = $this->container->getTabState($this);
-        $state = $tabState !== null ? $tabState : $active;
+        $state = $tabState !== null && $tabState;
 
         $this->active = $state;
         $this->icon   = $icon;

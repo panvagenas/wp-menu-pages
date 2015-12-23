@@ -48,7 +48,6 @@ class Tab extends AbsComponent {
     public function __construct(
         Tabs $container,
         $title,
-        $active = false,
         $icon = ''
     ) {
         parent::__construct( $container, Tabs::EL_TAB );
@@ -56,7 +55,7 @@ class Tab extends AbsComponent {
         $this->title  = $title;
 
         $tabState = $this->container->getTabState($this);
-        $state = $tabState !== null ? $tabState : $active;
+        $state = $tabState !== null && $tabState;
 
         $this->active = $state;
         $this->icon   = $icon;

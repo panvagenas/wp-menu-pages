@@ -3,6 +3,7 @@
 namespace Pan\MenuPages\PageElements\Containers;
 
 use Pan\MenuPages\Options;
+use Pan\MenuPages\PageElements\Components\Abs\AbsComponent;
 use Pan\MenuPages\PageElements\Components\Tab;
 use Pan\MenuPages\PageElements\Components\TabForm;
 use Pan\MenuPages\PageElements\Containers\Abs\AbsComponentsContainer;
@@ -17,14 +18,36 @@ class Tabs extends AbsComponentsContainer {
         self::EL_TAB => [],
     ];
 
-    public function addTab($title, $active = false, $icon = ''){
-        $tab = new TabForm($this, $title, $active, $icon);
+    public function addTab($title,  $icon = ''){
+        $tab = new TabForm($this, $title, $icon);
 
         return $tab;
     }
 
     protected function isProperPosition( $position ) {
         return parent::isProperPosition( $position ) || $position === self::EL_TAB;
+    }
+
+    public function getMarkUp( $echo = false ) {
+        if($this->components[self::EL_TAB]) {
+            $states    = $this->menuPage->getPageOption( Options::PAGE_OPT_STATE, [ ] );
+            $activeTab = '';
+            /** @var Tab $tab */
+            foreach ( $this->components[ self::EL_TAB ] as $tab ) {
+                if ( array_key_exists( $tab->getTitle(), $states ) && $states[ $tab->getTitle() ] ) {
+                    $activeTab = $tab->getTitle();
+                }
+            }
+            if ( ! $activeTab ) {
+                $firstTab = array_values($this->components[self::EL_TAB])[0];
+                $activeTab = $firstTab->getTitle();
+            }
+            foreach ( $this->components[ self::EL_TAB ] as $tab ) {
+                $tab->setActive( $activeTab === $tab->getTitle() );
+            }
+        }
+
+        return parent::getMarkUp( $echo );
     }
 
     public function getTabState($tab){

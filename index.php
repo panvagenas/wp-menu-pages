@@ -105,11 +105,11 @@ $tabsNoFields = new \Pan\MenuPages\PageElements\Containers\Tabs(
     \Pan\MenuPages\Pages\Page::EL_ASIDE
 );
 
-$rawTab = new \Pan\MenuPages\PageElements\Components\Tab($tabsNoFields, 'Raw Tab', true);
+$rawTab = new \Pan\MenuPages\PageElements\Components\Tab($tabsNoFields, 'Raw Tab');
 $anotherRawTab = new \Pan\MenuPages\PageElements\Components\Tab($tabsNoFields, 'Another Raw Tab');
 
 
-$tabTextFields = $tabsMainPage->addTab('Text Fields', true);
+$tabTextFields = $tabsMainPage->addTab('Text Fields');
 $tabDateTimeFields = $tabsMainPage->addTab( 'Date-Time Fields');
 $tabSelectFields = $tabsMainPage->addTab('Select Fields');
 $tabRadioFields  = $tabsMainPage->addTab( 'Radio Fields');
@@ -117,7 +117,7 @@ $tabMediaFields  = $tabsMainPage->addTab( 'Media Fields');
 $tabNumberFieldsDemo = $tabsMainPage->addTab( 'Number Fields');
 
 $tabOtherFields  = $tabsSubPage->addTab( 'Other Fields');
-$tabWpSpecificDemo = $tabsSubPage->addTab( 'WordPress', true);
+$tabWpSpecificDemo = $tabsSubPage->addTab( 'WordPress');
 
 $color = new \Pan\MenuPages\Fields\Color($tabMediaFields, 'color');
 $color->setLabel('Color Demo');
