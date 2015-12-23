@@ -80,10 +80,18 @@ define(['jquery', 'mnp/domSelector'], function ($, domSelector) {
 
             $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
                 var $target = $(e.target);
+                var $source = $(e.relatedTarget);
+                var newOptions = {
+                    state: {
+                        active: $target.data('title'),
+                        inActive: $source.data('title')
+                    }
+                };
+
                 // FIXME We have to reconstruct select2 each time because if rendered while hidden then width and height are taking wrong values
                 require(['mnp/select2', 'mnp/ajax'], function(select2, ajax){
                     select2.maybeBindAll();
-                    ajax.updateCoreOptions({activeTab: $target.data('title')});
+                    ajax.updateCoreOptions(newOptions);
                 })
             });
         }

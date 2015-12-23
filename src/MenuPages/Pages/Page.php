@@ -23,12 +23,6 @@ use Pan\MenuPages\Pages\Abs\AbsMenuPage;
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
 class Page extends AbsMenuPage {
-    const OPT_ACTIVE_TAB = 'activeTab';
-
-    protected $validCoreOptionKeys = [
-        self::OPT_ACTIVE_TAB,
-    ];
-
     public function init() {
         $this->hookSuffix = add_menu_page(
             $this->title,

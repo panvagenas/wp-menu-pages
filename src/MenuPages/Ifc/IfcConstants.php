@@ -16,6 +16,5 @@ interface IfcConstants {
      * WP Menu Pages Version
      */
     const VERSION = '1.0.0';
-    const CORE_OPTIONS_KEY = 'coreOptions';
     const DEV = true;
 }

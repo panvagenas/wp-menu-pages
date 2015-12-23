@@ -33,12 +33,13 @@ use Pan\MenuPages\WpMenuPages;
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
 abstract class AbsMenuPage {
+    use TrtCache;
+
     const EL_MAIN = 'main';
     const EL_ASIDE = 'aside';
     const EL_HEADER = 'header';
     const EL_FOOTER = 'footer';
 
-    use TrtCache;
     /**
      * @var array
      */
@@ -115,13 +116,7 @@ abstract class AbsMenuPage {
         $this->iconUrl     = $iconUrl;
         $this->position    = $position;
 
-        $coreOptions = $this->options->get(IfcConstants::CORE_OPTIONS_KEY);
-        $menuPages->attachMenuPage($this);
-
-        if(!isset($coreOptions[$this->menuSlug])){
-            $coreOptions[$this->menuSlug] = [];
-            $this->options->set(IfcConstants::CORE_OPTIONS_KEY, $coreOptions);
-        }
+        $this->options->maybeInitPageOptions($this);
 
         add_action('admin_menu', [$this, 'init'], 10);
         add_action('admin_menu', [$this, 'bindScripts'], 11);
@@ -190,22 +185,11 @@ abstract class AbsMenuPage {
     abstract public function getMarkUp();
 
     public function setPageOption($name, $value){
-        $coreOptions = $this->options->get(IfcConstants::CORE_OPTIONS_KEY);
-        $coreOptions[$this->menuSlug][$name] = $value;
-
-        return $this->options->set(IfcConstants::CORE_OPTIONS_KEY, $coreOptions);
+       $this->options->setPageOption($this, $name, $value);
     }
 
-    public function isValidOption($name, $value){
-        return in_array($name, $this->validCoreOptionKeys) && is_string($value);
-    }
-
-    public function getPageOption($name){
-        $coreOptions = $this->options->get(IfcConstants::CORE_OPTIONS_KEY);
-        if(isset($coreOptions[$this->menuSlug][$name])){
-            return $coreOptions[$this->menuSlug][$name];
-        }
-        return new \WP_Error('Option NOT Exists');
+    public function getPageOption($name, $default = null){
+        return $this->options->getPageOption($this, $name, $default);
     }
 
     /**

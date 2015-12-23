@@ -42,7 +42,7 @@ define(['jquery', 'mnp/field'], function ($, field) {
         },
 
         maybeBindAll: function(){
-            if(this.hasElements){
+            if(this.hasElements()){
                 this.bindAll();
             }
         },

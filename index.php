@@ -109,15 +109,15 @@ $rawTab = new \Pan\MenuPages\PageElements\Components\Tab($tabsNoFields, 'Raw Tab
 $anotherRawTab = new \Pan\MenuPages\PageElements\Components\Tab($tabsNoFields, 'Another Raw Tab');
 
 
-$tabTextFields = $tabsMainPage->addTabForm('Text Fields', true);
-$tabDateTimeFields = $tabsMainPage->addTabForm( 'Date-Time Fields');
-$tabSelectFields = $tabsMainPage->addTabForm('Select Fields');
-$tabRadioFields  = $tabsMainPage->addTabForm( 'Radio Fields');
-$tabMediaFields  = $tabsMainPage->addTabForm( 'Media Fields');
-$tabNumberFieldsDemo = $tabsMainPage->addTabForm( 'Number Fields');
+$tabTextFields = $tabsMainPage->addTab('Text Fields', true);
+$tabDateTimeFields = $tabsMainPage->addTab( 'Date-Time Fields');
+$tabSelectFields = $tabsMainPage->addTab('Select Fields');
+$tabRadioFields  = $tabsMainPage->addTab( 'Radio Fields');
+$tabMediaFields  = $tabsMainPage->addTab( 'Media Fields');
+$tabNumberFieldsDemo = $tabsMainPage->addTab( 'Number Fields');
 
-$tabOtherFields  = $tabsSubPage->addTabForm( 'Other Fields');
-$tabWpSpecificDemo = $tabsSubPage->addTabForm( 'WordPress', true);
+$tabOtherFields  = $tabsSubPage->addTab( 'Other Fields');
+$tabWpSpecificDemo = $tabsSubPage->addTab( 'WordPress', true);
 
 $color = new \Pan\MenuPages\Fields\Color($tabMediaFields, 'color');
 $color->setLabel('Color Demo');

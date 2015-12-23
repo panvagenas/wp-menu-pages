@@ -11,7 +11,7 @@
 
 namespace Pan\MenuPages;
 
-use Pan\MenuPages\Ifc\IfcConstants;
+use Pan\MenuPages\Pages\Abs\AbsMenuPage;
 
 /**
  * Class Options
@@ -23,6 +23,8 @@ use Pan\MenuPages\Ifc\IfcConstants;
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
 class Options {
+    const PAGE_OPT = 'pageOptions';
+    const PAGE_OPT_STATE = 'state';
     /**
      * @var string
      */
@@ -49,7 +51,7 @@ class Options {
         $this->optionsBaseName = $optionsBaseName;
         $this->defaults        = $defaults;
 
-        $this->defaults[ IfcConstants::CORE_OPTIONS_KEY ] = [ ];
+        $this->defaults[ self::PAGE_OPT ] = [];
 
         $this->options = array_merge( $this->defaults, get_option( $this->optionsBaseName, $this->defaults ) );
     }
@@ -78,6 +80,25 @@ class Options {
         }
 
         return $instance[ $optionsBaseName ];
+    }
+
+    public function getPageOption(AbsMenuPage $page, $name, $default = null){
+        return isset($this->options[self::PAGE_OPT][$page->getMenuSlug()][$name])
+            ? $this->options[self::PAGE_OPT][$page->getMenuSlug()][$name]
+            : $default;
+    }
+
+    public function setPageOption(AbsMenuPage $page, $name, $value){
+        $this->maybeInitPageOptions($page);
+
+        $this->options[self::PAGE_OPT][$page->getMenuSlug()][$name] = $value;
+        $this->save();
+    }
+
+    public function maybeInitPageOptions(AbsMenuPage $page){
+        if(!isset($this->options[self::PAGE_OPT][$page->getMenuSlug()])){
+            $this->options[self::PAGE_OPT][$page->getMenuSlug()] = [];
+        }
     }
 
     /**

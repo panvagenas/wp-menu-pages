@@ -11,9 +11,9 @@
 
 namespace Pan\MenuPages\Scripts;
 
-use Pan\MenuPages\Abs\AbsSingleton;
+use Pan\MenuPages\Abs\AbsMultiSingleton;
 use Pan\MenuPages\Fields\Ifc\IfcValidation;
-use Pan\MenuPages\Ifc\IfcConstants;
+use Pan\MenuPages\Options;
 use Pan\MenuPages\Pages\Abs\AbsMenuPage;
 use Pan\MenuPages\Scripts\Ifc\IfcScripts;
 
@@ -25,7 +25,7 @@ use Pan\MenuPages\Scripts\Ifc\IfcScripts;
  * @package   Pan\MenuPages\Scripts
  * @since     TODO ${VERSION}
  */
-class AjaxHandler extends AbsSingleton {
+class AjaxHandler extends AbsMultiSingleton {
     /**
      * AjaxHandler constructor.
      *
@@ -117,10 +117,17 @@ class AjaxHandler extends AbsSingleton {
 
         $newOptions = (array) $_POST['options'];
 
-        foreach ( $newOptions as $name => $value ) {
-            if($this->menuPage->isValidOption($name, $value)) {
-                $this->menuPage->setPageOption( $name, $value );
+        if(isset($newOptions[Options::PAGE_OPT_STATE])){
+            $states = $this->menuPage->getPageOption(Options::PAGE_OPT_STATE, []);
+            foreach ( $newOptions[Options::PAGE_OPT_STATE] as $state => $identifier ) {
+                $states[$identifier] = $state == 'active';
             }
+            unset($newOptions[Options::PAGE_OPT_STATE]);
+            $this->menuPage->setPageOption(Options::PAGE_OPT_STATE, $states);
+        }
+
+        foreach ( $newOptions as $name => $value ) {
+            $this->menuPage->setPageOption( $name, $value );
         }
 
         wp_send_json_success();
@@ -132,7 +139,7 @@ class AjaxHandler extends AbsSingleton {
         $this->hidePhpErrors();
 
         $options = $this->menuPage->getOptions()->getOptions();
-        unset( $options[ IfcConstants::CORE_OPTIONS_KEY ] );
+        unset( $options[ Options::PAGE_OPT ] );
 
         $response = [
             'options' => json_encode( $options ),
