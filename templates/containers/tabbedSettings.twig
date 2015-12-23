@@ -1,0 +1,51 @@
+<div class="panel panel-default">
+
+    <div class="panel-heading" style="padding-bottom: 0; border-bottom: none;">
+        <ul class="nav nav-tabs" role="tablist">
+
+            {% for tabId, tab in el.components.tabs %}
+
+                <li role="presentation" class="{% if tab.active %}active{% endif %}">
+                    <a href="#{{ tab.id | e('html_attr') }}"
+                       aria-controls="{{ tab.id | e('html_attr') }}"
+                       data-title="{{ tab.title | e('html_attr') }}"
+                       role="tab" data-toggle="tab">
+                        {% if tab.icon %}
+                            <i class="fa fa-{{ tab.icon | e('html_attr') }}" aria-hidden="true"></i>
+                        {% endif %}
+                        {{ tab.title }}
+                    </a>
+                </li>
+
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="panel-body">
+        <div class="tab-content">
+            {% for tabId, tab in el.components.tabs %}
+                <div role="tabpanel" class="tab-pane fade{% if tab.active %} active in{% endif %}"
+                     id="{{ tab.id | e('html_attr') }}">
+                    {% include tab.templateName %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="panel-footer">
+        <div class="row">
+            {% if el.components.footer %}
+                {{ el.components.footer | raw }}
+            {% endif %}
+            <div class="pull-right">
+                <div class="col-md-12">
+                    <button type="reset" class="btn btn-md btn-warning btn-tab-reset-options wp-menu-pages-control">
+                        <i class="fa fa-history"></i>
+                    </button>
+                    <button type="submit" class="btn btn-md btn-primary btn-save-options wp-menu-pages-control">
+                        <i class="fa fa-floppy-o"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

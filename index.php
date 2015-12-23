@@ -90,7 +90,7 @@ $wpMenuPages = new \Pan\MenuPages\WpMenuPages(__FILE__, $optionsObj);
 $mainPage = new \Pan\MenuPages\Pages\Page($wpMenuPages, 'My Settings');
 $subPage = new \Pan\MenuPages\Pages\SubPage($wpMenuPages, $mainPage, 'Sub Page Demo');
 
-$tabsMainPage = new \Pan\MenuPages\PageElements\Containers\Tabs(
+$tabsMainPage = new \Pan\MenuPages\PageElements\Containers\TabbedSettings(
     $mainPage,
     \Pan\MenuPages\Pages\Page::EL_MAIN
 );
