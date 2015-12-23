@@ -1,11 +1,152 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700");
+.navbar-inverse .badge {
+  background-color: #fff;
+  color: #2780E3; }
+
+body {
+  -webkit-font-smoothing: antialiased; }
+
+.text-primary,
+.text-primary:hover {
+  color: #2780E3; }
+
+.text-success,
+.text-success:hover {
+  color: #3FB618; }
+
+.text-danger,
+.text-danger:hover {
+  color: #FF0039; }
+
+.text-warning,
+.text-warning:hover {
+  color: #FF7518; }
+
+.text-info,
+.text-info:hover {
+  color: #9954BB; }
+
+table a:not(.btn),
+.table a:not(.btn) {
+  text-decoration: underline; }
+table .dropdown-menu a,
+.table .dropdown-menu a {
+  text-decoration: none; }
+table .success,
+table .warning,
+table .danger,
+table .info,
+.table .success,
+.table .warning,
+.table .danger,
+.table .info {
+  color: #fff; }
+  table .success a,
+  table .warning a,
+  table .danger a,
+  table .info a,
+  .table .success a,
+  .table .warning a,
+  .table .danger a,
+  .table .info a {
+    color: #fff; }
+
+.has-warning .help-block,
+.has-warning .control-label,
+.has-warning .radio,
+.has-warning .checkbox,
+.has-warning .radio-inline,
+.has-warning .checkbox-inline, .has-warning.radio label, .has-warning.checkbox label, .has-warning.radio-inline label, .has-warning.checkbox-inline label,
+.has-warning .form-control-feedback {
+  color: #FF7518; }
+.has-warning .form-control,
+.has-warning .form-control:focus,
+.has-warning .input-group-addon {
+  border: 1px solid #FF7518; }
+
+.has-error .help-block,
+.has-error .control-label,
+.has-error .radio,
+.has-error .checkbox,
+.has-error .radio-inline,
+.has-error .checkbox-inline, .has-error.radio label, .has-error.checkbox label, .has-error.radio-inline label, .has-error.checkbox-inline label,
+.has-error .form-control-feedback {
+  color: #FF0039; }
+.has-error .form-control,
+.has-error .form-control:focus,
+.has-error .input-group-addon {
+  border: 1px solid #FF0039; }
+
+.has-success .help-block,
+.has-success .control-label,
+.has-success .radio,
+.has-success .checkbox,
+.has-success .radio-inline,
+.has-success .checkbox-inline, .has-success.radio label, .has-success.checkbox label, .has-success.radio-inline label, .has-success.checkbox-inline label,
+.has-success .form-control-feedback {
+  color: #3FB618; }
+.has-success .form-control,
+.has-success .form-control:focus,
+.has-success .input-group-addon {
+  border: 1px solid #3FB618; }
+
+.nav-pills > li > a {
+  border-radius: 0; }
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+  background-image: none; }
+
+.close {
+  text-decoration: none;
+  text-shadow: none;
+  opacity: 0.4; }
+  .close:hover, .close:focus {
+    opacity: 1; }
+
+.alert {
+  border: none; }
+  .alert .alert-link {
+    text-decoration: underline;
+    color: #fff; }
+
+.label {
+  border-radius: 0; }
+
+.progress {
+  height: 8px;
+  -webkit-box-shadow: none;
+  box-shadow: none; }
+  .progress .progress-bar {
+    font-size: 8px;
+    line-height: 8px; }
+
+.panel-heading, .panel-footer {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0; }
+.panel-default .close {
+  color: #333333; }
+
+a.list-group-item-success.active {
+  background-color: #3FB618; }
+a.list-group-item-success.active:hover, a.list-group-item-success.active:focus {
+  background-color: #379f15; }
+a.list-group-item-warning.active {
+  background-color: #FF7518; }
+a.list-group-item-warning.active:hover, a.list-group-item-warning.active:focus {
+  background-color: #fe6600; }
+a.list-group-item-danger.active {
+  background-color: #FF0039; }
+a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
+  background-color: #e60033; }
+
+.modal .close {
+  color: #333333; }
+
+.popover {
+  color: #333333; }
+
 .wp-menu-pages-ns {
-  /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
-  /*!
-   * Datetimepicker for Bootstrap 3
-   * ! version : 4.7.14
-   * https://github.com/Eonasdan/bootstrap-datetimepicker/
-   */
-  @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700"); }
+  /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */ }
   .wp-menu-pages-ns {
     font-family: sans-serif;
     -ms-text-size-adjust: 100%;
@@ -207,7 +348,7 @@
     margin-bottom: 21px;
     border: 0;
     border-top: 1px solid #e6e6e6; }
-  .wp-menu-pages-ns .sr-only, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .btn[data-action="incrementHours"]::after, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .btn[data-action="incrementMinutes"]::after, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .btn[data-action="decrementHours"]::after, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .btn[data-action="decrementMinutes"]::after, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .btn[data-action="showHours"]::after, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .btn[data-action="showMinutes"]::after, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .btn[data-action="togglePeriod"]::after, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .btn[data-action="clear"]::after, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .btn[data-action="today"]::after, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .picker-switch::after, .wp-menu-pages-ns .bootstrap-datetimepicker-widget table th.prev::after, .wp-menu-pages-ns .bootstrap-datetimepicker-widget table th.next::after {
+  .wp-menu-pages-ns .sr-only {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -1534,7 +1675,7 @@
     color: #fff; }
   .wp-menu-pages-ns .has-feedback label ~ .form-control-feedback {
     top: 26px; }
-  .wp-menu-pages-ns .has-feedback label.sr-only ~ .form-control-feedback, .wp-menu-pages-ns .has-feedback .bootstrap-datetimepicker-widget label.btn[data-action="incrementHours"]::after ~ .form-control-feedback, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .has-feedback label.btn[data-action="incrementHours"]::after ~ .form-control-feedback, .wp-menu-pages-ns .has-feedback .bootstrap-datetimepicker-widget label.btn[data-action="incrementMinutes"]::after ~ .form-control-feedback, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .has-feedback label.btn[data-action="incrementMinutes"]::after ~ .form-control-feedback, .wp-menu-pages-ns .has-feedback .bootstrap-datetimepicker-widget label.btn[data-action="decrementHours"]::after ~ .form-control-feedback, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .has-feedback label.btn[data-action="decrementHours"]::after ~ .form-control-feedback, .wp-menu-pages-ns .has-feedback .bootstrap-datetimepicker-widget label.btn[data-action="decrementMinutes"]::after ~ .form-control-feedback, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .has-feedback label.btn[data-action="decrementMinutes"]::after ~ .form-control-feedback, .wp-menu-pages-ns .has-feedback .bootstrap-datetimepicker-widget label.btn[data-action="showHours"]::after ~ .form-control-feedback, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .has-feedback label.btn[data-action="showHours"]::after ~ .form-control-feedback, .wp-menu-pages-ns .has-feedback .bootstrap-datetimepicker-widget label.btn[data-action="showMinutes"]::after ~ .form-control-feedback, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .has-feedback label.btn[data-action="showMinutes"]::after ~ .form-control-feedback, .wp-menu-pages-ns .has-feedback .bootstrap-datetimepicker-widget label.btn[data-action="togglePeriod"]::after ~ .form-control-feedback, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .has-feedback label.btn[data-action="togglePeriod"]::after ~ .form-control-feedback, .wp-menu-pages-ns .has-feedback .bootstrap-datetimepicker-widget label.btn[data-action="clear"]::after ~ .form-control-feedback, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .has-feedback label.btn[data-action="clear"]::after ~ .form-control-feedback, .wp-menu-pages-ns .has-feedback .bootstrap-datetimepicker-widget label.btn[data-action="today"]::after ~ .form-control-feedback, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .has-feedback label.btn[data-action="today"]::after ~ .form-control-feedback, .wp-menu-pages-ns .has-feedback .bootstrap-datetimepicker-widget label.picker-switch::after ~ .form-control-feedback, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .has-feedback label.picker-switch::after ~ .form-control-feedback {
+  .wp-menu-pages-ns .has-feedback label.sr-only ~ .form-control-feedback {
     top: 0; }
   .wp-menu-pages-ns .help-block {
     display: block;
@@ -3490,328 +3631,6 @@
   @media print {
     .wp-menu-pages-ns .hidden-print {
       display: none !important; } }
-  .wp-menu-pages-ns .sr-only, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .btn[data-action="incrementHours"]::after, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .btn[data-action="incrementMinutes"]::after, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .btn[data-action="decrementHours"]::after, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .btn[data-action="decrementMinutes"]::after, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .btn[data-action="showHours"]::after, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .btn[data-action="showMinutes"]::after, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .btn[data-action="togglePeriod"]::after, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .btn[data-action="clear"]::after, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .btn[data-action="today"]::after, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .picker-switch::after, .wp-menu-pages-ns .bootstrap-datetimepicker-widget table th.prev::after, .wp-menu-pages-ns .bootstrap-datetimepicker-widget table th.next::after {
-    color: black;
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0; }
-  .wp-menu-pages-ns .bootstrap-datetimepicker-widget {
-    list-style: none;
-    color: black; }
-    .wp-menu-pages-ns .bootstrap-datetimepicker-widget.dropdown-menu {
-      margin: 2px 0;
-      padding: 4px;
-      width: 19em; }
-      @media (min-width: 768px) {
-        .wp-menu-pages-ns .bootstrap-datetimepicker-widget.dropdown-menu.timepicker-sbs {
-          width: 38em; } }
-      @media (min-width: 992px) {
-        .wp-menu-pages-ns .bootstrap-datetimepicker-widget.dropdown-menu.timepicker-sbs {
-          width: 38em; } }
-      @media (min-width: 1200px) {
-        .wp-menu-pages-ns .bootstrap-datetimepicker-widget.dropdown-menu.timepicker-sbs {
-          width: 38em; } }
-      .wp-menu-pages-ns .bootstrap-datetimepicker-widget.dropdown-menu:before, .wp-menu-pages-ns .bootstrap-datetimepicker-widget.dropdown-menu:after {
-        content: '';
-        display: inline-block;
-        position: absolute; }
-      .wp-menu-pages-ns .bootstrap-datetimepicker-widget.dropdown-menu.bottom:before {
-        border-left: 7px solid transparent;
-        border-right: 7px solid transparent;
-        border-bottom: 7px solid #ccc;
-        border-bottom-color: rgba(0, 0, 0, 0.2);
-        top: -7px;
-        left: 7px; }
-      .wp-menu-pages-ns .bootstrap-datetimepicker-widget.dropdown-menu.bottom:after {
-        border-left: 6px solid transparent;
-        border-right: 6px solid transparent;
-        border-bottom: 6px solid white;
-        top: -6px;
-        left: 8px; }
-      .wp-menu-pages-ns .bootstrap-datetimepicker-widget.dropdown-menu.top:before {
-        border-left: 7px solid transparent;
-        border-right: 7px solid transparent;
-        border-top: 7px solid #ccc;
-        border-top-color: rgba(0, 0, 0, 0.2);
-        bottom: -7px;
-        left: 6px; }
-      .wp-menu-pages-ns .bootstrap-datetimepicker-widget.dropdown-menu.top:after {
-        border-left: 6px solid transparent;
-        border-right: 6px solid transparent;
-        border-top: 6px solid white;
-        bottom: -6px;
-        left: 7px; }
-      .wp-menu-pages-ns .bootstrap-datetimepicker-widget.dropdown-menu.pull-right:before {
-        left: auto;
-        right: 6px; }
-      .wp-menu-pages-ns .bootstrap-datetimepicker-widget.dropdown-menu.pull-right:after {
-        left: auto;
-        right: 7px; }
-    .wp-menu-pages-ns .bootstrap-datetimepicker-widget .list-unstyled {
-      margin: 0; }
-    .wp-menu-pages-ns .bootstrap-datetimepicker-widget a[data-action] {
-      padding: 6px 0;
-      color: black; }
-    .wp-menu-pages-ns .bootstrap-datetimepicker-widget a[data-action]:active {
-      box-shadow: none; }
-    .wp-menu-pages-ns .bootstrap-datetimepicker-widget .timepicker-hour, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .timepicker-minute, .wp-menu-pages-ns .bootstrap-datetimepicker-widget .timepicker-second {
-      width: 54px;
-      font-weight: bold;
-      font-size: 1.2em;
-      margin: 0; }
-    .wp-menu-pages-ns .bootstrap-datetimepicker-widget button[data-action] {
-      color: black;
-      padding: 6px; }
-    .wp-menu-pages-ns .bootstrap-datetimepicker-widget .btn[data-action="incrementHours"]::after {
-      content: "Increment Hours"; }
-    .wp-menu-pages-ns .bootstrap-datetimepicker-widget .btn[data-action="incrementMinutes"]::after {
-      content: "Increment Minutes"; }
-    .wp-menu-pages-ns .bootstrap-datetimepicker-widget .btn[data-action="decrementHours"]::after {
-      content: "Decrement Hours"; }
-    .wp-menu-pages-ns .bootstrap-datetimepicker-widget .btn[data-action="decrementMinutes"]::after {
-      content: "Decrement Minutes"; }
-    .wp-menu-pages-ns .bootstrap-datetimepicker-widget .btn[data-action="showHours"]::after {
-      content: "Show Hours"; }
-    .wp-menu-pages-ns .bootstrap-datetimepicker-widget .btn[data-action="showMinutes"]::after {
-      content: "Show Minutes"; }
-    .wp-menu-pages-ns .bootstrap-datetimepicker-widget .btn[data-action="togglePeriod"]::after {
-      content: "Toggle AM/PM"; }
-    .wp-menu-pages-ns .bootstrap-datetimepicker-widget .btn[data-action="clear"]::after {
-      content: "Clear the picker"; }
-    .wp-menu-pages-ns .bootstrap-datetimepicker-widget .btn[data-action="today"]::after {
-      content: "Set the date to today"; }
-    .wp-menu-pages-ns .bootstrap-datetimepicker-widget .picker-switch {
-      text-align: center; }
-      .wp-menu-pages-ns .bootstrap-datetimepicker-widget .picker-switch::after {
-        content: "Toggle Date and Time Screens"; }
-      .wp-menu-pages-ns .bootstrap-datetimepicker-widget .picker-switch td {
-        padding: 0;
-        margin: 0;
-        height: auto;
-        width: auto;
-        line-height: inherit; }
-        .wp-menu-pages-ns .bootstrap-datetimepicker-widget .picker-switch td span {
-          line-height: 2.5;
-          height: 2.5em;
-          width: 100%; }
-    .wp-menu-pages-ns .bootstrap-datetimepicker-widget table {
-      width: 100%;
-      margin: 0; }
-      .wp-menu-pages-ns .bootstrap-datetimepicker-widget table td, .wp-menu-pages-ns .bootstrap-datetimepicker-widget table th {
-        text-align: center;
-        border-radius: 0; }
-      .wp-menu-pages-ns .bootstrap-datetimepicker-widget table th {
-        height: 20px;
-        line-height: 20px;
-        width: 20px; }
-        .wp-menu-pages-ns .bootstrap-datetimepicker-widget table th.picker-switch {
-          width: 145px; }
-        .wp-menu-pages-ns .bootstrap-datetimepicker-widget table th.disabled, .wp-menu-pages-ns .bootstrap-datetimepicker-widget table th.disabled:hover {
-          background: none;
-          color: #999999;
-          cursor: not-allowed; }
-        .wp-menu-pages-ns .bootstrap-datetimepicker-widget table th.prev::after {
-          content: "Previous Month"; }
-        .wp-menu-pages-ns .bootstrap-datetimepicker-widget table th.next::after {
-          content: "Next Month"; }
-      .wp-menu-pages-ns .bootstrap-datetimepicker-widget table thead tr:first-child th {
-        cursor: pointer; }
-        .wp-menu-pages-ns .bootstrap-datetimepicker-widget table thead tr:first-child th:hover {
-          background: #e6e6e6; }
-      .wp-menu-pages-ns .bootstrap-datetimepicker-widget table td {
-        height: 54px;
-        line-height: 54px;
-        width: 54px; }
-        .wp-menu-pages-ns .bootstrap-datetimepicker-widget table td.cw {
-          font-size: .8em;
-          height: 20px;
-          line-height: 20px;
-          color: #999999; }
-        .wp-menu-pages-ns .bootstrap-datetimepicker-widget table td.day {
-          height: 20px;
-          line-height: 20px;
-          width: 20px; }
-        .wp-menu-pages-ns .bootstrap-datetimepicker-widget table td.day:hover, .wp-menu-pages-ns .bootstrap-datetimepicker-widget table td.hour:hover, .wp-menu-pages-ns .bootstrap-datetimepicker-widget table td.minute:hover, .wp-menu-pages-ns .bootstrap-datetimepicker-widget table td.second:hover {
-          background: #e6e6e6;
-          cursor: pointer; }
-        .wp-menu-pages-ns .bootstrap-datetimepicker-widget table td.old, .wp-menu-pages-ns .bootstrap-datetimepicker-widget table td.new {
-          color: #999999; }
-        .wp-menu-pages-ns .bootstrap-datetimepicker-widget table td.today {
-          position: relative; }
-          .wp-menu-pages-ns .bootstrap-datetimepicker-widget table td.today:before {
-            content: '';
-            display: inline-block;
-            border: 0 0 7px 7px solid transparent;
-            border-bottom-color: #2780E3;
-            border-top-color: rgba(0, 0, 0, 0.2);
-            position: absolute;
-            bottom: 4px;
-            right: 4px; }
-        .wp-menu-pages-ns .bootstrap-datetimepicker-widget table td.active, .wp-menu-pages-ns .bootstrap-datetimepicker-widget table td.active:hover {
-          background-color: #2780E3;
-          color: #fff;
-          text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); }
-        .wp-menu-pages-ns .bootstrap-datetimepicker-widget table td.active.today:before {
-          border-bottom-color: #fff; }
-        .wp-menu-pages-ns .bootstrap-datetimepicker-widget table td.disabled, .wp-menu-pages-ns .bootstrap-datetimepicker-widget table td.disabled:hover {
-          background: none;
-          color: #999999;
-          cursor: not-allowed; }
-        .wp-menu-pages-ns .bootstrap-datetimepicker-widget table td span {
-          display: inline-block;
-          width: 54px;
-          height: 54px;
-          line-height: 54px;
-          margin: 2px 1.5px;
-          cursor: pointer;
-          border-radius: 0; }
-          .wp-menu-pages-ns .bootstrap-datetimepicker-widget table td span:hover {
-            background: #e6e6e6; }
-          .wp-menu-pages-ns .bootstrap-datetimepicker-widget table td span.active {
-            background-color: #2780E3;
-            color: #fff;
-            text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); }
-          .wp-menu-pages-ns .bootstrap-datetimepicker-widget table td span.old {
-            color: #999999; }
-          .wp-menu-pages-ns .bootstrap-datetimepicker-widget table td span.disabled, .wp-menu-pages-ns .bootstrap-datetimepicker-widget table td span.disabled:hover {
-            background: none;
-            color: #999999;
-            cursor: not-allowed; }
-    .wp-menu-pages-ns .bootstrap-datetimepicker-widget.usetwentyfour td.hour {
-      height: 27px;
-      line-height: 27px; }
-  .wp-menu-pages-ns .input-group.date .input-group-addon {
-    cursor: pointer; }
-  .wp-menu-pages-ns .navbar-inverse .badge {
-    background-color: #fff;
-    color: #2780E3; }
-  .wp-menu-pages-ns body {
-    -webkit-font-smoothing: antialiased; }
-  .wp-menu-pages-ns .text-primary,
-  .wp-menu-pages-ns .text-primary:hover {
-    color: #2780E3; }
-  .wp-menu-pages-ns .text-success,
-  .wp-menu-pages-ns .text-success:hover {
-    color: #3FB618; }
-  .wp-menu-pages-ns .text-danger,
-  .wp-menu-pages-ns .text-danger:hover {
-    color: #FF0039; }
-  .wp-menu-pages-ns .text-warning,
-  .wp-menu-pages-ns .text-warning:hover {
-    color: #FF7518; }
-  .wp-menu-pages-ns .text-info,
-  .wp-menu-pages-ns .text-info:hover {
-    color: #9954BB; }
-  .wp-menu-pages-ns table a:not(.btn),
-  .wp-menu-pages-ns .table a:not(.btn) {
-    text-decoration: underline; }
-  .wp-menu-pages-ns table .dropdown-menu a,
-  .wp-menu-pages-ns .table .dropdown-menu a {
-    text-decoration: none; }
-  .wp-menu-pages-ns table .success,
-  .wp-menu-pages-ns table .warning,
-  .wp-menu-pages-ns table .danger,
-  .wp-menu-pages-ns table .info,
-  .wp-menu-pages-ns .table .success,
-  .wp-menu-pages-ns .table .warning,
-  .wp-menu-pages-ns .table .danger,
-  .wp-menu-pages-ns .table .info {
-    color: #fff; }
-    .wp-menu-pages-ns table .success a,
-    .wp-menu-pages-ns table .warning a,
-    .wp-menu-pages-ns table .danger a,
-    .wp-menu-pages-ns table .info a,
-    .wp-menu-pages-ns .table .success a,
-    .wp-menu-pages-ns .table .warning a,
-    .wp-menu-pages-ns .table .danger a,
-    .wp-menu-pages-ns .table .info a {
-      color: #fff; }
-  .wp-menu-pages-ns .has-warning .help-block,
-  .wp-menu-pages-ns .has-warning .control-label,
-  .wp-menu-pages-ns .has-warning .radio,
-  .wp-menu-pages-ns .has-warning .checkbox,
-  .wp-menu-pages-ns .has-warning .radio-inline,
-  .wp-menu-pages-ns .has-warning .checkbox-inline, .wp-menu-pages-ns .has-warning.radio label, .wp-menu-pages-ns .has-warning.checkbox label, .wp-menu-pages-ns .has-warning.radio-inline label, .wp-menu-pages-ns .has-warning.checkbox-inline label,
-  .wp-menu-pages-ns .has-warning .form-control-feedback {
-    color: #FF7518; }
-  .wp-menu-pages-ns .has-warning .form-control,
-  .wp-menu-pages-ns .has-warning .form-control:focus,
-  .wp-menu-pages-ns .has-warning .input-group-addon {
-    border: 1px solid #FF7518; }
-  .wp-menu-pages-ns .has-error .help-block,
-  .wp-menu-pages-ns .has-error .control-label,
-  .wp-menu-pages-ns .has-error .radio,
-  .wp-menu-pages-ns .has-error .checkbox,
-  .wp-menu-pages-ns .has-error .radio-inline,
-  .wp-menu-pages-ns .has-error .checkbox-inline, .wp-menu-pages-ns .has-error.radio label, .wp-menu-pages-ns .has-error.checkbox label, .wp-menu-pages-ns .has-error.radio-inline label, .wp-menu-pages-ns .has-error.checkbox-inline label,
-  .wp-menu-pages-ns .has-error .form-control-feedback {
-    color: #FF0039; }
-  .wp-menu-pages-ns .has-error .form-control,
-  .wp-menu-pages-ns .has-error .form-control:focus,
-  .wp-menu-pages-ns .has-error .input-group-addon {
-    border: 1px solid #FF0039; }
-  .wp-menu-pages-ns .has-success .help-block,
-  .wp-menu-pages-ns .has-success .control-label,
-  .wp-menu-pages-ns .has-success .radio,
-  .wp-menu-pages-ns .has-success .checkbox,
-  .wp-menu-pages-ns .has-success .radio-inline,
-  .wp-menu-pages-ns .has-success .checkbox-inline, .wp-menu-pages-ns .has-success.radio label, .wp-menu-pages-ns .has-success.checkbox label, .wp-menu-pages-ns .has-success.radio-inline label, .wp-menu-pages-ns .has-success.checkbox-inline label,
-  .wp-menu-pages-ns .has-success .form-control-feedback {
-    color: #3FB618; }
-  .wp-menu-pages-ns .has-success .form-control,
-  .wp-menu-pages-ns .has-success .form-control:focus,
-  .wp-menu-pages-ns .has-success .input-group-addon {
-    border: 1px solid #3FB618; }
-  .wp-menu-pages-ns .nav-pills > li > a {
-    border-radius: 0; }
-  .wp-menu-pages-ns .dropdown-menu > li > a:hover, .wp-menu-pages-ns .dropdown-menu > li > a:focus {
-    background-image: none; }
-  .wp-menu-pages-ns .close {
-    text-decoration: none;
-    text-shadow: none;
-    opacity: 0.4; }
-    .wp-menu-pages-ns .close:hover, .wp-menu-pages-ns .close:focus {
-      opacity: 1; }
-  .wp-menu-pages-ns .alert {
-    border: none; }
-    .wp-menu-pages-ns .alert .alert-link {
-      text-decoration: underline;
-      color: #fff; }
-  .wp-menu-pages-ns .label {
-    border-radius: 0; }
-  .wp-menu-pages-ns .progress {
-    height: 8px;
-    -webkit-box-shadow: none;
-    box-shadow: none; }
-    .wp-menu-pages-ns .progress .progress-bar {
-      font-size: 8px;
-      line-height: 8px; }
-  .wp-menu-pages-ns .panel-heading, .wp-menu-pages-ns .panel-footer {
-    border-top-right-radius: 0;
-    border-top-left-radius: 0; }
-  .wp-menu-pages-ns .panel-default .close {
-    color: #333333; }
-  .wp-menu-pages-ns a.list-group-item-success.active {
-    background-color: #3FB618; }
-  .wp-menu-pages-ns a.list-group-item-success.active:hover, .wp-menu-pages-ns a.list-group-item-success.active:focus {
-    background-color: #379f15; }
-  .wp-menu-pages-ns a.list-group-item-warning.active {
-    background-color: #FF7518; }
-  .wp-menu-pages-ns a.list-group-item-warning.active:hover, .wp-menu-pages-ns a.list-group-item-warning.active:focus {
-    background-color: #fe6600; }
-  .wp-menu-pages-ns a.list-group-item-danger.active {
-    background-color: #FF0039; }
-  .wp-menu-pages-ns a.list-group-item-danger.active:hover, .wp-menu-pages-ns a.list-group-item-danger.active:focus {
-    background-color: #e60033; }
-  .wp-menu-pages-ns .modal .close {
-    color: #333333; }
-  .wp-menu-pages-ns .popover {
-    color: #333333; }
 
 .btn-group.btn-radio label.active:before {
   font-family: FontAwesome;
