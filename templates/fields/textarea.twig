@@ -62,7 +62,7 @@
                     {% include 'fields/blocks/additional_attributes.twig' %}
                 {% endblock %}
 
-                >{{ value | e }}</textarea>
+                >{{ field.value | e }}</textarea>
 
             {% if field.description %}
                 <span id="{{ field.id | e('html_attr') }}" class="help-block field-description">

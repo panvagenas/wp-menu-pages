@@ -66,6 +66,8 @@ class Script extends AbsMultiSingleton {
                 ],
             'pages' => array_keys($this->menuPage->getWpMenuPages()->getMenuPages()),
             'wpUrl' => site_url(),
+            'wpDateFormat' => get_option('date_format'),
+            'wpTimeFormat' => get_option('time_format'),
             'baseUri'=> $baseUri,
             'uriPathToAssets' => $uriPathToAssets,
             'uriPathToCss' => $uriPathToCss,

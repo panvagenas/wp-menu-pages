@@ -1,4 +1,4 @@
-define(['jquery', 'mnp/select2', 'mnp/controls'], function ($, select2Handler, controls) {
+define(['jquery', 'mnp/select2', 'mnp/controls', 'mnp/wpMenuPages'], function ($, select2Handler, controls, wpMenuPages) {
     $(function () {
         require(['bootstrap/transition']);
 
@@ -32,6 +32,46 @@ define(['jquery', 'mnp/select2', 'mnp/controls'], function ($, select2Handler, c
         var $dataToggledButtons = $('[data-toggle="buttons"]');
         if ($dataToggledButtons.length > 0) {
             require(['bootstrap/button']);
+        }
+
+        /*******************************************************************************
+         * Bind date-time elements
+         ******************************************************************************/
+        var $date = $('input[type="date"]');
+        var $dateTime = $('input[type="datetime"]');
+        var $dateTimeLocal = $('input[type="datetime-local"]');
+        var $month = $('input[type="month"]');
+        var $time = $('input[type="time"]');
+        var $week = $('input[type="week"]');
+
+        if($date.length > 0 || $dateTime.length > 0 || $dateTimeLocal.length > 0 || $week.length > 0
+            || $month.length > 0 || $time.length > 0){
+            require(['dateTimePicker'], function(){
+                $date.datetimepicker({
+                    format: wpMenuPages.dateTimePicker.dateFormat,
+                    icons: wpMenuPages.dateTimePicker.icons
+                });
+                $dateTime.datetimepicker({
+                    format: wpMenuPages.dateTimePicker.dateFormat + ' ' + wpMenuPages.dateTimePicker.timeFormat,
+                    icons: wpMenuPages.dateTimePicker.icons
+                });
+                $dateTimeLocal.datetimepicker({
+                    format: wpMenuPages.dateTimePicker.dateFormat + ' ' + wpMenuPages.dateTimePicker.timeFormat,
+                    icons: wpMenuPages.dateTimePicker.icons
+                });
+                $month.datetimepicker({
+                    format: wpMenuPages.dateTimePicker.monthFormat,
+                    icons: wpMenuPages.dateTimePicker.icons
+                });
+                $time.datetimepicker({
+                    format: wpMenuPages.dateTimePicker.timeFormat,
+                    icons: wpMenuPages.dateTimePicker.icons
+                });
+                $week.datetimepicker({
+                    format: wpMenuPages.dateTimePicker.weekFormat,
+                    icons: wpMenuPages.dateTimePicker.icons
+                });
+            });
         }
     });
 });
