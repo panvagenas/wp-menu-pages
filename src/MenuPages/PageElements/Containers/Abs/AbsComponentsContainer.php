@@ -38,4 +38,16 @@ abstract class AbsComponentsContainer extends AbsContainer {
     public function getComponents() {
         return $this->components;
     }
+
+    public function getComponentsFlat(){
+        $r = [];
+        foreach ( $this->components as $context ) {
+            /** @var AbsComponent $component */
+            foreach ( $context as $component ) {
+                $r[$component->getHashId()] = $component;
+            }
+        }
+
+       return $r;
+    }
 }

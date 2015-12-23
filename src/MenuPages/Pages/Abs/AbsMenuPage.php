@@ -217,15 +217,17 @@ abstract class AbsMenuPage {
             return null;
         }
 
-        /** @var AbsComponentsContainer $container */
-        foreach ( $this->containers as $container ) {
-            if($container instanceof AbsComponentsContainer){
-                foreach ( $container->getComponents() as $component ) {
-                    if(
-                        ($component instanceof AbsFieldsComponent)
-                        && $field = $component->getFieldByName($fieldName)
-                    ){
-                        return $field;
+        foreach ( $this->containers as $context ) {
+            /** @var AbsComponentsContainer $container */
+            foreach ( $context as $container ) {
+                if ( $container instanceof AbsComponentsContainer ) {
+                    foreach ( $container->getComponentsFlat() as $component ) {
+                        if (
+                            ( $component instanceof AbsFieldsComponent )
+                            && $field = $component->getFieldByName( $fieldName )
+                        ) {
+                            return $field;
+                        }
                     }
                 }
             }

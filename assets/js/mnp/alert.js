@@ -1,4 +1,4 @@
-define(['jquery'], function ($) {
+define(['jquery'], function ($, Alert) {
     var alertsWrapperSelector = '.alerts-wrapper';
     var $alertsWrapper = $(alertsWrapperSelector);
 
@@ -11,7 +11,7 @@ define(['jquery'], function ($) {
         alertsWrapperSelector: alertsWrapperSelector,
         $alertsWrapper: $alertsWrapper,
 
-        alertTemplate: '<div class="alert alert-{{type}} alert-dismissible" role="alert" style="display: none;">' +
+        alertTemplate: '<div class="alert alert-{{type}} alert-dismissible fade in" role="alert" style="display: none;">' +
         '<button type="button" class="close" data-dismiss="alert" aria-label="Close"> ' +
         '<span aria-hidden="true">&times;</span> </button>' +
         '{{msg}}' +
@@ -28,6 +28,9 @@ define(['jquery'], function ($) {
                     })
                 }, timeout);
             }
+            require(['bootstrap/alert'], function(){
+                $alert.alert();
+            })
         },
 
         success: function (msg, timeout) {

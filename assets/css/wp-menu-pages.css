@@ -1,152 +1,6 @@
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700");
-.navbar-inverse .badge {
-  background-color: #fff;
-  color: #2780E3; }
-
-body {
-  -webkit-font-smoothing: antialiased; }
-
-.text-primary,
-.text-primary:hover {
-  color: #2780E3; }
-
-.text-success,
-.text-success:hover {
-  color: #3FB618; }
-
-.text-danger,
-.text-danger:hover {
-  color: #FF0039; }
-
-.text-warning,
-.text-warning:hover {
-  color: #FF7518; }
-
-.text-info,
-.text-info:hover {
-  color: #9954BB; }
-
-table a:not(.btn),
-.table a:not(.btn) {
-  text-decoration: underline; }
-table .dropdown-menu a,
-.table .dropdown-menu a {
-  text-decoration: none; }
-table .success,
-table .warning,
-table .danger,
-table .info,
-.table .success,
-.table .warning,
-.table .danger,
-.table .info {
-  color: #fff; }
-  table .success a,
-  table .warning a,
-  table .danger a,
-  table .info a,
-  .table .success a,
-  .table .warning a,
-  .table .danger a,
-  .table .info a {
-    color: #fff; }
-
-.has-warning .help-block,
-.has-warning .control-label,
-.has-warning .radio,
-.has-warning .checkbox,
-.has-warning .radio-inline,
-.has-warning .checkbox-inline, .has-warning.radio label, .has-warning.checkbox label, .has-warning.radio-inline label, .has-warning.checkbox-inline label,
-.has-warning .form-control-feedback {
-  color: #FF7518; }
-.has-warning .form-control,
-.has-warning .form-control:focus,
-.has-warning .input-group-addon {
-  border: 1px solid #FF7518; }
-
-.has-error .help-block,
-.has-error .control-label,
-.has-error .radio,
-.has-error .checkbox,
-.has-error .radio-inline,
-.has-error .checkbox-inline, .has-error.radio label, .has-error.checkbox label, .has-error.radio-inline label, .has-error.checkbox-inline label,
-.has-error .form-control-feedback {
-  color: #FF0039; }
-.has-error .form-control,
-.has-error .form-control:focus,
-.has-error .input-group-addon {
-  border: 1px solid #FF0039; }
-
-.has-success .help-block,
-.has-success .control-label,
-.has-success .radio,
-.has-success .checkbox,
-.has-success .radio-inline,
-.has-success .checkbox-inline, .has-success.radio label, .has-success.checkbox label, .has-success.radio-inline label, .has-success.checkbox-inline label,
-.has-success .form-control-feedback {
-  color: #3FB618; }
-.has-success .form-control,
-.has-success .form-control:focus,
-.has-success .input-group-addon {
-  border: 1px solid #3FB618; }
-
-.nav-pills > li > a {
-  border-radius: 0; }
-
-.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
-  background-image: none; }
-
-.close {
-  text-decoration: none;
-  text-shadow: none;
-  opacity: 0.4; }
-  .close:hover, .close:focus {
-    opacity: 1; }
-
-.alert {
-  border: none; }
-  .alert .alert-link {
-    text-decoration: underline;
-    color: #fff; }
-
-.label {
-  border-radius: 0; }
-
-.progress {
-  height: 8px;
-  -webkit-box-shadow: none;
-  box-shadow: none; }
-  .progress .progress-bar {
-    font-size: 8px;
-    line-height: 8px; }
-
-.panel-heading, .panel-footer {
-  border-top-right-radius: 0;
-  border-top-left-radius: 0; }
-.panel-default .close {
-  color: #333333; }
-
-a.list-group-item-success.active {
-  background-color: #3FB618; }
-a.list-group-item-success.active:hover, a.list-group-item-success.active:focus {
-  background-color: #379f15; }
-a.list-group-item-warning.active {
-  background-color: #FF7518; }
-a.list-group-item-warning.active:hover, a.list-group-item-warning.active:focus {
-  background-color: #fe6600; }
-a.list-group-item-danger.active {
-  background-color: #FF0039; }
-a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
-  background-color: #e60033; }
-
-.modal .close {
-  color: #333333; }
-
-.popover {
-  color: #333333; }
-
 .wp-menu-pages-ns {
-  /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */ }
+  /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+  @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700"); }
   .wp-menu-pages-ns {
     font-family: sans-serif;
     -ms-text-size-adjust: 100%;
@@ -1939,7 +1793,7 @@ a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
     .wp-menu-pages-ns .btn-danger:focus, .wp-menu-pages-ns .btn-danger.focus {
       color: #fff;
       background-color: #cc002e;
-      border-color: #80001c; }
+      border-color: #80001d; }
     .wp-menu-pages-ns .btn-danger:hover {
       color: #fff;
       background-color: #cc002e;
@@ -1951,7 +1805,7 @@ a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
       .wp-menu-pages-ns .btn-danger:active:hover, .wp-menu-pages-ns .btn-danger:active:focus, .wp-menu-pages-ns .btn-danger:active.focus, .wp-menu-pages-ns .btn-danger.active:hover, .wp-menu-pages-ns .btn-danger.active:focus, .wp-menu-pages-ns .btn-danger.active.focus, .open > .wp-menu-pages-ns .btn-danger.dropdown-toggle:hover, .open > .wp-menu-pages-ns .btn-danger.dropdown-toggle:focus, .open > .wp-menu-pages-ns .btn-danger.dropdown-toggle.focus {
         color: #fff;
         background-color: #a80026;
-        border-color: #80001c; }
+        border-color: #80001d; }
     .wp-menu-pages-ns .btn-danger:active, .wp-menu-pages-ns .btn-danger.active, .open > .wp-menu-pages-ns .btn-danger.dropdown-toggle {
       background-image: none; }
     .wp-menu-pages-ns .btn-danger.disabled:hover, .wp-menu-pages-ns .btn-danger.disabled:focus, .wp-menu-pages-ns .btn-danger.disabled.focus, .wp-menu-pages-ns .btn-danger[disabled]:hover, .wp-menu-pages-ns .btn-danger[disabled]:focus, .wp-menu-pages-ns .btn-danger[disabled].focus, fieldset[disabled] .wp-menu-pages-ns .btn-danger:hover, fieldset[disabled] .wp-menu-pages-ns .btn-danger:focus, fieldset[disabled] .wp-menu-pages-ns .btn-danger.focus {
@@ -3631,6 +3485,131 @@ a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
   @media print {
     .wp-menu-pages-ns .hidden-print {
       display: none !important; } }
+  .wp-menu-pages-ns .navbar-inverse .badge {
+    background-color: #fff;
+    color: #2780E3; }
+  .wp-menu-pages-ns body {
+    -webkit-font-smoothing: antialiased; }
+  .wp-menu-pages-ns .text-primary,
+  .wp-menu-pages-ns .text-primary:hover {
+    color: #2780E3; }
+  .wp-menu-pages-ns .text-success,
+  .wp-menu-pages-ns .text-success:hover {
+    color: #3FB618; }
+  .wp-menu-pages-ns .text-danger,
+  .wp-menu-pages-ns .text-danger:hover {
+    color: #FF0039; }
+  .wp-menu-pages-ns .text-warning,
+  .wp-menu-pages-ns .text-warning:hover {
+    color: #FF7518; }
+  .wp-menu-pages-ns .text-info,
+  .wp-menu-pages-ns .text-info:hover {
+    color: #9954BB; }
+  .wp-menu-pages-ns table a:not(.btn),
+  .wp-menu-pages-ns .table a:not(.btn) {
+    text-decoration: underline; }
+  .wp-menu-pages-ns table .dropdown-menu a,
+  .wp-menu-pages-ns .table .dropdown-menu a {
+    text-decoration: none; }
+  .wp-menu-pages-ns table .success,
+  .wp-menu-pages-ns table .warning,
+  .wp-menu-pages-ns table .danger,
+  .wp-menu-pages-ns table .info,
+  .wp-menu-pages-ns .table .success,
+  .wp-menu-pages-ns .table .warning,
+  .wp-menu-pages-ns .table .danger,
+  .wp-menu-pages-ns .table .info {
+    color: #fff; }
+    .wp-menu-pages-ns table .success a,
+    .wp-menu-pages-ns table .warning a,
+    .wp-menu-pages-ns table .danger a,
+    .wp-menu-pages-ns table .info a,
+    .wp-menu-pages-ns .table .success a,
+    .wp-menu-pages-ns .table .warning a,
+    .wp-menu-pages-ns .table .danger a,
+    .wp-menu-pages-ns .table .info a {
+      color: #fff; }
+  .wp-menu-pages-ns .has-warning .help-block,
+  .wp-menu-pages-ns .has-warning .control-label,
+  .wp-menu-pages-ns .has-warning .radio,
+  .wp-menu-pages-ns .has-warning .checkbox,
+  .wp-menu-pages-ns .has-warning .radio-inline,
+  .wp-menu-pages-ns .has-warning .checkbox-inline, .wp-menu-pages-ns .has-warning.radio label, .wp-menu-pages-ns .has-warning.checkbox label, .wp-menu-pages-ns .has-warning.radio-inline label, .wp-menu-pages-ns .has-warning.checkbox-inline label,
+  .wp-menu-pages-ns .has-warning .form-control-feedback {
+    color: #FF7518; }
+  .wp-menu-pages-ns .has-warning .form-control,
+  .wp-menu-pages-ns .has-warning .form-control:focus,
+  .wp-menu-pages-ns .has-warning .input-group-addon {
+    border: 1px solid #FF7518; }
+  .wp-menu-pages-ns .has-error .help-block,
+  .wp-menu-pages-ns .has-error .control-label,
+  .wp-menu-pages-ns .has-error .radio,
+  .wp-menu-pages-ns .has-error .checkbox,
+  .wp-menu-pages-ns .has-error .radio-inline,
+  .wp-menu-pages-ns .has-error .checkbox-inline, .wp-menu-pages-ns .has-error.radio label, .wp-menu-pages-ns .has-error.checkbox label, .wp-menu-pages-ns .has-error.radio-inline label, .wp-menu-pages-ns .has-error.checkbox-inline label,
+  .wp-menu-pages-ns .has-error .form-control-feedback {
+    color: #FF0039; }
+  .wp-menu-pages-ns .has-error .form-control,
+  .wp-menu-pages-ns .has-error .form-control:focus,
+  .wp-menu-pages-ns .has-error .input-group-addon {
+    border: 1px solid #FF0039; }
+  .wp-menu-pages-ns .has-success .help-block,
+  .wp-menu-pages-ns .has-success .control-label,
+  .wp-menu-pages-ns .has-success .radio,
+  .wp-menu-pages-ns .has-success .checkbox,
+  .wp-menu-pages-ns .has-success .radio-inline,
+  .wp-menu-pages-ns .has-success .checkbox-inline, .wp-menu-pages-ns .has-success.radio label, .wp-menu-pages-ns .has-success.checkbox label, .wp-menu-pages-ns .has-success.radio-inline label, .wp-menu-pages-ns .has-success.checkbox-inline label,
+  .wp-menu-pages-ns .has-success .form-control-feedback {
+    color: #3FB618; }
+  .wp-menu-pages-ns .has-success .form-control,
+  .wp-menu-pages-ns .has-success .form-control:focus,
+  .wp-menu-pages-ns .has-success .input-group-addon {
+    border: 1px solid #3FB618; }
+  .wp-menu-pages-ns .nav-pills > li > a {
+    border-radius: 0; }
+  .wp-menu-pages-ns .dropdown-menu > li > a:hover, .wp-menu-pages-ns .dropdown-menu > li > a:focus {
+    background-image: none; }
+  .wp-menu-pages-ns .close {
+    text-decoration: none;
+    text-shadow: none;
+    opacity: 0.4; }
+    .wp-menu-pages-ns .close:hover, .wp-menu-pages-ns .close:focus {
+      opacity: 1; }
+  .wp-menu-pages-ns .alert {
+    border: none; }
+    .wp-menu-pages-ns .alert .alert-link {
+      text-decoration: underline;
+      color: #fff; }
+  .wp-menu-pages-ns .label {
+    border-radius: 0; }
+  .wp-menu-pages-ns .progress {
+    height: 8px;
+    -webkit-box-shadow: none;
+    box-shadow: none; }
+    .wp-menu-pages-ns .progress .progress-bar {
+      font-size: 8px;
+      line-height: 8px; }
+  .wp-menu-pages-ns .panel-heading, .wp-menu-pages-ns .panel-footer {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0; }
+  .wp-menu-pages-ns .panel-default .close {
+    color: #333333; }
+  .wp-menu-pages-ns a.list-group-item-success.active {
+    background-color: #3FB618; }
+  .wp-menu-pages-ns a.list-group-item-success.active:hover, .wp-menu-pages-ns a.list-group-item-success.active:focus {
+    background-color: #379f15; }
+  .wp-menu-pages-ns a.list-group-item-warning.active {
+    background-color: #FF7518; }
+  .wp-menu-pages-ns a.list-group-item-warning.active:hover, .wp-menu-pages-ns a.list-group-item-warning.active:focus {
+    background-color: #fe6600; }
+  .wp-menu-pages-ns a.list-group-item-danger.active {
+    background-color: #FF0039; }
+  .wp-menu-pages-ns a.list-group-item-danger.active:hover, .wp-menu-pages-ns a.list-group-item-danger.active:focus {
+    background-color: #e60033; }
+  .wp-menu-pages-ns .modal .close {
+    color: #333333; }
+  .wp-menu-pages-ns .popover {
+    color: #333333; }
 
 .btn-group.btn-radio label.active:before {
   font-family: FontAwesome;

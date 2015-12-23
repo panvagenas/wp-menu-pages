@@ -147,7 +147,7 @@ $multiSelect = new \Pan\MenuPages\Fields\MultiSelect($tabSelectFields, 'multiSel
 $multiSelect->setLabel('Multi Select Demo')->setOptions($selectOptionGroups);
 
 $number = new \Pan\MenuPages\Fields\Number($tabNumberFieldsDemo, 'number');
-$number->setLabel('Number Demo');
+$number->setLabel('Number Demo')->setMax(100)->setMin(1);
 
 $password = new \Pan\MenuPages\Fields\Password($tabTextFields, 'password');
 $password->setLabel('Password Demo');
