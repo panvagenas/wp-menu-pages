@@ -33,11 +33,21 @@ use Pan\MenuPages\WpMenuPages;
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
 abstract class AbsMenuPage {
+    const EL_MAIN = 'main';
+    const EL_ASIDE = 'aside';
+    const EL_HEADER = 'header';
+    const EL_FOOTER = 'footer';
+
     use TrtCache;
     /**
      * @var array
      */
-    protected $containers = [ ];
+    protected $containers = [
+        self::EL_HEADER => [],
+        self::EL_MAIN => [],
+        self::EL_ASIDE => [],
+        self::EL_FOOTER => [],
+    ];
     /**
      * @var Options
      */
@@ -200,17 +210,22 @@ abstract class AbsMenuPage {
 
     /**
      * @param AbsContainer $container
+     * @param string       $position
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      */
-    public function attachContainer( AbsContainer $container ) {
-        if ( ! $this->hasContainer( $container ) ) {
-            $this->containers[] = $container;
+    public function attachContainer( AbsContainer $container, $position = self::EL_MAIN ) {
+        if ( $this->isProperPosition( $position ) && ! $this->hasContainer( $container, $position ) ) {
+            $this->containers[$position][] = $container;
         }
 
         return $this;
+    }
+
+    protected function isProperPosition($position){
+        return in_array($position, [self::EL_MAIN, self::EL_ASIDE, self::EL_FOOTER, self::EL_HEADER]);
     }
 
     public function getFieldByName($fieldName){
@@ -237,13 +252,15 @@ abstract class AbsMenuPage {
 
     /**
      * @param AbsContainer $container
+     * @param              $position
      *
      * @return bool
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      */
-    public function hasContainer( AbsContainer $container ) {
-        return array_key_exists( $container->getHashId(), $this->containers );
+    public function hasContainer( AbsContainer $container, $position ) {
+        return $this->isProperPosition( $position )
+               && in_array( $container->getHashId(), $this->containers[ $position ] );
     }
 
     /**
@@ -299,5 +316,55 @@ abstract class AbsMenuPage {
      */
     public function getCapability() {
         return $this->capability;
+    }
+
+    /**
+     * @return string
+     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @see    AbsMenuPage::$title
+     * @codeCoverageIgnore
+     */
+    public function getTitle() {
+        return $this->title;
+    }
+
+    /**
+     * @return string
+     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @see    AbsMenuPage::$subtitle
+     * @codeCoverageIgnore
+     */
+    public function getSubtitle() {
+        return $this->subtitle;
+    }
+
+    /**
+     * @return string
+     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @see    AbsMenuPage::$templateName
+     * @codeCoverageIgnore
+     */
+    public function getTemplateName() {
+        return $this->templateName;
+    }
+
+    /**
+     * @return string
+     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @see    AbsMenuPage::$menuTitle
+     * @codeCoverageIgnore
+     */
+    public function getMenuTitle() {
+        return $this->menuTitle;
+    }
+
+    /**
+     * @return string
+     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @see    AbsMenuPage::$iconUrl
+     * @codeCoverageIgnore
+     */
+    public function getIconUrl() {
+        return $this->iconUrl;
     }
 }

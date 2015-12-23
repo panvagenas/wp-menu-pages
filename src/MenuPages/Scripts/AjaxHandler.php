@@ -49,7 +49,7 @@ class AjaxHandler extends AbsSingleton {
 
         $this->hidePhpErrors();
 
-        $newOptions = $this->mayeParseOptions( $_POST['options'] );
+        $newOptions = $this->maybeParseOptions( $_POST['options'] );
 
         list( $newOptions, $validationResults, $allValid, $match ) = $this->validateOptions( $newOptions );
 
@@ -75,7 +75,7 @@ class AjaxHandler extends AbsSingleton {
 
         $this->hidePhpErrors();
 
-        $include = $this->mayeParseOptions($_POST['include']);
+        $include = $this->maybeParseOptions( $_POST['include']);
 
         $result = [ ];
 
@@ -146,7 +146,7 @@ class AjaxHandler extends AbsSingleton {
         $this->checkPermissions() or die;
         $this->hidePhpErrors();
 
-        $newOptions = $this->mayeParseOptions( $_POST['options'] );
+        $newOptions = $this->maybeParseOptions( $_POST['options'] );
 
         list( $newOptions, $validationResults, $allValid, $match ) = $this->validateOptions( $newOptions );
 
@@ -165,7 +165,7 @@ class AjaxHandler extends AbsSingleton {
         wp_send_json_error( $return );
     }
 
-    protected function mayeParseOptions( $options ) {
+    protected function maybeParseOptions( $options ) {
         if ( is_array( $options ) ) {
             return $options;
         }

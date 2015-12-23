@@ -24,11 +24,11 @@
             {##
              # Main
              #}
-            <div class="{% if aside %}col-md-8{% else %}col-md-12{% endif %}">
+            <div class="{% if el.containers.aside %}col-md-8{% else %}col-md-12{% endif %}">
                 {##
                  # Main content
                  #}
-                {% for container in main %}
+                {% for container in el.containers.main %}
                     {{ container.markUp | raw }}
                 {% endfor %}
             </div>
@@ -36,9 +36,9 @@
             {##
              # Sidebar
              #}
-            {% if aside %}
+            {% if el.containers.aside %}
                 <div class="col-md-4">
-                    {% for container in aside %}
+                    {% for container in el.containers.aside %}
                         {{ container.markUp | raw }}
                     {% endfor %}
                 </div>

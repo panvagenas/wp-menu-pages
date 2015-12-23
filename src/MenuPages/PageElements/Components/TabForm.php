@@ -49,7 +49,7 @@ class TabForm extends AbsFieldsComponent {
         $active = false,
         $icon = ''
     ) {
-        parent::__construct( $container );
+        parent::__construct( $container, Tabs::EL_TAB );
         $this->container = $container;
         $this->title  = $title;
         $this->active = $active;

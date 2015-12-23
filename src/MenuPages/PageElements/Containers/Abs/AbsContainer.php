@@ -8,8 +8,11 @@ use Pan\MenuPages\Pages\Abs\AbsMenuPage;
 use Pan\MenuPages\Templates\Twig;
 
 abstract class AbsContainer extends AbsElement implements IfcDisplayable {
-    const POSITION_MAIN = 'main';
-    const POSITION_ASIDE = 'aside';
+    const EL_HEAD = 'head';
+
+    const EL_BODY = 'body';
+
+    const EL_FOOTER = 'footer';
     /**
      * @var \Pan\MenuPages\Pages\Abs\AbsMenuPage
      */
@@ -21,7 +24,7 @@ abstract class AbsContainer extends AbsElement implements IfcDisplayable {
     public function __construct( AbsMenuPage $menuPage, $position ) {
         $this->menuPage = $menuPage;
         $this->position = $position;
-        $this->menuPage->attachContainer( $this );
+        $this->menuPage->attachContainer( $this, $position );
     }
 
     /**

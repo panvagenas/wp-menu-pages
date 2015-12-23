@@ -11,8 +11,6 @@
 
 namespace Pan\MenuPages\Pages;
 
-use Pan\MenuPages\Ifc\IfcConstants;
-use Pan\MenuPages\PageElements\Containers\Abs\AbsContainer;
 use Pan\MenuPages\Pages\Abs\AbsMenuPage;
 
 /**
@@ -44,33 +42,6 @@ class Page extends AbsMenuPage {
     }
 
     public function getMarkUp() {
-        $context = [
-            'page'        => [ ],
-            'main'        => [ ],
-            'aside'     => [ ],
-            'alerts'      => [ ],
-            'pageOptions' => $this->options->get( IfcConstants::CORE_OPTIONS_KEY )[ $this->menuSlug ],
-        ];
-
-        if ( $this->title ) {
-            $context['page']['title'] = $this->title;
-        }
-        if ( $this->subtitle ) {
-            $context['page']['subtitle'] = $this->subtitle;
-        }
-
-        /**
-         * @var string $containerId
-         * @var  AbsContainer $container
-         */
-        foreach ( $this->containers as $containerId => $container ) {
-            if($container->getPosition() === AbsContainer::POSITION_MAIN){
-                $context['main'][] = $container;
-            } elseif ($container->getPosition() === AbsContainer::POSITION_ASIDE){
-                $context['aside'][] = $container;
-            }
-        }
-
-        return $this->getTwig()->getTwigEnvironment()->render( $this->templateName, $context );
+        return $this->getTwig()->getTwigEnvironment()->render( $this->templateName, ['el' => $this] );
     }
 }

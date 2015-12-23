@@ -16,10 +16,13 @@ use Pan\MenuPages\PageElements\Containers\Abs\AbsComponentsContainer;
  *
  * @author vagenas
  */
-class Social extends AbsComponent{
+class Social extends AbsComponent {
     const ICON_FACEBOOK = 'facebook';
+
     const ICON_TWITTER = 'twitter';
+
     const ICON_WORDPRESS = 'wordpress';
+
     const ICON_GITHUB = 'github';
 
     protected $icon;
@@ -28,12 +31,19 @@ class Social extends AbsComponent{
 
     protected $templateName = 'social.twig';
 
-    public function __construct( AbsComponentsContainer $container, $link, $title = '', $icon = '') {
-        parent::__construct($container);
+    public function __construct(
+        AbsComponentsContainer $container,
+        $containerPosition = AbsComponentsContainer::EL_BODY,
+        $link,
+        $title = '',
+        $icon = ''
+    ) {
+        parent::__construct( $container, $containerPosition );
         $this->title = $title;
         $this->icon  = $icon;
         $this->link  = $link;
     }
+
     function getIcon() {
         return $this->icon;
     }

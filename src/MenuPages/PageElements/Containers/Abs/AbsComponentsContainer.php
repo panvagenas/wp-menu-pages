@@ -5,18 +5,28 @@ namespace Pan\MenuPages\PageElements\Containers\Abs;
 use Pan\MenuPages\PageElements\Components\Abs\AbsComponent;
 
 abstract class AbsComponentsContainer extends AbsContainer {
-    protected $components = [ ];
 
-    public function attachComponent( AbsComponent $component ){
-        if(!$this->hasComponent($component)){
-            $this->components[$component->getHashId()] = $component;
+    protected $components = [
+        self::EL_HEAD => [ ],
+        self::EL_BODY => [ ],
+        self::EL_FOOTER => [ ],
+    ];
+
+    public function attachComponent( AbsComponent $component, $position = self::EL_BODY ) {
+        if ( $this->isProperPosition( $position ) && ! $this->hasComponent( $component, $position ) ) {
+            $this->components[ $position ][ $component->getHashId() ] = $component;
         }
 
         return $this;
     }
 
-    protected function hasComponent( AbsComponent $component ){
-        return in_array($component->getHashId(), $this->components);
+    protected function hasComponent( AbsComponent $component, $position ) {
+        return $this->isProperPosition( $position )
+               && in_array( $component->getHashId(), $this->components[ $position ] );
+    }
+
+    protected function isProperPosition( $position ) {
+        return in_array( $position, [ self::EL_BODY, self::EL_HEAD, self::EL_FOOTER ], true );
     }
 
     /**

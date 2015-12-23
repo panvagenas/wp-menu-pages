@@ -3,7 +3,7 @@
     <div class="panel-heading" style="padding-bottom: 0; border-bottom: none;">
         <ul class="nav nav-tabs" role="tablist">
 
-            {% for tabId, tab in el.components %}
+            {% for tabId, tab in el.components.tabs %}
 
                 <li role="presentation" class="{% if tab.active %}active{% endif %}">
                     <a href="#{{ tab.id | e('html_attr') }}"
@@ -23,7 +23,7 @@
 
     <div class="panel-body">
         <div class="tab-content">
-            {% for tabId, tab in el.components %}
+            {% for tabId, tab in el.components.tabs %}
             <div role="tabpanel" class="tab-pane fade{% if tab.active %} active in{% endif %}"
                  id="{{ tab.id | e('html_attr') }}">
                     {% include tab.templateName %}
@@ -31,10 +31,11 @@
             {% endfor %}
         </div>
     </div>
-
-    <div class="panel-footer">
-        <div class="row">
-            {{ el.footer | raw }}
+    {% if el.components.footer %}
+        <div class="panel-footer">
+            <div class="row">
+                {{ el.components.footer | raw }}
+            </div>
         </div>
-    </div>
+    {% endif %}
 </div>

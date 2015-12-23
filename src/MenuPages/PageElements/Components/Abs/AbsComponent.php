@@ -14,9 +14,12 @@ abstract class AbsComponent extends AbsElement {
 
     protected $templatesDir = 'components';
 
-    public function __construct( AbsComponentsContainer $container ) {
+    public function __construct(
+        AbsComponentsContainer $container,
+        $containerPosition = AbsComponentsContainer::EL_BODY
+    ) {
         $this->container = $container;
-        $this->container->attachComponent($this);
+        $this->container->attachComponent( $this, $containerPosition );
     }
 
     /**

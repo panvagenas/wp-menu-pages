@@ -92,32 +92,32 @@ $subPage = new \Pan\MenuPages\Pages\SubPage($wpMenuPages, $mainPage, 'Sub Page D
 
 $tabsMainPage = new \Pan\MenuPages\PageElements\Containers\Tabs(
     $mainPage,
-    \Pan\MenuPages\PageElements\Containers\Tabs::POSITION_MAIN
+    \Pan\MenuPages\Pages\Page::EL_MAIN
 );
 
 $tabsSubPage = new \Pan\MenuPages\PageElements\Containers\Tabs(
     $subPage,
-    \Pan\MenuPages\PageElements\Containers\Tabs::POSITION_MAIN
+    \Pan\MenuPages\Pages\Page::EL_MAIN
 );
 
 $tabsNoFields = new \Pan\MenuPages\PageElements\Containers\Tabs(
-    $subPage,
-    \Pan\MenuPages\PageElements\Containers\Tabs::POSITION_ASIDE
+    $mainPage,
+    \Pan\MenuPages\Pages\Page::EL_ASIDE
 );
 
 $rawTab = new \Pan\MenuPages\PageElements\Components\Tab($tabsNoFields, 'Raw Tab', true);
 $anotherRawTab = new \Pan\MenuPages\PageElements\Components\Tab($tabsNoFields, 'Another Raw Tab');
 
 
-$tabTextFields = new \Pan\MenuPages\PageElements\Components\TabForm($tabsMainPage, 'Text Fields', true);
-$tabDateTimeFields = new \Pan\MenuPages\PageElements\Components\TabForm($tabsMainPage, 'Date-Time Fields');
-$tabSelectFields = new \Pan\MenuPages\PageElements\Components\TabForm($tabsMainPage,'Select Fields');
-$tabRadioFields  = new \Pan\MenuPages\PageElements\Components\TabForm($tabsMainPage, 'Radio Fields');
-$tabMediaFields  = new \Pan\MenuPages\PageElements\Components\TabForm($tabsMainPage, 'Media Fields');
-$tabNumberFieldsDemo = new \Pan\MenuPages\PageElements\Components\TabForm($tabsMainPage, 'Number Fields');
+$tabTextFields = $tabsMainPage->addTabForm('Text Fields', true);
+$tabDateTimeFields = $tabsMainPage->addTabForm( 'Date-Time Fields');
+$tabSelectFields = $tabsMainPage->addTabForm('Select Fields');
+$tabRadioFields  = $tabsMainPage->addTabForm( 'Radio Fields');
+$tabMediaFields  = $tabsMainPage->addTabForm( 'Media Fields');
+$tabNumberFieldsDemo = $tabsMainPage->addTabForm( 'Number Fields');
 
-$tabOtherFields  = new \Pan\MenuPages\PageElements\Components\TabForm($tabsSubPage, 'Other Fields');
-$tabWpSpecificDemo = new \Pan\MenuPages\PageElements\Components\TabForm($tabsSubPage, 'WordPress', true);
+$tabOtherFields  = $tabsSubPage->addTabForm( 'Other Fields');
+$tabWpSpecificDemo = $tabsSubPage->addTabForm( 'WordPress', true);
 
 $color = new \Pan\MenuPages\Fields\Color($tabMediaFields, 'color');
 $color->setLabel('Color Demo');
