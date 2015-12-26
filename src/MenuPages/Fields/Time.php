@@ -23,5 +23,5 @@ use Pan\MenuPages\Fields\Abs\AbsInput;
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
 class Time extends AbsInput {
-    protected $type = 'time';
+    protected $class = 'time';
 }

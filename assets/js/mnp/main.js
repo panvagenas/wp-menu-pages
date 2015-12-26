@@ -37,12 +37,10 @@ define(['jquery', 'mnp/select2', 'mnp/controls', 'mnp/wpMenuPages'], function ($
         /*******************************************************************************
          * Bind date-time elements
          ******************************************************************************/
-        var $date = $('input[type="date"]');
-        var $dateTime = $('input[type="datetime"]');
-        var $dateTimeLocal = $('input[type="datetime-local"]');
-        var $month = $('input[type="month"]');
-        var $time = $('input[type="time"]');
-        var $week = $('input[type="week"]');
+        var $date = $('input.date');
+        var $dateTime = $('input.datetime');
+        var $month = $('input.month');
+        var $time = $('input.time');
 
         if($date.length > 0 || $dateTime.length > 0 || $dateTimeLocal.length > 0 || $week.length > 0
             || $month.length > 0 || $time.length > 0){
@@ -55,20 +53,12 @@ define(['jquery', 'mnp/select2', 'mnp/controls', 'mnp/wpMenuPages'], function ($
                     format: wpMenuPages.dateTimePicker.dateFormat + ' ' + wpMenuPages.dateTimePicker.timeFormat,
                     icons: wpMenuPages.dateTimePicker.icons
                 });
-                $dateTimeLocal.datetimepicker({
-                    format: wpMenuPages.dateTimePicker.dateFormat + ' ' + wpMenuPages.dateTimePicker.timeFormat,
-                    icons: wpMenuPages.dateTimePicker.icons
-                });
                 $month.datetimepicker({
                     format: wpMenuPages.dateTimePicker.monthFormat,
                     icons: wpMenuPages.dateTimePicker.icons
                 });
                 $time.datetimepicker({
                     format: wpMenuPages.dateTimePicker.timeFormat,
-                    icons: wpMenuPages.dateTimePicker.icons
-                });
-                $week.datetimepicker({
-                    format: wpMenuPages.dateTimePicker.weekFormat,
                     icons: wpMenuPages.dateTimePicker.icons
                 });
             });

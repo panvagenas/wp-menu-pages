@@ -125,11 +125,20 @@ $color->setLabel('Color Demo');
 $date = new \Pan\MenuPages\Fields\Date($tabDateTimeFields, 'date');
 $date->setLabel('Date Demo');
 
+$time = new \Pan\MenuPages\Fields\Time($tabDateTimeFields, 'time');
+$time->setLabel('Time Demo');
+
 $dateTime = new \Pan\MenuPages\Fields\DateTime($tabDateTimeFields, 'dateTime');
 $dateTime->setLabel('Date Time Demo');
 
-$dateTimeLocal = new \Pan\MenuPages\Fields\DateTimeLocal($tabDateTimeFields, 'dateTimeLocal');
-$dateTimeLocal->setLabel('Date Time Local Demo');
+$month = new \Pan\MenuPages\Fields\Month($tabDateTimeFields, 'month');
+$month->setLabel('Month Demo');
+
+//$week = new \Pan\MenuPages\Fields\Week($tabDateTimeFields, 'week');
+//$week->setLabel('Week Demo');
+
+//$dateTimeLocal = new \Pan\MenuPages\Fields\DateTimeLocal($tabDateTimeFields, 'dateTimeLocal');
+//$dateTimeLocal->setLabel('Date Time Local Demo');
 
 $email = new \Pan\MenuPages\Fields\Email($tabTextFields, 'email');
 $email->setLabel('Email Demo');
@@ -139,9 +148,6 @@ $hidden->setLabel('Hidden Field Demo');
 
 $image = new \Pan\MenuPages\Fields\Image($tabMediaFields, 'image');
 $image->setLabel('Image Demo');
-
-$month = new \Pan\MenuPages\Fields\Month($tabDateTimeFields, 'month');
-$month->setLabel('Month Demo');
 
 $multiSelect = new \Pan\MenuPages\Fields\MultiSelect($tabSelectFields, 'multiSelect');
 $multiSelect->setLabel('Multi Select Demo')->setOptions($selectOptionGroups);
@@ -194,14 +200,8 @@ $text->setLabel('Text Demo');
 $textArea = new \Pan\MenuPages\Fields\TextArea($tabTextFields, 'textArea');
 $textArea->setLabel('Text Area Demo');
 
-$time = new \Pan\MenuPages\Fields\Time($tabDateTimeFields, 'time');
-$time->setLabel('Time Demo');
-
 $url = new \Pan\MenuPages\Fields\Url($tabTextFields, 'url');
 $url->setLabel('Url Demo');
-
-$week = new \Pan\MenuPages\Fields\Week($tabDateTimeFields, 'week');
-$week->setLabel('Week Demo');
 
 $raw = new \Pan\MenuPages\Fields\Raw($tabOtherFields, 'raw');
 $content = '<div class="jumbotron"><h1>Html allowed in <code>Raw</code> fields!</h1>
