@@ -25,13 +25,39 @@ use Pan\MenuPages\Scripts\Ifc\IfcScripts;
  * @since     TODO ${VERSION}
  */
 class Script extends AbsMultiSingleton {
+    /**
+     * @var array
+     */
     protected $registered = [ ];
+    /**
+     * @var array
+     */
     protected $enqueued = [ ];
+    /**
+     * @var array
+     */
     protected $requiredStyles = [ ];
+    /**
+     * @var string
+     */
     protected $pathToAssets;
+    /**
+     * @var string
+     */
     protected $pluginRelPathToAssets;
+    /**
+     * @var string
+     */
     protected $pluginBaseFile;
 
+    /**
+     * Script constructor.
+     *
+     * @param AbsMenuPage $menuPage
+     *
+     * @since  TODO ${VERSION}
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     */
     protected function __construct( AbsMenuPage $menuPage ) {
         parent::__construct( $menuPage );
         $assetsFolder                = IfcScripts::ASSETS_FOLDER;
@@ -40,6 +66,10 @@ class Script extends AbsMultiSingleton {
         $this->pluginBaseFile        = $this->menuPage->getWpMenuPages()->getPluginBaseFile();
     }
 
+    /**
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
     public function printScripts() {
         foreach ( $this->requiredStyles as $styleSlug ) {
             wp_enqueue_style( $styleSlug );
@@ -92,6 +122,10 @@ class Script extends AbsMultiSingleton {
         ]);
     }
 
+    /**
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
     public function init() {
         wp_register_style(
             IfcScripts::CORE_CSS_SLUG,
@@ -137,18 +171,33 @@ class Script extends AbsMultiSingleton {
         );
     }
 
+    /**
+     * @return $this
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
     public function requireFontAwesome() {
         $this->requiredStyles[ IfcScripts::SLUG_FONT_AWESOME_CSS ] = IfcScripts::SLUG_FONT_AWESOME_CSS;
 
         return $this;
     }
 
+    /**
+     * @return $this
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
     public function requireSelect2() {
         $this->requiredStyles[ IfcScripts::SLUG_SELECT2_CSS ] = IfcScripts::SLUG_SELECT2_CSS;
 
         return $this;
     }
 
+    /**
+     * @return $this
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
     public function requireWpMenuPagesScripts() {
         $this->requiredStyles[ IfcScripts::CORE_CSS_SLUG ] = IfcScripts::CORE_CSS_SLUG;
 
