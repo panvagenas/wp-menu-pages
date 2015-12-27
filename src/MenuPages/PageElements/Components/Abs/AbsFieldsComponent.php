@@ -5,6 +5,7 @@ namespace Pan\MenuPages\PageElements\Components\Abs;
 use Pan\MenuPages\Fields\Abs\AbsField;
 use Pan\MenuPages\Fields\Abs\AbsInputBase;
 
+
 abstract class AbsFieldsComponent extends AbsComponent {
     protected $fields = [ ];
 

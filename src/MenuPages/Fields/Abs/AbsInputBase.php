@@ -23,13 +23,16 @@ abstract class AbsInputBase extends AbsField implements IfcValidation{
             throw new \InvalidArgumentException('Invalid parameter $name="'.$name.'" in '.__METHOD__);
         }
 
-        if($component->getMenuPage()->getFieldByName($name)){
+        if($component->getMenuPage()->getInputFieldByName($name)){
             throw new \InvalidArgumentException('A field with the $name="'.$name.'" already registered');
         }
 
         parent::__construct( $component );
+
         $this->name  = $name;
         $this->id = $name;
+
+        $this->menuPageComponent->getMenuPage()->registerField($this);
     }
 
     /**

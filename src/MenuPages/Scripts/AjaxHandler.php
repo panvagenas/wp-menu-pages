@@ -208,7 +208,7 @@ class AjaxHandler extends AbsMultiSingleton {
         }
 
         foreach ( $newOptions as $name => $value ) {
-            $field = $this->menuPage->getFieldByName( $name );
+            $field = $this->menuPage->getInputFieldByName( $name );
             if ( $field && $field instanceof IfcValidation ) {
                 $validationResults[ $name ] = $field->validate( $value );
                 if ( $validationResults[ $name ]['valid'] ) {

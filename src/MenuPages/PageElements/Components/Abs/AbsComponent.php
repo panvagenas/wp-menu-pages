@@ -6,14 +6,35 @@ use Pan\MenuPages\PageElements\Abs\AbsElement;
 use Pan\MenuPages\PageElements\Containers\Abs\AbsComponentsContainer;
 use Pan\MenuPages\Templates\Twig;
 
+/**
+ * Class AbsComponent
+ *
+ * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
+ * @date      ${YEAR}-${MONTH}-${DAY}
+ * @since     TODO ${VERSION}
+ * @package   Pan\MenuPages\PageElements\Components\Abs
+ * @copyright Copyright (c) ${YEAR} Panagiotis Vagenas
+ */
 abstract class AbsComponent extends AbsElement {
     /**
      * @var AbsComponentsContainer
      */
     protected $container;
 
+    /**
+     * @var string
+     */
     protected $templatesDir = 'components';
 
+    /**
+     * AbsComponent constructor.
+     *
+     * @param AbsComponentsContainer $container
+     * @param string                 $containerPosition
+     *
+     * @since  TODO ${VERSION}
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     */
     public function __construct(
         AbsComponentsContainer $container,
         $containerPosition = AbsComponentsContainer::EL_BODY
@@ -31,6 +52,13 @@ abstract class AbsComponent extends AbsElement {
         return $this->container->getTwig();
     }
 
+    /**
+     * @param bool $echo
+     *
+     * @return string
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
     public function getMarkUp( $echo = false ) {
         $markup = $this->getTwig()
                        ->getTwigEnvironment()

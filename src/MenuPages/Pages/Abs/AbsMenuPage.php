@@ -11,10 +11,9 @@
 
 namespace Pan\MenuPages\Pages\Abs;
 
-use Pan\MenuPages\Ifc\IfcConstants;
+use Pan\MenuPages\Fields\Abs\AbsField;
+use Pan\MenuPages\Fields\Abs\AbsInputBase;
 use Pan\MenuPages\Options;
-use Pan\MenuPages\PageElements\Components\Abs\AbsFieldsComponent;
-use Pan\MenuPages\PageElements\Containers\Abs\AbsComponentsContainer;
 use Pan\MenuPages\PageElements\Containers\Abs\AbsContainer;
 use Pan\MenuPages\Scripts\AjaxHandler;
 use Pan\MenuPages\Scripts\Ifc\IfcScripts;
@@ -35,9 +34,21 @@ use Pan\MenuPages\WpMenuPages;
 abstract class AbsMenuPage {
     use TrtCache;
 
+    /**
+     *
+     */
     const EL_MAIN = 'main';
+    /**
+     *
+     */
     const EL_ASIDE = 'aside';
+    /**
+     *
+     */
     const EL_HEADER = 'header';
+    /**
+     *
+     */
     const EL_FOOTER = 'footer';
 
     /**
@@ -93,9 +104,26 @@ abstract class AbsMenuPage {
      * @var string
      */
     protected $hookSuffix;
+    /**
+     * @var array
+     */
+    protected $fields = [];
 
-    protected $validCoreOptionKeys = [];
-
+    /**
+     * AbsMenuPage constructor.
+     *
+     * @param WpMenuPages $menuPages
+     * @param             $menuTitle
+     * @param string      $menuSlug
+     * @param string      $title
+     * @param string      $capability
+     * @param string      $subtitle
+     * @param string      $iconUrl
+     * @param null        $position
+     *
+     * @since  TODO ${VERSION}
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     */
     public function __construct(
         WpMenuPages $menuPages,
         $menuTitle,
@@ -123,8 +151,17 @@ abstract class AbsMenuPage {
         $this->bindActions();
     }
 
+    /**
+     * @return mixed
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
     abstract public function init();
 
+    /**
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
     public function bindScripts(){
         if(!$this->hookSuffix){
             throw  new \RuntimeException('A page hook suffix should be first set');
@@ -138,6 +175,10 @@ abstract class AbsMenuPage {
         add_action( 'admin_print_scripts-' . $this->hookSuffix, [ $scripts, 'printScripts' ] );
     }
 
+    /**
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
     protected function bindActions(){
         $scripts = Script::getInstance($this);
 
@@ -167,6 +208,10 @@ abstract class AbsMenuPage {
         );
     }
 
+    /**
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
     public function display() {
         echo $this->getMarkUp();
     }
@@ -182,12 +227,32 @@ abstract class AbsMenuPage {
         return $this->options;
     }
 
+    /**
+     * @return mixed
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
     abstract public function getMarkUp();
 
+    /**
+     * @param $name
+     * @param $value
+     *
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
     public function setPageOption($name, $value){
        $this->options->setPageOption($this, $name, $value);
     }
 
+    /**
+     * @param      $name
+     * @param null $default
+     *
+     * @return null
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
     public function getPageOption($name, $default = null){
         return $this->options->getPageOption($this, $name, $default);
     }
@@ -208,28 +273,36 @@ abstract class AbsMenuPage {
         return $this;
     }
 
+    /**
+     * @param $position
+     *
+     * @return bool
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
     protected function isProperPosition($position){
         return in_array($position, [self::EL_MAIN, self::EL_ASIDE, self::EL_FOOTER, self::EL_HEADER]);
     }
 
-    public function getFieldByName($fieldName){
+    public function registerField(AbsField $field){
+        $this->fields[$field->getHashId()] = $field;
+    }
+
+    /**
+     * @param $fieldName
+     *
+     * @return null|AbsInputBase
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
+    public function getInputFieldByName($fieldName){
         if(empty($fieldName) || !is_string($fieldName)){
             return null;
         }
-
-        foreach ( $this->containers as $context ) {
-            /** @var AbsComponentsContainer $container */
-            foreach ( $context as $container ) {
-                if ( $container instanceof AbsComponentsContainer ) {
-                    foreach ( $container->getComponentsFlat() as $component ) {
-                        if (
-                            ( $component instanceof AbsFieldsComponent )
-                            && $field = $component->getFieldByName( $fieldName )
-                        ) {
-                            return $field;
-                        }
-                    }
-                }
+        /** @var AbsInputBase $field */
+        foreach ( $this->fields as $field ) {
+            if($field instanceof AbsInputBase && $field->getName() === $fieldName){
+                return $field;
             }
         }
 

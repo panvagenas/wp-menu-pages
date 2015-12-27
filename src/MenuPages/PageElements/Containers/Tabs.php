@@ -38,6 +38,7 @@ class Tabs extends AbsComponentsContainer {
                 }
             }
             if ( ! $activeTab ) {
+                /** @var Tab $firstTab */
                 $firstTab = array_values($this->components[self::EL_TAB])[0];
                 $activeTab = $firstTab->getTitle();
             }
