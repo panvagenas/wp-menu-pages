@@ -8,7 +8,9 @@
     removeCombined: true,
     optimizeCss: 'standard',
     paths: {
-        "mnp": "../mnp"
+        "mnp": "../mnp",
+        'jquery': 'jquery',
+        'jquery.shim': 'select2/jquery.shim'
     },
     shim: {
         "bootstrap/*": ["jquery"]

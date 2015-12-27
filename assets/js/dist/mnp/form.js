@@ -1,0 +1,1 @@
+define(["jquery","mnp/domSelector"],function(e,t){return{getActiveTabOptions:function(){var e=t.getActiveTab().find("form");return e.serialize()}}});

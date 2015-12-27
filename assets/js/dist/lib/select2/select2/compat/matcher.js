@@ -1,0 +1,1 @@
+define(["jquery"],function(e){function t(t){function n(n,r){var i=e.extend(!0,{},r);if(n.term==null||e.trim(n.term)==="")return i;if(r.children){for(var s=r.children.length-1;s>=0;s--){var o=r.children[s],u=t(n.term,o.text,o);u||i.children.splice(s,1)}if(i.children.length>0)return i}return t(n.term,r.text,r)?i:null}return n}return t});

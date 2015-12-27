@@ -53,7 +53,7 @@ class Script extends AbsMultiSingleton {
                 , $this->menuPage->getWpMenuPages()->getBasePath()
             );
         $uriPathToAssets = $baseUri . '/' . IfcScripts::ASSETS_FOLDER;
-        $uriPathToJs = $uriPathToAssets . '/js';
+        $uriPathToJs = $uriPathToAssets . '/js/'.(IfcConstants::DEV ? 'src' : 'dist');
         $uriPathToCss = $uriPathToAssets . '/css';
 
         $options = $this->menuPage->getOptions();
