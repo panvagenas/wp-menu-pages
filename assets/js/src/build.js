@@ -1,6 +1,7 @@
+// r.js -o build.js
 ({
     appDir: './',
-    dir: './dist',
+    dir: '../dist',
     baseUrl: "./lib",
     name: "../app",
     fileExclusionRegExp: /^(r|build)\.js$/,

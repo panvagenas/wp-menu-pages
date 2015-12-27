@@ -134,12 +134,6 @@ $dateTime->setLabel('Date Time Demo');
 $month = new \Pan\MenuPages\Fields\Month($tabDateTimeFields, 'month');
 $month->setLabel('Month Demo');
 
-//$week = new \Pan\MenuPages\Fields\Week($tabDateTimeFields, 'week');
-//$week->setLabel('Week Demo');
-
-//$dateTimeLocal = new \Pan\MenuPages\Fields\DateTimeLocal($tabDateTimeFields, 'dateTimeLocal');
-//$dateTimeLocal->setLabel('Date Time Local Demo');
-
 $email = new \Pan\MenuPages\Fields\Email($tabTextFields, 'email');
 $email->setLabel('Email Demo');
 

@@ -115,8 +115,8 @@ class Script extends AbsMultiSingleton {
         );
 
         if(IfcConstants::DEV){
-            $requireJsUrl = plugins_url( $this->pluginRelPathToAssets . '/js/require.js', $this->pluginBaseFile );
-            $appJs = plugins_url( $this->pluginRelPathToAssets . '/js/app.js', $this->pluginBaseFile );
+            $requireJsUrl = plugins_url( $this->pluginRelPathToAssets . '/js/src/require.js', $this->pluginBaseFile );
+            $appJs = plugins_url( $this->pluginRelPathToAssets . '/js/src/app.js', $this->pluginBaseFile );
         } else {
             $requireJsUrl = plugins_url( $this->pluginRelPathToAssets . '/js/dist/require.js', $this->pluginBaseFile );
             $appJs = plugins_url( $this->pluginRelPathToAssets . '/js/dist/app.js', $this->pluginBaseFile );
