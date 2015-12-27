@@ -11,8 +11,8 @@
 
 namespace Pan\MenuPages\Fields\Abs;
 
-use Pan\MenuPages\Fields\Ifc\IfcTemplate;
 use Pan\MenuPages\Fields\Trt\TrtGlobalAttributes;
+use Pan\MenuPages\Ifc\IfcDisplayable;
 use Pan\MenuPages\PageElements\Components\Abs\AbsFieldsComponent;
 use Pan\MenuPages\PageElements\Containers\Collapsible;
 use Pan\MenuPages\Trt\TrtIdentifiable;
@@ -26,7 +26,7 @@ use Pan\MenuPages\Trt\TrtIdentifiable;
  * @package   Pan\MenuPages\Fields
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-abstract class AbsField implements IfcTemplate{
+abstract class AbsField implements IfcDisplayable{
     use TrtIdentifiable, TrtGlobalAttributes;
 
     /**
@@ -47,6 +47,13 @@ abstract class AbsField implements IfcTemplate{
 
         $this->menuPageComponent = $component;
         $this->menuPageComponent->attachField( $this );
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getMarkUp( $echo = false ) {
+        return $this->getTwig()->getTwigEnvironment()->render($this->getTemplateName(), ['field' => $this]);
     }
 
     /**
