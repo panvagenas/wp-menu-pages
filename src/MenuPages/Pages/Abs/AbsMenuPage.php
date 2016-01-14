@@ -163,6 +163,10 @@ abstract class AbsMenuPage {
      * @since  TODO ${VERSION}
      */
     public function bindScripts(){
+        if(!current_user_can($this->capability)){
+            return;
+        }
+
         if(!$this->hookSuffix){
             throw  new \RuntimeException('A page hook suffix should be first set');
         }

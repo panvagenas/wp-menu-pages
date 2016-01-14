@@ -66,10 +66,9 @@ define(['jquery', 'mnp/domSelector'], function ($, domSelector) {
                 }
 
                 require(['mnp/helper', 'mnp/ajax'], function (helper, ajax) {
-                    // TODO Implement
                     helper.readSingleFileAsText(e.originalEvent, function (e) {
                         try {
-                            var newOptions = JSON.parse(e.target.result)
+                            var newOptions = JSON.parse(e.target.result);
                             ajax.importOptions(newOptions);
                         } catch (error){
                             alert('There was an error reading options file:\n'+error.message)
@@ -88,7 +87,8 @@ define(['jquery', 'mnp/domSelector'], function ($, domSelector) {
                     }
                 };
 
-                // FIXME We have to reconstruct select2 each time because if rendered while hidden then width and height are taking wrong values
+                // FIXME We have to reconstruct select2 each time because if rendered while
+                // hidden then width and height are taking wrong values
                 require(['mnp/select2', 'mnp/ajax'], function(select2, ajax){
                     select2.maybeBindAll();
                     ajax.updateCoreOptions(newOptions);
@@ -96,4 +96,4 @@ define(['jquery', 'mnp/domSelector'], function ($, domSelector) {
             });
         }
     };
-})
+});
