@@ -53,34 +53,63 @@ final class WpMenuPages {
      * @param string        $pluginBaseFile
      * @param array|Options $options
      * @param string        $optionsBaseName
-     * @param string        $relBasePath
      *
-     * @throws \ErrorException
+     * @throws \InvalidArgumentException
+     * @throws \Exception
      * @since  TODO ${VERSION}
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
-    public function __construct(  $pluginBaseFile, $options, $optionsBaseName = '', $relBasePath = '' ) {
-        if(empty($pluginBaseFile)){
-            throw new \InvalidArgumentException('Invalid argument $pluginBaseFile in ' . __METHOD__);
+    public function __construct( $pluginBaseFile, $options, $optionsBaseName = '' ) {
+        if ( empty( $pluginBaseFile ) ) {
+            throw new \InvalidArgumentException( 'Invalid argument $pluginBaseFile in ' . __METHOD__ );
         }
 
-        $this->pluginBasePath = dirname($pluginBaseFile);
-        $this->pluginBaseFile = realpath($pluginBaseFile);
+        $pluginBaseFile = wp_normalize_path( $pluginBaseFile );
 
-        if($relBasePath){
-            $this->basePath = $this->pluginBasePath . '/' . $relBasePath;
-            $this->basePathRelToPlugin = $relBasePath;
+        $pluginIsSymlink = strpos( $pluginBaseFile, ABSPATH ) !== 0;
+        $pagesIsSymlink  = strpos( __FILE__, ABSPATH ) !== 0;
+
+        if ( $pluginIsSymlink ) {
+            $pluginFolderName     = dirname( plugin_basename( $pluginBaseFile ) );
+            $this->pluginBasePath = trailingslashit( WP_PLUGIN_DIR ) . $pluginFolderName;
+            $this->pluginBaseFile = trailingslashit( $this->pluginBasePath ) . basename( $pluginBaseFile );
         } else {
-            $this->basePath = dirname( dirname( dirname( __FILE__ ) ) );
-            $this->basePathRelToPlugin = str_replace($this->pluginBasePath, '', $this->basePath);
+            $this->pluginBasePath = dirname( $pluginBaseFile );
+            $this->pluginBaseFile = realpath( $pluginBaseFile );
         }
+
+        if ( $pagesIsSymlink ) {
+            $this->basePath            = dirname( dirname( dirname( __FILE__ ) ) );
+            $this->basePathRelToPlugin = str_replace( $this->pluginBasePath, '', $this->basePath );
+
+            $dirItr = new \RecursiveDirectoryIterator( $this->pluginBasePath,
+                \RecursiveDirectoryIterator::FOLLOW_SYMLINKS | \RecursiveDirectoryIterator::SKIP_DOTS );
+            $itr    = new \RecursiveIteratorIterator( $dirItr );
+            $res    = new \RegexIterator( $itr, '/WpMenuPages\.php/', \RecursiveIteratorIterator::LEAVES_ONLY );
+
+            $res->next();
+
+            /** @var \SplFileInfo $wpMenuPagesFile */
+            $wpMenuPagesFile = $res->current();
+
+            if(!$wpMenuPagesFile){
+                // TODO Message
+                throw new \Exception('Something went awfully wrong!');
+            }
+
+            $this->basePath = dirname(dirname($wpMenuPagesFile->getPath()));
+        } else {
+            $this->basePath            = dirname( dirname( dirname( __FILE__ ) ) );
+        }
+
+        $this->basePathRelToPlugin = str_replace( $this->pluginBasePath, '', $this->basePath );
 
         if ( $options instanceof Options ) {
             $this->options = $options;
-        } elseif ( is_array( $options ) && !empty($optionsBaseName) ) {
+        } elseif ( is_array( $options ) && ! empty( $optionsBaseName ) ) {
             $this->options = Options::getInstance( $optionsBaseName, $options );
         } else {
-            throw new \InvalidArgumentException('Invalid argument $options in ' . __METHOD__);
+            throw new \InvalidArgumentException( 'Invalid argument $options in ' . __METHOD__ );
         }
     }
 
@@ -138,6 +167,7 @@ final class WpMenuPages {
     public function getPluginBaseFile() {
         return $this->pluginBaseFile;
     }
+
     /**
      * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
@@ -148,7 +178,8 @@ final class WpMenuPages {
     public function getBasePathRelToPlugin() {
         return $this->basePathRelToPlugin;
     }
-    public function attachMenuPage(AbsMenuPage $menuPage){
-        $this->menuPages[$menuPage->getMenuSlug()] = $menuPage;
+
+    public function attachMenuPage( AbsMenuPage $menuPage ) {
+        $this->menuPages[ $menuPage->getMenuSlug() ] = $menuPage;
     }
 }
