@@ -1,1 +1,0 @@
-define(["jquery"],function(e){return{readSingleFileAsText:function(e,t){var n=e.target.files[0];if(n){var r=new FileReader;r.onload=t,r.readAsText(n)}return!1}}});

@@ -1,1 +1,0 @@
-define(["jquery"],function(e){function t(t,n,r){var i,s=[],o;i=e.trim(t.attr("class")),i&&(i=""+i,e(i.split(/\s+/)).each(function(){this.indexOf("select2-")===0&&s.push(this)})),i=e.trim(n.attr("class")),i&&(i=""+i,e(i.split(/\s+/)).each(function(){this.indexOf("select2-")!==0&&(o=r(this),o!=null&&s.push(o))})),t.attr("class",s.join(" "))}return{syncCssClasses:t}});

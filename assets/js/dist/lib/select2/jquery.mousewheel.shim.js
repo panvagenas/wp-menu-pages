@@ -1,1 +1,0 @@
-define(["jquery.shim"],function(e){return e});

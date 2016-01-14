@@ -1,1 +1,0 @@
-define([],function(){function e(){}return e.prototype.bind=function(e,t,n){e.call(this,t,n);var r=["blur","change","click","dblclick","focus","focusin","focusout","input","keydown","keyup","keypress","mousedown","mouseenter","mouseleave","mousemove","mouseover","mouseup","search","touchend","touchstart"];this.$selection.on(r.join(" "),function(e){e.stopPropagation()})},e});

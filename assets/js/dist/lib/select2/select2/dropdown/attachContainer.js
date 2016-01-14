@@ -1,1 +1,0 @@
-define([],function(){function e(e,t,n){e.call(this,t,n)}return e.prototype.position=function(e,t,n){var r=n.find(".dropdown-wrapper");r.append(t),t.addClass("select2-dropdown--below"),n.addClass("select2-container--below")},e});

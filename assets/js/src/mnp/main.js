@@ -42,9 +42,8 @@ define(['jquery', 'mnp/select2', 'mnp/controls', 'mnp/wpMenuPages'], function ($
         var $month = $('input.month');
         var $time = $('input.time');
 
-        if($date.length > 0 || $dateTime.length > 0 || $dateTimeLocal.length > 0 || $week.length > 0
-            || $month.length > 0 || $time.length > 0){
-            require(['dateTimePicker'], function(){
+        if ($date.length > 0 || $dateTime.length > 0 || $month.length > 0 || $time.length > 0) {
+            require(['dateTimePicker'], function () {
                 $date.datetimepicker({
                     format: wpMenuPages.dateTimePicker.dateFormat,
                     icons: wpMenuPages.dateTimePicker.icons
