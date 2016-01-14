@@ -11,7 +11,7 @@
 
 namespace Pan\MenuPages\Fields;
 
-use Pan\MenuPages\Fields\Abs\AbsInput;
+use Pan\MenuPages\Fields\Abs\AbsField;
 use Pan\MenuPages\PageElements\Components\Abs\AbsFieldsComponent;
 
 /**
@@ -23,7 +23,7 @@ use Pan\MenuPages\PageElements\Components\Abs\AbsFieldsComponent;
  * @package   Pan\MenuPages\Fields
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class Button extends AbsInput {
+class Button extends AbsField {
     protected $type = 'button';
 
     public function __construct( AbsFieldsComponent $component, $name, $label ) {
