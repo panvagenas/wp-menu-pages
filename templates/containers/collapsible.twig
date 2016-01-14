@@ -11,16 +11,16 @@
         </h4>
     </div>
     <div id="{{ collapsibleId }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="{{ headingId }}">
-        {% if el.body %}
+        {% if el.components.body %}
             <div class="panel-body">
-                {% for c in el.body %}
+                {% for c in el.components.body %}
                     {{ c.markUp | raw }}
                 {% endfor %}
             </div>
         {% endif %}
-        {% if el.footer %}
+        {% if el.components.footer %}
             <div class="panel-footer">
-                {% for c in el.footer %}
+                {% for c in el.components.footer %}
                     {{ c.markUp | raw }}
                 {% endfor %}
             </div>

@@ -1,20 +1,20 @@
 <div class="panel panel-default">
 
-    {% if el.header %}
+    {% if el.components.header %}
         <div class="panel-heading">
-            {{ el.header | raw }}
+            {{ el.components.header | raw }}
         </div>
     {% endif %}
 
-    {% if el.body %}
+    {% if el.components.body %}
         <div class="panel-body">
-            {{ el.body | raw }}
+            {{ el.components.body | raw }}
         </div>
     {% endif %}
 
-    {% if el.footer %}
+    {% if el.components.footer %}
         <div class="panel-footer">
-            {{ el.footer | raw }}
+            {{ el.components.footer | raw }}
         </div>
     {% endif %}
 
