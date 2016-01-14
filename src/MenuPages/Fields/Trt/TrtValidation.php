@@ -79,14 +79,14 @@ trait TrtValidation {
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      */
-    public function attachValidator( Validator $validator, $key ) {
+    public function attachValidator( Validator $validator, $key = '' ) {
         if ( $key ) {
             $this->validators[ $key ] = $validator;
 
             return $this;
         }
 
-        $this->validators[] = $validator;
+        $this->validators[spl_object_hash($validator)] = $validator;
 
         return $this;
     }
