@@ -1,10 +1,10 @@
-<form id="form-{{ el.id | e('html_attr') }}"
-      class="{{ el.class | e('html_attr') }}"
-      method="{{ el.method | e('html_attr') }}"
-      action="{{ el.action | e('html_attr') }}"
-      enctype="{{ el.encType | e('html_attr') }}"
+<form id="form-{{ cmp.id | e('html_attr') }}"
+      class="{{ cmp.class | e('html_attr') }}"
+      method="{{ cmp.method | e('html_attr') }}"
+      action="{{ cmp.action | e('html_attr') }}"
+      enctype="{{ cmp.encType | e('html_attr') }}"
 >
-    {% for fieldId, fld in el.fields %}
+    {% for fieldId, fld in cmp.fields %}
         {% include fld.templateName %}
     {% endfor %}
 </form>

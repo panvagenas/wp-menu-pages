@@ -1,5 +1,5 @@
-<div class="{{ el.class | e('html_attr') }}">
-    {% for fieldId, fld in el.fields %}
+<div class="{{ cmp.class | e('html_attr') }}">
+    {% for fieldId, fld in cmp.fields %}
         {% include fld.templateName %}
     {% endfor %}
 </div>
