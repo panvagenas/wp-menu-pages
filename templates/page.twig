@@ -28,8 +28,8 @@
                 {##
                  # Main content
                  #}
-                {% for container in el.containers.main %}
-                    {{ container.markUp | raw }}
+                {% for cnr in el.containers.main %}
+                    {% include cnr.templateName %}
                 {% endfor %}
             </div>
 
@@ -38,8 +38,8 @@
              #}
             {% if el.containers.aside %}
                 <div class="col-md-4">
-                    {% for container in el.containers.aside %}
-                        {{ container.markUp | raw }}
+                    {% for cnr in el.containers.aside %}
+                        {% include cnr.templateName %}
                     {% endfor %}
                 </div>
             {% endif %}
