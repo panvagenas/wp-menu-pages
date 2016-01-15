@@ -53,7 +53,7 @@ abstract class AbsField implements IfcDisplayable{
      * @inheritDoc
      */
     public function getMarkUp( $echo = false ) {
-        return $this->getTwig()->getTwigEnvironment()->render($this->getTemplateName(), ['field' => $this]);
+        return $this->getTwig()->getTwigEnvironment()->render($this->getTemplateName(), ['fld' => $this]);
     }
 
     /**

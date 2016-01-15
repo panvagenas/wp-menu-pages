@@ -10,11 +10,11 @@
 
     <div class="form-group">
 
-        <div id="{{ field.id }}"
-             class="{{ field.class | e('html_attr') }}"
-             {% if field.style %}style="{{ field.style | e('html_attr') }}"{% endif %}
+        <div id="{{ fld.id }}"
+             class="{{ fld.class | e('html_attr') }}"
+             {% if fld.style %}style="{{ fld.style | e('html_attr') }}"{% endif %}
         >
-            {{ field.content | raw }}
+            {{ fld.content | raw }}
         </div>
 
     </div>
