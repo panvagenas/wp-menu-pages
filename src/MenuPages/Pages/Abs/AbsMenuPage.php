@@ -38,14 +38,17 @@ abstract class AbsMenuPage {
      *
      */
     const POSITION_MAIN = 'main';
+
     /**
      *
      */
     const POSITION_ASIDE = 'aside';
+
     /**
      *
      */
     const POSITION_HEADER = 'header';
+
     /**
      *
      */
@@ -55,10 +58,10 @@ abstract class AbsMenuPage {
      * @var array
      */
     protected $containers = [
-        self::POSITION_HEADER => [],
-        self::POSITION_MAIN   => [],
-        self::POSITION_ASIDE  => [],
-        self::POSITION_FOOTER => [],
+        self::POSITION_HEADER => [ ],
+        self::POSITION_MAIN   => [ ],
+        self::POSITION_ASIDE  => [ ],
+        self::POSITION_FOOTER => [ ],
     ];
     /**
      * @var Options
@@ -107,7 +110,7 @@ abstract class AbsMenuPage {
     /**
      * @var array
      */
-    protected $fields = [];
+    protected $fields = [ ];
 
     /**
      * AbsMenuPage constructor.
@@ -136,18 +139,18 @@ abstract class AbsMenuPage {
     ) {
         $this->wpMenuPages = $menuPages;
         $this->options     = $menuPages->getOptions();
-        $this->title       = $title ? : $menuTitle;
+        $this->title       = $title ?: $menuTitle;
         $this->subtitle    = $subtitle;
         $this->menuTitle   = $menuTitle;
         $this->capability  = $capability;
-        $this->menuSlug    = $menuSlug ? : preg_replace('/[^a-zA-Z]/', '_', $menuTitle);
+        $this->menuSlug    = $menuSlug ?: preg_replace( '/[^a-zA-Z]/', '_', $menuTitle );
         $this->iconUrl     = $iconUrl;
         $this->position    = $position;
 
-        $this->options->maybeInitPageOptions($this);
+        $this->options->maybeInitPageOptions( $this );
 
-        add_action('admin_menu', [$this, 'init'], 10);
-        add_action('admin_menu', [$this, 'bindScripts'], 11);
+        add_action( 'admin_menu', [ $this, 'init' ], 10 );
+        add_action( 'admin_menu', [ $this, 'bindScripts' ], 11 );
         $this->bindActions();
     }
 
@@ -162,16 +165,16 @@ abstract class AbsMenuPage {
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      */
-    public function bindScripts(){
-        if(!current_user_can($this->capability)){
+    public function bindScripts() {
+        if ( ! current_user_can( $this->capability ) ) {
             return;
         }
 
-        if(!$this->hookSuffix){
-            throw  new \RuntimeException('A page hook suffix should be first set');
+        if ( ! $this->hookSuffix ) {
+            throw  new \RuntimeException( 'A page hook suffix should be first set' );
         }
 
-        $scripts = Script::getInstance($this);
+        $scripts = Script::getInstance( $this );
         // TODO We should first check if request is for current page in order to avoid unnecessary registrations
         $scripts->requireWpMenuPagesScripts();
         $scripts->requireFontAwesome();
@@ -183,32 +186,32 @@ abstract class AbsMenuPage {
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      */
-    protected function bindActions(){
-        $scripts = Script::getInstance($this);
+    protected function bindActions() {
+        $scripts = Script::getInstance( $this );
 
         if ( ! has_action( 'admin_init', [ $scripts, 'init' ] ) ) {
             add_action( 'admin_init', [ $scripts, 'init' ] );
         }
 
         add_action(
-            'wp_ajax_'.IfcScripts::ACTION_SAVE_PREFIX.$this->menuSlug,
-            [AjaxHandler::getInstance($this), 'saveOptions']
+            'wp_ajax_' . IfcScripts::ACTION_SAVE_PREFIX . $this->menuSlug,
+            [ AjaxHandler::getInstance( $this ), 'saveOptions' ]
         );
         add_action(
-            'wp_ajax_'.IfcScripts::ACTION_RESET_PREFIX.$this->menuSlug,
-            [AjaxHandler::getInstance($this), 'resetOptions']
+            'wp_ajax_' . IfcScripts::ACTION_RESET_PREFIX . $this->menuSlug,
+            [ AjaxHandler::getInstance( $this ), 'resetOptions' ]
         );
         add_action(
-            'wp_ajax_'.IfcScripts::ACTION_EXPORT_PREFIX.$this->menuSlug,
-            [AjaxHandler::getInstance($this), 'exportOptions']
+            'wp_ajax_' . IfcScripts::ACTION_EXPORT_PREFIX . $this->menuSlug,
+            [ AjaxHandler::getInstance( $this ), 'exportOptions' ]
         );
         add_action(
-            'wp_ajax_'.IfcScripts::ACTION_IMPORT_PREFIX.$this->menuSlug,
-            [AjaxHandler::getInstance($this), 'importOptions']
+            'wp_ajax_' . IfcScripts::ACTION_IMPORT_PREFIX . $this->menuSlug,
+            [ AjaxHandler::getInstance( $this ), 'importOptions' ]
         );
         add_action(
-            'wp_ajax_'.IfcScripts::ACTION_UPDATE_CORE_OPTIONS_PREFIX.$this->menuSlug,
-            [AjaxHandler::getInstance($this), 'updateCoreOptions']
+            'wp_ajax_' . IfcScripts::ACTION_UPDATE_CORE_OPTIONS_PREFIX . $this->menuSlug,
+            [ AjaxHandler::getInstance( $this ), 'updateCoreOptions' ]
         );
     }
 
@@ -245,8 +248,8 @@ abstract class AbsMenuPage {
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      */
-    public function setPageOption($name, $value){
-       $this->options->setPageOption($this, $name, $value);
+    public function setPageOption( $name, $value ) {
+        $this->options->setPageOption( $this, $name, $value );
     }
 
     /**
@@ -257,8 +260,8 @@ abstract class AbsMenuPage {
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      */
-    public function getPageOption($name, $default = null){
-        return $this->options->getPageOption($this, $name, $default);
+    public function getPageOption( $name, $default = null ) {
+        return $this->options->getPageOption( $this, $name, $default );
     }
 
     /**
@@ -271,7 +274,7 @@ abstract class AbsMenuPage {
      */
     public function attachContainer( AbsCnr $container, $position = self::POSITION_MAIN ) {
         if ( $this->isProperPosition( $position ) && ! $this->hasContainer( $container, $position ) ) {
-            $this->containers[$position][] = $container;
+            $this->containers[ $position ][] = $container;
         }
 
         return $this;
@@ -284,12 +287,14 @@ abstract class AbsMenuPage {
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      */
-    protected function isProperPosition($position){
-        return in_array($position, [ self::POSITION_MAIN, self::POSITION_ASIDE, self::POSITION_FOOTER, self::POSITION_HEADER]);
+    protected function isProperPosition( $position ) {
+        return in_array( $position,
+            [ self::POSITION_MAIN, self::POSITION_ASIDE, self::POSITION_FOOTER, self::POSITION_HEADER ]
+        );
     }
 
-    public function registerField(AbsField $field){
-        $this->fields[$field->getHashId()] = $field;
+    public function registerField( AbsField $field ) {
+        $this->fields[ $field->getHashId() ] = $field;
     }
 
     /**
@@ -299,13 +304,13 @@ abstract class AbsMenuPage {
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      */
-    public function getInputFieldByName($fieldName){
-        if(empty($fieldName) || !is_string($fieldName)){
+    public function getInputFieldByName( $fieldName ) {
+        if ( empty( $fieldName ) || ! is_string( $fieldName ) ) {
             return null;
         }
         /** @var AbsInputBase $field */
         foreach ( $this->fields as $field ) {
-            if($field instanceof AbsInputBase && $field->getName() === $fieldName){
+            if ( $field instanceof AbsInputBase && $field->getName() === $fieldName ) {
                 return $field;
             }
         }

@@ -26,7 +26,7 @@ class Submit extends Button {
     protected $type = 'submit';
 
     public function __construct( AbsFldCmp $component, $name, $label ) {
-        parent::__construct( $component, $name, $label );
+        parent::__construct( $component, $label );
         $this->setClass( $this->class . ' btn-primary' );
     }
 }

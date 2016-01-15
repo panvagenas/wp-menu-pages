@@ -25,9 +25,10 @@ use Pan\MenuPages\PageElements\Components\Abs\AbsFldCmp;
  */
 class Button extends AbsField {
     protected $type = 'button';
+    protected $label;
 
-    public function __construct( AbsFldCmp $component, $name, $label ) {
-        parent::__construct( $component, $name );
+    public function __construct( AbsFldCmp $component, $label ) {
+        parent::__construct( $component );
         $this->label = $label;
         $this->setClass( $this->class . ' btn' );
     }

@@ -14,7 +14,6 @@ namespace Pan\MenuPages\Fields\Abs;
 use Pan\MenuPages\Fields\Trt\TrtGlobalAttributes;
 use Pan\MenuPages\Ifc\IfcDisplayable;
 use Pan\MenuPages\PageElements\Components\Abs\AbsFldCmp;
-use Pan\MenuPages\PageElements\Containers\CnrCollapsible;
 use Pan\MenuPages\Trt\TrtIdentifiable;
 
 /**

@@ -26,7 +26,7 @@ class Reset extends Button {
     protected $type = 'reset';
 
     public function __construct( AbsFldCmp $component, $name, $label ) {
-        parent::__construct( $component, $name, $label );
+        parent::__construct( $component, $label );
         $this->setClass( $this->class . ' btn-warning' );
     }
 }
