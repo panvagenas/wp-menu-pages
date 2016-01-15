@@ -5,7 +5,7 @@ namespace Pan\MenuPages\Fields\Abs;
 use Pan\MenuPages\Fields\Ifc\IfcInputConstants;
 use Pan\MenuPages\Fields\Ifc\IfcValidation;
 use Pan\MenuPages\Fields\Trt\TrtGlobalInputAttributes;
-use Pan\MenuPages\PageElements\Components\Abs\AbsFieldsComponent;
+use Pan\MenuPages\PageElements\Components\Abs\AbsFldCmp;
 
 abstract class AbsInputBase extends AbsField implements IfcValidation{
     use TrtGlobalInputAttributes;
@@ -18,7 +18,7 @@ abstract class AbsInputBase extends AbsField implements IfcValidation{
     /**
      * @inheritDoc
      */
-    public function __construct( AbsFieldsComponent $component, $name ) {
+    public function __construct( AbsFldCmp $component, $name ) {
         if(!preg_match(IfcInputConstants::INPUT_NAME_REGEX, $name)){
             throw new \InvalidArgumentException('Invalid parameter $name="'.$name.'" in '.__METHOD__);
         }

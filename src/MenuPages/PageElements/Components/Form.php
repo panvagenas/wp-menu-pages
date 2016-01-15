@@ -11,7 +11,7 @@
 
 namespace Pan\MenuPages\PageElements\Components;
 
-use Pan\MenuPages\PageElements\Components\Abs\AbsFieldsComponent;
+use Pan\MenuPages\PageElements\Components\Abs\AbsFldCmp;
 
 /**
  * Class Form
@@ -22,7 +22,7 @@ use Pan\MenuPages\PageElements\Components\Abs\AbsFieldsComponent;
  * @package   Pan\MenuPages\PageComponents\Elements
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class Form extends AbsFieldsComponent{
+class Form extends AbsFldCmp{
     /**
      * @var string
      */

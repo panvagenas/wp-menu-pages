@@ -11,7 +11,7 @@
 
 namespace Pan\MenuPages\Fields;
 
-use Pan\MenuPages\PageElements\Components\Abs\AbsFieldsComponent;
+use Pan\MenuPages\PageElements\Components\Abs\AbsFldCmp;
 
 /**
  * Class PostType
@@ -23,7 +23,7 @@ use Pan\MenuPages\PageElements\Components\Abs\AbsFieldsComponent;
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
 class PostType extends Select2 {
-    public function __construct( AbsFieldsComponent $component, $name, $args = [] ) {
+    public function __construct( AbsFldCmp $component, $name, $args = [] ) {
         parent::__construct( $component, $name );
         $postTypes = get_post_types($args, 'objects');
         foreach ( $postTypes as $postType ) {

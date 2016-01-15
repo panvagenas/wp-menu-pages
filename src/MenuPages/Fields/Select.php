@@ -14,7 +14,7 @@ namespace Pan\MenuPages\Fields;
 use Pan\MenuPages\Fields\Abs\AbsInputBase;
 use Pan\MenuPages\Fields\Trt\TrtOptions;
 use Pan\MenuPages\Fields\Trt\TrtValidation;
-use Pan\MenuPages\PageElements\Components\Abs\AbsFieldsComponent;
+use Pan\MenuPages\PageElements\Components\Abs\AbsFldCmp;
 
 /**
  * Class Select
@@ -48,7 +48,7 @@ class Select extends AbsInputBase {
     /**
      * @inheritDoc
      */
-    public function __construct( AbsFieldsComponent $component, $name ) {
+    public function __construct( AbsFldCmp $component, $name ) {
         parent::__construct( $component, $name );
         $this->value = $this->getValue();
     }

@@ -11,7 +11,7 @@
 
 namespace Pan\MenuPages\Fields;
 
-use Pan\MenuPages\PageElements\Components\Abs\AbsFieldsComponent;
+use Pan\MenuPages\PageElements\Components\Abs\AbsFldCmp;
 
 /**
  * Class Submit
@@ -25,7 +25,7 @@ use Pan\MenuPages\PageElements\Components\Abs\AbsFieldsComponent;
 class Submit extends Button {
     protected $type = 'submit';
 
-    public function __construct( AbsFieldsComponent $component, $name, $label ) {
+    public function __construct( AbsFldCmp $component, $name, $label ) {
         parent::__construct( $component, $name, $label );
         $this->setClass( $this->class . ' btn-primary' );
     }
