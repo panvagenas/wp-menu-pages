@@ -37,7 +37,7 @@ abstract class AbsCmp extends AbsElement {
      */
     public function __construct(
         AbsCnrComponents $container,
-        $containerPosition = AbsCnrComponents::EL_BODY
+        $containerPosition = AbsCnrComponents::CNR_BODY
     ) {
         $this->container = $container;
         $this->container->attachComponent( $this, $containerPosition );

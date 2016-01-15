@@ -8,11 +8,11 @@ use Pan\MenuPages\Pages\Abs\AbsMenuPage;
 use Pan\MenuPages\Templates\Twig;
 
 abstract class AbsCnr extends AbsElement implements IfcDisplayable {
-    const EL_HEAD = 'head';
+    const CNR_HEAD = 'head';
 
-    const EL_BODY = 'body';
+    const CNR_BODY = 'body';
 
-    const EL_FOOTER = 'footer';
+    const CNR_FOOTER = 'footer';
     /**
      * @var \Pan\MenuPages\Pages\Abs\AbsMenuPage
      */

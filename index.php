@@ -92,17 +92,17 @@ $subPage = new \Pan\MenuPages\Pages\SubPage($wpMenuPages, $mainPage, 'Sub Page D
 
 $tabsMainPage = new \Pan\MenuPages\PageElements\Containers\CnrTabbedSettings(
     $mainPage,
-    \Pan\MenuPages\Pages\Page::EL_MAIN
+    \Pan\MenuPages\Pages\Page::POSITION_MAIN
 );
 
 $tabsSubPage = new \Pan\MenuPages\PageElements\Containers\CnrTabs(
     $subPage,
-    \Pan\MenuPages\Pages\Page::EL_MAIN
+    \Pan\MenuPages\Pages\Page::POSITION_MAIN
 );
 
 $tabsNoFields = new \Pan\MenuPages\PageElements\Containers\CnrTabs(
     $mainPage,
-    \Pan\MenuPages\Pages\Page::EL_ASIDE
+    \Pan\MenuPages\Pages\Page::POSITION_ASIDE
 );
 
 $rawTab = new \Pan\MenuPages\PageElements\Components\CmpTab($tabsNoFields, 'CmpRaw CmpTab');
@@ -221,6 +221,8 @@ $rawTab->setContent($lorem1);
 $anotherRawTab->setContent($lorem2);
 
 $panelComponents = new \Pan\MenuPages\PageElements\Containers\CnrPanelComponents($subPage,
-    \Pan\MenuPages\Pages\SubPage::EL_ASIDE);
+    \Pan\MenuPages\Pages\SubPage::POSITION_ASIDE);
 $raw = new \Pan\MenuPages\PageElements\Components\CmpRaw($panelComponents);
 $raw->setContent($lorem1);
+
+$panel = new \Pan\MenuPages\PageElements\Containers\CnrPanel($subPage, \Pan\MenuPages\Pages\Page::POSITION_ASIDE);

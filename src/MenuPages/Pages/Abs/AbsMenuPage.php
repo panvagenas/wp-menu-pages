@@ -37,28 +37,28 @@ abstract class AbsMenuPage {
     /**
      *
      */
-    const EL_MAIN = 'main';
+    const POSITION_MAIN = 'main';
     /**
      *
      */
-    const EL_ASIDE = 'aside';
+    const POSITION_ASIDE = 'aside';
     /**
      *
      */
-    const EL_HEADER = 'header';
+    const POSITION_HEADER = 'header';
     /**
      *
      */
-    const EL_FOOTER = 'footer';
+    const POSITION_FOOTER = 'footer';
 
     /**
      * @var array
      */
     protected $containers = [
-        self::EL_HEADER => [],
-        self::EL_MAIN => [],
-        self::EL_ASIDE => [],
-        self::EL_FOOTER => [],
+        self::POSITION_HEADER => [],
+        self::POSITION_MAIN   => [],
+        self::POSITION_ASIDE  => [],
+        self::POSITION_FOOTER => [],
     ];
     /**
      * @var Options
@@ -269,7 +269,7 @@ abstract class AbsMenuPage {
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      */
-    public function attachContainer( AbsCnr $container, $position = self::EL_MAIN ) {
+    public function attachContainer( AbsCnr $container, $position = self::POSITION_MAIN ) {
         if ( $this->isProperPosition( $position ) && ! $this->hasContainer( $container, $position ) ) {
             $this->containers[$position][] = $container;
         }
@@ -285,7 +285,7 @@ abstract class AbsMenuPage {
      * @since  TODO ${VERSION}
      */
     protected function isProperPosition($position){
-        return in_array($position, [self::EL_MAIN, self::EL_ASIDE, self::EL_FOOTER, self::EL_HEADER]);
+        return in_array($position, [ self::POSITION_MAIN, self::POSITION_ASIDE, self::POSITION_FOOTER, self::POSITION_HEADER]);
     }
 
     public function registerField(AbsField $field){

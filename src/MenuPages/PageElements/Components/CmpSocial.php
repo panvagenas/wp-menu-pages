@@ -33,7 +33,7 @@ class CmpSocial extends AbsCmp {
 
     public function __construct(
         AbsCnrComponents $container,
-        $containerPosition = AbsCnrComponents::EL_BODY,
+        $containerPosition = AbsCnrComponents::CNR_BODY,
         $link,
         $title = '',
         $icon = ''

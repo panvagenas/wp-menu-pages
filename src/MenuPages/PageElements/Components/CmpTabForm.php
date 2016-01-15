@@ -49,7 +49,7 @@ class CmpTabForm extends AbsFldCmp {
         $active = false,
         $icon = ''
     ) {
-        parent::__construct( $container, CnrTabs::EL_TAB );
+        parent::__construct( $container, CnrTabs::CNR_TAB );
         $this->container = $container;
         $this->title  = $title;
 

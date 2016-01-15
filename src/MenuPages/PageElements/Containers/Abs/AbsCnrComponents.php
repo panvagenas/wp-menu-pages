@@ -7,12 +7,12 @@ use Pan\MenuPages\PageElements\Components\Abs\AbsCmp;
 abstract class AbsCnrComponents extends AbsCnr {
 
     protected $components = [
-        self::EL_HEAD => [ ],
-        self::EL_BODY => [ ],
-        self::EL_FOOTER => [ ],
+        self::CNR_HEAD   => [ ],
+        self::CNR_BODY   => [ ],
+        self::CNR_FOOTER => [ ],
     ];
 
-    public function attachComponent( AbsCmp $component, $position = self::EL_BODY ) {
+    public function attachComponent( AbsCmp $component, $position = self::CNR_BODY ) {
         if ( $this->isProperPosition( $position ) && ! $this->hasComponent( $component, $position ) ) {
             $this->components[ $position ][ $component->getHashId() ] = $component;
         }
@@ -26,7 +26,7 @@ abstract class AbsCnrComponents extends AbsCnr {
     }
 
     protected function isProperPosition( $position ) {
-        return in_array( $position, [ self::EL_BODY, self::EL_HEAD, self::EL_FOOTER ], true );
+        return in_array( $position, [ self::CNR_BODY, self::CNR_HEAD, self::CNR_FOOTER ], true );
     }
 
     /**
