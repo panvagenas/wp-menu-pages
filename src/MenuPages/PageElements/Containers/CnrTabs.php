@@ -7,7 +7,7 @@ use Pan\MenuPages\PageElements\Components\CmpTab;
 use Pan\MenuPages\PageElements\Components\CmpTabForm;
 use Pan\MenuPages\PageElements\Containers\Abs\AbsComponentsContainer;
 
-class Tabs extends AbsComponentsContainer {
+class CnrTabs extends AbsComponentsContainer {
     const EL_TAB = 'tabs';
     protected $templateName = 'tabs.twig';
     protected $components = [

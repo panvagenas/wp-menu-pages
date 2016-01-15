@@ -4,7 +4,7 @@ namespace Pan\MenuPages\PageElements\Containers;
 
 use Pan\MenuPages\PageElements\Containers\Abs\AbsComponentsContainer;
 
-class PanelComponents extends AbsComponentsContainer {
+class CnrPanelComponents extends AbsComponentsContainer {
     /**
      * @var string
      */

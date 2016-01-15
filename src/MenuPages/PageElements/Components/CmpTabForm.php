@@ -12,7 +12,7 @@
 namespace Pan\MenuPages\PageElements\Components;
 
 use Pan\MenuPages\PageElements\Components\Abs\AbsFldCmp;
-use Pan\MenuPages\PageElements\Containers\Tabs;
+use Pan\MenuPages\PageElements\Containers\CnrTabs;
 
 /**
  * Class CmpTabForm
@@ -39,17 +39,17 @@ class CmpTabForm extends AbsFldCmp {
 
     protected $templateName = 'tabForm.twig';
     /**
-     * @var Tabs
+     * @var CnrTabs
      */
     protected $container;
 
     public function __construct(
-        Tabs $container,
+        CnrTabs $container,
         $title,
         $active = false,
         $icon = ''
     ) {
-        parent::__construct( $container, Tabs::EL_TAB );
+        parent::__construct( $container, CnrTabs::EL_TAB );
         $this->container = $container;
         $this->title  = $title;
 

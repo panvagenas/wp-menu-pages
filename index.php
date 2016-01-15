@@ -90,17 +90,17 @@ $wpMenuPages = new \Pan\MenuPages\WpMenuPages(__FILE__, $optionsObj);
 $mainPage = new \Pan\MenuPages\Pages\Page($wpMenuPages, 'My Settings');
 $subPage = new \Pan\MenuPages\Pages\SubPage($wpMenuPages, $mainPage, 'Sub Page Demo');
 
-$tabsMainPage = new \Pan\MenuPages\PageElements\Containers\TabbedSettings(
+$tabsMainPage = new \Pan\MenuPages\PageElements\Containers\CnrTabbedSettings(
     $mainPage,
     \Pan\MenuPages\Pages\Page::EL_MAIN
 );
 
-$tabsSubPage = new \Pan\MenuPages\PageElements\Containers\Tabs(
+$tabsSubPage = new \Pan\MenuPages\PageElements\Containers\CnrTabs(
     $subPage,
     \Pan\MenuPages\Pages\Page::EL_MAIN
 );
 
-$tabsNoFields = new \Pan\MenuPages\PageElements\Containers\Tabs(
+$tabsNoFields = new \Pan\MenuPages\PageElements\Containers\CnrTabs(
     $mainPage,
     \Pan\MenuPages\Pages\Page::EL_ASIDE
 );
@@ -220,7 +220,7 @@ Clinias, verpa, et adgium.</p>
 $rawTab->setContent($lorem1);
 $anotherRawTab->setContent($lorem2);
 
-$panelComponents = new \Pan\MenuPages\PageElements\Containers\PanelComponents($subPage,
+$panelComponents = new \Pan\MenuPages\PageElements\Containers\CnrPanelComponents($subPage,
     \Pan\MenuPages\Pages\SubPage::EL_ASIDE);
 $raw = new \Pan\MenuPages\PageElements\Components\CmpRaw($panelComponents);
 $raw->setContent($lorem1);

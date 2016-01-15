@@ -2,6 +2,6 @@
 
 namespace Pan\MenuPages\PageElements\Containers;
 
-class TabbedSettings extends Tabs {
+class CnrTabbedSettings extends CnrTabs {
     protected $templateName = 'tabbedSettings.twig';
 }

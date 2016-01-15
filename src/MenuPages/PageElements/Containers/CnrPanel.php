@@ -4,7 +4,7 @@ namespace Pan\MenuPages\PageElements\Containers;
 
 use Pan\MenuPages\PageElements\Containers\Abs\AbsContainer;
 
-class Panel extends AbsContainer {
+class CnrPanel extends AbsContainer {
     protected $header = '';
     protected $body = '';
     protected $footer = '';

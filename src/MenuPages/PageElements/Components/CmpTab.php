@@ -12,7 +12,7 @@
 namespace Pan\MenuPages\PageElements\Components;
 
 use Pan\MenuPages\PageElements\Components\Abs\AbsCmp;
-use Pan\MenuPages\PageElements\Containers\Tabs;
+use Pan\MenuPages\PageElements\Containers\CnrTabs;
 
 /**
  * Class CmpTab
@@ -39,18 +39,18 @@ class CmpTab extends AbsCmp {
 
     protected $templateName = 'tab.twig';
     /**
-     * @var Tabs
+     * @var CnrTabs
      */
     protected $container;
 
     protected $content = '';
 
     public function __construct(
-        Tabs $container,
+        CnrTabs $container,
         $title,
         $icon = ''
     ) {
-        parent::__construct( $container, Tabs::EL_TAB );
+        parent::__construct( $container, CnrTabs::EL_TAB );
         $this->container = $container;
         $this->title  = $title;
 

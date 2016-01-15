@@ -5,7 +5,7 @@ namespace Pan\MenuPages\PageElements\Containers;
 use Pan\MenuPages\PageElements\Containers\Abs\AbsComponentsContainer;
 use Pan\MenuPages\Pages\Abs\AbsMenuPage;
 
-class Collapsible extends AbsComponentsContainer {
+class CnrCollapsible extends AbsComponentsContainer {
     protected $templateName = 'collapsible.twig';
     /**
      * @var string
