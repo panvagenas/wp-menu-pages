@@ -33,9 +33,9 @@
     </div>
     <div class="panel-footer">
         <div class="row">
-            {% if cnr.components.footer %}
-                {{ cnr.components.footer | raw }}
-            {% endif %}
+            {% for cmpId, cmp in cnr.components.footer %}
+                {% include cmp.templateName %}
+            {% endfor %}
             <div class="pull-right">
                 <div class="col-md-12">
                     <button type="reset" class="btn btn-md btn-warning btn-tab-reset-options wp-menu-pages-control">

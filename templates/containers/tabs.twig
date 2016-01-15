@@ -34,7 +34,9 @@
     {% if cnr.components.footer %}
         <div class="panel-footer">
             <div class="row">
-                {{ cnr.components.footer | raw }}
+                {% for cmpId, cmp in cnr.components.footer %}
+                    {% include cmp.templateName %}
+                {% endfor %}
             </div>
         </div>
     {% endif %}
