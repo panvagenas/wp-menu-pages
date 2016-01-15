@@ -14,7 +14,7 @@ namespace Pan\MenuPages\Pages\Abs;
 use Pan\MenuPages\Fields\Abs\AbsField;
 use Pan\MenuPages\Fields\Abs\AbsInputBase;
 use Pan\MenuPages\Options;
-use Pan\MenuPages\PageElements\Containers\Abs\AbsContainer;
+use Pan\MenuPages\PageElements\Containers\Abs\AbsCnr;
 use Pan\MenuPages\Scripts\AjaxHandler;
 use Pan\MenuPages\Scripts\Ifc\IfcScripts;
 use Pan\MenuPages\Scripts\Script;
@@ -262,14 +262,14 @@ abstract class AbsMenuPage {
     }
 
     /**
-     * @param AbsContainer $container
-     * @param string       $position
+     * @param AbsCnr $container
+     * @param string $position
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      */
-    public function attachContainer( AbsContainer $container, $position = self::EL_MAIN ) {
+    public function attachContainer( AbsCnr $container, $position = self::EL_MAIN ) {
         if ( $this->isProperPosition( $position ) && ! $this->hasContainer( $container, $position ) ) {
             $this->containers[$position][] = $container;
         }
@@ -314,14 +314,14 @@ abstract class AbsMenuPage {
     }
 
     /**
-     * @param AbsContainer $container
+     * @param AbsCnr       $container
      * @param              $position
      *
      * @return bool
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  TODO ${VERSION}
      */
-    public function hasContainer( AbsContainer $container, $position ) {
+    public function hasContainer( AbsCnr $container, $position ) {
         return $this->isProperPosition( $position )
                && in_array( $container->getHashId(), $this->containers[ $position ] );
     }

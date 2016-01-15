@@ -2,9 +2,9 @@
 
 namespace Pan\MenuPages\PageElements\Containers;
 
-use Pan\MenuPages\PageElements\Containers\Abs\AbsComponentsContainer;
+use Pan\MenuPages\PageElements\Containers\Abs\AbsCnrComponents;
 
-class CnrPanelComponents extends AbsComponentsContainer {
+class CnrPanelComponents extends AbsCnrComponents {
     /**
      * @var string
      */

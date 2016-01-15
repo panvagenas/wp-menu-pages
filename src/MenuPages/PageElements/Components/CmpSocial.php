@@ -9,7 +9,7 @@
 namespace Pan\MenuPages\PageElements\Components;
 
 use Pan\MenuPages\PageElements\Components\Abs\AbsCmp;
-use Pan\MenuPages\PageElements\Containers\Abs\AbsComponentsContainer;
+use Pan\MenuPages\PageElements\Containers\Abs\AbsCnrComponents;
 
 /**
  * Description of CmpSocial
@@ -32,8 +32,8 @@ class CmpSocial extends AbsCmp {
     protected $templateName = 'social.twig';
 
     public function __construct(
-        AbsComponentsContainer $container,
-        $containerPosition = AbsComponentsContainer::EL_BODY,
+        AbsCnrComponents $container,
+        $containerPosition = AbsCnrComponents::EL_BODY,
         $link,
         $title = '',
         $icon = ''

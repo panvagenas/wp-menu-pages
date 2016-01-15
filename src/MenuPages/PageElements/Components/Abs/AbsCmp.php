@@ -3,7 +3,7 @@
 namespace Pan\MenuPages\PageElements\Components\Abs;
 
 use Pan\MenuPages\PageElements\Abs\AbsElement;
-use Pan\MenuPages\PageElements\Containers\Abs\AbsComponentsContainer;
+use Pan\MenuPages\PageElements\Containers\Abs\AbsCnrComponents;
 use Pan\MenuPages\Templates\Twig;
 
 /**
@@ -17,7 +17,7 @@ use Pan\MenuPages\Templates\Twig;
  */
 abstract class AbsCmp extends AbsElement {
     /**
-     * @var AbsComponentsContainer
+     * @var AbsCnrComponents
      */
     protected $container;
 
@@ -29,15 +29,15 @@ abstract class AbsCmp extends AbsElement {
     /**
      * AbsCmp constructor.
      *
-     * @param AbsComponentsContainer $container
-     * @param string                 $containerPosition
+     * @param AbsCnrComponents $container
+     * @param string           $containerPosition
      *
      * @since  TODO ${VERSION}
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
     public function __construct(
-        AbsComponentsContainer $container,
-        $containerPosition = AbsComponentsContainer::EL_BODY
+        AbsCnrComponents $container,
+        $containerPosition = AbsCnrComponents::EL_BODY
     ) {
         $this->container = $container;
         $this->container->attachComponent( $this, $containerPosition );

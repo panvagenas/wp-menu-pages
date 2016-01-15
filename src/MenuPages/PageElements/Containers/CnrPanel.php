@@ -2,9 +2,9 @@
 
 namespace Pan\MenuPages\PageElements\Containers;
 
-use Pan\MenuPages\PageElements\Containers\Abs\AbsContainer;
+use Pan\MenuPages\PageElements\Containers\Abs\AbsCnr;
 
-class CnrPanel extends AbsContainer {
+class CnrPanel extends AbsCnr {
     protected $header = '';
     protected $body = '';
     protected $footer = '';

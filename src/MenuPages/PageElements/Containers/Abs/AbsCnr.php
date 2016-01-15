@@ -7,7 +7,7 @@ use Pan\MenuPages\PageElements\Abs\AbsElement;
 use Pan\MenuPages\Pages\Abs\AbsMenuPage;
 use Pan\MenuPages\Templates\Twig;
 
-abstract class AbsContainer extends AbsElement implements IfcDisplayable {
+abstract class AbsCnr extends AbsElement implements IfcDisplayable {
     const EL_HEAD = 'head';
 
     const EL_BODY = 'body';

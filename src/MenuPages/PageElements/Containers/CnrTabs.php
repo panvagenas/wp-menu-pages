@@ -5,9 +5,9 @@ namespace Pan\MenuPages\PageElements\Containers;
 use Pan\MenuPages\Options;
 use Pan\MenuPages\PageElements\Components\CmpTab;
 use Pan\MenuPages\PageElements\Components\CmpTabForm;
-use Pan\MenuPages\PageElements\Containers\Abs\AbsComponentsContainer;
+use Pan\MenuPages\PageElements\Containers\Abs\AbsCnrComponents;
 
-class CnrTabs extends AbsComponentsContainer {
+class CnrTabs extends AbsCnrComponents {
     const EL_TAB = 'tabs';
     protected $templateName = 'tabs.twig';
     protected $components = [

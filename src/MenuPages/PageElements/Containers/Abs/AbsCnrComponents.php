@@ -4,7 +4,7 @@ namespace Pan\MenuPages\PageElements\Containers\Abs;
 
 use Pan\MenuPages\PageElements\Components\Abs\AbsCmp;
 
-abstract class AbsComponentsContainer extends AbsContainer {
+abstract class AbsCnrComponents extends AbsCnr {
 
     protected $components = [
         self::EL_HEAD => [ ],
