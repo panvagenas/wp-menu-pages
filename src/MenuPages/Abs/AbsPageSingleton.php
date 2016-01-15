@@ -1,6 +1,6 @@
 <?php
 /**
- * AbsMultiSingleton.php description
+ * AbsPageSingleton.php description
  *
  * @author    Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
  * @date      2015-12-17
@@ -15,7 +15,7 @@ namespace Pan\MenuPages\Abs;
 use Pan\MenuPages\Pages\Abs\AbsMenuPage;
 
 /**
- * Class AbsMultiSingleton
+ * Class AbsPageSingleton
  *
  * @author    Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
  * @date      2015-12-17
@@ -23,7 +23,7 @@ use Pan\MenuPages\Pages\Abs\AbsMenuPage;
  * @package   Pan\MenuPages\Abs
  * @copyright Copyright (c) 2015 Interactive Data Managed Solutions Ltd
  */
-class AbsMultiSingleton {
+class AbsPageSingleton {
     /**
      * @var $this ::class The reference to *Singleton* instance of this class
      */

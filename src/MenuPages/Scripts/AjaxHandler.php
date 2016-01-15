@@ -11,7 +11,7 @@
 
 namespace Pan\MenuPages\Scripts;
 
-use Pan\MenuPages\Abs\AbsMultiSingleton;
+use Pan\MenuPages\Abs\AbsPageSingleton;
 use Pan\MenuPages\Fields\Ifc\IfcValidation;
 use Pan\MenuPages\Options;
 use Pan\MenuPages\Pages\Abs\AbsMenuPage;
@@ -25,7 +25,7 @@ use Pan\MenuPages\Scripts\Ifc\IfcScripts;
  * @package   Pan\MenuPages\Scripts
  * @since     TODO ${VERSION}
  */
-class AjaxHandler extends AbsMultiSingleton {
+class AjaxHandler extends AbsPageSingleton {
     /**
      * AjaxHandler constructor.
      *

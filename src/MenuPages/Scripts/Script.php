@@ -11,7 +11,7 @@
 
 namespace Pan\MenuPages\Scripts;
 
-use Pan\MenuPages\Abs\AbsMultiSingleton;
+use Pan\MenuPages\Abs\AbsPageSingleton;
 use Pan\MenuPages\Ifc\IfcConstants;
 use Pan\MenuPages\Pages\Abs\AbsMenuPage;
 use Pan\MenuPages\Scripts\Ifc\IfcScripts;
@@ -24,7 +24,7 @@ use Pan\MenuPages\Scripts\Ifc\IfcScripts;
  * @package   Pan\MenuPages\Scripts
  * @since     TODO ${VERSION}
  */
-class Script extends AbsMultiSingleton {
+class Script extends AbsPageSingleton {
     /**
      * @var array
      */
