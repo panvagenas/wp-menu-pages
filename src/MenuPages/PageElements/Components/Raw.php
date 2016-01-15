@@ -2,9 +2,9 @@
 
 namespace Pan\MenuPages\PageElements\Components;
 
-use Pan\MenuPages\PageElements\Components\Abs\AbsComponent;
+use Pan\MenuPages\PageElements\Components\Abs\AbsCmp;
 
-class Raw extends AbsComponent{
+class Raw extends AbsCmp{
     protected $content = '';
     protected $templateName = 'raw.twig';
 

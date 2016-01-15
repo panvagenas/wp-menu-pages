@@ -11,7 +11,7 @@
 
 namespace Pan\MenuPages\PageElements\Components;
 
-use Pan\MenuPages\PageElements\Components\Abs\AbsComponent;
+use Pan\MenuPages\PageElements\Components\Abs\AbsCmp;
 
 /**
  * Class Alert
@@ -22,7 +22,7 @@ use Pan\MenuPages\PageElements\Components\Abs\AbsComponent;
  * @package   Pan\MenuPages\PageComponents
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class Alert extends AbsComponent {
+class Alert extends AbsCmp {
     const TYPE_SUCCESS = 'success';
 
     const TYPE_INFO = 'info';

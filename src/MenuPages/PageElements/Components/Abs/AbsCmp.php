@@ -7,7 +7,7 @@ use Pan\MenuPages\PageElements\Containers\Abs\AbsComponentsContainer;
 use Pan\MenuPages\Templates\Twig;
 
 /**
- * Class AbsComponent
+ * Class AbsCmp
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      ${YEAR}-${MONTH}-${DAY}
@@ -15,7 +15,7 @@ use Pan\MenuPages\Templates\Twig;
  * @package   Pan\MenuPages\PageElements\Components\Abs
  * @copyright Copyright (c) ${YEAR} Panagiotis Vagenas
  */
-abstract class AbsComponent extends AbsElement {
+abstract class AbsCmp extends AbsElement {
     /**
      * @var AbsComponentsContainer
      */
@@ -27,7 +27,7 @@ abstract class AbsComponent extends AbsElement {
     protected $templatesDir = 'components';
 
     /**
-     * AbsComponent constructor.
+     * AbsCmp constructor.
      *
      * @param AbsComponentsContainer $container
      * @param string                 $containerPosition

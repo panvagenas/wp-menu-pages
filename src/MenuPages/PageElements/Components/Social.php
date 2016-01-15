@@ -8,7 +8,7 @@
 
 namespace Pan\MenuPages\PageElements\Components;
 
-use Pan\MenuPages\PageElements\Components\Abs\AbsComponent;
+use Pan\MenuPages\PageElements\Components\Abs\AbsCmp;
 use Pan\MenuPages\PageElements\Containers\Abs\AbsComponentsContainer;
 
 /**
@@ -16,7 +16,7 @@ use Pan\MenuPages\PageElements\Containers\Abs\AbsComponentsContainer;
  *
  * @author vagenas
  */
-class Social extends AbsComponent {
+class Social extends AbsCmp {
     const ICON_FACEBOOK = 'facebook';
 
     const ICON_TWITTER = 'twitter';

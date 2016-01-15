@@ -327,7 +327,7 @@ abstract class AbsMenuPage {
     }
 
     /**
-     * @return array Of AbsComponent
+     * @return array Of AbsCmp
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    MenuPage::$components
      * @codeCoverageIgnore

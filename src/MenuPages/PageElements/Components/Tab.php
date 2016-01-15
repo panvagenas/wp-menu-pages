@@ -11,7 +11,7 @@
 
 namespace Pan\MenuPages\PageElements\Components;
 
-use Pan\MenuPages\PageElements\Components\Abs\AbsComponent;
+use Pan\MenuPages\PageElements\Components\Abs\AbsCmp;
 use Pan\MenuPages\PageElements\Containers\Tabs;
 
 /**
@@ -23,7 +23,7 @@ use Pan\MenuPages\PageElements\Containers\Tabs;
  * @package   Pan\MenuPages\PageComponents
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class Tab extends AbsComponent {
+class Tab extends AbsCmp {
     /**
      * @var bool
      */

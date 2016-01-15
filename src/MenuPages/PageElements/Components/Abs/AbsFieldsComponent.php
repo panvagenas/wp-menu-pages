@@ -6,7 +6,7 @@ use Pan\MenuPages\Fields\Abs\AbsField;
 use Pan\MenuPages\Fields\Abs\AbsInputBase;
 
 
-abstract class AbsFieldsComponent extends AbsComponent {
+abstract class AbsFieldsComponent extends AbsCmp {
     protected $fields = [ ];
 
     /**

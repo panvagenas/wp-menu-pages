@@ -2,7 +2,7 @@
 
 namespace Pan\MenuPages\PageElements\Containers\Abs;
 
-use Pan\MenuPages\PageElements\Components\Abs\AbsComponent;
+use Pan\MenuPages\PageElements\Components\Abs\AbsCmp;
 
 abstract class AbsComponentsContainer extends AbsContainer {
 
@@ -12,7 +12,7 @@ abstract class AbsComponentsContainer extends AbsContainer {
         self::EL_FOOTER => [ ],
     ];
 
-    public function attachComponent( AbsComponent $component, $position = self::EL_BODY ) {
+    public function attachComponent( AbsCmp $component, $position = self::EL_BODY ) {
         if ( $this->isProperPosition( $position ) && ! $this->hasComponent( $component, $position ) ) {
             $this->components[ $position ][ $component->getHashId() ] = $component;
         }
@@ -20,7 +20,7 @@ abstract class AbsComponentsContainer extends AbsContainer {
         return $this;
     }
 
-    protected function hasComponent( AbsComponent $component, $position ) {
+    protected function hasComponent( AbsCmp $component, $position ) {
         return $this->isProperPosition( $position )
                && in_array( $component->getHashId(), $this->components[ $position ] );
     }
@@ -42,7 +42,7 @@ abstract class AbsComponentsContainer extends AbsContainer {
     public function getComponentsFlat(){
         $r = [];
         foreach ( $this->components as $context ) {
-            /** @var AbsComponent $component */
+            /** @var AbsCmp $component */
             foreach ( $context as $component ) {
                 $r[$component->getHashId()] = $component;
             }
