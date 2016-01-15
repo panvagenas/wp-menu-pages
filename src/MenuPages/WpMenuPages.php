@@ -92,7 +92,7 @@ final class WpMenuPages {
             /** @var \SplFileInfo $wpMenuPagesFile */
             $wpMenuPagesFile = $res->current();
 
-            if(!$wpMenuPagesFile){
+            if(! ( $wpMenuPagesFile instanceof \SplFileInfo ) ){
                 // TODO Message
                 throw new \Exception('Something went awfully wrong!');
             }
