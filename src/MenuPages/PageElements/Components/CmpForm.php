@@ -1,6 +1,6 @@
 <?php
 /**
- * Form.php description
+ * CmpForm.php description
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-12-04
@@ -14,7 +14,7 @@ namespace Pan\MenuPages\PageElements\Components;
 use Pan\MenuPages\PageElements\Components\Abs\AbsFldCmp;
 
 /**
- * Class Form
+ * Class CmpForm
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-12-04
@@ -22,7 +22,7 @@ use Pan\MenuPages\PageElements\Components\Abs\AbsFldCmp;
  * @package   Pan\MenuPages\PageComponents\Elements
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class Form extends AbsFldCmp{
+class CmpForm extends AbsFldCmp{
     /**
      * @var string
      */
@@ -58,7 +58,7 @@ class Form extends AbsFldCmp{
     }
 
     /**
-     * Setter for {@link Form::$class}
+     * Setter for {@link CmpForm::$class}
      *
      * @param string $class
      *
@@ -85,7 +85,7 @@ class Form extends AbsFldCmp{
     }
 
     /**
-     * Setter for {@link Form::$action}
+     * Setter for {@link CmpForm::$action}
      *
      * @param string $action
      *
@@ -112,7 +112,7 @@ class Form extends AbsFldCmp{
     }
 
     /**
-     * Setter for {@link Form::$encType}
+     * Setter for {@link CmpForm::$encType}
      *
      * @param string $encType
      *
@@ -139,7 +139,7 @@ class Form extends AbsFldCmp{
     }
 
     /**
-     * Setter for {@link Form::$method}
+     * Setter for {@link CmpForm::$method}
      *
      * @param string $method
      *
@@ -166,7 +166,7 @@ class Form extends AbsFldCmp{
     }
 
     /**
-     * Setter for {@link Form::$target}
+     * Setter for {@link CmpForm::$target}
      *
      * @param string $target
      *

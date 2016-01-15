@@ -3,8 +3,8 @@
 namespace Pan\MenuPages\PageElements\Containers;
 
 use Pan\MenuPages\Options;
-use Pan\MenuPages\PageElements\Components\Tab;
-use Pan\MenuPages\PageElements\Components\TabForm;
+use Pan\MenuPages\PageElements\Components\CmpTab;
+use Pan\MenuPages\PageElements\Components\CmpTabForm;
 use Pan\MenuPages\PageElements\Containers\Abs\AbsComponentsContainer;
 
 class Tabs extends AbsComponentsContainer {
@@ -18,7 +18,7 @@ class Tabs extends AbsComponentsContainer {
     ];
 
     public function addTab($title,  $icon = ''){
-        $tab = new TabForm($this, $title, $icon);
+        $tab = new CmpTabForm($this, $title, $icon);
 
         return $tab;
     }
@@ -31,14 +31,14 @@ class Tabs extends AbsComponentsContainer {
         if($this->components[self::EL_TAB]) {
             $states    = $this->menuPage->getPageOption( Options::PAGE_OPT_STATE, [ ] );
             $activeTab = '';
-            /** @var Tab $tab */
+            /** @var CmpTab $tab */
             foreach ( $this->components[ self::EL_TAB ] as $tab ) {
                 if ( array_key_exists( $tab->getTitle(), $states ) && $states[ $tab->getTitle() ] ) {
                     $activeTab = $tab->getTitle();
                 }
             }
             if ( ! $activeTab ) {
-                /** @var Tab $firstTab */
+                /** @var CmpTab $firstTab */
                 $firstTab = array_values($this->components[self::EL_TAB])[0];
                 $activeTab = $firstTab->getTitle();
             }
@@ -51,7 +51,7 @@ class Tabs extends AbsComponentsContainer {
     }
 
     public function getTabState($tab){
-        if(!($tab instanceof TabForm || $tab instanceof Tab)){
+        if(!( $tab instanceof CmpTabForm || $tab instanceof CmpTab)){
             return null;
         }
 

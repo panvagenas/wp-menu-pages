@@ -1,6 +1,6 @@
 <?php
 /**
- * Tab.php description
+ * CmpTabForm.php description
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-20
@@ -11,11 +11,11 @@
 
 namespace Pan\MenuPages\PageElements\Components;
 
-use Pan\MenuPages\PageElements\Components\Abs\AbsCmp;
+use Pan\MenuPages\PageElements\Components\Abs\AbsFldCmp;
 use Pan\MenuPages\PageElements\Containers\Tabs;
 
 /**
- * Class Tab
+ * Class CmpTabForm
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-20
@@ -23,7 +23,7 @@ use Pan\MenuPages\PageElements\Containers\Tabs;
  * @package   Pan\MenuPages\PageComponents
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class Tab extends AbsCmp {
+class CmpTabForm extends AbsFldCmp {
     /**
      * @var bool
      */
@@ -37,17 +37,16 @@ class Tab extends AbsCmp {
      */
     protected $title;
 
-    protected $templateName = 'tab.twig';
+    protected $templateName = 'tabForm.twig';
     /**
      * @var Tabs
      */
     protected $container;
 
-    protected $content = '';
-
     public function __construct(
         Tabs $container,
         $title,
+        $active = false,
         $icon = ''
     ) {
         parent::__construct( $container, Tabs::EL_TAB );
@@ -87,33 +86,6 @@ class Tab extends AbsCmp {
 
     public function setTitle( $title ) {
         $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @see    Tab::$content
-     * @since  TODO ${VERSION}
-     * @codeCoverageIgnore
-     */
-    public function getContent() {
-        return $this->content;
-    }
-
-    /**
-     * Setter for {@link Tab::$content}
-     *
-     * @param string $content
-     *
-     * @return $this
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
-     * @codeCoverageIgnore
-     */
-    public function setContent( $content ) {
-        $this->content = $content;
 
         return $this;
     }

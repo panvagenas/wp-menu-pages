@@ -1,6 +1,6 @@
 <?php
 /**
- * Alert.php description
+ * CmpAlert.php description
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-20
@@ -14,7 +14,7 @@ namespace Pan\MenuPages\PageElements\Components;
 use Pan\MenuPages\PageElements\Components\Abs\AbsCmp;
 
 /**
- * Class Alert
+ * Class CmpAlert
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-20
@@ -22,7 +22,7 @@ use Pan\MenuPages\PageElements\Components\Abs\AbsCmp;
  * @package   Pan\MenuPages\PageComponents
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class Alert extends AbsCmp {
+class CmpAlert extends AbsCmp {
     const TYPE_SUCCESS = 'success';
 
     const TYPE_INFO = 'info';

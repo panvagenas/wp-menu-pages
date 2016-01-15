@@ -12,11 +12,11 @@ use Pan\MenuPages\PageElements\Components\Abs\AbsCmp;
 use Pan\MenuPages\PageElements\Containers\Abs\AbsComponentsContainer;
 
 /**
- * Description of Social
+ * Description of CmpSocial
  *
  * @author vagenas
  */
-class Social extends AbsCmp {
+class CmpSocial extends AbsCmp {
     const ICON_FACEBOOK = 'facebook';
 
     const ICON_TWITTER = 'twitter';

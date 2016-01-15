@@ -105,8 +105,8 @@ $tabsNoFields = new \Pan\MenuPages\PageElements\Containers\Tabs(
     \Pan\MenuPages\Pages\Page::EL_ASIDE
 );
 
-$rawTab = new \Pan\MenuPages\PageElements\Components\Tab($tabsNoFields, 'Raw Tab');
-$anotherRawTab = new \Pan\MenuPages\PageElements\Components\Tab($tabsNoFields, 'Another Raw Tab');
+$rawTab = new \Pan\MenuPages\PageElements\Components\CmpTab($tabsNoFields, 'CmpRaw CmpTab');
+$anotherRawTab = new \Pan\MenuPages\PageElements\Components\CmpTab($tabsNoFields, 'Another CmpRaw CmpTab');
 
 
 $tabTextFields = $tabsMainPage->addTab('Text Fields');
@@ -198,7 +198,7 @@ $url = new \Pan\MenuPages\Fields\Url($tabTextFields, 'url');
 $url->setLabel('Url Demo');
 
 $raw = new \Pan\MenuPages\Fields\Raw($tabOtherFields, 'raw');
-$content = '<div class="jumbotron"><h1>Html allowed in <code>Raw</code> fields!</h1>
+$content = '<div class="jumbotron"><h1>Html allowed in <code>CmpRaw</code> fields!</h1>
 <p>Sunt quadraes manifestum peritus, clemens compateres. Capio noster ventus est.Pol, diatria!
 Clinias, verpa, et adgium.</p>
 </div>';
@@ -206,12 +206,12 @@ $raw->setContent($content);
 
 $divider = new \Pan\MenuPages\Fields\Divider($tabOtherFields);
 
-$lorem1 = '<div class="jumbotron"><h1>Html allowed in <code>Raw</code> fields! <br />
+$lorem1 = '<div class="jumbotron"><h1>Html allowed in <code>CmpRaw</code> fields! <br />
 <small>Capio noster ventus est.Pol</small></h1>
 <p>Sunt quadraes manifestum peritus.</p>
 </div>';
 
-$lorem2 = '<div class="jumbotron"><h1>Html allowed in <code>Raw</code> fields! <br />
+$lorem2 = '<div class="jumbotron"><h1>Html allowed in <code>CmpRaw</code> fields! <br />
 <small>Sunt quadraes manifestum.</small></h1>
 <p>Capio noster ventus est.Pol, diatria!
 Clinias, verpa, et adgium.</p>
@@ -220,6 +220,7 @@ Clinias, verpa, et adgium.</p>
 $rawTab->setContent($lorem1);
 $anotherRawTab->setContent($lorem2);
 
-$panelComponents = new \Pan\MenuPages\PageElements\Containers\PanelComponents($subPage, \Pan\MenuPages\Pages\SubPage::EL_ASIDE);
-$raw = new \Pan\MenuPages\PageElements\Components\Raw($panelComponents);
+$panelComponents = new \Pan\MenuPages\PageElements\Containers\PanelComponents($subPage,
+    \Pan\MenuPages\Pages\SubPage::EL_ASIDE);
+$raw = new \Pan\MenuPages\PageElements\Components\CmpRaw($panelComponents);
 $raw->setContent($lorem1);

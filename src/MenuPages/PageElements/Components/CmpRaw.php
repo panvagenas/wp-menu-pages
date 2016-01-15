@@ -4,7 +4,7 @@ namespace Pan\MenuPages\PageElements\Components;
 
 use Pan\MenuPages\PageElements\Components\Abs\AbsCmp;
 
-class Raw extends AbsCmp{
+class CmpRaw extends AbsCmp{
     protected $content = '';
     protected $templateName = 'raw.twig';
 

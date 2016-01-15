@@ -1,6 +1,6 @@
 <?php
 /**
- * FieldsComponent.php description
+ * CmpFields.php description
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-12-04
@@ -14,7 +14,7 @@ namespace Pan\MenuPages\PageElements\Components;
 use Pan\MenuPages\PageElements\Components\Abs\AbsFldCmp;
 
 /**
- * Class FieldsComponent
+ * Class CmpFields
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-12-04
@@ -22,7 +22,7 @@ use Pan\MenuPages\PageElements\Components\Abs\AbsFldCmp;
  * @package   Pan\MenuPages\PageComponents\Elements
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class FieldsComponent extends AbsFldCmp{
+class CmpFields extends AbsFldCmp{
     /**
      * @var string
      */
@@ -42,7 +42,7 @@ class FieldsComponent extends AbsFldCmp{
     }
 
     /**
-     * Setter for {@link FieldsComponent::$class}
+     * Setter for {@link CmpFields::$class}
      *
      * @param string $class
      *
