@@ -3,7 +3,7 @@
     <div class="panel-heading" style="padding-bottom: 0; border-bottom: none;">
         <ul class="nav nav-tabs" role="tablist">
 
-            {% for tabId, cmp in el.components.tabs %}
+            {% for tabId, cmp in cnr.components.tabs %}
 
                 <li role="presentation" class="{% if cmp.active %}active{% endif %}">
                     <a href="#{{ cmp.id | e('html_attr') }}"
@@ -23,7 +23,7 @@
 
     <div class="panel-body">
         <div class="tab-content">
-            {% for tabId, cmp in el.components.tabs %}
+            {% for tabId, cmp in cnr.components.tabs %}
                 <div role="tabpanel" class="tab-pane fade{% if cmp.active %} active in{% endif %}"
                      id="{{ cmp.id | e('html_attr') }}">
                     {% include cmp.templateName %}
@@ -33,8 +33,8 @@
     </div>
     <div class="panel-footer">
         <div class="row">
-            {% if el.components.footer %}
-                {{ el.components.footer | raw }}
+            {% if cnr.components.footer %}
+                {{ cnr.components.footer | raw }}
             {% endif %}
             <div class="pull-right">
                 <div class="col-md-12">

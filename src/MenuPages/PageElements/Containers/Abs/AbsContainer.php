@@ -54,7 +54,7 @@ abstract class AbsContainer extends AbsElement implements IfcDisplayable {
     public function getMarkUp( $echo = false ) {
         $markup = $this->getTwig()
                        ->getTwigEnvironment()
-                       ->render( $this->getTemplateName(), [ 'el' => $this ] );
+                       ->render( $this->getTemplateName(), [ 'cnr' => $this ] );
 
         if ( $echo ) {
             echo $markup;

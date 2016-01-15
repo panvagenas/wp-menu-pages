@@ -1,26 +1,26 @@
-{% set collapsibleId = 'collapsible-' ~ el.id | e('html_attr') %}
-{% set headingId = 'heading-' ~ el.id | e('html_attr') %}
+{% set collapsibleId = 'collapsible-' ~ cnr.id | e('html_attr') %}
+{% set headingId = 'heading-' ~ cnr.id | e('html_attr') %}
 
 <div class="panel panel-default {{ headingId }}">
     <div class="panel-heading" role="tab" id="{{ headingId }}">
         <h4 class="panel-title">
             <a role="button" data-toggle="collapse" href="#{{ collapsibleId }}"
                aria-expanded="true" aria-controls="{{ collapsibleId }}">
-                {{ el.title }}
+                {{ cnr.title }}
             </a>
         </h4>
     </div>
     <div id="{{ collapsibleId }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="{{ headingId }}">
-        {% if el.components.body %}
+        {% if cnr.components.body %}
             <div class="panel-body">
-                {% for c in el.components.body %}
+                {% for c in cnr.components.body %}
                     {{ c.markUp | raw }}
                 {% endfor %}
             </div>
         {% endif %}
-        {% if el.components.footer %}
+        {% if cnr.components.footer %}
             <div class="panel-footer">
-                {% for c in el.components.footer %}
+                {% for c in cnr.components.footer %}
                     {{ c.markUp | raw }}
                 {% endfor %}
             </div>
