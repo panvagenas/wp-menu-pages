@@ -1,5 +1,5 @@
 <div class="{{ el.class | e('html_attr') }}">
-    {% for fieldId, field in el.fields %}
-        {% include field.templateName %}
+    {% for fieldId, fld in el.fields %}
+        {% include fld.templateName %}
     {% endfor %}
 </div>

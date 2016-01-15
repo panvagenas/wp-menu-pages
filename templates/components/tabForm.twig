@@ -13,11 +13,11 @@
       enctype="multipart/form-data"
 >
 
-    {% for fieldId, field in tab.fields %}
-        {% if field.templateName %}
-            {% include field.templateName %}
+    {% for fieldId, fld in tab.fields %}
+        {% if fld.templateName %}
+            {% include fld.templateName %}
         {% else %}
-            {{ field.markUp }}
+            {{ fld.markUp }}
         {% endif %}
     {% endfor %}
 
