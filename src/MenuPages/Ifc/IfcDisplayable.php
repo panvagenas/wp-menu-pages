@@ -34,5 +34,5 @@ interface IfcDisplayable {
      * @return string
      * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
      */
-    public function getMarkUp($echo = false);
+    public function getMarkUp( $echo = false );
 }

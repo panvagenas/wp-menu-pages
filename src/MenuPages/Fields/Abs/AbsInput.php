@@ -10,6 +10,7 @@
  */
 
 namespace Pan\MenuPages\Fields\Abs;
+
 use Pan\MenuPages\Fields\Trt\TrtInputAttributes;
 use Pan\MenuPages\Fields\Trt\TrtValidation;
 use Pan\MenuPages\PageElements\Components\Abs\AbsFldCmp;
@@ -39,8 +40,8 @@ abstract class AbsInput extends AbsInputBase {
     public function __construct( AbsFldCmp $component, $name ) {
         parent::__construct( $component, $name );
 
-        if(!$this->menuPageComponent->getOptions()->exists($name)){
-            throw new \InvalidArgumentException('Option "'.$name.'" isn\'t defined');
+        if ( ! $this->menuPageComponent->getOptions()->exists( $name ) ) {
+            throw new \InvalidArgumentException( 'Option "' . $name . '" isn\'t defined' );
         }
 
         $this->value = $this->getValue();
@@ -58,6 +59,6 @@ abstract class AbsInput extends AbsInputBase {
      * @inheritDoc
      */
     public function validate( $value ) {
-        return $this->isValid($value, $this->label ?: $this->name);
+        return $this->isValid( $value, $this->label ?: $this->name );
     }
 }

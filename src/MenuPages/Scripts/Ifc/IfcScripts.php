@@ -13,27 +13,32 @@ use Pan\MenuPages\Ifc\IfcConstants;
  * @package   Pan\MenuPages\Ifc
  * @copyright Copyright (c) ${YEAR} Panagiotis Vagenas.
  */
-interface IfcScripts extends IfcConstants{
+interface IfcScripts extends IfcConstants {
     /**
      *
      */
     const ASSETS_FOLDER = 'assets';
+
     /**
      *
      */
     const CORE_JS_SLUG = 'wp-menu-pages-js';
+
     /**
      *
      */
     const REQUIRE_JS_SLUG = 'require-js';
+
     /**
      *
      */
     const CORE_CSS_SLUG = 'wp-menu-pages-css';
+
     /**
      *
      */
     const CORE_JS_DEFINITIONS = 'wpMenuPagesDefinitions';
+
     /**
      *
      */
@@ -43,18 +48,22 @@ interface IfcScripts extends IfcConstants{
      *
      */
     const ACTION_SAVE_PREFIX = 'wp-menu-pages-save-options-';
+
     /**
      *
      */
     const ACTION_RESET_PREFIX = 'wp-menu-pages-reset-options-';
+
     /**
      *
      */
     const ACTION_EXPORT_PREFIX = 'wp-menu-pages-export-options-';
+
     /**
      *
      */
     const ACTION_IMPORT_PREFIX = 'wp-menu-pages-import-options-';
+
     /**
      *
      */

@@ -44,8 +44,8 @@ trait TrtValidation {
 
         foreach ( $this->validators as $validator ) {
             /* @var Validator $validator */
-            if($fieldName){
-                $validator->setName('"'.$fieldName.'"');
+            if ( $fieldName ) {
+                $validator->setName( '"' . $fieldName . '"' );
             }
 
             try {
@@ -86,7 +86,7 @@ trait TrtValidation {
             return $this;
         }
 
-        $this->validators[spl_object_hash($validator)] = $validator;
+        $this->validators[ spl_object_hash( $validator ) ] = $validator;
 
         return $this;
     }

@@ -28,14 +28,14 @@ class Raw extends AbsField {
 
     public function __construct( AbsFldCmp $component ) {
         parent::__construct( $component );
-        $this->setClass('col-md-12');
+        $this->setClass( 'col-md-12' );
     }
 
 
     /**
      * @return mixed
      * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @see    Raw::$content
+     * @see       Raw::$content
      * @since     TODO ${VERSION}
      * @codeCoverageIgnore
      */
@@ -47,7 +47,7 @@ class Raw extends AbsField {
      * @param mixed $content
      *
      * @return $this
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since     TODO ${VERSION}
      * @codeCoverageIgnore
      */

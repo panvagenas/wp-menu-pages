@@ -14,7 +14,7 @@ class CnrCollapsible extends AbsCnrComponents {
 
     public function __construct( AbsMenuPage $menuPage, $position, $title ) {
         parent::__construct( $menuPage, $position );
-        $this->setTitle($title);
+        $this->setTitle( $title );
     }
 
     /**

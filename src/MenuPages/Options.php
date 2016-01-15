@@ -24,7 +24,9 @@ use Pan\MenuPages\Pages\Abs\AbsMenuPage;
  */
 class Options {
     const PAGE_OPT = 'pageOptions';
+
     const PAGE_OPT_STATE = 'state';
+
     /**
      * @var string
      */
@@ -51,7 +53,7 @@ class Options {
         $this->optionsBaseName = $optionsBaseName;
         $this->defaults        = $defaults;
 
-        $this->defaults[ self::PAGE_OPT ] = [];
+        $this->defaults[ self::PAGE_OPT ] = [ ];
 
         $this->options = array_merge( $this->defaults, get_option( $this->optionsBaseName, $this->defaults ) );
     }
@@ -82,23 +84,32 @@ class Options {
         return $instance[ $optionsBaseName ];
     }
 
-    public function getPageOption(AbsMenuPage $page, $name, $default = null){
-        return isset($this->options[self::PAGE_OPT][$page->getMenuSlug()][$name])
-            ? $this->options[self::PAGE_OPT][$page->getMenuSlug()][$name]
+    public function getPageOption( AbsMenuPage $page, $name, $default = null ) {
+        return isset( $this->options[ self::PAGE_OPT ][ $page->getMenuSlug() ][ $name ] )
+            ? $this->options[ self::PAGE_OPT ][ $page->getMenuSlug() ][ $name ]
             : $default;
     }
 
-    public function setPageOption(AbsMenuPage $page, $name, $value){
-        $this->maybeInitPageOptions($page);
+    public function setPageOption( AbsMenuPage $page, $name, $value ) {
+        $this->maybeInitPageOptions( $page );
 
-        $this->options[self::PAGE_OPT][$page->getMenuSlug()][$name] = $value;
+        $this->options[ self::PAGE_OPT ][ $page->getMenuSlug() ][ $name ] = $value;
         $this->save();
     }
 
-    public function maybeInitPageOptions(AbsMenuPage $page){
-        if(!isset($this->options[self::PAGE_OPT][$page->getMenuSlug()])){
-            $this->options[self::PAGE_OPT][$page->getMenuSlug()] = [];
+    public function maybeInitPageOptions( AbsMenuPage $page ) {
+        if ( ! isset( $this->options[ self::PAGE_OPT ][ $page->getMenuSlug() ] ) ) {
+            $this->options[ self::PAGE_OPT ][ $page->getMenuSlug() ] = [ ];
         }
+    }
+
+    /**
+     * @return bool
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  TODO ${VERSION}
+     */
+    protected function save() {
+        return update_option( $this->optionsBaseName, $this->options );
     }
 
     /**
@@ -155,15 +166,6 @@ class Options {
         $this->options = array_merge( $this->options, $newOptions );
 
         return $this->save();
-    }
-
-    /**
-     * @return bool
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
-     */
-    protected function save() {
-        return update_option( $this->optionsBaseName, $this->options );
     }
 
     /**

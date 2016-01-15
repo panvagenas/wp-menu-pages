@@ -75,7 +75,7 @@ class AjaxHandler extends AbsPageSingleton {
 
         $this->hidePhpErrors();
 
-        $include = $this->maybeParseOptions( $_POST['include']);
+        $include = $this->maybeParseOptions( $_POST['include'] );
 
         $result = [ ];
 
@@ -117,13 +117,13 @@ class AjaxHandler extends AbsPageSingleton {
 
         $newOptions = (array) $_POST['options'];
 
-        if(isset($newOptions[Options::PAGE_OPT_STATE])){
-            $states = $this->menuPage->getPageOption(Options::PAGE_OPT_STATE, []);
-            foreach ( $newOptions[Options::PAGE_OPT_STATE] as $state => $identifier ) {
-                $states[$identifier] = $state == 'active';
+        if ( isset( $newOptions[ Options::PAGE_OPT_STATE ] ) ) {
+            $states = $this->menuPage->getPageOption( Options::PAGE_OPT_STATE, [ ] );
+            foreach ( $newOptions[ Options::PAGE_OPT_STATE ] as $state => $identifier ) {
+                $states[ $identifier ] = $state == 'active';
             }
-            unset($newOptions[Options::PAGE_OPT_STATE]);
-            $this->menuPage->setPageOption(Options::PAGE_OPT_STATE, $states);
+            unset( $newOptions[ Options::PAGE_OPT_STATE ] );
+            $this->menuPage->setPageOption( Options::PAGE_OPT_STATE, $states );
         }
 
         foreach ( $newOptions as $name => $value ) {
@@ -186,11 +186,11 @@ class AjaxHandler extends AbsPageSingleton {
     }
 
     protected function validateOptions( $newOptions ) {
-        $allValid       = true;
-        $optionsObj     = $this->menuPage->getOptions();
-        $currentOptions = $optionsObj->getOptions();
-        $match          = true;
-        $validationResults = [];
+        $allValid          = true;
+        $optionsObj        = $this->menuPage->getOptions();
+        $currentOptions    = $optionsObj->getOptions();
+        $match             = true;
+        $validationResults = [ ];
 
         foreach ( $newOptions as $name => $value ) {
             if ( ! $optionsObj->exists( $name ) ) {
@@ -219,7 +219,7 @@ class AjaxHandler extends AbsPageSingleton {
             unset( $newOptions[ $name ] );
         }
 
-        return [$newOptions, $validationResults, $allValid, $match];
+        return [ $newOptions, $validationResults, $allValid, $match ];
     }
 
     protected function checkPermissions() {

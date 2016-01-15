@@ -36,6 +36,6 @@ class SwitchField extends Radio {
     public function __construct( AbsFldCmp $component, $name ) {
         parent::__construct( $component, $name );
 
-        $this->setOptions(['No' => 0, 'Yes' => 1]);
+        $this->setOptions( [ 'No' => 0, 'Yes' => 1 ] );
     }
 }

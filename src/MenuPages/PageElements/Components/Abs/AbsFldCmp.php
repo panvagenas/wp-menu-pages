@@ -41,13 +41,14 @@ abstract class AbsFldCmp extends AbsCmp {
      * @return null|\Pan\MenuPages\Fields\Abs\AbsInputBase
      * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
      */
-    public function getFieldByName($name){
+    public function getFieldByName( $name ) {
         /** @var AbsInputBase $field */
         foreach ( $this->fields as $field ) {
-            if($field->getName() === $name){
+            if ( $field->getName() === $name ) {
                 return $field;
             }
         }
+
         return null;
     }
 
@@ -61,11 +62,11 @@ abstract class AbsFldCmp extends AbsCmp {
         return $this->fields;
     }
 
-    public function getOptions(){
+    public function getOptions() {
         return $this->container->getOptions();
     }
 
-    public function getMenuPage(){
+    public function getMenuPage() {
         return $this->container->getMenuPage();
     }
 }

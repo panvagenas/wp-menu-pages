@@ -92,14 +92,14 @@ final class WpMenuPages {
             /** @var \SplFileInfo $wpMenuPagesFile */
             $wpMenuPagesFile = $res->current();
 
-            if(! ( $wpMenuPagesFile instanceof \SplFileInfo ) ){
+            if ( ! ( $wpMenuPagesFile instanceof \SplFileInfo ) ) {
                 // TODO Message
-                throw new \Exception('Something went awfully wrong!');
+                throw new \Exception( 'Something went awfully wrong!' );
             }
 
-            $this->basePath = dirname(dirname($wpMenuPagesFile->getPath()));
+            $this->basePath = dirname( dirname( $wpMenuPagesFile->getPath() ) );
         } else {
-            $this->basePath            = dirname( dirname( dirname( __FILE__ ) ) );
+            $this->basePath = dirname( dirname( dirname( __FILE__ ) ) );
         }
 
         $this->basePathRelToPlugin = str_replace( $this->pluginBasePath, '', $this->basePath );

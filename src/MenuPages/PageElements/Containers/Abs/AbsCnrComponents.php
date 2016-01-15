@@ -20,13 +20,13 @@ abstract class AbsCnrComponents extends AbsCnr {
         return $this;
     }
 
+    protected function isProperPosition( $position ) {
+        return in_array( $position, [ self::CNR_BODY, self::CNR_HEAD, self::CNR_FOOTER ], true );
+    }
+
     protected function hasComponent( AbsCmp $component, $position ) {
         return $this->isProperPosition( $position )
                && in_array( $component->getHashId(), $this->components[ $position ] );
-    }
-
-    protected function isProperPosition( $position ) {
-        return in_array( $position, [ self::CNR_BODY, self::CNR_HEAD, self::CNR_FOOTER ], true );
     }
 
     /**
@@ -39,15 +39,15 @@ abstract class AbsCnrComponents extends AbsCnr {
         return $this->components;
     }
 
-    public function getComponentsFlat(){
-        $r = [];
+    public function getComponentsFlat() {
+        $r = [ ];
         foreach ( $this->components as $context ) {
             /** @var AbsCmp $component */
             foreach ( $context as $component ) {
-                $r[$component->getHashId()] = $component;
+                $r[ $component->getHashId() ] = $component;
             }
         }
 
-       return $r;
+        return $r;
     }
 }

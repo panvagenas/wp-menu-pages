@@ -5,7 +5,7 @@ namespace Pan\MenuPages\PageElements\Abs;
 use Pan\MenuPages\Ifc\IfcDisplayable;
 use Pan\MenuPages\Trt\TrtIdentifiable;
 
-abstract class AbsElement implements IfcDisplayable{
+abstract class AbsElement implements IfcDisplayable {
     use TrtIdentifiable;
 
     protected $templatesDir = '';

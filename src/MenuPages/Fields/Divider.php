@@ -26,7 +26,7 @@ class Divider extends Raw {
     /**
      * @return mixed
      * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @see    Raw::$content
+     * @see       Raw::$content
      * @since     TODO ${VERSION}
      * @codeCoverageIgnore
      */
@@ -38,7 +38,7 @@ class Divider extends Raw {
      * @param mixed $content
      *
      * @return $this
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since     TODO ${VERSION}
      * @codeCoverageIgnore
      */

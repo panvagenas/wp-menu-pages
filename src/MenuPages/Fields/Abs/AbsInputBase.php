@@ -7,7 +7,7 @@ use Pan\MenuPages\Fields\Ifc\IfcValidation;
 use Pan\MenuPages\Fields\Trt\TrtGlobalInputAttributes;
 use Pan\MenuPages\PageElements\Components\Abs\AbsFldCmp;
 
-abstract class AbsInputBase extends AbsField implements IfcValidation{
+abstract class AbsInputBase extends AbsField implements IfcValidation {
     use TrtGlobalInputAttributes;
     /**
      * @var string
@@ -19,20 +19,20 @@ abstract class AbsInputBase extends AbsField implements IfcValidation{
      * @inheritDoc
      */
     public function __construct( AbsFldCmp $component, $name ) {
-        if(!preg_match(IfcInputConstants::INPUT_NAME_REGEX, $name)){
-            throw new \InvalidArgumentException('Invalid parameter $name="'.$name.'" in '.__METHOD__);
+        if ( ! preg_match( IfcInputConstants::INPUT_NAME_REGEX, $name ) ) {
+            throw new \InvalidArgumentException( 'Invalid parameter $name="' . $name . '" in ' . __METHOD__ );
         }
 
-        if($component->getMenuPage()->getInputFieldByName($name)){
-            throw new \InvalidArgumentException('A field with the $name="'.$name.'" already registered');
+        if ( $component->getMenuPage()->getInputFieldByName( $name ) ) {
+            throw new \InvalidArgumentException( 'A field with the $name="' . $name . '" already registered' );
         }
 
         parent::__construct( $component );
 
-        $this->name  = $name;
-        $this->id = $name;
+        $this->name = $name;
+        $this->id   = $name;
 
-        $this->menuPageComponent->getMenuPage()->registerField($this);
+        $this->menuPageComponent->getMenuPage()->registerField( $this );
     }
 
     /**

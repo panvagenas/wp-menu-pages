@@ -57,7 +57,7 @@ class Select extends AbsInputBase {
      * @inheritDoc
      */
     public function validate( $value ) {
-        return $this->isValid($value, $this->label ?: $this->name);
+        return $this->isValid( $value, $this->label ?: $this->name );
     }
 
     /**

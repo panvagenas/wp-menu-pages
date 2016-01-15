@@ -13,6 +13,7 @@ abstract class AbsCnr extends AbsElement implements IfcDisplayable {
     const CNR_BODY = 'body';
 
     const CNR_FOOTER = 'footer';
+
     /**
      * @var \Pan\MenuPages\Pages\Abs\AbsMenuPage
      */

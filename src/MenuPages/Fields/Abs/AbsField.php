@@ -25,7 +25,7 @@ use Pan\MenuPages\Trt\TrtIdentifiable;
  * @package   Pan\MenuPages\Fields
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-abstract class AbsField implements IfcDisplayable{
+abstract class AbsField implements IfcDisplayable {
     use TrtIdentifiable, TrtGlobalAttributes;
 
     /**
@@ -52,7 +52,7 @@ abstract class AbsField implements IfcDisplayable{
      * @inheritDoc
      */
     public function getMarkUp( $echo = false ) {
-        return $this->getTwig()->getTwigEnvironment()->render($this->getTemplateName(), ['fld' => $this]);
+        return $this->getTwig()->getTwigEnvironment()->render( $this->getTemplateName(), [ 'fld' => $this ] );
     }
 
     /**

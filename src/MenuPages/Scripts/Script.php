@@ -77,33 +77,33 @@ class Script extends AbsPageSingleton {
 
         wp_enqueue_script( IfcScripts::CORE_JS_SLUG );
 
-        $baseUri = '/' . str_replace(
-                trailingslashit($_SERVER['DOCUMENT_ROOT']),
+        $baseUri         = '/' . str_replace(
+                trailingslashit( $_SERVER['DOCUMENT_ROOT'] ),
                 ''
                 , $this->menuPage->getWpMenuPages()->getBasePath()
             );
         $uriPathToAssets = $baseUri . '/' . IfcScripts::ASSETS_FOLDER;
-        $uriPathToJs = $uriPathToAssets . '/js/'.(IfcConstants::DEV ? 'src' : 'dist');
-        $uriPathToCss = $uriPathToAssets . '/css';
+        $uriPathToJs     = $uriPathToAssets . '/js/' . ( IfcConstants::DEV ? 'src' : 'dist' );
+        $uriPathToCss    = $uriPathToAssets . '/css';
 
         $options = $this->menuPage->getOptions();
 
-        wp_localize_script(IfcScripts::CORE_JS_SLUG, IfcScripts::CORE_JS_OBJECT, [
-            'options' => [
-                    'defaults' => $options->getDefaults(),
-                    'options' => $options->getOptions(),
-                    'baseName' => $options->getOptionsBaseName()
-                ],
-            'pages' => array_keys($this->menuPage->getWpMenuPages()->getMenuPages()),
-            'wpUrl' => site_url(),
-            'wpDateFormat' => get_option('date_format'),
-            'wpTimeFormat' => get_option('time_format'),
-            'baseUri'=> $baseUri,
+        wp_localize_script( IfcScripts::CORE_JS_SLUG, IfcScripts::CORE_JS_OBJECT, [
+            'options'         => [
+                'defaults' => $options->getDefaults(),
+                'options'  => $options->getOptions(),
+                'baseName' => $options->getOptionsBaseName(),
+            ],
+            'pages'           => array_keys( $this->menuPage->getWpMenuPages()->getMenuPages() ),
+            'wpUrl'           => site_url(),
+            'wpDateFormat'    => get_option( 'date_format' ),
+            'wpTimeFormat'    => get_option( 'time_format' ),
+            'baseUri'         => $baseUri,
             'uriPathToAssets' => $uriPathToAssets,
-            'uriPathToCss' => $uriPathToCss,
-            'uriPathToJs' => $uriPathToJs,
-            'context' => $this->menuPage->getMenuSlug(),
-            'nonce'   => [
+            'uriPathToCss'    => $uriPathToCss,
+            'uriPathToJs'     => $uriPathToJs,
+            'context'         => $this->menuPage->getMenuSlug(),
+            'nonce'           => [
                 IfcScripts::ACTION_SAVE_PREFIX . $this->menuPage->getMenuSlug() =>
                     wp_create_nonce( IfcScripts::ACTION_SAVE_PREFIX . $this->menuPage->getMenuSlug() ),
 
@@ -119,7 +119,7 @@ class Script extends AbsPageSingleton {
                 IfcScripts::ACTION_UPDATE_CORE_OPTIONS_PREFIX . $this->menuPage->getMenuSlug() =>
                     wp_create_nonce( IfcScripts::ACTION_UPDATE_CORE_OPTIONS_PREFIX . $this->menuPage->getMenuSlug() ),
             ],
-        ]);
+        ] );
     }
 
     /**
@@ -148,12 +148,12 @@ class Script extends AbsPageSingleton {
             IfcConstants::VERSION
         );
 
-        if(IfcConstants::DEV){
+        if ( IfcConstants::DEV ) {
             $requireJsUrl = plugins_url( $this->pluginRelPathToAssets . '/js/src/require.js', $this->pluginBaseFile );
-            $appJs = plugins_url( $this->pluginRelPathToAssets . '/js/src/app.js', $this->pluginBaseFile );
+            $appJs        = plugins_url( $this->pluginRelPathToAssets . '/js/src/app.js', $this->pluginBaseFile );
         } else {
             $requireJsUrl = plugins_url( $this->pluginRelPathToAssets . '/js/dist/require.js', $this->pluginBaseFile );
-            $appJs = plugins_url( $this->pluginRelPathToAssets . '/js/dist/app.js', $this->pluginBaseFile );
+            $appJs        = plugins_url( $this->pluginRelPathToAssets . '/js/dist/app.js', $this->pluginBaseFile );
         }
 
         wp_register_script(

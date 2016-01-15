@@ -56,7 +56,7 @@ class Number extends AbsInput {
     public function setMin( $min ) {
         $this->min = (float) $min;
 
-        $this->attachValidator(Validator::numeric()->min($min), __METHOD__);
+        $this->attachValidator( Validator::numeric()->min( $min ), __METHOD__ );
 
         return $this;
     }
@@ -79,7 +79,7 @@ class Number extends AbsInput {
     public function setMax( $max ) {
         $this->max = (float) $max;
 
-        $this->attachValidator(Validator::numeric()->max($max), __METHOD__);
+        $this->attachValidator( Validator::numeric()->max( $max ), __METHOD__ );
 
         return $this;
     }

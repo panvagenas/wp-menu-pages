@@ -36,6 +36,6 @@ class Page extends AbsMenuPage {
     }
 
     public function getMarkUp() {
-        return $this->getTwig()->getTwigEnvironment()->render( $this->templateName, ['el' => $this] );
+        return $this->getTwig()->getTwigEnvironment()->render( $this->templateName, [ 'el' => $this ] );
     }
 }

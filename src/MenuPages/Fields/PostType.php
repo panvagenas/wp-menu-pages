@@ -23,11 +23,11 @@ use Pan\MenuPages\PageElements\Components\Abs\AbsFldCmp;
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
 class PostType extends Select2 {
-    public function __construct( AbsFldCmp $component, $name, $args = [] ) {
+    public function __construct( AbsFldCmp $component, $name, $args = [ ] ) {
         parent::__construct( $component, $name );
-        $postTypes = get_post_types($args, 'objects');
+        $postTypes = get_post_types( $args, 'objects' );
         foreach ( $postTypes as $postType ) {
-            $this->options[$postType->label] = $postType->name;
+            $this->options[ $postType->label ] = $postType->name;
         }
     }
 

@@ -13,6 +13,6 @@ use Pan\MenuPages\Ifc\IfcConstants;
  * @package   Pan\MenuPages\Fields\Trt
  * @copyright Copyright (c) ${YEAR} Panagiotis Vagenas
  */
-interface IfcInputConstants extends IfcConstants{
+interface IfcInputConstants extends IfcConstants {
     const INPUT_NAME_REGEX = '/^[a-zA-Z]+\w*$/';
 }
