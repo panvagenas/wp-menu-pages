@@ -3,6 +3,7 @@
 namespace Pan\MenuPages\PageElements\Containers;
 
 use Pan\MenuPages\Options;
+use Pan\MenuPages\PageElements\Components\Abs\AbsCmp;
 use Pan\MenuPages\PageElements\Components\CmpTab;
 use Pan\MenuPages\PageElements\Components\CmpTabForm;
 use Pan\MenuPages\PageElements\Containers\Abs\AbsCnrComponents;
@@ -18,8 +19,10 @@ class CnrTabs extends AbsCnrComponents {
         self::CNR_TAB    => [ ],
     ];
 
-    public function addTab( $title, $icon = '' ) {
-        $tab = new CmpTabForm( $this, $title, $icon );
+    protected $activeTab;
+
+    public function addTab( $title, $active = true, $icon = '' ) {
+        $tab = new CmpTabForm( $this, $title, $active, $icon );
 
         return $tab;
     }
@@ -28,27 +31,36 @@ class CnrTabs extends AbsCnrComponents {
         return parent::isProperPosition( $position ) || $position === self::CNR_TAB;
     }
 
-    public function getMarkUp( $echo = false ) {
-        if ( $this->components[ self::CNR_TAB ] ) {
-            $states    = $this->menuPage->getPageOption( Options::PAGE_OPT_STATE, [ ] );
-            $activeTab = '';
-            /** @var CmpTab $tab */
-            foreach ( $this->components[ self::CNR_TAB ] as $tab ) {
-                if ( array_key_exists( $tab->getTitle(), $states ) && $states[ $tab->getTitle() ] ) {
-                    $activeTab = $tab->getTitle();
-                }
-            }
-            if ( ! $activeTab ) {
-                /** @var CmpTab $firstTab */
-                $firstTab  = array_values( $this->components[ self::CNR_TAB ] )[0];
-                $activeTab = $firstTab->getTitle();
-            }
-            foreach ( $this->components[ self::CNR_TAB ] as $tab ) {
-                $tab->setActive( $activeTab === $tab->getTitle() );
-            }
+    public function attachComponent( AbsCmp $component, $position = self::CNR_BODY ) {
+        // !FIXME We have to find a way to set a default active tab
+        if ( ! ( $component instanceof CmpTabForm || $component instanceof CmpTab ) ) {
+            throw new \InvalidArgumentException( 'Component must be a tab instance' );
         }
 
-        return parent::getMarkUp( $echo );
+        $storedActive = $this->getTabState( $component );
+
+        if ( $storedActive === null ) {
+            if ( $component->isActive() ) {
+                if ( ! $this->activeTab ) {
+                    $this->activeTab = $component;
+                } else {
+                    $component->setActive( false );
+                }
+            }
+        } elseif ( $storedActive ) {
+            $this->activeTab = $component;
+            $component->setActive( true );
+        } else {
+            $component->setActive( false );
+        }
+
+        if ( $storedActive === null && $component->isActive() ) {
+            $storedActive                            = [ ];
+            $storedActive [ $component->getTitle() ] = true;
+            $this->menuPage->setPageOption( Options::PAGE_OPT_STATE, $storedActive );
+        }
+
+        return parent::attachComponent( $component, $position );
     }
 
     public function getTabState( $tab ) {

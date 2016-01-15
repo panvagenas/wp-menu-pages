@@ -27,7 +27,7 @@ class CmpTabForm extends AbsFldCmp {
     /**
      * @var bool
      */
-    protected $active = false;
+    protected $active = true;
     /**
      * @var string
      */
@@ -46,7 +46,7 @@ class CmpTabForm extends AbsFldCmp {
     public function __construct(
         CnrTabs $container,
         $title,
-        $active = false,
+        $active = true,
         $icon = ''
     ) {
         parent::__construct( $container, CnrTabs::CNR_TAB );

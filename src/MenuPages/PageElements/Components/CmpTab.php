@@ -27,7 +27,7 @@ class CmpTab extends AbsCmp {
     /**
      * @var bool
      */
-    protected $active = false;
+    protected $active = true;
     /**
      * @var string
      */
@@ -48,6 +48,7 @@ class CmpTab extends AbsCmp {
     public function __construct(
         CnrTabs $container,
         $title,
+        $active = true,
         $icon = ''
     ) {
         parent::__construct( $container, CnrTabs::CNR_TAB );
