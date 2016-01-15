@@ -3,17 +3,17 @@
     <div class="panel-heading" style="padding-bottom: 0; border-bottom: none;">
         <ul class="nav nav-tabs" role="tablist">
 
-            {% for tabId, tab in el.components.tabs %}
+            {% for tabId, cmp in el.components.tabs %}
 
-                <li role="presentation" class="{% if tab.active %}active{% endif %}">
-                    <a href="#{{ tab.id | e('html_attr') }}"
-                       aria-controls="{{ tab.id | e('html_attr') }}"
-                       data-title="{{ tab.title | e('html_attr') }}"
+                <li role="presentation" class="{% if cmp.active %}active{% endif %}">
+                    <a href="#{{ cmp.id | e('html_attr') }}"
+                       aria-controls="{{ cmp.id | e('html_attr') }}"
+                       data-title="{{ cmp.title | e('html_attr') }}"
                        role="tab" data-toggle="tab">
-                        {% if tab.icon %}
-                            <i class="fa fa-{{ tab.icon | e('html_attr') }}" aria-hidden="true"></i>
+                        {% if cmp.icon %}
+                            <i class="fa fa-{{ cmp.icon | e('html_attr') }}" aria-hidden="true"></i>
                         {% endif %}
-                        {{ tab.title }}
+                        {{ cmp.title }}
                     </a>
                 </li>
 
@@ -23,10 +23,10 @@
 
     <div class="panel-body">
         <div class="tab-content">
-            {% for tabId, tab in el.components.tabs %}
-            <div role="tabpanel" class="tab-pane fade{% if tab.active %} active in{% endif %}"
-                 id="{{ tab.id | e('html_attr') }}">
-                    {% include tab.templateName %}
+            {% for tabId, cmp in el.components.tabs %}
+            <div role="tabpanel" class="tab-pane fade{% if cmp.active %} active in{% endif %}"
+                 id="{{ cmp.id | e('html_attr') }}">
+                    {% include cmp.templateName %}
             </div>
             {% endfor %}
         </div>
