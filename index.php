@@ -206,10 +206,20 @@ $raw->setContent($content);
 
 $divider = new \Pan\MenuPages\Fields\Divider($tabOtherFields);
 
-$rawTab->setContent('<div class="jumbotron"><h1>Html allowed in <code>Raw</code> fields! <br /><small>Capio noster ventus est.Pol</small></h1>
+$lorem1 = '<div class="jumbotron"><h1>Html allowed in <code>Raw</code> fields! <br />
+<small>Capio noster ventus est.Pol</small></h1>
 <p>Sunt quadraes manifestum peritus.</p>
-</div>');
-$anotherRawTab->setContent('<div class="jumbotron"><h1>Html allowed in <code>Raw</code> fields! <br /><small>Sunt quadraes manifestum.</small></h1>
+</div>';
+
+$lorem2 = '<div class="jumbotron"><h1>Html allowed in <code>Raw</code> fields! <br />
+<small>Sunt quadraes manifestum.</small></h1>
 <p>Capio noster ventus est.Pol, diatria!
 Clinias, verpa, et adgium.</p>
-</div>');
+</div>';
+
+$rawTab->setContent($lorem1);
+$anotherRawTab->setContent($lorem2);
+
+$panelComponents = new \Pan\MenuPages\PageElements\Containers\PanelComponents($subPage, \Pan\MenuPages\Pages\SubPage::EL_ASIDE);
+$raw = new \Pan\MenuPages\PageElements\Components\Raw($panelComponents);
+$raw->setContent($lorem1);

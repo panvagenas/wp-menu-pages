@@ -1,0 +1,27 @@
+<div class="panel panel-default">
+
+    {% if cnr.components.header %}
+        <div class="panel-heading">
+            {% for cmpId, cmp in cnr.components.header %}
+                {% include cmp.templateName %}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if cnr.components.body %}
+        <div class="panel-body">
+            {% for cmpId, cmp in cnr.components.body %}
+                {% include cmp.templateName %}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if cnr.components.footer %}
+        <div class="panel-footer">
+            {% for cmpId, cmp in cnr.components.footer %}
+                {% include cmp.templateName %}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+</div>
