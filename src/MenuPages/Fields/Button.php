@@ -39,4 +39,25 @@ class Button extends AbsField {
     public function getTemplateName() {
         return 'fields/button.twig';
     }
+
+    /**
+     * @return string
+     * @see    Button::$label
+     * @codeCoverageIgnore
+     */
+    public function getLabel() {
+        return $this->label;
+    }
+
+    /**
+     * @param string $label
+     *
+     * @return $this
+     * @codeCoverageIgnore
+     */
+    public function setLabel( $label ) {
+        $this->label = $label;
+
+        return $this;
+    }
 }
