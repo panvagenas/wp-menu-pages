@@ -5,6 +5,11 @@ namespace Pan\MenuPages\PageElements\Containers\Abs;
 use Pan\MenuPages\PageElements\Components\Abs\AbsCmp;
 
 abstract class AbsCnrComponents extends AbsCnr {
+    const CNR_HEAD = 'head';
+
+    const CNR_BODY = 'body';
+
+    const CNR_FOOTER = 'footer';
 
     protected $components = [
         self::CNR_HEAD   => [ ],
