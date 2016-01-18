@@ -12,6 +12,8 @@
 namespace Pan\MenuPages\Fields;
 
 use Pan\MenuPages\Fields\Abs\AbsField;
+use Pan\MenuPages\Fields\Trt\TrtGlobalInputAttributes;
+use Pan\MenuPages\Fields\Trt\TrtInputAttributes;
 use Pan\MenuPages\PageElements\Components\Abs\AbsCmpFields;
 
 /**
@@ -24,6 +26,8 @@ use Pan\MenuPages\PageElements\Components\Abs\AbsCmpFields;
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
 class Button extends AbsField {
+    use TrtInputAttributes, TrtGlobalInputAttributes;
+
     protected $type = 'button';
     protected $label;
 
