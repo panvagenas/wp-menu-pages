@@ -28,13 +28,13 @@ use Pan\MenuPages\PageElements\Components\Abs\AbsCmpFields;
 class Button extends AbsField {
     use TrtInputAttributes, TrtGlobalInputAttributes;
 
-    protected $type = 'button';
     protected $label;
 
     public function __construct( AbsCmpFields $component, $label ) {
         parent::__construct( $component );
         $this->label = $label;
         $this->setClass( $this->class . ' btn' );
+        $this->type = 'button';
     }
 
     /**
