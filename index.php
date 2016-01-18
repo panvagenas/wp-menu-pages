@@ -206,6 +206,8 @@ $raw->setContent($content);
 
 $divider = new \Pan\MenuPages\Fields\Divider($tabOtherFields);
 
+$nonceFld = new \Pan\MenuPages\Fields\Nonce($tabOtherFields, 'my_action', 'the_name');
+
 $lorem1 = '<div class="jumbotron"><h1>Html allowed in <code>CmpRaw</code> fields! <br />
 <small>Capio noster ventus est.Pol</small></h1>
 <p>Sunt quadraes manifestum peritus.</p>
