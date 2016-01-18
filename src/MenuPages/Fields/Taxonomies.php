@@ -11,7 +11,7 @@
 
 namespace Pan\MenuPages\Fields;
 
-use Pan\MenuPages\PageElements\Components\Abs\AbsFldCmp;
+use Pan\MenuPages\PageElements\Components\Abs\AbsCmpFields;
 
 /**
  * Class Taxonomies
@@ -23,7 +23,7 @@ use Pan\MenuPages\PageElements\Components\Abs\AbsFldCmp;
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
 class Taxonomies extends Select2 {
-    public function __construct( AbsFldCmp $component, $name, $postType = 'post', $args = [ ] ) {
+    public function __construct( AbsCmpFields $component, $name, $postType = 'post', $args = [ ] ) {
         parent::__construct( $component, $name );
 
         $taxonomies = get_object_taxonomies( $postType );

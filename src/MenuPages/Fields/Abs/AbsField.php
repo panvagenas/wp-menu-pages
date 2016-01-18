@@ -13,7 +13,7 @@ namespace Pan\MenuPages\Fields\Abs;
 
 use Pan\MenuPages\Fields\Trt\TrtGlobalAttributes;
 use Pan\MenuPages\Ifc\IfcDisplayable;
-use Pan\MenuPages\PageElements\Components\Abs\AbsFldCmp;
+use Pan\MenuPages\PageElements\Components\Abs\AbsCmpFields;
 use Pan\MenuPages\Trt\TrtIdentifiable;
 
 /**
@@ -29,19 +29,19 @@ abstract class AbsField implements IfcDisplayable {
     use TrtIdentifiable, TrtGlobalAttributes;
 
     /**
-     * @var AbsFldCmp $component
+     * @var AbsCmpFields $component
      */
     protected $menuPageComponent;
 
     /**
      * AbsField constructor.
      *
-     * @param AbsFldCmp $component
+     * @param AbsCmpFields $component
      *
      * @since  TODO ${VERSION}
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
-    public function __construct( AbsFldCmp $component ) {
+    public function __construct( AbsCmpFields $component ) {
         $this->id = str_replace( '\\', '__', get_class( $this ) . '-' . $this->getHashId() );
 
         $this->menuPageComponent = $component;
@@ -56,7 +56,7 @@ abstract class AbsField implements IfcDisplayable {
     }
 
     /**
-     * @return AbsFldCmp
+     * @return AbsCmpFields
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    menuPageComponent::$panel
      * @since  TODO ${VERSION}

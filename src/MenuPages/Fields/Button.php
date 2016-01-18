@@ -12,7 +12,7 @@
 namespace Pan\MenuPages\Fields;
 
 use Pan\MenuPages\Fields\Abs\AbsField;
-use Pan\MenuPages\PageElements\Components\Abs\AbsFldCmp;
+use Pan\MenuPages\PageElements\Components\Abs\AbsCmpFields;
 
 /**
  * Class Button
@@ -27,7 +27,7 @@ class Button extends AbsField {
     protected $type = 'button';
     protected $label;
 
-    public function __construct( AbsFldCmp $component, $label ) {
+    public function __construct( AbsCmpFields $component, $label ) {
         parent::__construct( $component );
         $this->label = $label;
         $this->setClass( $this->class . ' btn' );

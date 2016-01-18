@@ -11,7 +11,7 @@
 
 namespace Pan\MenuPages\PageElements\Components;
 
-use Pan\MenuPages\PageElements\Components\Abs\AbsFldCmp;
+use Pan\MenuPages\PageElements\Components\Abs\AbsCmpFields;
 use Pan\MenuPages\PageElements\Containers\CnrTabs;
 
 /**
@@ -23,7 +23,7 @@ use Pan\MenuPages\PageElements\Containers\CnrTabs;
  * @package   Pan\MenuPages\PageComponents
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class CmpTabForm extends AbsFldCmp {
+class CmpTabForm extends AbsCmpFields {
     /**
      * @var bool
      */

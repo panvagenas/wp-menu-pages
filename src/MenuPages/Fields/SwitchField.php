@@ -11,7 +11,7 @@
 
 namespace Pan\MenuPages\Fields;
 
-use Pan\MenuPages\PageElements\Components\Abs\AbsFldCmp;
+use Pan\MenuPages\PageElements\Components\Abs\AbsCmpFields;
 
 /**
  * Class SwitchField
@@ -28,12 +28,12 @@ class SwitchField extends Radio {
     /**
      * SwitchField constructor.
      *
-     * @param AbsFldCmp                  $component
+     * @param AbsCmpFields               $component
      * @param                            $name
      *
      * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
-    public function __construct( AbsFldCmp $component, $name ) {
+    public function __construct( AbsCmpFields $component, $name ) {
         parent::__construct( $component, $name );
 
         $this->setOptions( [ 'No' => 0, 'Yes' => 1 ] );

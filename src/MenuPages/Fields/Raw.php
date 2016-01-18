@@ -12,7 +12,7 @@
 namespace Pan\MenuPages\Fields;
 
 use Pan\MenuPages\Fields\Abs\AbsField;
-use Pan\MenuPages\PageElements\Components\Abs\AbsFldCmp;
+use Pan\MenuPages\PageElements\Components\Abs\AbsCmpFields;
 
 /**
  * Class Raw
@@ -26,7 +26,7 @@ use Pan\MenuPages\PageElements\Components\Abs\AbsFldCmp;
 class Raw extends AbsField {
     protected $content;
 
-    public function __construct( AbsFldCmp $component ) {
+    public function __construct( AbsCmpFields $component ) {
         parent::__construct( $component );
         $this->setClass( 'col-md-12' );
     }

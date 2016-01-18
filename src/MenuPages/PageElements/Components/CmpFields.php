@@ -11,7 +11,7 @@
 
 namespace Pan\MenuPages\PageElements\Components;
 
-use Pan\MenuPages\PageElements\Components\Abs\AbsFldCmp;
+use Pan\MenuPages\PageElements\Components\Abs\AbsCmpFields;
 
 /**
  * Class CmpFields
@@ -22,7 +22,7 @@ use Pan\MenuPages\PageElements\Components\Abs\AbsFldCmp;
  * @package   Pan\MenuPages\PageComponents\Elements
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-class CmpFields extends AbsFldCmp {
+class CmpFields extends AbsCmpFields {
     /**
      * @var string
      */

@@ -13,7 +13,7 @@ namespace Pan\MenuPages\Fields\Abs;
 
 use Pan\MenuPages\Fields\Trt\TrtInputAttributes;
 use Pan\MenuPages\Fields\Trt\TrtValidation;
-use Pan\MenuPages\PageElements\Components\Abs\AbsFldCmp;
+use Pan\MenuPages\PageElements\Components\Abs\AbsCmpFields;
 
 /**
  * Class AbsInput
@@ -37,7 +37,7 @@ abstract class AbsInput extends AbsInputBase {
     /**
      * @inheritDoc
      */
-    public function __construct( AbsFldCmp $component, $name ) {
+    public function __construct( AbsCmpFields $component, $name ) {
         parent::__construct( $component, $name );
 
         if ( ! $this->menuPageComponent->getOptions()->exists( $name ) ) {
