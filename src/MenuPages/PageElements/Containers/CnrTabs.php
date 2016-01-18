@@ -33,31 +33,33 @@ class CnrTabs extends AbsCnrComponents {
 
     public function attachComponent( AbsCmp $component, $position = self::CNR_BODY ) {
         // !FIXME We have to find a way to set a default active tab
-        if ( ! ( $component instanceof CmpTabForm || $component instanceof CmpTab ) ) {
+        if ( $position === self::CNR_BODY && ! ( $component instanceof CmpTabForm || $component instanceof CmpTab ) ) {
             throw new \InvalidArgumentException( 'Component must be a tab instance' );
         }
 
-        $storedActive = $this->getTabState( $component );
+        if($component instanceof CmpTabForm || $component instanceof CmpTab) {
+            $storedActive = $this->getTabState( $component );
 
-        if ( $storedActive === null ) {
-            if ( $component->isActive() ) {
-                if ( ! $this->activeTab ) {
-                    $this->activeTab = $component;
-                } else {
-                    $component->setActive( false );
+            if ( $storedActive === null ) {
+                if ( $component->isActive() ) {
+                    if ( ! $this->activeTab ) {
+                        $this->activeTab = $component;
+                    } else {
+                        $component->setActive( false );
+                    }
                 }
+            } elseif ( $storedActive ) {
+                $this->activeTab = $component;
+                $component->setActive( true );
+            } else {
+                $component->setActive( false );
             }
-        } elseif ( $storedActive ) {
-            $this->activeTab = $component;
-            $component->setActive( true );
-        } else {
-            $component->setActive( false );
-        }
 
-        if ( $storedActive === null && $component->isActive() ) {
-            $storedActive                            = [ ];
-            $storedActive [ $component->getTitle() ] = true;
-            $this->menuPage->setPageOption( Options::PAGE_OPT_STATE, $storedActive );
+            if ( $storedActive === null && $component->isActive() ) {
+                $storedActive                            = [ ];
+                $storedActive [ $component->getTitle() ] = true;
+                $this->menuPage->setPageOption( Options::PAGE_OPT_STATE, $storedActive );
+            }
         }
 
         return parent::attachComponent( $component, $position );
