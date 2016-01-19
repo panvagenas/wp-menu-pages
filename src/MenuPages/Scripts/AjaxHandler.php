@@ -219,7 +219,19 @@ class AjaxHandler extends AbsPageSingleton {
             unset( $newOptions[ $name ] );
         }
 
-        return [ $newOptions, $validationResults, $allValid, $match ];
+        /**
+         * Filters the validation results. It should return an array similar
+         * to the one that accepts as it's only option:
+         * ```
+         * [ $newOptions, $validationResults, $allValid, $match]
+         * ```
+         */
+        $return = apply_filters(
+            "AjaxHandler/validateOptions@{$optionsObj->getOptionsBaseName()}",
+            [ $newOptions, $validationResults, $allValid, $match ]
+        );
+
+        return $return;
     }
 
     protected function checkPermissions() {

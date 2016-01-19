@@ -88,7 +88,7 @@ class Script extends AbsPageSingleton {
 
         $options = $this->menuPage->getOptions();
 
-        wp_localize_script( IfcScripts::CORE_JS_SLUG, IfcScripts::CORE_JS_OBJECT, [
+        $menuPagesJsLoc = [
             'options'         => [
                 'defaults' => $options->getDefaults(),
                 'options'  => $options->getOptions(),
@@ -119,7 +119,19 @@ class Script extends AbsPageSingleton {
                 IfcScripts::ACTION_UPDATE_CORE_OPTIONS_PREFIX . $this->menuPage->getMenuSlug() =>
                     wp_create_nonce( IfcScripts::ACTION_UPDATE_CORE_OPTIONS_PREFIX . $this->menuPage->getMenuSlug() ),
             ],
-        ] );
+        ];
+
+        /**
+         * Filter wpMenuPages object passed to js files
+         *
+         * @param array $menuPagesJsLoc Containing all properties to be passed to the object
+         */
+        $menuPagesJsLoc = apply_filters(
+            "Scripts/Script/printScripts@{$options->getOptionsBaseName()}",
+            $menuPagesJsLoc
+        );
+
+        wp_localize_script( IfcScripts::CORE_JS_SLUG, IfcScripts::CORE_JS_OBJECT, $menuPagesJsLoc );
     }
 
     /**

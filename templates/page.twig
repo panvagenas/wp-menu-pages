@@ -12,14 +12,18 @@
          # Page header
          #}
         <div class="page-header">
+            {{ wp_action('templates/header/before@' ~ menuPage.menuSlug) }}
             {% include 'header.twig' %}
+            {{ wp_action('templates/header/after@' ~ menuPage.menuSlug) }}
         </div>
         <div class="row">
             {##
              # Alerts
              #}
             <div class="col-md-12 alerts-wrapper">
+                {{ wp_action('templates/alerts/before@' ~ menuPage.menuSlug) }}
                 {% include 'alerts.twig' %}
+                {{ wp_action('templates/alerts/after@' ~ menuPage.menuSlug) }}
             </div>
             {##
              # Main
@@ -28,9 +32,11 @@
                 {##
                  # Main content
                  #}
+                {{ wp_action('templates/main/before@' ~ menuPage.menuSlug) }}
                 {% for cnr in el.containers.main %}
                     {% include cnr.templateName %}
                 {% endfor %}
+                {{ wp_action('templates/main/after@' ~ menuPage.menuSlug) }}
             </div>
 
             {##
@@ -38,9 +44,11 @@
              #}
             {% if el.containers.aside %}
                 <div class="col-md-4">
+                    {{ wp_action('templates/aside/before@' ~ menuPage.menuSlug) }}
                     {% for cnr in el.containers.aside %}
                         {% include cnr.templateName %}
                     {% endfor %}
+                    {{ wp_action('templates/aside/after@' ~ menuPage.menuSlug) }}
                 </div>
             {% endif %}
         </div>

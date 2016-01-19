@@ -358,7 +358,7 @@ abstract class AbsMenuPage {
      */
     public function getTwig() {
         if ( ! $this->hasCacheKey( __METHOD__ ) ) {
-            $this->writeCache( __METHOD__, new Twig( $this->wpMenuPages ) );
+            $this->writeCache( __METHOD__, new Twig( $this ) );
         }
 
         return $this->readCache( __METHOD__ );

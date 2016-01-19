@@ -11,8 +11,8 @@
 
 namespace Pan\MenuPages\Templates;
 
+use Pan\MenuPages\Pages\Abs\AbsMenuPage;
 use Pan\MenuPages\Templates\Ifc\IfcTemplateConstants;
-use Pan\MenuPages\WpMenuPages;
 
 
 /**
@@ -45,13 +45,13 @@ class Twig {
     /**
      * Twig constructor.
      *
-     * @param WpMenuPages $menuPages
+     * @param AbsMenuPage $menuPage
      *
      * @since  TODO ${VERSION}
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
-    public function __construct( WpMenuPages $menuPages ) {
-        $basePath = $menuPages->getBasePath();
+    public function __construct( AbsMenuPage $menuPage ) {
+        $basePath = $menuPage->getWpMenuPages()->getBasePath();
 
         $this->defaultPaths[] = $basePath . '/' . IfcTemplateConstants::TEMPLATES_DIR;
         $this->cachePath      = $basePath . '/cache';
@@ -60,6 +60,7 @@ class Twig {
         // TODO Remove debug
         $this->twigEnvironment = new \Twig_Environment( $this->twigLoader, [ 'debug' => true ] );
         $this->twigEnvironment->addExtension( new \Twig_Extension_Debug() );
+        $this->twigEnvironment->addExtension( new WpTwigExtension( $menuPage ) );
 
     }
 

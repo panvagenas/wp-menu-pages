@@ -118,6 +118,12 @@ class Options {
      * @since  TODO ${VERSION}
      */
     protected function save() {
+        /**
+         * Filter options array before saving to DB
+         *
+         * @param array $options Options to be saved
+         */
+        $options = apply_filters("Options/save@{$this->optionsBaseName}", $this->options);
         return update_option( $this->optionsBaseName, $this->options );
     }
 
