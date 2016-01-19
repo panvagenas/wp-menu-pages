@@ -55,7 +55,14 @@ class Options {
 
         $this->defaults[ self::PAGE_OPT ] = [ ];
 
-        $this->options = array_merge( $this->defaults, get_option( $this->optionsBaseName, $this->defaults ) );
+        $options = get_option( $this->optionsBaseName );
+
+        if($options === false){
+            $this->options = $this->defaults;
+            $this->save();
+        }
+
+        $this->options = array_merge( $this->defaults, $this->options );
     }
 
     /**

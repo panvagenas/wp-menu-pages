@@ -34,4 +34,10 @@ trait TrtIdentifiable {
 
         return $this->hashId;
     }
+
+    public function setId($id){
+        $this->id = htmlentities($id);
+
+        return $this;
+    }
 }
