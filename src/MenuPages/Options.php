@@ -60,6 +60,8 @@ class Options {
         if($options === false){
             $this->options = $this->defaults;
             $this->save();
+        } else {
+            $this->options = (array)$options;
         }
 
         $this->options = array_merge( $this->defaults, $this->options );
