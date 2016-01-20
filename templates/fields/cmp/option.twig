@@ -6,12 +6,10 @@
  # @since TODO ${VERSION}
  # @copyright Copyright (c) 2015 Panagiotis Vagenas
  #}
-{% spaceless %}
-    <option value="{{ value | e('html_attr') }}"
-        {% if selected is iterable %}
-            {% if value in selected %}selected="selected"{% endif %}
-        {% else %}
-            {% if value == selected %}selected="selected"{% endif %}
-        {% endif %}
-    >{{ name | e }}</option>
-{% endspaceless %}
+<option value="{{ value | e('html_attr') }}"
+    {% if selected is iterable %}
+        {% if value in selected %}selected="selected"{% endif %}
+    {% else %}
+        {% if value == selected %}selected="selected"{% endif %}
+    {% endif %}
+>{{ name | e }}</option>

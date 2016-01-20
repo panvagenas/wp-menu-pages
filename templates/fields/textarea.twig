@@ -6,15 +6,13 @@
  # @since TODO ${VERSION}
  # @copyright Copyright (c) 2015 Panagiotis Vagenas
  #}
-{% spaceless %}
+<div class="form-group">
 
-    <div class="form-group">
+    {% if fld.label %}
+        <label for="{{ fld.id | e('html_attr') }}" class="col-sm-2 control-label">{{ fld.label | e }}</label>
+    {% endif %}
 
-        {% if fld.label %}
-            <label for="{{ fld.id | e('html_attr') }}" class="col-sm-2 control-label">{{ fld.label | e }}</label>
-        {% endif %}
-
-        <div class="col-md-{% if fld.label %}8{% else %}12{% endif %}">
+    <div class="col-md-{% if fld.label %}8{% else %}12{% endif %}">
             <textarea
 
                 cols="{{ fld.cols | e('html_attr') | default(25) }}"
@@ -62,15 +60,13 @@
                     {% include 'fields/blocks/additional_attributes.twig' %}
                 {% endblock %}
 
-                >{{ fld.value | e }}</textarea>
+            >{{ fld.value | e }}</textarea>
 
-            {% if fld.description %}
-                <span id="{{ fld.id | e('html_attr') }}" class="help-block field-description">
+        {% if fld.description %}
+            <span id="{{ fld.id | e('html_attr') }}" class="help-block field-description">
                         {{ fld.description }}
                     </span>
-            {% endif %}
-        </div>
-
+        {% endif %}
     </div>
 
-{% endspaceless %}
+</div>

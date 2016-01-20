@@ -6,75 +6,73 @@
  # @since TODO ${VERSION}
  # @copyright Copyright (c) 2015 Panagiotis Vagenas
  #}
-{% spaceless %}
-    <div class="form-group">
-        {% if fld.label %}
-            <label for="{{ fld.id | e('html_attr') }}" class="col-sm-2 control-label">{{ fld.label | e }}</label>
-        {% endif %}
+<div class="form-group">
+    {% if fld.label %}
+        <label for="{{ fld.id | e('html_attr') }}" class="col-sm-2 control-label">{{ fld.label | e }}</label>
+    {% endif %}
 
-        <div class="col-md-{% if fld.label %}8{% else %}12{% endif %}">
-            <select
+    <div class="col-md-{% if fld.label %}8{% else %}12{% endif %}">
+        <select
+            {% if fld.multiple %}
+                multiple="multiple"
+            {% endif %}
+
+            {% block global_attributes %}
+                id="{{ fld.id | e('html_attr') }}"
+                class="{{ fld.class | e('html_attr') }} form-control wp-menu-pages-input"
+                {% if fld.style %}
+                    style="{{ fld.style | e('html_attr') }}"
+                {% endif %}
+                {% if fld.label %}
+                    title="{{ fld.label | e('html_attr') }}"
+                {% endif %}
+            {% endblock %}
+
+            {% block input_attributes %}
+                type="{{ fld.type | e('html_attr') }}"
+                name="{{ fld.name | e('html_attr') }}{% if fld.multiple %}[]{% endif %}"
+
+                {% if fld.size %}
+                    size="{{ fld.size | number_format(0, '', '') }}"
+                {% endif %}
+
+                {% if fld.required %}
+                    required="required"
+                {% endif %}
+
+                {% if fld.autoFocus %}
+                    autofocus
+                {% endif %}
+
+                {% if fld.disabled %}
+                    disabled
+                {% endif %}
+
                 {% if fld.multiple %}
                     multiple="multiple"
                 {% endif %}
+            {% endblock %}
 
-                {% block global_attributes %}
-                    id="{{ fld.id | e('html_attr') }}"
-                    class="{{ fld.class | e('html_attr') }} form-control wp-menu-pages-input"
-                    {% if fld.style %}
-                        style="{{ fld.style | e('html_attr') }}"
-                    {% endif %}
-                    {% if fld.label %}
-                        title="{{ fld.label | e('html_attr') }}"
-                    {% endif %}
-                {% endblock %}
+            {% block additional_attributes %}
+                {% include 'fields/blocks/additional_attributes.twig' %}
+            {% endblock %}
+        >
+            {% set selected = fld.value %}
+            {% for name, value in fld.options %}
+                {% if value is iterable %}
+                    {% set groupOptions = value %}
+                    {% include 'fields/cmp/optgroup.twig' %}
+                {% else %}
+                    {% include 'fields/cmp/option.twig' %}
+                {% endif %}
+            {% endfor %}
+        </select>
 
-                {% block input_attributes %}
-                    type="{{ fld.type | e('html_attr') }}"
-                    name="{{ fld.name | e('html_attr') }}{% if fld.multiple %}[]{% endif %}"
-
-                    {% if fld.size %}
-                        size="{{ fld.size | number_format(0, '', '') }}"
-                    {% endif %}
-
-                    {% if fld.required %}
-                        required="required"
-                    {% endif %}
-
-                    {% if fld.autoFocus %}
-                        autofocus
-                    {% endif %}
-
-                    {% if fld.disabled %}
-                        disabled
-                    {% endif %}
-
-                    {% if fld.multiple %}
-                        multiple="multiple"
-                    {% endif %}
-                {% endblock %}
-
-                {% block additional_attributes %}
-                    {% include 'fields/blocks/additional_attributes.twig' %}
-                {% endblock %}
-                >
-                {% set selected = fld.value %}
-                {% for name, value in fld.options %}
-                    {% if value is iterable %}
-                        {% set groupOptions = value %}
-                        {% include 'fields/cmp/optgroup.twig' %}
-                    {% else %}
-                        {% include 'fields/cmp/option.twig' %}
-                    {% endif %}
-                {% endfor %}
-            </select>
-
-            {% if fld.description %}
-                <span id="{{ fld.id | e('html_attr') }}" class="help-block field-description">
+        {% if fld.description %}
+            <span id="{{ fld.id | e('html_attr') }}" class="help-block field-description">
                         {{ fld.description }}
                     </span>
-            {% endif %}
+        {% endif %}
 
-        </div>
     </div>
-{% endspaceless %}
+</div>

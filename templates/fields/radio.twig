@@ -6,57 +6,53 @@
  # @since TODO ${VERSION}
  # @copyright Copyright (c) 2015 Panagiotis Vagenas
  #}
-{% spaceless %}
+<div class="form-group">
 
-    <div class="form-group">
+    {% if fld.label %}
+        <label for="{{ fld.id | e('html_attr') }}" class="col-md-2 control-label">{{ fld.label | e }}</label>
+    {% endif %}
 
-        {% if fld.label %}
-            <label for="{{ fld.id | e('html_attr') }}" class="col-md-2 control-label">{{ fld.label | e }}</label>
-        {% endif %}
+    <div class="col-md-8 {% if not fld.label %}col-md-offset-2{% endif %}">
+        <div class="btn-group btn-{{ fld.id }}" data-toggle="buttons">
+            {% for name, value in fld.options %}
+                {% set id = (fld.id ~ '--' ~  value) | e('html_attr') %}
+                <label for="{{ fld.id }}" data-value="{{ value | e('html_attr') }}"
+                       class="btn btn-{{ fld.buttonClass | e('html_attr') | default('default') }} {% if fld.isOptionChecked(value) %}active{% endif %}">
+                    <input
+                        id="{{ fld.id }}"
+                        class="{{ fld.class | e('html_attr') }} wp-menu-pages-input"
 
-        <div class="col-md-8 {% if not fld.label %}col-md-offset-2{% endif %}">
-            <div class="btn-group btn-{{ fld.id }}" data-toggle="buttons">
-                {% for name, value in fld.options %}
-                    {% set id = (fld.id ~ '--' ~  value) | e('html_attr') %}
-                    <label for="{{ fld.id }}" data-value="{{ value | e('html_attr') }}"
-                           class="btn btn-{{ fld.buttonClass | e('html_attr') | default('default') }} {% if fld.isOptionChecked(value) %}active{% endif %}">
-                        <input
-                            id="{{ fld.id }}"
-                            class="{{ fld.class | e('html_attr') }} wp-menu-pages-input"
+                        type="{{ fld.type | e('html_attr') }}"
+                        value="{{ value | e('html_attr') }}"
+                        name="{{ fld.name | e('html_attr') }}"
 
-                            type="{{ fld.type | e('html_attr') }}"
-                            value="{{ value | e('html_attr') }}"
-                            name="{{ fld.name | e('html_attr') }}"
+                        title="{{ name | e('html_attr') }}"
 
-                            title="{{ name | e('html_attr') }}"
+                        {% if fld.isOptionChecked(value) %}
+                            checked="checked"
+                        {% endif %}
 
-                            {% if fld.isOptionChecked(value) %}
-                                checked="checked"
-                            {% endif %}
+                        {% if fld.style %}
+                            style="{{ fld.style | e('html_attr') }}"
+                        {% endif %}
 
-                            {% if fld.style %}
-                                style="{{ fld.style | e('html_attr') }}"
-                            {% endif %}
+                        {% if fld.required %}
+                            required="required"
+                        {% endif %}
 
-                            {% if fld.required %}
-                                required="required"
-                            {% endif %}
+                        {% if fld.autoFocus %}
+                            autofocus
+                        {% endif %}
 
-                            {% if fld.autoFocus %}
-                                autofocus
-                            {% endif %}
+                        {% if fld.disabled %}
+                            disabled
+                        {% endif %}
 
-                            {% if fld.disabled %}
-                                disabled
-                            {% endif %}
+                        autocomplete="off"
 
-                            autocomplete="off"
-
-                        > {{ name }}
-                    </label>
-                {% endfor %}
-            </div>
+                    > {{ name }}
+                </label>
+            {% endfor %}
         </div>
     </div>
-
-{% endspaceless %}
+</div>

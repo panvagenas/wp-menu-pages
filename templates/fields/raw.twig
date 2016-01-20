@@ -6,17 +6,13 @@
  # @since TODO ${VERSION}
  # @copyright Copyright (c) 2015 Panagiotis Vagenas
  #}
-{% spaceless %}
+<div class="form-group">
 
-    <div class="form-group">
-
-        <div id="{{ fld.id }}"
-             class="{{ fld.class | e('html_attr') }}"
-             {% if fld.style %}style="{{ fld.style | e('html_attr') }}"{% endif %}
-        >
-            {{ fld.content | raw }}
-        </div>
-
+    <div id="{{ fld.id }}"
+         class="{{ fld.class | e('html_attr') }}"
+         {% if fld.style %}style="{{ fld.style | e('html_attr') }}"{% endif %}
+    >
+        {{ fld.content | raw }}
     </div>
 
-{% endspaceless %}
+</div>

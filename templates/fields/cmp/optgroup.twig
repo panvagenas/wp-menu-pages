@@ -7,10 +7,8 @@
  # @copyright Copyright (c) 2015 Panagiotis Vagenas
  #}
 
-{% spaceless %}
-    <optgroup label="{{ name | e('html_attr') }}">
-        {% for name, value in groupOptions %}
-            {% include 'fields/cmp/option.twig' %}
-        {% endfor %}
-    </optgroup>
-{% endspaceless %}
+<optgroup label="{{ name | e('html_attr') }}">
+    {% for name, value in groupOptions %}
+        {% include 'fields/cmp/option.twig' %}
+    {% endfor %}
+</optgroup>

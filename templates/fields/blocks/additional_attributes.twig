@@ -6,12 +6,8 @@
  # @since TODO ${VERSION}
  # @copyright Copyright (c) 2015 Panagiotis Vagenas
  #}
-{% spaceless %}
-
-    {% for name, value in fld.additional_attributes %}
-        {% if name and value %}
-            {{ name | e('html_attr') }}="{{ value | e('html_attr') }}"
-        {% endif %}
-    {% endfor %}
-
-{% endspaceless %}
+{% for name, value in fld.additional_attributes %}
+    {% if name and value %}
+        {{ name | e('html_attr') }}="{{ value | e('html_attr') }}"
+    {% endif %}
+{% endfor %}

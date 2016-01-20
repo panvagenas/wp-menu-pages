@@ -6,55 +6,51 @@
  # @since TODO ${VERSION}
  # @copyright Copyright (c) 2015 Panagiotis Vagenas
  #}
-{% spaceless %}
+<div class="form-group">
 
-    <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
 
-        <div class="col-sm-offset-2 col-sm-10">
+        <button
 
-            <button
+            {% if fld.autofocus %}
+                autofocus
+            {% endif %}
 
-                {% if fld.autofocus %}
+            {% if fld.disabled %}
+                disabled
+            {% endif %}
+
+            {% block global_attributes %}
+                id="{{ fld.id | e('html_attr') }}"
+                class="{{ fld.class | e('html_attr') }}"
+                {% if fld.style %}
+                    style="{{ fld.style | e('html_attr') }}"
+                {% endif %}
+                {% if fld.label %}
+                    title="{{ fld.label | e('html_attr') }}"
+                {% endif %}
+            {% endblock %}
+
+            {% block input_attributes %}
+                type="{{ fld.type | e('html_attr') }}"
+                name="{{ fld.name | e('html_attr') }}"
+                value="{{ fld.value | e('html_attr') }}"
+
+                {% if fld.autoFocus %}
                     autofocus
                 {% endif %}
 
                 {% if fld.disabled %}
                     disabled
                 {% endif %}
+            {% endblock %}
 
-                {% block global_attributes %}
-                    id="{{ fld.id | e('html_attr') }}"
-                    class="{{ fld.class | e('html_attr') }}"
-                    {% if fld.style %}
-                        style="{{ fld.style | e('html_attr') }}"
-                    {% endif %}
-                    {% if fld.label %}
-                        title="{{ fld.label | e('html_attr') }}"
-                    {% endif %}
-                {% endblock %}
+            {% block additional_attributes %}
+                {% include 'fields/blocks/additional_attributes.twig' %}
+            {% endblock %}
 
-                {% block input_attributes %}
-                    type="{{ fld.type | e('html_attr') }}"
-                    name="{{ fld.name | e('html_attr') }}"
-                    value="{{ fld.value | e('html_attr') }}"
-
-                    {% if fld.autoFocus %}
-                        autofocus
-                    {% endif %}
-
-                    {% if fld.disabled %}
-                        disabled
-                    {% endif %}
-                {% endblock %}
-
-                {% block additional_attributes %}
-                    {% include 'fields/blocks/additional_attributes.twig' %}
-                {% endblock %}
-
-            >{{ fld.label }}</button>
-
-        </div>
+        >{{ fld.label }}</button>
 
     </div>
 
-{% endspaceless %}
+</div>
