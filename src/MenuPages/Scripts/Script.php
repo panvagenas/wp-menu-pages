@@ -187,24 +187,24 @@ class Script extends AbsPageSingleton {
         wp_register_script(
             IfcScripts::SLUG_MOMENT_JS,
             IfcConstants::DEV
-                ? plugins_url( $this->pluginRelPathToAssets . '/js/moment.js', $this->pluginBaseFile )
-                : plugins_url( $this->pluginRelPathToAssets . '/js/moment.min.js', $this->pluginBaseFile ),
+                ? plugins_url( $this->pluginRelPathToAssets . '/js/lib/moment.js', $this->pluginBaseFile )
+                : plugins_url( $this->pluginRelPathToAssets . '/js/lib/moment.min.js', $this->pluginBaseFile ),
             [ 'jquery' ],
             IfcConstants::VERSION
         );
         wp_register_script(
             IfcScripts::SLUG_DATETIME_PICKER_JS,
             IfcConstants::DEV
-                ? plugins_url( $this->pluginRelPathToAssets . '/js/dateTimePicker.js', $this->pluginBaseFile )
-                : plugins_url( $this->pluginRelPathToAssets . '/js/dateTimePicker.min.js', $this->pluginBaseFile ),
+                ? plugins_url( $this->pluginRelPathToAssets . '/js/lib/dateTimePicker.js', $this->pluginBaseFile )
+                : plugins_url( $this->pluginRelPathToAssets . '/js/lib/dateTimePicker.min.js', $this->pluginBaseFile ),
             [ 'jquery', IfcScripts::SLUG_MOMENT_JS ],
             IfcConstants::VERSION
         );
         wp_register_script(
             IfcScripts::SLUG_FILE_SAVER_JS,
             IfcConstants::DEV
-                ? plugins_url( $this->pluginRelPathToAssets . '/js/fileSaver.js', $this->pluginBaseFile )
-                : plugins_url( $this->pluginRelPathToAssets . '/js/fileSaver.min.js', $this->pluginBaseFile ),
+                ? plugins_url( $this->pluginRelPathToAssets . '/js/lib/fileSaver.js', $this->pluginBaseFile )
+                : plugins_url( $this->pluginRelPathToAssets . '/js/lib/fileSaver.min.js', $this->pluginBaseFile ),
             [ 'jquery' ],
             IfcConstants::VERSION
         );
