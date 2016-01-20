@@ -1,12 +1,18 @@
 (function ($) {
+    //noinspection JSUnresolvedVariable
     /**
      * Object that holds lib settings and definitions.
      * An extension of wpMenuPages obj that comes from WordPress localize
      *
      * @type Object
      */
-    wpMenuPages = $.extend(
+    var menuPages = $.extend(
         {
+            actionSavePrefix: wpMenuPages.actions.actionSavePrefix,
+            actionExportPrefix: wpMenuPages.actions.actionExportPrefix,
+            actionImportPrefix: wpMenuPages.actions.actionImportPrefix,
+            actionResetPrefix: wpMenuPages.actions.actionResetPrefix,
+            actionUpdateCoreOptionsPrefix: wpMenuPages.actions.actionUpdateCoreOptionsPrefix,
             statesKey: 'state',
             pageOptionsKey: 'pageOptions',
             wpDateFormat: 'F j, Y',
@@ -186,7 +192,7 @@
             }
 
             for (var fieldName in newValues) {
-                if(!newValues.hasOwnProperty(fieldName)){
+                if (!newValues.hasOwnProperty(fieldName)) {
                     continue;
                 }
                 var value = newValues[fieldName];
@@ -249,6 +255,7 @@
 
         maybeUnbind: function ($element) {
             if (this.isBinded($element)) {
+                //noinspection JSUnresolvedFunction
                 $element.select2("destroy");
             }
         },
@@ -261,6 +268,7 @@
                 handler.maybeUnbind($element);
 
                 var options = handler.getElementOptions($element);
+                //noinspection JSUnresolvedFunction
                 $element.select2(options);
             });
         },
@@ -420,7 +428,7 @@
 
     var ajax = {
         ajaxUrl: ajaxurl,
-        context: wpMenuPages.context,
+        context: menuPages.context,
 
         post: function (data, complete, error, success, dataType) {
             $.ajax({
@@ -435,11 +443,11 @@
         },
 
         saveOptions: function (newOptions) {
-            var action = wpMenuPages.actionSavePrefix + this.context;
+            var action = menuPages.actionSavePrefix + this.context;
             var data = {
                 options: newOptions,
                 action: action,
-                nonce: wpMenuPages.nonce[action]
+                nonce: menuPages.nonce[action]
             };
 
             controls.loading(domSelector.getSaveBtn(), true, true);
@@ -482,10 +490,10 @@
         },
 
         exportOptions: function () {
-            var action = wpMenuPages.actionExportPrefix + this.context;
+            var action = menuPages.actionExportPrefix + this.context;
             var data = {
                 action: action,
-                nonce: wpMenuPages.nonce[action]
+                nonce: menuPages.nonce[action]
             };
 
             controls.loading(domSelector.getExportBtn(), true, true);
@@ -520,10 +528,10 @@
                 return;
             }
 
-            var action = wpMenuPages.actionImportPrefix + this.context;
+            var action = menuPages.actionImportPrefix + this.context;
             var data = {
                 action: action,
-                nonce: wpMenuPages.nonce[action],
+                nonce: menuPages.nonce[action],
                 options: newOptions
             };
 
@@ -555,10 +563,10 @@
         },
 
         resetOptions: function (include) {
-            var action = wpMenuPages.actionResetPrefix + this.context;
+            var action = menuPages.actionResetPrefix + this.context;
             var data = {
                 'action': action,
-                'nonce': wpMenuPages.nonce[action]
+                'nonce': menuPages.nonce[action]
             };
 
             if (include) {
@@ -595,11 +603,11 @@
         },
 
         updateCoreOptions: function (newOptions) {
-            var action = wpMenuPages.actionUpdateCoreOptionsPrefix + this.context;
+            var action = menuPages.actionUpdateCoreOptionsPrefix + this.context;
             var data = {
                 'options': newOptions,
                 'action': action,
-                'nonce': wpMenuPages.nonce[action]
+                'nonce': menuPages.nonce[action]
             };
 
             this.post(data);
@@ -620,7 +628,7 @@
         '<div class="modal-body">{{body}} </div> ' +
         '<div class="modal-footer">{{footer}} </div> </div> </div> </div>',
 
-        getMarkUp: function(title, body, footer){
+        getMarkUp: function (title, body, footer) {
             return this.markup.replace('{{title}}', title).replace('{{body}}', body).replace('{{footer}}', footer);
         }
     };
@@ -639,20 +647,20 @@
         var $time = $('input.time');
 
         $date.datetimepicker({
-            format: wpMenuPages.dateTimePicker.dateFormat,
-            icons: wpMenuPages.dateTimePicker.icons
+            format: menuPages.dateTimePicker.dateFormat,
+            icons: menuPages.dateTimePicker.icons
         });
         $dateTime.datetimepicker({
-            format: wpMenuPages.dateTimePicker.dateFormat + ' ' + wpMenuPages.dateTimePicker.timeFormat,
-            icons: wpMenuPages.dateTimePicker.icons
+            format: menuPages.dateTimePicker.dateFormat + ' ' + menuPages.dateTimePicker.timeFormat,
+            icons: menuPages.dateTimePicker.icons
         });
         $month.datetimepicker({
-            format: wpMenuPages.dateTimePicker.monthFormat,
-            icons: wpMenuPages.dateTimePicker.icons
+            format: menuPages.dateTimePicker.monthFormat,
+            icons: menuPages.dateTimePicker.icons
         });
         $time.datetimepicker({
-            format: wpMenuPages.dateTimePicker.timeFormat,
-            icons: wpMenuPages.dateTimePicker.icons
+            format: menuPages.dateTimePicker.timeFormat,
+            icons: menuPages.dateTimePicker.icons
         });
     });
 })(jQuery);

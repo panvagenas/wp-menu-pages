@@ -74,58 +74,14 @@ class Script extends AbsPageSingleton {
         wp_enqueue_style( IfcScripts::CORE_CSS_SLUG );
         wp_enqueue_script( IfcScripts::CORE_JS_SLUG );
 
-        $baseUri         = '/' . str_replace(
-                trailingslashit( $_SERVER['DOCUMENT_ROOT'] ),
-                ''
-                , $this->menuPage->getWpMenuPages()->getBasePath()
-            );
-        $uriPathToAssets = $baseUri . '/' . IfcScripts::ASSETS_FOLDER;
-        $uriPathToJs     = $uriPathToAssets . '/js/' . ( IfcConstants::DEV ? 'src' : 'dist' );
-        $uriPathToCss    = $uriPathToAssets . '/css';
-
-        $options = $this->menuPage->getOptions();
-
-        $menuPagesJsLoc = [
-            'options'         => [
-                'defaults' => $options->getDefaults(),
-                'options'  => $options->getOptions(),
-                'baseName' => $options->getOptionsBaseName(),
-            ],
-            'pages'           => array_keys( $this->menuPage->getWpMenuPages()->getMenuPages() ),
-            'wpUrl'           => site_url(),
-            'wpDateFormat'    => get_option( 'date_format' ),
-            'wpTimeFormat'    => get_option( 'time_format' ),
-            'baseUri'         => $baseUri,
-            'uriPathToAssets' => $uriPathToAssets,
-            'uriPathToCss'    => $uriPathToCss,
-            'uriPathToJs'     => $uriPathToJs,
-            'context'         => $this->menuPage->getMenuSlug(),
-            'nonce'           => [
-                IfcScripts::ACTION_SAVE_PREFIX . $this->menuPage->getMenuSlug() =>
-                    wp_create_nonce( IfcScripts::ACTION_SAVE_PREFIX . $this->menuPage->getMenuSlug() ),
-
-                IfcScripts::ACTION_RESET_PREFIX . $this->menuPage->getMenuSlug() =>
-                    wp_create_nonce( IfcScripts::ACTION_RESET_PREFIX . $this->menuPage->getMenuSlug() ),
-
-                IfcScripts::ACTION_IMPORT_PREFIX . $this->menuPage->getMenuSlug() =>
-                    wp_create_nonce( IfcScripts::ACTION_IMPORT_PREFIX . $this->menuPage->getMenuSlug() ),
-
-                IfcScripts::ACTION_EXPORT_PREFIX . $this->menuPage->getMenuSlug() =>
-                    wp_create_nonce( IfcScripts::ACTION_EXPORT_PREFIX . $this->menuPage->getMenuSlug() ),
-
-                IfcScripts::ACTION_UPDATE_CORE_OPTIONS_PREFIX . $this->menuPage->getMenuSlug() =>
-                    wp_create_nonce( IfcScripts::ACTION_UPDATE_CORE_OPTIONS_PREFIX . $this->menuPage->getMenuSlug() ),
-            ],
-        ];
-
         /**
          * Filter wpMenuPages object passed to js files
          *
          * @param array $menuPagesJsLoc Containing all properties to be passed to the object
          */
         $menuPagesJsLoc = apply_filters(
-            "Scripts/Script/printScripts@{$options->getOptionsBaseName()}",
-            $menuPagesJsLoc
+            "Scripts/Script/printScripts@{$this->menuPage->getOptions()->getOptionsBaseName()}",
+            $this->getArrayForJsObj()
         );
 
         wp_localize_script( IfcScripts::CORE_JS_SLUG, IfcScripts::CORE_JS_OBJECT, $menuPagesJsLoc );
