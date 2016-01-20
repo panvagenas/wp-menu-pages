@@ -174,12 +174,7 @@ abstract class AbsMenuPage {
             throw  new \RuntimeException( 'A page hook suffix should be first set' );
         }
 
-        $scripts = Script::getInstance( $this );
-        // TODO We should first check if request is for current page in order to avoid unnecessary registrations
-        $scripts->requireWpMenuPagesScripts();
-        $scripts->requireFontAwesome();
-
-        add_action( 'admin_print_scripts-' . $this->hookSuffix, [ $scripts, 'printScripts' ] );
+        add_action( 'admin_print_scripts-' . $this->hookSuffix, [ Script::getInstance( $this ), 'printScripts' ] );
     }
 
     /**

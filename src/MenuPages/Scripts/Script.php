@@ -71,10 +71,7 @@ class Script extends AbsPageSingleton {
      * @since  TODO ${VERSION}
      */
     public function printScripts() {
-        foreach ( $this->requiredStyles as $styleSlug ) {
-            wp_enqueue_style( $styleSlug );
-        }
-
+        wp_enqueue_style( IfcScripts::CORE_CSS_SLUG );
         wp_enqueue_script( IfcScripts::CORE_JS_SLUG );
 
         $baseUri         = '/' . str_replace(
@@ -142,7 +139,7 @@ class Script extends AbsPageSingleton {
         wp_register_style(
             IfcScripts::CORE_CSS_SLUG,
             plugins_url( $this->pluginRelPathToAssets . '/css/wp-menu-pages.min.css', $this->pluginBaseFile ),
-            [ ],
+            [ IfcScripts::SLUG_FONT_AWESOME_CSS, IfcScripts::SLUG_SELECT2_CSS ],
             IfcConstants::VERSION
         );
 
@@ -160,59 +157,56 @@ class Script extends AbsPageSingleton {
             IfcConstants::VERSION
         );
 
-        if ( IfcConstants::DEV ) {
-            $requireJsUrl = plugins_url( $this->pluginRelPathToAssets . '/js/src/require.js', $this->pluginBaseFile );
-            $appJs        = plugins_url( $this->pluginRelPathToAssets . '/js/src/app.js', $this->pluginBaseFile );
-        } else {
-            $requireJsUrl = plugins_url( $this->pluginRelPathToAssets . '/js/dist/require.js', $this->pluginBaseFile );
-            $appJs        = plugins_url( $this->pluginRelPathToAssets . '/js/dist/app.js', $this->pluginBaseFile );
-        }
-
-        wp_register_script(
-            IfcScripts::REQUIRE_JS_SLUG,
-            $requireJsUrl,
-            [ ],
-            IfcConstants::VERSION
-        );
-
         wp_register_script(
             IfcScripts::CORE_JS_SLUG,
-            $appJs,
-            [ IfcScripts::REQUIRE_JS_SLUG ],
+            IfcConstants::DEV
+                ? plugins_url( $this->pluginRelPathToAssets . '/js/mnp-core.js', $this->pluginBaseFile )
+                : plugins_url( $this->pluginRelPathToAssets . '/js/mnp-core.min.js', $this->pluginBaseFile ),
+            [
+                'jquery',
+                IfcScripts::SLUG_BOOTSTRAP_JS,
+                IfcScripts::SLUG_SELECT2_JS,
+                IfcScripts::SLUG_DATETIME_PICKER_JS,
+                IfcScripts::SLUG_FILE_SAVER_JS,
+            ],
             IfcConstants::VERSION
         );
-    }
 
-    /**
-     * @return $this
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
-     */
-    public function requireFontAwesome() {
-        $this->requiredStyles[ IfcScripts::SLUG_FONT_AWESOME_CSS ] = IfcScripts::SLUG_FONT_AWESOME_CSS;
-
-        return $this;
-    }
-
-    /**
-     * @return $this
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
-     */
-    public function requireSelect2() {
-        $this->requiredStyles[ IfcScripts::SLUG_SELECT2_CSS ] = IfcScripts::SLUG_SELECT2_CSS;
-
-        return $this;
-    }
-
-    /**
-     * @return $this
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
-     */
-    public function requireWpMenuPagesScripts() {
-        $this->requiredStyles[ IfcScripts::CORE_CSS_SLUG ] = IfcScripts::CORE_CSS_SLUG;
-
-        return $this;
+        wp_register_script(
+            IfcScripts::SLUG_BOOTSTRAP_JS,
+            IfcScripts::CDN_BOOTSTRAP_JS,
+            [ 'jquery' ],
+            IfcConstants::VERSION
+        );
+        wp_register_script(
+            IfcScripts::SLUG_SELECT2_JS,
+            IfcScripts::CDN_SELECT2_JS,
+            [ 'jquery' ],
+            IfcConstants::VERSION
+        );
+        wp_register_script(
+            IfcScripts::SLUG_MOMENT_JS,
+            IfcConstants::DEV
+                ? plugins_url( $this->pluginRelPathToAssets . '/js/moment.js', $this->pluginBaseFile )
+                : plugins_url( $this->pluginRelPathToAssets . '/js/moment.min.js', $this->pluginBaseFile ),
+            [ 'jquery' ],
+            IfcConstants::VERSION
+        );
+        wp_register_script(
+            IfcScripts::SLUG_DATETIME_PICKER_JS,
+            IfcConstants::DEV
+                ? plugins_url( $this->pluginRelPathToAssets . '/js/dateTimePicker.js', $this->pluginBaseFile )
+                : plugins_url( $this->pluginRelPathToAssets . '/js/dateTimePicker.min.js', $this->pluginBaseFile ),
+            [ 'jquery', IfcScripts::SLUG_MOMENT_JS ],
+            IfcConstants::VERSION
+        );
+        wp_register_script(
+            IfcScripts::SLUG_FILE_SAVER_JS,
+            IfcConstants::DEV
+                ? plugins_url( $this->pluginRelPathToAssets . '/js/fileSaver.js', $this->pluginBaseFile )
+                : plugins_url( $this->pluginRelPathToAssets . '/js/fileSaver.min.js', $this->pluginBaseFile ),
+            [ 'jquery' ],
+            IfcConstants::VERSION
+        );
     }
 }

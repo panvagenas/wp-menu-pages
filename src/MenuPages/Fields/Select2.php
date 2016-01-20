@@ -27,11 +27,6 @@ class Select2 extends Select {
     protected $select2options = [ ];
     protected $multiple;
 
-    public function __construct( AbsCmpFields $component, $name ) {
-        parent::__construct( $component, $name );
-        Script::getInstance( $this->menuPageComponent->getMenuPage() )->requireSelect2();
-    }
-
     public function getTemplateName() {
         return 'fields/select2.twig';
     }

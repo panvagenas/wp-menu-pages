@@ -83,4 +83,39 @@ interface IfcScripts extends IfcConstants {
      * FontAwesome CSS CDN
      */
     const CDN_FONT_AWESOME_CSS = 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css';
+
+    /**
+     *
+     */
+    const CDN_SELECT2_JS = 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.full.min.js';
+
+    /**
+     *
+     */
+    const CDN_BOOTSTRAP_JS = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js';
+
+    /**
+     *
+     */
+    const SLUG_FILE_SAVER_JS = 'wp-menu-pages-file-saver-js';
+
+    /**
+     *
+     */
+    const SLUG_BOOTSTRAP_JS = 'wp-menu-pages-bootstrap-js';
+
+    /**
+     *
+     */
+    const SLUG_MOMENT_JS = 'wp-menu-pages-moment-js';
+
+    /**
+     *
+     */
+    const SLUG_DATETIME_PICKER_JS = 'wp-menu-pages-date-time-picker-js';
+
+    /**
+     *
+     */
+    const SLUG_SELECT2_JS = 'wp-menu-pages-select-2-js';
 }
