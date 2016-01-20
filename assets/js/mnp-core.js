@@ -279,17 +279,13 @@
     /*******************************************************************************
      * alert module
      ******************************************************************************/
-    var alertsWrapperSelector = '.alerts-wrapper';
-    var $alertsWrapper = $(alertsWrapperSelector);
-
     var alerts = {
         TYPE_SUCCESS: 'success',
         TYPE_INFO: 'info',
         TYPE_WARNING: 'warning',
         TYPE_DANGER: 'danger',
 
-        alertsWrapperSelector: alertsWrapperSelector,
-        $alertsWrapper: $alertsWrapper,
+        alertsWrapperSelector: '.alerts-wrapper',
 
         alertTemplate: '<div class="alert alert-{{type}} alert-dismissible fade in" ' +
         'role="alert" style="display: none;">' +
@@ -421,23 +417,10 @@
     /*******************************************************************************
      * ajax module
      ******************************************************************************/
-    var actionPrefix = 'wp-menu-pages-';
-    var actionSavePrefix = actionPrefix + 'save-options-';
-    var actionResetPrefix = actionPrefix + 'reset-options-';
-    var actionExportPrefix = actionPrefix + 'export-options-';
-    var actionImportPrefix = actionPrefix + 'import-options-';
-    var actionUpdateCoreOptionsPrefix = actionPrefix + 'update-core-options-';
 
     var ajax = {
         ajaxUrl: ajaxurl,
         context: wpMenuPages.context,
-
-        actionPrefix: 'wp-menu-pages-',
-        actionSavePrefix: actionSavePrefix,
-        actionResetPrefix: actionResetPrefix,
-        actionExportPrefix: actionExportPrefix,
-        actionImportPrefix: actionImportPrefix,
-        actionUpdateCoreOptionsPrefix: actionUpdateCoreOptionsPrefix,
 
         post: function (data, complete, error, success, dataType) {
             $.ajax({
@@ -452,7 +435,7 @@
         },
 
         saveOptions: function (newOptions) {
-            var action = this.actionSavePrefix + this.context;
+            var action = wpMenuPages.actionSavePrefix + this.context;
             var data = {
                 options: newOptions,
                 action: action,
@@ -499,7 +482,7 @@
         },
 
         exportOptions: function () {
-            var action = this.actionExportPrefix + this.context;
+            var action = wpMenuPages.actionExportPrefix + this.context;
             var data = {
                 action: action,
                 nonce: wpMenuPages.nonce[action]
@@ -537,7 +520,7 @@
                 return;
             }
 
-            var action = this.actionImportPrefix + this.context;
+            var action = wpMenuPages.actionImportPrefix + this.context;
             var data = {
                 action: action,
                 nonce: wpMenuPages.nonce[action],
@@ -572,7 +555,7 @@
         },
 
         resetOptions: function (include) {
-            var action = this.actionResetPrefix + this.context;
+            var action = wpMenuPages.actionResetPrefix + this.context;
             var data = {
                 'action': action,
                 'nonce': wpMenuPages.nonce[action]
@@ -612,7 +595,7 @@
         },
 
         updateCoreOptions: function (newOptions) {
-            var action = this.actionUpdateCoreOptionsPrefix + this.context;
+            var action = wpMenuPages.actionUpdateCoreOptionsPrefix + this.context;
             var data = {
                 'options': newOptions,
                 'action': action,
