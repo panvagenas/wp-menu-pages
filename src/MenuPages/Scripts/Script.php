@@ -74,17 +74,7 @@ class Script extends AbsPageSingleton {
         wp_enqueue_style( IfcScripts::CORE_CSS_SLUG );
         wp_enqueue_script( IfcScripts::CORE_JS_SLUG );
 
-        /**
-         * Filter wpMenuPages object passed to js files
-         *
-         * @param array $menuPagesJsLoc Containing all properties to be passed to the object
-         */
-        $menuPagesJsLoc = apply_filters(
-            "Scripts/Script/printScripts@{$this->menuPage->getOptions()->getOptionsBaseName()}",
-            $this->getArrayForJsObj()
-        );
-
-        wp_localize_script( IfcScripts::CORE_JS_SLUG, IfcScripts::CORE_JS_OBJECT, $menuPagesJsLoc );
+        wp_localize_script( IfcScripts::CORE_JS_SLUG, IfcScripts::CORE_JS_OBJECT, $this->getArrayForJsObj() );
     }
 
     protected function getArrayForJsObj() {
@@ -100,7 +90,7 @@ class Script extends AbsPageSingleton {
 
         $options = $this->menuPage->getOptions();
 
-        return [
+        $data = [
             'options'            => [
                 'defaults' => $options->getDefaults(),
                 'options'  => $options->getOptions(),
@@ -139,6 +129,18 @@ class Script extends AbsPageSingleton {
                 'actionUpdateCoreOptionsPrefix' => IfcScripts::ACTION_UPDATE_CORE_OPTIONS_PREFIX,
             ],
         ];
+
+        /**
+         * Filter wpMenuPages object passed to js files
+         *
+         * @param array $data Containing all properties to be passed to the object
+         */
+        $data = apply_filters(
+            "Scripts\\Script::getArrayForJsObj@{$this->menuPage->getOptions()->getOptionsBaseName()}",
+            $data
+        );
+
+        return $data;
     }
 
     /**

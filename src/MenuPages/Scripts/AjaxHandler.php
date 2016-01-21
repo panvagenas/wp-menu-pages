@@ -227,7 +227,7 @@ class AjaxHandler extends AbsPageSingleton {
          * ```
          */
         $return = apply_filters(
-            "AjaxHandler/validateOptions@{$optionsObj->getOptionsBaseName()}",
+            "Scripts\\AjaxHandler::validateOptions@{$optionsObj->getOptionsBaseName()}",
             [ $newOptions, $validationResults, $allValid, $match ]
         );
 

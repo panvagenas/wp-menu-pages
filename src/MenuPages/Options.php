@@ -53,15 +53,17 @@ class Options {
         $this->optionsBaseName = $optionsBaseName;
         $this->defaults        = $defaults;
 
-        $this->defaults[ self::PAGE_OPT ] = [ ];
+        if ( ! ( isset( $this->defaults[ self::PAGE_OPT ] ) & is_array( $this->defaults[ self::PAGE_OPT ] ) ) ) {
+            $this->defaults[ self::PAGE_OPT ] = [ ];
+        }
 
         $options = get_option( $this->optionsBaseName );
 
-        if($options === false){
+        if ( $options === false ) {
             $this->options = $this->defaults;
             $this->save();
         } else {
-            $this->options = (array)$options;
+            $this->options = (array) $options;
         }
 
         $this->options = array_merge( $this->defaults, $this->options );
@@ -123,7 +125,8 @@ class Options {
          *
          * @param array $options Options to be saved
          */
-        $options = apply_filters("Options/save@{$this->optionsBaseName}", $this->options);
+        $this->options = apply_filters( "Options::save@{$this->optionsBaseName}", $this->options );
+
         return update_option( $this->optionsBaseName, $this->options );
     }
 
@@ -137,7 +140,12 @@ class Options {
      */
     public function get( $name ) {
         if ( $this->exists( $name ) ) {
-            return $this->options[ $name ];
+            /**
+             * Filters the value to be returned by Options obj
+             *
+             * $param mixed The value to be returned by Options obj
+             */
+            return apply_filters( "Options::get@{$this->optionsBaseName}", $this->options[ $name ] );
         }
         throw new \ErrorException( 'Invalid option in ' . __METHOD__ );
     }
@@ -150,7 +158,12 @@ class Options {
      * @since  TODO ${VERSION}
      */
     public function exists( $name ) {
-        return isset( $this->options[ $name ] );
+        /**
+         * Checks if a value is set in options array
+         *
+         * $param bool True if exists, false otherwise
+         */
+        return apply_filters( "Options::exists@{$this->optionsBaseName}", isset( $this->options[ $name ] ) );
     }
 
     /**
