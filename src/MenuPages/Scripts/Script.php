@@ -75,6 +75,13 @@ class Script extends AbsPageSingleton {
         wp_enqueue_script( IfcScripts::CORE_JS_SLUG );
 
         wp_localize_script( IfcScripts::CORE_JS_SLUG, IfcScripts::CORE_JS_OBJECT, $this->getArrayForJsObj() );
+
+        /**
+         * Action called after enqueueing menu pages scripts.
+         * You can use this to enqueue your own scripts.
+         * @since 1.0.0
+         */
+        do_action("MenuPages\\Scripts\\Script::printScripts@{$this->menuPage->getOptions()->getOptionsBaseName()}");
     }
 
     protected function getArrayForJsObj() {
@@ -134,6 +141,8 @@ class Script extends AbsPageSingleton {
          * Filter wpMenuPages object passed to js files
          *
          * @param array $data Containing all properties to be passed to the object
+         *
+         * @since 1.0.0
          */
         $data = apply_filters(
             "MenuPages\\Scripts\\Script::getArrayForJsObj@{$this->menuPage->getOptions()->getOptionsBaseName()}",
@@ -220,5 +229,12 @@ class Script extends AbsPageSingleton {
             [ 'jquery' ],
             IfcConstants::VERSION
         );
+        /**
+         * Action called after MenuPages scripts initialization.
+         * You can use this to register your own scripts.
+         *
+         * @since 1.0.0
+         */
+        do_action("MenuPages\\Scripts\\Script::init@{$this->menuPage->getOptions()->getOptionsBaseName()}");
     }
 }

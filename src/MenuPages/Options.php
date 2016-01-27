@@ -124,6 +124,8 @@ class Options {
          * Filter options array before saving to DB
          *
          * @param array $options Options to be saved
+         *
+         * @since 1.0.0
          */
         $this->options = apply_filters( "MenuPages\\Options::save@{$this->optionsBaseName}", $this->options );
 
@@ -143,7 +145,9 @@ class Options {
             /**
              * Filters the value to be returned by Options obj
              *
-             * $param mixed The value to be returned by Options obj
+             * @param mixed $optionName The value to be returned by Options obj
+             *
+             * @since 1.0.0
              */
             return apply_filters( "MenuPages\\Options::get@{$this->optionsBaseName}", $this->options[ $name ] );
         }
@@ -161,7 +165,9 @@ class Options {
         /**
          * Checks if a value is set in options array
          *
-         * $param bool True if exists, false otherwise
+         * @param bool $optionExists True if exists, false otherwise
+         *
+         * @since 1.0.0
          */
         return apply_filters( "MenuPages\\Options::exists@{$this->optionsBaseName}", isset( $this->options[ $name ] ) );
     }
