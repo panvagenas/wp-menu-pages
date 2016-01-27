@@ -58,6 +58,39 @@ trait TrtGlobalAttributes {
     }
 
     /**
+     * @param $className
+     *
+     * @return $this
+     *
+     * @since  TODO ${VERSION}
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     */
+    public function addClass( $className ) {
+        $this->setClass( $this->class . ' ' . $className );
+
+        return $this;
+    }
+
+    /**
+     * @param $className
+     *
+     * @return $this
+     *
+     * @since  TODO ${VERSION}
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     */
+    public function removeClass( $className ) {
+        $names = explode( ' ', $this->class );
+        $key   = array_search( $className, $names );
+        if ( $key !== false ) {
+            unset( $names[ $key ] );
+            $this->setClass( implode( ' ', $names ) );
+        }
+
+        return $this;
+    }
+
+    /**
      * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    TrtGlobalAttributes::$style
