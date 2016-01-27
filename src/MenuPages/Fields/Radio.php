@@ -40,7 +40,7 @@ class Radio extends AbsInput {
 
     protected $type = 'radio';
 
-    protected $buttonClass = self::BUTTON_CLASS_DEFAULT;
+    protected $buttonClass = self::BUTTON_CLASS_PRIMARY;
 
     function isValidOptionSchema( $options ) {
         foreach ( $options as $name => $value ) {
