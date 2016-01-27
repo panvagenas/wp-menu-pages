@@ -2,7 +2,6 @@
 
 namespace Pan\MenuPages\PageElements\Containers;
 
-use Pan\MenuPages\Options;
 use Pan\MenuPages\PageElements\Components\Abs\AbsCmp;
 use Pan\MenuPages\PageElements\Components\CmpTab;
 use Pan\MenuPages\PageElements\Components\CmpTabForm;
@@ -21,8 +20,8 @@ class CnrTabs extends AbsCnrComponents {
 
     protected $activeTab;
 
-    public function addTab( $title, $active = true, $icon = '' ) {
-        $tab = new CmpTabForm( $this, $title, $active, $icon );
+    public function addTab( $title, $icon = '' ) {
+        $tab = new CmpTabForm( $this, $title, $icon );
 
         return $tab;
     }
@@ -37,28 +36,21 @@ class CnrTabs extends AbsCnrComponents {
             throw new \InvalidArgumentException( 'Component must be a tab instance' );
         }
 
-        if($component instanceof CmpTabForm || $component instanceof CmpTab) {
-            $storedActive = $this->getTabState( $component );
-
-            if ( $storedActive === null ) {
-                if ( $component->isActive() ) {
-                    if ( ! $this->activeTab ) {
-                        $this->activeTab = $component;
-                    } else {
-                        $component->setActive( false );
-                    }
-                }
-            } elseif ( $storedActive ) {
+        if ( $component instanceof CmpTabForm || $component instanceof CmpTab ) {
+            if ( ! $this->activeTab ) {
+                $component->setActive();
                 $this->activeTab = $component;
-                $component->setActive( true );
-            } else {
-                $component->setActive( false );
             }
 
-            if ( $storedActive === null && $component->isActive() ) {
-                $storedActive                            = [ ];
-                $storedActive [ $component->getTitle() ] = true;
-                $this->menuPage->setPageOption( Options::PAGE_OPT_STATE, $storedActive );
+            $storedActive = $this->menuPage->getElementState( $component->getTitle() );
+
+            if ( $storedActive ) {
+                $this->activeTab->setInactive();
+                $component->setActive();
+
+                $this->activeTab = $component;
+            } else {
+                $component->setInactive();
             }
         }
 
@@ -70,8 +62,6 @@ class CnrTabs extends AbsCnrComponents {
             return null;
         }
 
-        $states = $this->menuPage->getPageOption( Options::PAGE_OPT_STATE );
-
-        return ( $states && array_key_exists( $tab->getTitle(), $states ) ) ? $states[ $tab->getTitle() ] : null;
+        return $this->menuPage->getElementState( $tab->getTitle() );
     }
 }

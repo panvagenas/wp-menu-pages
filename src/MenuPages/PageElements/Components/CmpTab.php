@@ -12,7 +12,9 @@
 namespace Pan\MenuPages\PageElements\Components;
 
 use Pan\MenuPages\PageElements\Components\Abs\AbsCmp;
+use Pan\MenuPages\PageElements\Components\Trt\TrtTab;
 use Pan\MenuPages\PageElements\Containers\CnrTabs;
+use Pan\MenuPages\Trt\TrtState;
 
 /**
  * Class CmpTab
@@ -22,74 +24,25 @@ use Pan\MenuPages\PageElements\Containers\CnrTabs;
  * @since     TODO ${VERSION}
  * @package   Pan\MenuPages\PageComponents
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
+ *
+ * @property CnrTabs $container
  */
 class CmpTab extends AbsCmp {
-    /**
-     * @var bool
-     */
-    protected $active = true;
-    /**
-     * @var string
-     */
-    protected $icon = '';
-    /**
-     * @var string
-     */
-    protected $title;
+    use TrtState, TrtTab;
 
     protected $templateName = 'tab.twig';
-    /**
-     * @var CnrTabs
-     */
-    protected $container;
 
     protected $content = '';
 
     public function __construct(
         CnrTabs $container,
         $title,
-        $active = true,
         $icon = ''
     ) {
-        parent::__construct( $container, CnrTabs::CNR_TAB );
         $this->container = $container;
         $this->title     = $title;
-
-        $tabState = $this->container->getTabState( $this );
-        $state    = $tabState !== null && $tabState;
-
-        $this->active = $state;
-        $this->icon   = $icon;
-    }
-
-    public function isActive() {
-        return $this->active;
-    }
-
-    public function setActive( $active ) {
-        $this->active = $active;
-
-        return $this;
-    }
-
-    public function getIcon() {
-        return $this->icon;
-    }
-
-    public function setIcon( $icon ) {
-        $this->icon = $icon;
-
-        return $this;
-    }
-
-    public function getTitle() {
-        return $this->title;
-    }
-
-    public function setTitle( $title ) {
-        $this->title = $title;
-
-        return $this;
+        $this->icon      = $icon;
+        parent::__construct( $container, CnrTabs::CNR_TAB );
     }
 
     /**
@@ -117,5 +70,9 @@ class CmpTab extends AbsCmp {
         $this->content = $content;
 
         return $this;
+    }
+
+    public function saveState() {
+        $this->container->getMenuPage()->setElementState( $this->title, $this->active );
     }
 }

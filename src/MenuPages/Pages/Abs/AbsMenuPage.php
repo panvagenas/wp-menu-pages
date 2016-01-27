@@ -247,6 +247,20 @@ abstract class AbsMenuPage {
         $this->options->setPageOption( $this, $name, $value );
     }
 
+    public function getElementState( $elIdentifier ) {
+        $states = $this->getPageOption( Options::PAGE_OPT_STATE, [ ] );
+
+        return isset( $states[ $elIdentifier ] ) ? $states[ $elIdentifier ] : null;
+    }
+
+    public function setElementState( $elIdentifier, $state ) {
+        $states = $this->getPageOption( Options::PAGE_OPT_STATE, [ ] );
+
+        $states[ $elIdentifier ] = $state;
+
+        $this->setPageOption( Options::PAGE_OPT_STATE, $states );
+    }
+
     /**
      * @param      $name
      * @param null $default

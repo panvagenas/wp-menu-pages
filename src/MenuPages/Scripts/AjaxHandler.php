@@ -118,12 +118,10 @@ class AjaxHandler extends AbsPageSingleton {
         $newOptions = (array) $_POST['options'];
 
         if ( isset( $newOptions[ Options::PAGE_OPT_STATE ] ) ) {
-            $states = $this->menuPage->getPageOption( Options::PAGE_OPT_STATE, [ ] );
             foreach ( $newOptions[ Options::PAGE_OPT_STATE ] as $state => $identifier ) {
-                $states[ $identifier ] = $state == 'active';
+                $this->menuPage->setElementState($identifier, $state == 'active');
             }
             unset( $newOptions[ Options::PAGE_OPT_STATE ] );
-            $this->menuPage->setPageOption( Options::PAGE_OPT_STATE, $states );
         }
 
         foreach ( $newOptions as $name => $value ) {

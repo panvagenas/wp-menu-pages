@@ -110,7 +110,7 @@ $anotherRawTab = new \Pan\MenuPages\PageElements\Components\CmpTab($tabsNoFields
 
 
 $tabTextFields = $tabsMainPage->addTab('Text Fields');
-$tabDateTimeFields = $tabsMainPage->addTab( 'Date-Time Fields');
+$tabDateTimeFields = $tabsMainPage->addTab( 'Date-Time Fields', true);
 $tabSelectFields = $tabsMainPage->addTab('Select Fields');
 $tabRadioFields  = $tabsMainPage->addTab( 'Radio Fields');
 $tabMediaFields  = $tabsMainPage->addTab( 'Media Fields');
