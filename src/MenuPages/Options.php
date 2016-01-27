@@ -53,7 +53,7 @@ class Options {
         $this->optionsBaseName = $optionsBaseName;
         $this->defaults        = $defaults;
 
-        if ( ! ( isset( $this->defaults[ self::PAGE_OPT ] ) & is_array( $this->defaults[ self::PAGE_OPT ] ) ) ) {
+        if ( ! ( isset( $this->defaults[ self::PAGE_OPT ] ) && is_array( $this->defaults[ self::PAGE_OPT ] ) ) ) {
             $this->defaults[ self::PAGE_OPT ] = [ ];
         }
 
