@@ -12,18 +12,18 @@
          # Page header
          #}
         <div class="page-header">
-            {{ wp_action('templates/page::header::before@' ~ menuPage.menuSlug) }}
+            {{ wp_action('menuPages/templates/page::header::before@' ~ menuPage.menuSlug) }}
             {% include 'header.twig' %}
-            {{ wp_action('templates/page::header::after@' ~ menuPage.menuSlug) }}
+            {{ wp_action('menuPages/templates/page::header::after@' ~ menuPage.menuSlug) }}
         </div>
         <div class="row">
             {##
              # Alerts
              #}
             <div class="col-md-12 alerts-wrapper">
-                {{ wp_action('templates/page::alerts::before@' ~ menuPage.menuSlug) }}
+                {{ wp_action('menuPages/templates/page::alerts::before@' ~ menuPage.menuSlug) }}
                 {% include 'alerts.twig' %}
-                {{ wp_action('templates/page::alerts::after@' ~ menuPage.menuSlug) }}
+                {{ wp_action('menuPages/templates/page::alerts::after@' ~ menuPage.menuSlug) }}
             </div>
             {##
              # Main
@@ -32,11 +32,11 @@
                 {##
                  # Main content
                  #}
-                {{ wp_action('templates/page::main::before@' ~ menuPage.menuSlug) }}
+                {{ wp_action('menuPages/templates/page::main::before@' ~ menuPage.menuSlug) }}
                 {% for cnr in el.containers.main %}
                     {% include cnr.templateName %}
                 {% endfor %}
-                {{ wp_action('templates/page::main::after@' ~ menuPage.menuSlug) }}
+                {{ wp_action('menuPages/templates/page::main::after@' ~ menuPage.menuSlug) }}
             </div>
 
             {##
@@ -44,11 +44,11 @@
              #}
             {% if el.containers.aside %}
                 <div class="col-md-4">
-                    {{ wp_action('templates/page::aside::before@' ~ menuPage.menuSlug) }}
+                    {{ wp_action('menuPages/templates/page::aside::before@' ~ menuPage.menuSlug) }}
                     {% for cnr in el.containers.aside %}
                         {% include cnr.templateName %}
                     {% endfor %}
-                    {{ wp_action('templates/page::aside::after@' ~ menuPage.menuSlug) }}
+                    {{ wp_action('menuPages/templates/page::aside::after@' ~ menuPage.menuSlug) }}
                 </div>
             {% endif %}
         </div>

@@ -136,7 +136,7 @@ class Script extends AbsPageSingleton {
          * @param array $data Containing all properties to be passed to the object
          */
         $data = apply_filters(
-            "Scripts\\Script::getArrayForJsObj@{$this->menuPage->getOptions()->getOptionsBaseName()}",
+            "MenuPages\\Scripts\\Script::getArrayForJsObj@{$this->menuPage->getOptions()->getOptionsBaseName()}",
             $data
         );
 

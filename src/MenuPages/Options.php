@@ -125,7 +125,7 @@ class Options {
          *
          * @param array $options Options to be saved
          */
-        $this->options = apply_filters( "Options::save@{$this->optionsBaseName}", $this->options );
+        $this->options = apply_filters( "MenuPages\\Options::save@{$this->optionsBaseName}", $this->options );
 
         return update_option( $this->optionsBaseName, $this->options );
     }
@@ -145,7 +145,7 @@ class Options {
              *
              * $param mixed The value to be returned by Options obj
              */
-            return apply_filters( "Options::get@{$this->optionsBaseName}", $this->options[ $name ] );
+            return apply_filters( "MenuPages\\Options::get@{$this->optionsBaseName}", $this->options[ $name ] );
         }
         throw new \ErrorException( 'Invalid option in ' . __METHOD__ );
     }
@@ -163,7 +163,7 @@ class Options {
          *
          * $param bool True if exists, false otherwise
          */
-        return apply_filters( "Options::exists@{$this->optionsBaseName}", isset( $this->options[ $name ] ) );
+        return apply_filters( "MenuPages\\Options::exists@{$this->optionsBaseName}", isset( $this->options[ $name ] ) );
     }
 
     /**
