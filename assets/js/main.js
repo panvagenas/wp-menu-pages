@@ -94,6 +94,8 @@
             WpmControls.bind();
             WpmTab.bind();
 
+            WpmSelect2.bindAll();
+
             var $date = $('input.date');
             var $dateTime = $('input.datetime');
             var $month = $('input.month');
@@ -563,9 +565,8 @@
 
             var error = function () {
                 WpmAlerts.danger('There was an error while importing options');
+                WpmControls.endLoading(WpmSelect.allControls(), true);
             };
-
-
 
             WpmHelper.readSingleFileAsText(ev.originalEvent, function (e) {
                 try {
@@ -573,6 +574,7 @@
                     WpmAjax.import(newOptions, complete, error, success, 'json');
                 } catch (error) {
                     alert('There was an error reading options file:\n' + error.message)
+                    WpmControls.endLoading(WpmSelect.allControls(), true);
                 }
             });
         },
@@ -583,7 +585,10 @@
             WpmSelect.resetBtn().click(WpmControls.resetOptions);
             WpmSelect.resetTabBtn().click(WpmControls.resetTab);
             WpmSelect.exportBtn().click(WpmControls.exportOptions);
-            WpmSelect.importBtn().click(WpmControls.importOptions);
+            WpmSelect.importBtn().click(function(e){
+                e.preventDefault();
+                $(WpmControls.importOptionsInputSelector).click();
+            });
             $(WpmControls.importOptionsInputSelector).change(WpmControls.importOptions);
         }
     };
