@@ -93,8 +93,8 @@
         init: function () {
             WpmControls.bind();
             WpmTab.bind();
-
             WpmSelect2.bindAll();
+            WpmOptions.init();
 
             var $date = $('input.date');
             var $dateTime = $('input.datetime');
@@ -118,6 +118,40 @@
                 format: WpMenuPages.settings.dateTimePicker.timeFormat,
                 icons: WpMenuPages.settings.dateTimePicker.icons
             });
+        }
+    };
+
+    WpmOptions = {
+        saved: wpMenuPagesDefinitions.options.options,
+        defaults: wpMenuPagesDefinitions.options.defaults,
+        baseName: wpMenuPagesDefinitions.options.baseName,
+        whenLoaded: '',
+
+        haveChanged: function(){
+            var changed = false;
+            WpmSelect.allFields().each(function(){
+                var name = $(this).attr('name');
+                var val = $(this).val();
+                // TODO Not working properly
+                if(WpmOptions.saved.hasOwnProperty(name) && WpmOptions.saved[name] != val){
+                    changed = true;
+                    return false;
+                }
+                return true;
+            });
+
+            return changed;
+        },
+        maybeWarn: function(){
+            if(WpmOptions.haveChanged()){
+                WpmOptions.addWarning();
+            }
+        },
+        addWarning: function () {
+            console.log('CCCC'+moment().format('SSS'))
+        },
+        init: function(){
+            WpmSelect.allFields().change(WpmOptions.maybeWarn);
         }
     };
 
@@ -763,6 +797,9 @@
                 return $(v);
             }
             return $();
+        },
+        allFields: function(){
+            return $('.'+WpmField.inputStandardClass);
         }
     };
 
@@ -793,7 +830,7 @@
         }
     };
 
-    var WpmSelect2 = {
+    WpmSelect2 = {
         domSelector: '.select2.wp-menu-pages-input',
         count: function () {
             return WpmSelect2.getElements().length;
