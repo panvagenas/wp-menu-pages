@@ -98,6 +98,7 @@ class Script extends AbsPageSingleton {
         $options = $this->menuPage->getOptions();
 
         $data = [
+            'ajaxUrl' => admin_url('admin-ajax.php'),
             'options'            => [
                 'defaults' => $options->getDefaults(),
                 'options'  => $options->getOptions(),
@@ -181,8 +182,8 @@ class Script extends AbsPageSingleton {
         wp_register_script(
             IfcScripts::CORE_JS_SLUG,
             IfcConstants::DEV
-                ? plugins_url( $this->pluginRelPathToAssets . '/js/mnp-core.js', $this->pluginBaseFile )
-                : plugins_url( $this->pluginRelPathToAssets . '/js/mnp-core.min.js', $this->pluginBaseFile ),
+                ? plugins_url( $this->pluginRelPathToAssets . '/js/main.js', $this->pluginBaseFile )
+                : plugins_url( $this->pluginRelPathToAssets . '/js/main.min.js', $this->pluginBaseFile ),
             [
                 'jquery',
                 IfcScripts::SLUG_BOOTSTRAP_JS,

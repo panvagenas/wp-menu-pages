@@ -328,6 +328,15 @@ abstract class AbsMenuPage {
     }
 
     /**
+     * @return array
+     * @see    AbsMenuPage::$fields
+     * @codeCoverageIgnore
+     */
+    public function getFields() {
+        return $this->fields;
+    }
+
+    /**
      * @param AbsCnr       $container
      * @param              $position
      *

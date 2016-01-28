@@ -34,7 +34,7 @@
                 weekFormat: 'ww',
                 monthFormat: 'MM'
             }
-        }, wpMenuPages);
+        }, wpMenuPagesDefinitions);
 
     /*******************************************************************************
      * helper module

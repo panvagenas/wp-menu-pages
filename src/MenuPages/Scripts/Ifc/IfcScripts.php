@@ -42,7 +42,7 @@ interface IfcScripts extends IfcConstants {
     /**
      *
      */
-    const CORE_JS_OBJECT = 'wpMenuPages';
+    const CORE_JS_OBJECT = 'wpMenuPagesDefinitions';
 
     /**
      *
