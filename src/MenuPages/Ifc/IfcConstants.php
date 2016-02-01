@@ -7,7 +7,7 @@ namespace Pan\MenuPages\Ifc;
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      ${YEAR}-${MONTH}-${DAY}
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  * @package   Pan\MenuPages\Ifc
  * @copyright Copyright (c) ${YEAR} Panagiotis Vagenas.
  */

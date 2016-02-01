@@ -4,7 +4,7 @@
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-21
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  * @package   Pan\MenuPages\Fields\Trt
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
@@ -16,7 +16,7 @@ namespace Pan\MenuPages\Fields\Trt;
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-21
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  * @package   Pan\MenuPages\Fields\Trt
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
@@ -34,7 +34,7 @@ trait TrtGlobalAttributes {
      * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    TrtGlobalAttributes::$class
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function getClass() {
@@ -48,7 +48,7 @@ trait TrtGlobalAttributes {
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function setClass( $class ) {
@@ -62,7 +62,7 @@ trait TrtGlobalAttributes {
      *
      * @return $this
      *
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
     public function addClass( $className ) {
@@ -76,7 +76,7 @@ trait TrtGlobalAttributes {
      *
      * @return $this
      *
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
     public function removeClass( $className ) {
@@ -94,7 +94,7 @@ trait TrtGlobalAttributes {
      * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    TrtGlobalAttributes::$style
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function getStyle() {
@@ -108,7 +108,7 @@ trait TrtGlobalAttributes {
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function setStyle( $style ) {

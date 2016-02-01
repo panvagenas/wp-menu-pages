@@ -4,7 +4,7 @@
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-20
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  * @package   Pan\MenuPages\Fields
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
@@ -21,7 +21,7 @@ use Pan\MenuPages\Trt\TrtIdentifiable;
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-20
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  * @package   Pan\MenuPages\Fields
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
@@ -38,7 +38,7 @@ abstract class AbsField implements IfcDisplayable {
      *
      * @param AbsCmpFields $component
      *
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
     public function __construct( AbsCmpFields $component ) {
@@ -59,7 +59,7 @@ abstract class AbsField implements IfcDisplayable {
      * @return AbsCmpFields
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    menuPageComponent::$panel
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function getMenuPageComponent() {
@@ -69,7 +69,7 @@ abstract class AbsField implements IfcDisplayable {
     /**
      * @return \Pan\MenuPages\Templates\Twig
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     public function getTwig() {
         return $this->menuPageComponent->getTwig();

@@ -4,7 +4,7 @@
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-20
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  * @package   Pan\MenuPages\PageComponents
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
@@ -18,7 +18,7 @@ use Pan\MenuPages\PageElements\Components\Abs\AbsCmp;
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-20
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  * @package   Pan\MenuPages\PageComponents
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
@@ -39,7 +39,7 @@ class CmpAlert extends AbsCmp {
 
     /**
      * @return string
-     * @since     TODO ${VERSION}
+     * @since     1.0.0
      * @package   Pan\MenuPages\PageComponents
      * @copyright Copyright (c) 2015 Panagiotis Vagenas
      * @see       Alert::$type
@@ -52,7 +52,7 @@ class CmpAlert extends AbsCmp {
     /**
      * @param string $type
      *
-     * @since     TODO ${VERSION}
+     * @since     1.0.0
      * @package   Pan\MenuPages\PageComponents
      * @copyright Copyright (c) 2015 Panagiotis Vagenas
      * @see       Alert::$type
@@ -63,7 +63,7 @@ class CmpAlert extends AbsCmp {
 
     /**
      * @return boolean
-     * @since     TODO ${VERSION}
+     * @since     1.0.0
      * @package   Pan\MenuPages\PageComponents
      * @copyright Copyright (c) 2015 Panagiotis Vagenas
      * @see       Alert::$dismissible
@@ -76,7 +76,7 @@ class CmpAlert extends AbsCmp {
     /**
      * @param boolean $dismissible
      *
-     * @since     TODO ${VERSION}
+     * @since     1.0.0
      * @package   Pan\MenuPages\PageComponents
      * @copyright Copyright (c) 2015 Panagiotis Vagenas
      * @see       Alert::$dismissible
@@ -87,7 +87,7 @@ class CmpAlert extends AbsCmp {
 
     /**
      * @return string
-     * @since     TODO ${VERSION}
+     * @since     1.0.0
      * @package   Pan\MenuPages\PageComponents
      * @copyright Copyright (c) 2015 Panagiotis Vagenas
      * @see       Alert::$content
@@ -100,7 +100,7 @@ class CmpAlert extends AbsCmp {
     /**
      * @param string $content
      *
-     * @since     TODO ${VERSION}
+     * @since     1.0.0
      * @package   Pan\MenuPages\PageComponents
      * @copyright Copyright (c) 2015 Panagiotis Vagenas
      * @see       Alert::$content

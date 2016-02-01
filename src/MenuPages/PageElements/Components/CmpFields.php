@@ -4,7 +4,7 @@
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-12-04
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  * @package   Pan\MenuPages\PageComponents\Elements
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
@@ -18,7 +18,7 @@ use Pan\MenuPages\PageElements\Components\Abs\AbsCmpFields;
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-12-04
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  * @package   Pan\MenuPages\PageComponents\Elements
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
@@ -34,7 +34,7 @@ class CmpFields extends AbsCmpFields {
      * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    Plain::$class
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function getClass() {
@@ -48,7 +48,7 @@ class CmpFields extends AbsCmpFields {
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function setClass( $class ) {

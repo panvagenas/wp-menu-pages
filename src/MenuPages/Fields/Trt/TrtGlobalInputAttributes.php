@@ -4,7 +4,7 @@
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-21
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  * @package   Pan\MenuPages\Fields\Trt
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
@@ -16,7 +16,7 @@ namespace Pan\MenuPages\Fields\Trt;
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-21
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  * @package   Pan\MenuPages\Fields\Trt
  * @copyright Copyright (c) 2015 Panagiotis Vagenas.
  */
@@ -42,7 +42,7 @@ trait TrtGlobalInputAttributes {
      * @return boolean
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    TrtInputAttributes::$autofocus
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function isAutofocus() {
@@ -56,7 +56,7 @@ trait TrtGlobalInputAttributes {
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function setAutofocus( $autofocus ) {
@@ -69,7 +69,7 @@ trait TrtGlobalInputAttributes {
      * @return boolean
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    TrtInputAttributes::$disabled
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function isDisabled() {
@@ -83,7 +83,7 @@ trait TrtGlobalInputAttributes {
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function setDisabled( $disabled ) {
@@ -96,7 +96,7 @@ trait TrtGlobalInputAttributes {
      * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    TrtInputAttributes::$name
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function getName() {
@@ -110,7 +110,7 @@ trait TrtGlobalInputAttributes {
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function setName( $name ) {
@@ -123,7 +123,7 @@ trait TrtGlobalInputAttributes {
      * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    TrtInputAttributes::$type
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function getType() {
@@ -137,7 +137,7 @@ trait TrtGlobalInputAttributes {
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function setType( $type ) {

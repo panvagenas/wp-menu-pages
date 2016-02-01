@@ -23,7 +23,7 @@ interface IfcValidation {
      * ]
      * </pre>
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     public function validate( $value );
 }

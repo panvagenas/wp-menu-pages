@@ -31,7 +31,6 @@ class CnrTabs extends AbsCnrComponents {
     }
 
     public function attachComponent( AbsCmp $component, $position = self::CNR_BODY ) {
-        // !FIXME We have to find a way to set a default active tab
         if ( $position === self::CNR_BODY && ! ( $component instanceof CmpTabForm || $component instanceof CmpTab ) ) {
             throw new \InvalidArgumentException( 'Component must be a tab instance' );
         }

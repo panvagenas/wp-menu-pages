@@ -11,7 +11,7 @@ use Pan\MenuPages\Templates\Twig;
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      ${YEAR}-${MONTH}-${DAY}
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  * @package   Pan\MenuPages\PageElements\Components\Abs
  * @copyright Copyright (c) ${YEAR} Panagiotis Vagenas
  */
@@ -32,7 +32,7 @@ abstract class AbsCmp extends AbsElement {
      * @param AbsCnrComponents $container
      * @param string           $containerPosition
      *
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
     public function __construct(
@@ -46,7 +46,7 @@ abstract class AbsCmp extends AbsElement {
     /**
      * @return Twig
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     public function getTwig() {
         return $this->container->getTwig();
@@ -57,7 +57,7 @@ abstract class AbsCmp extends AbsElement {
      *
      * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     public function getMarkUp( $echo = false ) {
         $markup = $this->getTwig()

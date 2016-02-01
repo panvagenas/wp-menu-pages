@@ -4,7 +4,7 @@
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-18
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  * @package   Pan\MenuPages
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
@@ -28,7 +28,7 @@ use Pan\MenuPages\WpMenuPages;
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-18
  * @package   Pan\MenuPages
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
 abstract class AbsMenuPage {
@@ -124,7 +124,7 @@ abstract class AbsMenuPage {
      * @param string      $iconUrl
      * @param null        $position
      *
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
     public function __construct(
@@ -155,15 +155,17 @@ abstract class AbsMenuPage {
     }
 
     /**
+     * This should set the {@link AbsMenuPage::$hookSuffix} property in child classes
+     *
      * @return mixed
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     abstract public function init();
 
     /**
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     public function bindScripts() {
         if ( ! current_user_can( $this->capability ) ) {
@@ -179,7 +181,7 @@ abstract class AbsMenuPage {
 
     /**
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     protected function bindActions() {
         $scripts = Script::getInstance( $this );
@@ -212,7 +214,7 @@ abstract class AbsMenuPage {
 
     /**
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     public function display() {
         echo $this->getMarkUp();
@@ -222,7 +224,7 @@ abstract class AbsMenuPage {
      * @return Options
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    MenuPage::$options
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function getOptions() {
@@ -232,7 +234,7 @@ abstract class AbsMenuPage {
     /**
      * @return mixed
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     abstract public function getMarkUp();
 
@@ -241,7 +243,7 @@ abstract class AbsMenuPage {
      * @param $value
      *
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     public function setPageOption( $name, $value ) {
         $this->options->setPageOption( $this, $name, $value );
@@ -267,7 +269,7 @@ abstract class AbsMenuPage {
      *
      * @return null
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     public function getPageOption( $name, $default = null ) {
         return $this->options->getPageOption( $this, $name, $default );
@@ -279,7 +281,7 @@ abstract class AbsMenuPage {
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     public function attachContainer( AbsCnr $container, $position = self::POSITION_MAIN ) {
         if ( $this->isProperPosition( $position ) && ! $this->hasContainer( $container, $position ) ) {
@@ -294,7 +296,7 @@ abstract class AbsMenuPage {
      *
      * @return bool
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     protected function isProperPosition( $position ) {
         return in_array( $position,
@@ -311,7 +313,7 @@ abstract class AbsMenuPage {
      *
      * @return null|AbsInputBase
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     public function getInputFieldByName( $fieldName ) {
         if ( empty( $fieldName ) || ! is_string( $fieldName ) ) {
@@ -342,7 +344,7 @@ abstract class AbsMenuPage {
      *
      * @return bool
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     public function hasContainer( AbsCnr $container, $position ) {
         return $this->isProperPosition( $position )
@@ -372,7 +374,7 @@ abstract class AbsMenuPage {
     /**
      * @return Twig
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     public function getTwig() {
         if ( ! $this->hasCacheKey( __METHOD__ ) ) {
@@ -385,7 +387,7 @@ abstract class AbsMenuPage {
     /**
      * @return WpMenuPages
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @see    MenuPage::$wpMenuPages
      * @codeCoverageIgnore
      */
@@ -396,7 +398,7 @@ abstract class AbsMenuPage {
     /**
      * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @see    MenuPage::$capability
      * @codeCoverageIgnore
      */

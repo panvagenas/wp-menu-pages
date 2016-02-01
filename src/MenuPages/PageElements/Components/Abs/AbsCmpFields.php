@@ -14,7 +14,7 @@ abstract class AbsCmpFields extends AbsCmp {
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     public function attachField( AbsField $field ) {
         if ( ! $this->hasField( $field ) ) {
@@ -29,7 +29,7 @@ abstract class AbsCmpFields extends AbsCmp {
      *
      * @return bool
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     public function hasField( AbsField $field ) {
         return array_key_exists( $field->getHashId(), $this->fields );

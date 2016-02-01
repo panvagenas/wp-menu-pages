@@ -4,7 +4,7 @@
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-20
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  * @package   Pan\MenuPages\PageComponents
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
@@ -21,7 +21,7 @@ use Pan\MenuPages\Trt\TrtState;
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-20
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  * @package   Pan\MenuPages\PageComponents
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  *
@@ -49,7 +49,7 @@ class CmpTab extends AbsCmp {
      * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    Tab::$content
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function getContent() {
@@ -63,7 +63,7 @@ class CmpTab extends AbsCmp {
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function setContent( $content ) {

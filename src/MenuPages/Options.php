@@ -4,7 +4,7 @@
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-20
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  * @package   Pan\MenuPages
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
@@ -18,7 +18,7 @@ use Pan\MenuPages\Pages\Abs\AbsMenuPage;
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-20
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  * @package   Pan\MenuPages
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
@@ -46,7 +46,7 @@ class Options {
      * @param string $optionsBaseName
      * @param array  $defaults
      *
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
     protected function __construct( $optionsBaseName, array $defaults ) {
@@ -76,7 +76,7 @@ class Options {
      * @return mixed
      * @throws \ErrorException
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     public static function getInstance( $optionsBaseName, array $defaults = [ ] ) {
         static $instance = [ ];
@@ -117,7 +117,7 @@ class Options {
     /**
      * @return bool
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     protected function save() {
         /**
@@ -138,7 +138,7 @@ class Options {
      * @return mixed
      * @throws \ErrorException
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     public function get( $name ) {
         if ( $this->exists( $name ) ) {
@@ -159,7 +159,7 @@ class Options {
      *
      * @return bool
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     public function exists( $name ) {
         /**
@@ -179,7 +179,7 @@ class Options {
      * @return bool
      * @throws \ErrorException
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     public function set( $name, $value ) {
         if ( $this->exists( $name ) ) {
@@ -208,7 +208,7 @@ class Options {
      * @return mixed
      * @throws \ErrorException
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     public function def( $name ) {
         if ( $this->exists( $name ) ) {
@@ -221,7 +221,7 @@ class Options {
      * @return array
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    Options::$defaults
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function getDefaults() {
@@ -232,7 +232,7 @@ class Options {
      * @return array
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    Options::$options
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function getOptions() {
@@ -243,7 +243,7 @@ class Options {
      * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    Options::$optionsBaseName
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function getOptionsBaseName() {

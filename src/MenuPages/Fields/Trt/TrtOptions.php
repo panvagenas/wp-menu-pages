@@ -4,7 +4,7 @@
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-20
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  * @package   Pan\MenuPages\Fields\Traits
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
@@ -17,7 +17,7 @@ namespace Pan\MenuPages\Fields\Trt;
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      ${YEAR}-${MONTH}-${DAY}
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  * @package   Pan\MenuPages\Fields\Trt
  * @copyright Copyright (c) ${YEAR} Panagiotis Vagenas
  */
@@ -57,7 +57,7 @@ trait TrtOptions {
      *
      * @return bool
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     abstract function isValidOptionSchema( $options );
 }

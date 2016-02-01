@@ -23,7 +23,7 @@ use Pan\MenuPages\Scripts\Ifc\IfcScripts;
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-12-04
  * @package   Pan\MenuPages\Scripts
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  */
 class AjaxHandler extends AbsPageSingleton {
     /**

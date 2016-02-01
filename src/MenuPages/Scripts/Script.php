@@ -22,7 +22,7 @@ use Pan\MenuPages\Scripts\Ifc\IfcScripts;
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-12-04
  * @package   Pan\MenuPages\Scripts
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  */
 class Script extends AbsPageSingleton {
     /**
@@ -55,7 +55,7 @@ class Script extends AbsPageSingleton {
      *
      * @param AbsMenuPage $menuPage
      *
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
     protected function __construct( AbsMenuPage $menuPage ) {
@@ -68,7 +68,7 @@ class Script extends AbsPageSingleton {
 
     /**
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     public function printScripts() {
         wp_enqueue_style( IfcScripts::CORE_CSS_SLUG );
@@ -155,7 +155,7 @@ class Script extends AbsPageSingleton {
 
     /**
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     public function init() {
         wp_register_style(

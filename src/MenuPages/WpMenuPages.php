@@ -9,7 +9,7 @@ use Pan\MenuPages\Pages\Abs\AbsMenuPage;
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      ${YEAR}-${MONTH}-${DAY}
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  * @package   Pan\MenuPages
  * @copyright Copyright (c) ${YEAR} Panagiotis Vagenas
  */
@@ -56,7 +56,7 @@ final class WpMenuPages {
      *
      * @throws \InvalidArgumentException
      * @throws \Exception
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
     public function __construct( $pluginBaseFile, $options, $optionsBaseName = '' ) {
@@ -117,7 +117,7 @@ final class WpMenuPages {
      * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    WpMenuPages::$basePath
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function getBasePath() {
@@ -128,7 +128,7 @@ final class WpMenuPages {
      * @return array
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    WpMenuPages::$menuPages
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function getMenuPages() {
@@ -139,7 +139,7 @@ final class WpMenuPages {
      * @return Options
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    WpMenuPages::$options
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function getOptions() {
@@ -150,7 +150,7 @@ final class WpMenuPages {
      * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    WpMenuPages::$pluginBasePath
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function getPluginBasePath() {
@@ -161,7 +161,7 @@ final class WpMenuPages {
      * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    WpMenuPages::$pluginBaseFile
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function getPluginBaseFile() {
@@ -172,7 +172,7 @@ final class WpMenuPages {
      * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    WpMenuPages::$basePathRelToPlugin
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function getBasePathRelToPlugin() {

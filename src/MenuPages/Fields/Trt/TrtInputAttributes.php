@@ -4,7 +4,7 @@
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-21
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  * @package   Pan\MenuPages\Fields\Trt
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
@@ -16,7 +16,7 @@ namespace Pan\MenuPages\Fields\Trt;
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-21
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  * @package   Pan\MenuPages\Fields\Trt
  * @copyright Copyright (c) 2015 Panagiotis Vagenas.
  */
@@ -50,7 +50,7 @@ trait TrtInputAttributes {
      * @return boolean
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    TrtInputAttributes::$autocomplete
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function isAutocomplete() {
@@ -64,7 +64,7 @@ trait TrtInputAttributes {
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function setAutocomplete( $autocomplete ) {
@@ -77,7 +77,7 @@ trait TrtInputAttributes {
      * @return int
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    TrtInputAttributes::$maxlength
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function getMaxlength() {
@@ -91,7 +91,7 @@ trait TrtInputAttributes {
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function setMaxlength( $maxlength ) {
@@ -104,7 +104,7 @@ trait TrtInputAttributes {
      * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    TrtInputAttributes::$placeholder
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function getPlaceholder() {
@@ -118,7 +118,7 @@ trait TrtInputAttributes {
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function setPlaceholder( $placeholder ) {
@@ -131,7 +131,7 @@ trait TrtInputAttributes {
      * @return boolean
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    TrtInputAttributes::$required
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function isRequired() {
@@ -145,7 +145,7 @@ trait TrtInputAttributes {
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function setRequired( $required ) {
@@ -158,7 +158,7 @@ trait TrtInputAttributes {
      * @return int
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    TrtInputAttributes::$size
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function getSize() {
@@ -172,7 +172,7 @@ trait TrtInputAttributes {
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function setSize( $size ) {
@@ -185,7 +185,7 @@ trait TrtInputAttributes {
      * @return float|int|string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    TrtInputAttributes::$value
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function getValue() {
@@ -199,7 +199,7 @@ trait TrtInputAttributes {
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function setValue( $value ) {

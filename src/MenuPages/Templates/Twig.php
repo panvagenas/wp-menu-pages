@@ -4,7 +4,7 @@
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-20
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  * @package   Pan\MenuPages\Templates
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
@@ -20,7 +20,7 @@ use Pan\MenuPages\Templates\Ifc\IfcTemplateConstants;
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-20
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  * @package   Pan\MenuPages\Templates
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
@@ -47,7 +47,7 @@ class Twig {
      *
      * @param AbsMenuPage $menuPage
      *
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
     public function __construct( AbsMenuPage $menuPage ) {
@@ -57,8 +57,8 @@ class Twig {
         $this->cachePath      = $basePath . '/cache';
 
         $this->twigLoader = new \Twig_Loader_Filesystem( $this->defaultPaths );
-        // TODO Remove debug
-        $this->twigEnvironment = new \Twig_Environment( $this->twigLoader, [ 'debug' => true ] );
+
+        $this->twigEnvironment = new \Twig_Environment( $this->twigLoader );
         $this->twigEnvironment->addExtension( new \Twig_Extension_Debug() );
         $this->twigEnvironment->addExtension( new WpTwigExtension( $menuPage ) );
 
@@ -68,7 +68,7 @@ class Twig {
      * @return \Twig_Environment
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    Twig::$twigEnvironment
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function getTwigEnvironment() {
@@ -79,7 +79,7 @@ class Twig {
      * @return \Twig_Loader_Filesystem
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    Twig::$twigLoader
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function getTwigLoader() {
@@ -90,7 +90,7 @@ class Twig {
      * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    Twig::$defaultPaths
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function getDefaultPaths() {
@@ -101,7 +101,7 @@ class Twig {
      * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    Twig::$cachePath
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function getCachePath() {

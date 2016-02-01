@@ -4,7 +4,7 @@
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-21
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  * @package   Pan\MenuPages\Fields
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
@@ -19,7 +19,7 @@ use Pan\MenuPages\PageElements\Components\Abs\AbsCmpFields;
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-21
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  * @package   Pan\MenuPages\Fields
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
@@ -36,7 +36,7 @@ class Raw extends AbsField {
      * @return mixed
      * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see       Raw::$content
-     * @since     TODO ${VERSION}
+     * @since     1.0.0
      * @codeCoverageIgnore
      */
     public function getContent() {
@@ -48,7 +48,7 @@ class Raw extends AbsField {
      *
      * @return $this
      * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since     TODO ${VERSION}
+     * @since     1.0.0
      * @codeCoverageIgnore
      */
     public function setContent( $content ) {

@@ -4,7 +4,7 @@
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-11-20
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  * @package   Pan\MenuPages\Fields\Traits
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
@@ -20,7 +20,7 @@ use Respect\Validation\Validator;
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      ${YEAR}-${MONTH}-${DAY}
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  * @package   Pan\MenuPages\Fields\Trt
  * @copyright Copyright (c) ${YEAR} Panagiotis Vagenas
  */
@@ -36,7 +36,7 @@ trait TrtValidation {
      *
      * @return array
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     public function isValid( $value, $fieldName = '' ) {
         $valid  = true;
@@ -77,7 +77,7 @@ trait TrtValidation {
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     public function attachValidator( Validator $validator, $key = '' ) {
         if ( $key ) {

@@ -26,7 +26,7 @@ abstract class AbsCnr extends AbsElement implements IfcDisplayable {
     /**
      * @return AbsMenuPage
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @see    AbsMenuPageComponent::$menuPage
      * @codeCoverageIgnore
      */
@@ -41,7 +41,7 @@ abstract class AbsCnr extends AbsElement implements IfcDisplayable {
     /**
      * @return Twig
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     public function getTwig() {
         return $this->menuPage->getTwig();

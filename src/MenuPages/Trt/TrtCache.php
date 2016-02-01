@@ -7,7 +7,7 @@ namespace Pan\MenuPages\Trt;
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      ${YEAR}-${MONTH}-${DAY}
- * @since     TODO ${VERSION}
+ * @since     1.0.0
  * @package   Pan\MenuPages\Trt
  * @copyright Copyright (c) ${YEAR} Panagiotis Vagenas
  */
@@ -24,7 +24,7 @@ trait TrtCache {
      * @param $value
      *
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     protected function writeCache( $key, $value ) {
         $this->initCache();
@@ -33,7 +33,7 @@ trait TrtCache {
 
     /**
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     protected function initCache() {
         if ( ! isset( self::$_cache[ $this->getHashId() ] ) ) {
@@ -46,7 +46,7 @@ trait TrtCache {
      *
      * @return null
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     protected function readCache( $key = null ) {
         if ( $key === null ) {
@@ -64,7 +64,7 @@ trait TrtCache {
      *
      * @return bool
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      */
     protected function hasCacheKey( $key ) {
         return isset( self::$_cache[ $this->getHashId() ][ $key ] );

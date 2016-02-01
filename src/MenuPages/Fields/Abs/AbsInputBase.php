@@ -38,7 +38,7 @@ abstract class AbsInputBase extends AbsField implements IfcValidation {
     /**
      * @return string
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @see    AbsInput::$label
      * @codeCoverageIgnore
      */
@@ -51,7 +51,7 @@ abstract class AbsInputBase extends AbsField implements IfcValidation {
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function setLabel( $label ) {
@@ -63,7 +63,7 @@ abstract class AbsInputBase extends AbsField implements IfcValidation {
     /**
      * @return mixed
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @see    AbsInputBase::$description
      * @codeCoverageIgnore
      */
@@ -76,7 +76,7 @@ abstract class AbsInputBase extends AbsField implements IfcValidation {
      *
      * @return $this
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  TODO ${VERSION}
+     * @since  1.0.0
      * @codeCoverageIgnore
      */
     public function setDescription( $description ) {
