@@ -23,19 +23,35 @@ use Pan\MenuPages\Pages\Abs\AbsMenuPage;
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
 class Options {
+    /**
+     * This is the key of the options array that is used to store page specific options.
+     * These options differ from user defined options and are automatically set from the lib.
+     */
     const PAGE_OPT = 'pageOptions';
 
+    /**
+     * Key of a page option that stores obj statuses
+     */
     const PAGE_OPT_STATE = 'state';
 
     /**
+     * The basename of the options. This is used to uniquely identify plugin options,
+     * as well as the array name that is stored in DB
+     *
      * @var string
      */
     protected $optionsBaseName;
     /**
+     * Holds default values for all options. No input field can be declared if a default value is not set for it.
+     *
      * @var array
      */
     protected $defaults;
     /**
+     * Options as stored in DB.
+     * If options are not present or specific options are missing then these
+     * take the default values as defined in {@link Options::$defaults}.
+     *
      * @var array
      */
     protected $options;
@@ -43,13 +59,18 @@ class Options {
     /**
      * Options constructor.
      *
-     * @param string $optionsBaseName
-     * @param array  $defaults
+     * @param string $optionsBaseName The options base name, see {@link Options::$optionsBaseName}
+     * @param array  $defaults        Default values for all options, see {@link Options::$defaults}
      *
+     * @throws \InvalidArgumentException If $optionsBaseName isn't a string or is empty
      * @since  1.0.0
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
     protected function __construct( $optionsBaseName, array $defaults ) {
+        if ( ! is_string( $optionsBaseName ) || empty( $optionsBaseName ) ) {
+            throw new \InvalidArgumentException( 'Options basename cannot be empty' );
+        }
+
         $this->optionsBaseName = $optionsBaseName;
         $this->defaults        = $defaults;
 
@@ -70,25 +91,18 @@ class Options {
     }
 
     /**
-     * @param       $optionsBaseName
-     * @param array $defaults
+     * Always call this to get an instance of {@link Options} obj
+     * @param string $optionsBaseName See {@link Options::__construct}
+     * @param array  $defaults        See {@link See {@link Options::__construct}}
      *
-     * @return mixed
-     * @throws \ErrorException
+     * @return $this
+     * @see    Options::__construct
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  1.0.0
      */
     public static function getInstance( $optionsBaseName, array $defaults = [ ] ) {
         static $instance = [ ];
         if ( ! isset( $instance[ $optionsBaseName ] ) ) {
-            if ( empty( $optionsBaseName ) ) {
-                throw new \ErrorException( 'You always must pass the options basename when instantiating '
-                                           . __CLASS__ );
-            }
-            if ( empty( $defaults ) ) {
-                throw new \ErrorException( 'You always must pass the default option values when instantiating '
-                                           . __CLASS__ );
-            }
             $instance[ $optionsBaseName ] = new static( $optionsBaseName, $defaults );
         }
 

@@ -15,6 +15,8 @@ use Pan\MenuPages\Pages\Abs\AbsMenuPage;
  */
 final class WpMenuPages {
     /**
+     * Holds instances of all registered pages
+     *
      * ```php
      *  [
      *      $pluginBaseName => [
@@ -27,22 +29,27 @@ final class WpMenuPages {
      */
     protected $menuPages = [ ];
     /**
+     * The absolute path to this lib
      * @var string
      */
     protected $basePath;
     /**
+     * Absolute path to plugin
      * @var string
      */
     protected $pluginBasePath;
     /**
+     * Absolute path to plugin base file
      * @var string
      */
     protected $pluginBaseFile;
     /**
+     * Rel path from plugin base folder to lib base folder
      * @var string
      */
     protected $basePathRelToPlugin;
     /**
+     * Plugin options
      * @var Options
      */
     protected $options;
@@ -50,17 +57,20 @@ final class WpMenuPages {
     /**
      * WpMenuPages constructor.
      *
-     * @param string        $pluginBaseFile
-     * @param array|Options $options
-     * @param string        $optionsBaseName
+     * @param string        $pluginBaseFile Absolute path to plugin main file
+     * @param array|Options $options An instance of {@link Options} or an array with default options
+     * @param string        $optionsBaseName In case the $options param is an array this should be a string
+     *                                       defining the name of the options array as stored in DB
      *
-     * @throws \InvalidArgumentException
-     * @throws \Exception
+     * @throws \InvalidArgumentException If $pluginBaseFile is empty or pointing to non readable file
+     * @throws \InvalidArgumentException If $options isn't an instance of {@link Options} and is not an array
+     *                                   and $optionsBaseName is empty
+     * @throws \Exception If symlinks are used and couldn't resolve $pluginBaseFile path
      * @since  1.0.0
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
     public function __construct( $pluginBaseFile, $options, $optionsBaseName = '' ) {
-        if ( empty( $pluginBaseFile ) ) {
+        if ( empty( $pluginBaseFile ) || ! file_exists( $pluginBaseFile ) || ! is_readable( $pluginBaseFile ) ) {
             throw new \InvalidArgumentException( 'Invalid argument $pluginBaseFile in ' . __METHOD__ );
         }
 
@@ -179,6 +189,15 @@ final class WpMenuPages {
         return $this->basePathRelToPlugin;
     }
 
+    /**
+     * Registers a menu page
+     *
+     * @param AbsMenuPage $menuPage The menu page instance to be registered
+     *
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @see    WpMenuPages::$menuPages
+     * @since  1.0.0
+     */
     public function attachMenuPage( AbsMenuPage $menuPage ) {
         $this->menuPages[ $menuPage->getMenuSlug() ] = $menuPage;
     }
