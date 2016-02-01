@@ -19,7 +19,7 @@ class CnrCollapsible extends AbsCnrComponents {
 
     /**
      * @return string
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    Collapsible::$title
      * @codeCoverageIgnore
      */
@@ -31,7 +31,7 @@ class CnrCollapsible extends AbsCnrComponents {
      * @param string $title
      *
      * @return $this
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @codeCoverageIgnore
      */
     public function setTitle( $title ) {

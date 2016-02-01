@@ -2,11 +2,11 @@
 /**
  * AbsPageSingleton.php description
  *
- * @author    Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+ * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-12-17
  * @version   $Id$
  * @package   Pan\MenuPages\Abs
- * @copyright Copyright (c) 2015 Interactive Data Managed Solutions Ltd
+ * @copyright Copyright (c) 2015 Panagiotis Vagenas <pan.vagenas@gmail.com>
  */
 
 
@@ -17,11 +17,11 @@ use Pan\MenuPages\Pages\Abs\AbsMenuPage;
 /**
  * Class AbsPageSingleton
  *
- * @author    Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+ * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-12-17
  * @version   $Id$
  * @package   Pan\MenuPages\Abs
- * @copyright Copyright (c) 2015 Interactive Data Managed Solutions Ltd
+ * @copyright Copyright (c) 2015 Panagiotis Vagenas <pan.vagenas@gmail.com>
  */
 class AbsPageSingleton {
     /**

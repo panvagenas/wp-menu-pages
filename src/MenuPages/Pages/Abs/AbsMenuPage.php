@@ -406,7 +406,7 @@ abstract class AbsMenuPage {
 
     /**
      * @return string
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    AbsMenuPage::$title
      * @codeCoverageIgnore
      */
@@ -416,7 +416,7 @@ abstract class AbsMenuPage {
 
     /**
      * @return string
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    AbsMenuPage::$subtitle
      * @codeCoverageIgnore
      */
@@ -426,7 +426,7 @@ abstract class AbsMenuPage {
 
     /**
      * @return string
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    AbsMenuPage::$templateName
      * @codeCoverageIgnore
      */
@@ -436,7 +436,7 @@ abstract class AbsMenuPage {
 
     /**
      * @return string
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    AbsMenuPage::$menuTitle
      * @codeCoverageIgnore
      */
@@ -446,7 +446,7 @@ abstract class AbsMenuPage {
 
     /**
      * @return string
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    AbsMenuPage::$iconUrl
      * @codeCoverageIgnore
      */

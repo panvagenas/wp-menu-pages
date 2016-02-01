@@ -39,7 +39,7 @@ abstract class AbsCmpFields extends AbsCmp {
      * @param string $name
      *
      * @return null|\Pan\MenuPages\Fields\Abs\AbsInputBase
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
     public function getFieldByName( $name ) {
         /** @var AbsInputBase $field */

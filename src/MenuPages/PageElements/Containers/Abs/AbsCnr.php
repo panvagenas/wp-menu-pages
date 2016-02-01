@@ -61,7 +61,7 @@ abstract class AbsCnr extends AbsElement implements IfcDisplayable {
 
     /**
      * @return mixed
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    AbsContainer::$position
      * @codeCoverageIgnore
      */
@@ -73,7 +73,7 @@ abstract class AbsCnr extends AbsElement implements IfcDisplayable {
      * @param mixed $position
      *
      * @return $this
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @codeCoverageIgnore
      */
     public function setPosition( $position ) {
@@ -84,7 +84,7 @@ abstract class AbsCnr extends AbsElement implements IfcDisplayable {
 
     /**
      * @return string
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    AbsContainer::$templatesDir
      * @codeCoverageIgnore
      */
@@ -96,7 +96,7 @@ abstract class AbsCnr extends AbsElement implements IfcDisplayable {
      * @param string $templatesDir
      *
      * @return $this
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @codeCoverageIgnore
      */
     public function setTemplatesDir( $templatesDir ) {

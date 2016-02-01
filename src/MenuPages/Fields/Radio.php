@@ -69,7 +69,7 @@ class Radio extends AbsInput {
 
     /**
      * @return string
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    Radio::$buttonClass
      * @codeCoverageIgnore
      */
@@ -81,7 +81,7 @@ class Radio extends AbsInput {
      * @param string $buttonClass
      *
      * @return $this
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @codeCoverageIgnore
      */
     public function setButtonClass( $buttonClass ) {

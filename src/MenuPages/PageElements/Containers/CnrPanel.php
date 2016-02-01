@@ -13,7 +13,7 @@ class CnrPanel extends AbsCnr {
 
     /**
      * @return mixed
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    Panel::$header
      * @codeCoverageIgnore
      */
@@ -25,7 +25,7 @@ class CnrPanel extends AbsCnr {
      * @param mixed $header
      *
      * @return $this
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @codeCoverageIgnore
      */
     public function setHeader( $header ) {
@@ -36,7 +36,7 @@ class CnrPanel extends AbsCnr {
 
     /**
      * @return mixed
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    Panel::$body
      * @codeCoverageIgnore
      */
@@ -48,7 +48,7 @@ class CnrPanel extends AbsCnr {
      * @param mixed $body
      *
      * @return $this
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @codeCoverageIgnore
      */
     public function setBody( $body ) {
@@ -59,7 +59,7 @@ class CnrPanel extends AbsCnr {
 
     /**
      * @return mixed
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @see    Panel::$footer
      * @codeCoverageIgnore
      */
@@ -71,7 +71,7 @@ class CnrPanel extends AbsCnr {
      * @param mixed $footer
      *
      * @return $this
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @codeCoverageIgnore
      */
     public function setFooter( $footer ) {

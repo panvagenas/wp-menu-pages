@@ -31,7 +31,7 @@ class AjaxHandler extends AbsPageSingleton {
      *
      * @param AbsMenuPage $menuPage
      *
-     * @author Panagiotis Vagenas <Panagiotis.Vagenas@interactivedata.com>
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
     protected function __construct( AbsMenuPage $menuPage ) {
         parent::__construct( $menuPage );
