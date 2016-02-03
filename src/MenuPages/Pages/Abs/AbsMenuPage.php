@@ -20,6 +20,7 @@ use Pan\MenuPages\Scripts\Ifc\IfcScripts;
 use Pan\MenuPages\Scripts\Script;
 use Pan\MenuPages\Templates\Twig;
 use Pan\MenuPages\Trt\TrtCache;
+use Pan\MenuPages\Trt\TrtStrings;
 use Pan\MenuPages\WpMenuPages;
 
 /**
@@ -32,7 +33,7 @@ use Pan\MenuPages\WpMenuPages;
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
 abstract class AbsMenuPage {
-    use TrtCache;
+    use TrtCache, TrtStrings;
 
     /**
      *  Main area of the page
@@ -143,8 +144,9 @@ abstract class AbsMenuPage {
      * AbsMenuPage constructor.
      *
      * @param WpMenuPages $menuPages
-     * @param             $menuTitle
-     * @param string      $menuSlug
+     * @param string      $menuTitle
+     * @param string      $menuSlug If empty then {@link TrtStrings::pregReplaceNonAlpha()} is used to create a slug
+     *                              from $menuTitle param
      * @param string      $title
      * @param string      $capability
      * @param string      $subtitle
@@ -170,7 +172,7 @@ abstract class AbsMenuPage {
         $this->subtitle    = $subtitle;
         $this->menuTitle   = $menuTitle;
         $this->capability  = $capability;
-        $this->menuSlug    = $menuSlug ?: preg_replace( '/[^a-zA-Z]/', '_', $menuTitle );
+        $this->menuSlug    = $menuSlug ?: $this->pregReplaceNonAlpha( $menuTitle );
         $this->iconUrl     = $iconUrl;
         $this->position    = $position;
 
@@ -182,7 +184,8 @@ abstract class AbsMenuPage {
     }
 
     /**
-     * This should set the {@link AbsMenuPage::$hookSuffix} property in child classes
+     * This should set the {@link AbsMenuPage::$hookSuffix} property in child classes.
+     * This is called on `admin_menu` action.
      *
      * @return mixed
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
@@ -191,6 +194,9 @@ abstract class AbsMenuPage {
     abstract public function init();
 
     /**
+     * Ads actions to print scripts in the page.
+     * This is called on `admin_menu` action.
+     *
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  1.0.0
      */
@@ -207,6 +213,9 @@ abstract class AbsMenuPage {
     }
 
     /**
+     * Ads page relative actions.
+     * This is called upon instantiation of the class.
+     *
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  1.0.0
      */
@@ -240,6 +249,8 @@ abstract class AbsMenuPage {
     }
 
     /**
+     * Displays the page
+     *
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  1.0.0
      */
@@ -259,6 +270,9 @@ abstract class AbsMenuPage {
     }
 
     /**
+     * Get markup for this page. The page markup should always returned from this method and never echoed, for this
+     * purpose use {@link AbsMenuPage::display()}.
+     *
      * @return mixed
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  1.0.0
@@ -266,6 +280,8 @@ abstract class AbsMenuPage {
     abstract public function getMarkUp();
 
     /**
+     * Sets the value of an option for this page using {@link Options::setPageOption()}
+     *
      * @param $name
      * @param $value
      *
@@ -276,6 +292,14 @@ abstract class AbsMenuPage {
         $this->options->setPageOption( $this, $name, $value );
     }
 
+    /**
+     * @param string $elIdentifier The unique identifier for the element
+     *
+     * @return null
+     *
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  1.0.0
+     */
     public function getElementState( $elIdentifier ) {
         $states = $this->getPageOption( Options::PAGE_OPT_STATE, [ ] );
 

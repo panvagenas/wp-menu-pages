@@ -3,7 +3,16 @@
 namespace Pan\MenuPages\Trt;
 
 trait TrtIdentifiable {
+    use TrtStrings;
+
     protected $hashId = '';
+    /**
+     * A string to use as an id attr in html elements.
+     * This is generated using {@link TrtStrings::pregReplaceNonAlphaNum()} and as $subject the concatenation of
+     * {@link get_called_class()} . {@link TrtIdentifiable::getHashId()}
+     *
+     * @var string
+     */
     protected $htmlId;
     protected $id;
 
@@ -21,7 +30,7 @@ trait TrtIdentifiable {
 
     public function getHtmlId() {
         if ( ! $this->htmlId ) {
-            $this->htmlId = preg_replace( '/[^a-zA-Z0-9]/', '--', get_called_class() . $this->getHashId() );
+            $this->htmlId = $this->pregReplaceNonAlphaNum( get_called_class() . $this->getHashId(), '--' );
         }
 
         return $this->htmlId;
@@ -35,8 +44,8 @@ trait TrtIdentifiable {
         return $this->hashId;
     }
 
-    public function setId($id){
-        $this->id = htmlentities($id);
+    public function setId( $id ) {
+        $this->id = htmlentities( $id );
 
         return $this;
     }
