@@ -146,13 +146,14 @@ final class WpMenuPages {
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
     public function maybeCreatePage( $menuTitle, $menuSlug = '' ) {
-        $menuSlug = $menuSlug ? : $this->pregReplaceNonAlpha($menuTitle, '_');
+        $menuSlug = $menuSlug ?: $this->pregReplaceNonAlpha( $menuTitle, '_' );
 
-        if($this->isPageRegistered($menuSlug)){
-            $page = $this->getMenuPage($menuSlug);
-            if(!($page instanceof Page)){
-                user_error('A SubPage with the slug ' . $menuSlug . ' is already registered');
+        if ( $this->isPageRegistered( $menuSlug ) ) {
+            $page = $this->getMenuPage( $menuSlug );
+            if ( ! ( $page instanceof Page ) ) {
+                user_error( 'A SubPage with the slug ' . $menuSlug . ' is already registered' );
             }
+
             return $page;
         }
 
@@ -160,8 +161,8 @@ final class WpMenuPages {
     }
 
     /**
-     * @param string $menuTitle
      * @param string $parent
+     * @param string $menuTitle
      * @param string $menuSlug
      *
      * @return SubPage
@@ -169,18 +170,19 @@ final class WpMenuPages {
      * @since  1.0.0
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      */
-    public function maybeCreateSubPage($menuTitle, $parent, $menuSlug = ''){
-        $menuSlug = $menuSlug ? : $this->pregReplaceNonAlpha($menuTitle, '_');
+    public function maybeCreateSubPage( $parent, $menuTitle, $menuSlug = '' ) {
+        $menuSlug = $menuSlug ?: $this->pregReplaceNonAlpha( $menuTitle, '_' );
 
-        if($this->isPageRegistered($menuSlug)){
-            $page = $this->getMenuPage($menuSlug);
-            if(!($page instanceof SubPage)){
-                user_error('A Page with the slug "' . $menuSlug . '" is already registered');
+        if ( $this->isPageRegistered( $menuSlug ) ) {
+            $page = $this->getMenuPage( $menuSlug );
+            if ( ! ( $page instanceof SubPage ) ) {
+                user_error( 'A Page with the slug "' . $menuSlug . '" is already registered' );
             }
+
             return $page;
         }
 
-        return new SubPage($this, $parent, $menuTitle, $menuSlug);
+        return new SubPage( $this, $parent, $menuTitle, $menuSlug );
     }
 
     /**
@@ -283,7 +285,7 @@ final class WpMenuPages {
         }
 
         /** @var string $page */
-        return $this->isPageRegistered($page) ? $this->menuPages[ $page ] : null;
+        return $this->isPageRegistered( $page ) ? $this->menuPages[ $page ] : null;
     }
 
     /**
@@ -295,11 +297,11 @@ final class WpMenuPages {
      * @see    WpMenuPages::$menuPages
      * @since  1.0.0
      */
-    public function isPageRegistered($page){
+    public function isPageRegistered( $page ) {
         if ( $page instanceof AbsMenuPage ) {
             $page = $page->getMenuSlug();
         }
 
-        return isset($this->menuPages[ $page ]);
+        return isset( $this->menuPages[ $page ] );
     }
 }
