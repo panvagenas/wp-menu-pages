@@ -15,7 +15,8 @@ namespace Pan\MenuPages\Abs;
 use Pan\MenuPages\Pages\Abs\AbsMenuPage;
 
 /**
- * Class AbsPageSingleton
+ * Main dif with classic singleton pattern is that this stores an instance for every page.
+ * For this purpose it uses the {@link AbsMenuPage::$menuSlug} as a unique page identifier.
  *
  * @author    Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date      2015-12-17

@@ -35,26 +35,29 @@ abstract class AbsMenuPage {
     use TrtCache;
 
     /**
-     *
+     *  Main area of the page
      */
     const POSITION_MAIN = 'main';
 
     /**
-     *
+     * Aside area of the page
      */
     const POSITION_ASIDE = 'aside';
 
     /**
-     *
+     * Header area of the page
      */
     const POSITION_HEADER = 'header';
 
     /**
-     *
+     * Footer area of the page
      */
     const POSITION_FOOTER = 'footer';
 
     /**
+     * Holds all containers that were assigned to this page.
+     * Each page area has its own key in this array.
+     *
      * @var array
      */
     protected $containers = [
@@ -64,6 +67,8 @@ abstract class AbsMenuPage {
         self::POSITION_FOOTER => [ ],
     ];
     /**
+     * An instance of the plugin options
+     *
      * @var Options
      */
     protected $options;
@@ -72,42 +77,64 @@ abstract class AbsMenuPage {
      */
     protected $wpMenuPages;
     /**
+     * The title of the page. This is visible at the page header.
+     *
      * @var string
      */
     protected $title;
     /**
+     * The page subtitle. This is visible at the page header.
+     *
      * @var string
      */
     protected $subtitle;
     /**
+     * The template to use for page rendering
+     *
      * @var string
      */
     protected $templateName = 'page.twig';
     /**
+     * The menu title for this page
+     *
      * @var string
      */
     protected $menuTitle;
     /**
+     * The capability that is required to see this page
+     *
      * @var string
      */
     protected $capability;
     /**
+     * A unique identifier for this page
+     *
      * @var string
      */
     protected $menuSlug;
     /**
+     * A URL pointing to an icon that will be used as the page icon.
+     * See WordPress {@link add_menu_page()} params
+     *
      * @var string
      */
     protected $iconUrl;
     /**
+     * The position of the page.
+     * See WordPress {@link add_menu_page()} params
+     *
      * @var int
      */
     protected $position;
     /**
+     * This is generated from WordPress upon initialization.
+     *
      * @var string
      */
     protected $hookSuffix;
     /**
+     * Holds fields registered to this page
+     *
      * @var array
      */
     protected $fields = [ ];
