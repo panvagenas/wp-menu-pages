@@ -92,6 +92,7 @@ class Options {
 
     /**
      * Always call this to get an instance of {@link Options} obj
+     *
      * @param string $optionsBaseName See {@link Options::__construct}
      * @param array  $defaults        See {@link See {@link Options::__construct}}
      *
@@ -109,12 +110,33 @@ class Options {
         return $instance[ $optionsBaseName ];
     }
 
+    /**
+     * Get a page specific option
+     *
+     * @param AbsMenuPage $page    The page that this option concerns
+     * @param string      $name    The name of the option
+     * @param mixed       $default A default calue to return if this option not exists
+     *
+     * @return mixed
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  1.0.0
+     */
     public function getPageOption( AbsMenuPage $page, $name, $default = null ) {
         return isset( $this->options[ self::PAGE_OPT ][ $page->getMenuSlug() ][ $name ] )
             ? $this->options[ self::PAGE_OPT ][ $page->getMenuSlug() ][ $name ]
             : $default;
     }
 
+    /**
+     * Set a page specific option
+     *
+     * @param AbsMenuPage $page  The page that this option concerns
+     * @param string      $name  The name of the option
+     * @param mixed       $value The value to assign
+     *
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  1.0.0
+     */
     public function setPageOption( AbsMenuPage $page, $name, $value ) {
         $this->maybeInitPageOptions( $page );
 
@@ -122,6 +144,14 @@ class Options {
         $this->save();
     }
 
+    /**
+     * Each page instance should use this function to initialize options for her self
+     *
+     * @param AbsMenuPage $page A page to init options for
+     *
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  1.0.0
+     */
     public function maybeInitPageOptions( AbsMenuPage $page ) {
         if ( ! isset( $this->options[ self::PAGE_OPT ][ $page->getMenuSlug() ] ) ) {
             $this->options[ self::PAGE_OPT ][ $page->getMenuSlug() ] = [ ];
@@ -129,6 +159,8 @@ class Options {
     }
 
     /**
+     * Save options that are currently stored in {@link Options::$options}
+     *
      * @return bool
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  1.0.0
@@ -147,7 +179,9 @@ class Options {
     }
 
     /**
-     * @param $name
+     * Get the option value
+     *
+     * @param string $name The name of the option
      *
      * @return mixed
      * @throws \ErrorException
@@ -169,7 +203,9 @@ class Options {
     }
 
     /**
-     * @param $name
+     * Checks if an option exists
+     *
+     * @param string $name The name of the option
      *
      * @return bool
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
@@ -187,11 +223,13 @@ class Options {
     }
 
     /**
-     * @param $name
-     * @param $value
+     * Sets the value of an option. ** No validation ** taking place here so be careful.
      *
-     * @return bool
-     * @throws \ErrorException
+     * @param string $name  The name of the option
+     * @param mixed  $value The option value
+     *
+     * @return bool The result of {@link Options::save()}
+     * @throws \ErrorException If the option don't exist
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  1.0.0
      */
@@ -204,6 +242,15 @@ class Options {
         throw new \ErrorException( 'Invalid option in ' . __METHOD__ );
     }
 
+    /**
+     * Uses an assoc array to set option values. Any option in the array that don't exist will be unset.
+     *
+     * @param array $newOptions Assoc array `[ $optionName => $optionValue ]`
+     *
+     * @return bool The result of {@link Options::save()}
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  1.0.0
+     */
     public function setArray( array $newOptions ) {
         foreach ( $newOptions as $name => $value ) {
             if ( ! $this->exists( $name ) ) {
@@ -217,10 +264,12 @@ class Options {
     }
 
     /**
-     * @param $name
+     * Get the default value of an option.
+     *
+     * @param string $name The name of the option
      *
      * @return mixed
-     * @throws \ErrorException
+     * @throws \ErrorException If the option don't exist
      * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
      * @since  1.0.0
      */
