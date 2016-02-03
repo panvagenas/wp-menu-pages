@@ -3,6 +3,9 @@
 namespace Pan\MenuPages;
 
 use Pan\MenuPages\Pages\Abs\AbsMenuPage;
+use Pan\MenuPages\Pages\Page;
+use Pan\MenuPages\Pages\SubPage;
+use Pan\MenuPages\Trt\TrtStrings;
 
 /**
  * Class WpMenuPages
@@ -14,42 +17,52 @@ use Pan\MenuPages\Pages\Abs\AbsMenuPage;
  * @copyright Copyright (c) ${YEAR} Panagiotis Vagenas
  */
 final class WpMenuPages {
+    use TrtStrings;
+
     /**
      * Holds instances of all registered pages
      *
      * ```php
      *  [
-     *      $pluginBaseName => [
-     *                              $menuPageId => Pan\MenuPages\Pages\Abs\AbsMenuPage $menuPage
-     *                         ]
+     *      string $menuPageId => Pan\MenuPages\Pages\Abs\AbsMenuPage $menuPage
      *  ]
      * ```
      *
      * @var array
      */
     protected $menuPages = [ ];
+
     /**
      * The absolute path to this lib
+     *
      * @var string
      */
     protected $basePath;
+
     /**
      * Absolute path to plugin
+     *
      * @var string
      */
     protected $pluginBasePath;
+
     /**
      * Absolute path to plugin base file
+     *
      * @var string
      */
     protected $pluginBaseFile;
+
     /**
      * Rel path from plugin base folder to lib base folder
+     *
      * @var string
      */
     protected $basePathRelToPlugin;
+
     /**
      * Plugin options
+     *
      * @var Options
      */
     protected $options;
@@ -57,8 +70,8 @@ final class WpMenuPages {
     /**
      * WpMenuPages constructor.
      *
-     * @param string        $pluginBaseFile Absolute path to plugin main file
-     * @param array|Options $options An instance of {@link Options} or an array with default options
+     * @param string        $pluginBaseFile  Absolute path to plugin main file
+     * @param array|Options $options         An instance of {@link Options} or an array with default options
      * @param string        $optionsBaseName In case the $options param is an array this should be a string
      *                                       defining the name of the options array as stored in DB
      *
@@ -121,6 +134,53 @@ final class WpMenuPages {
         } else {
             throw new \InvalidArgumentException( 'Invalid argument $options in ' . __METHOD__ );
         }
+    }
+
+    /**
+     * @param string $menuTitle
+     * @param string $menuSlug
+     *
+     * @return Page
+     *
+     * @since  1.0.0
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     */
+    public function maybeCreatePage( $menuTitle, $menuSlug = '' ) {
+        $menuSlug = $menuSlug ? : $this->pregReplaceNonAlpha($menuTitle, '_');
+
+        if($this->isPageRegistered($menuSlug)){
+            $page = $this->getMenuPage($menuSlug);
+            if(!($page instanceof Page)){
+                user_error('A SubPage with the slug ' . $menuSlug . ' is already registered');
+            }
+            return $page;
+        }
+
+        return new Page( $this, $menuTitle, $menuSlug );
+    }
+
+    /**
+     * @param string $menuTitle
+     * @param string $parent
+     * @param string $menuSlug
+     *
+     * @return SubPage
+     *
+     * @since  1.0.0
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     */
+    public function maybeCreateSubPage($menuTitle, $parent, $menuSlug = ''){
+        $menuSlug = $menuSlug ? : $this->pregReplaceNonAlpha($menuTitle, '_');
+
+        if($this->isPageRegistered($menuSlug)){
+            $page = $this->getMenuPage($menuSlug);
+            if(!($page instanceof SubPage)){
+                user_error('A Page with the slug "' . $menuSlug . '" is already registered');
+            }
+            return $page;
+        }
+
+        return new SubPage($this, $parent, $menuTitle, $menuSlug);
     }
 
     /**
@@ -199,6 +259,47 @@ final class WpMenuPages {
      * @since  1.0.0
      */
     public function attachMenuPage( AbsMenuPage $menuPage ) {
+        if ( isset( $this->menuPages[ $menuPage->getMenuSlug() ] ) ) {
+            user_error( 'A page with the slug "' . $menuPage->getMenuSlug() . '" is already registered' );
+        }
+
         $this->menuPages[ $menuPage->getMenuSlug() ] = $menuPage;
+    }
+
+    /**
+     * Get the page instance from already registered pages
+     *
+     * @param AbsMenuPage|string $page AbsMenuPage instance or page slug
+     *
+     * @return null|AbsMenuPage
+     *
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @see    WpMenuPages::$menuPages
+     * @since  1.0.0
+     */
+    public function getMenuPage( $page ) {
+        if ( $page instanceof AbsMenuPage ) {
+            $page = $page->getMenuSlug();
+        }
+
+        /** @var string $page */
+        return $this->isPageRegistered($page) ? $this->menuPages[ $page ] : null;
+    }
+
+    /**
+     * @param AbsMenuPage|string $page AbsMenuPage instance or page slug
+     *
+     * @return bool
+     *
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @see    WpMenuPages::$menuPages
+     * @since  1.0.0
+     */
+    public function isPageRegistered($page){
+        if ( $page instanceof AbsMenuPage ) {
+            $page = $page->getMenuSlug();
+        }
+
+        return isset($this->menuPages[ $page ]);
     }
 }
