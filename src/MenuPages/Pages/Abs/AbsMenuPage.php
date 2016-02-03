@@ -20,7 +20,6 @@ use Pan\MenuPages\Scripts\Ifc\IfcScripts;
 use Pan\MenuPages\Scripts\Script;
 use Pan\MenuPages\Templates\Twig;
 use Pan\MenuPages\Trt\TrtCache;
-use Pan\MenuPages\Trt\TrtStrings;
 use Pan\MenuPages\WpMenuPages;
 
 /**
@@ -33,7 +32,7 @@ use Pan\MenuPages\WpMenuPages;
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
 abstract class AbsMenuPage {
-    use TrtCache, TrtStrings;
+    use TrtCache;
 
     /**
      *  Main area of the page
