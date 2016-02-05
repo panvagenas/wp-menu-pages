@@ -55,7 +55,25 @@ class Twig {
         $basePath = $menuPage->getWpMenuPages()->getBasePath();
 
         $this->defaultPaths[] = $basePath . '/' . IfcTemplateConstants::TEMPLATES_DIR;
-        $this->cachePath      = $basePath . '/cache';
+
+        $sysTmpDir = sys_get_temp_dir();
+
+        if ( file_exists( $sysTmpDir ) && is_writable( $sysTmpDir ) ) {
+            $this->cachePath = trailingslashit( $sysTmpDir ) . 'twig/cache';
+        }
+
+        $twigOptions = [ ];
+
+        if ( $this->cachePath ) {
+            $twigOptions['cache'] = $sysTmpDir;
+        }
+
+        if ( IfcConstants::DEV ) {
+            $twigOptions['debug']            = true;
+            $twigOptions['auto_reload']      = true;
+            $twigOptions['strict_variables'] = true;
+        }
+
 
         /**
          * Allows the ability to define extra locations when looking for templates.
@@ -66,8 +84,8 @@ class Twig {
          */
         $templatePaths = apply_filters( 'MenuPages\\Templates\\Twig::templatePaths', $this->defaultPaths );
 
-        $this->twigLoader = new \Twig_Loader_Filesystem( $templatePaths );
-        $this->twigEnvironment = new \Twig_Environment( $this->twigLoader );
+        $this->twigLoader      = new \Twig_Loader_Filesystem( $templatePaths );
+        $this->twigEnvironment = new \Twig_Environment( $this->twigLoader, $twigOptions );
 
         $this->twigEnvironment->addExtension( new WpTwigExtension( $menuPage ) );
 
