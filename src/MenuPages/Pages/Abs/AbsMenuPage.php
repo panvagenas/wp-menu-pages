@@ -14,6 +14,7 @@ namespace Pan\MenuPages\Pages\Abs;
 use Pan\MenuPages\Fields\Abs\AbsField;
 use Pan\MenuPages\Fields\Abs\AbsInputBase;
 use Pan\MenuPages\Options;
+use Pan\MenuPages\PageElements\Components\CmpAlert;
 use Pan\MenuPages\PageElements\Containers\Abs\AbsCnr;
 use Pan\MenuPages\Scripts\AjaxHandler;
 use Pan\MenuPages\Scripts\Ifc\IfcScripts;
@@ -138,6 +139,12 @@ abstract class AbsMenuPage {
      * @var array
      */
     protected $fields = [ ];
+
+    /**
+     * Holds alerts for this page
+     * @var array
+     */
+    protected $alerts = [ ];
 
     /**
      * AbsMenuPage constructor.
@@ -380,6 +387,19 @@ abstract class AbsMenuPage {
     }
 
     /**
+     * @param CmpAlert $alert
+     *
+     * @return $this
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  1.0.0
+     */
+    public function addAlert(CmpAlert $alert){
+        $this->alerts[] = $alert;
+
+        return $this;
+    }
+
+    /**
      * @return array
      * @see    AbsMenuPage::$fields
      * @codeCoverageIgnore
@@ -504,5 +524,15 @@ abstract class AbsMenuPage {
      */
     public function getIconUrl() {
         return $this->iconUrl;
+    }
+
+    /**
+     * @return array
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @see    AbsMenuPage::$alerts
+     * @codeCoverageIgnore
+     */
+    public function getAlerts() {
+        return $this->alerts;
     }
 }
