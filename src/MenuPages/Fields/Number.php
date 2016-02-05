@@ -38,6 +38,10 @@ class Number extends AbsInput {
      */
     protected $step;
 
+    public function getTemplateName() {
+        return 'fields/number.twig';
+    }
+
     /**
      * @return int
      * @see    Number::$min

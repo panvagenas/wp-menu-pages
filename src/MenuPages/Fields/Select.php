@@ -44,6 +44,7 @@ class Select extends AbsInputBase {
      * @var int
      */
     protected $size;
+    protected $multiple;
 
     /**
      * @inheritDoc
@@ -139,5 +140,16 @@ class Select extends AbsInputBase {
         $this->size = $size;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  1.0.0
+     * @see    AbsSelect::$multiple
+     * @codeCoverageIgnore
+     */
+    public function getMultiple() {
+        return $this->multiple;
     }
 }

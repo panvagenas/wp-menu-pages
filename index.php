@@ -224,7 +224,13 @@ $anotherRawTab->setContent( $lorem2 );
 
 $panelComponents = new \Pan\MenuPages\PageElements\Containers\CnrPanelComponents( $subPage,
     \Pan\MenuPages\Pages\SubPage::POSITION_ASIDE );
-$raw             = new \Pan\MenuPages\PageElements\Components\CmpRaw( $panelComponents );
+$panelComponents->setTitle( 'The Title!' );
+$raw = new \Pan\MenuPages\PageElements\Components\CmpRaw( $panelComponents );
 $raw->setContent( $lorem1 );
 
 $panel = new \Pan\MenuPages\PageElements\Containers\CnrPanel( $subPage, \Pan\MenuPages\Pages\Page::POSITION_ASIDE );
+
+$collapsible =
+    new \Pan\MenuPages\PageElements\Containers\CnrCollapsible( $subPage, \Pan\MenuPages\Pages\Page::POSITION_ASIDE,
+        'A Collapsible Container' );
+$collapsible->attachComponent( $raw );

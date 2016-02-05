@@ -39,6 +39,10 @@ class Image extends File {
      */
     protected $src;
 
+    public function getTemplateName() {
+        return 'fields/image.twig';
+    }
+
     /**
      * @return string
      * @see    Image::$alt

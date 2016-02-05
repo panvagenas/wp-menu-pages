@@ -29,6 +29,10 @@ class File extends AbsInput {
      */
     protected $accept;
 
+    public function getTemplateName() {
+        return 'fields/file.twig';
+    }
+
     /**
      * @return string
      * @see    File::$accept

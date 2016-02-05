@@ -1,20 +1,20 @@
 <div class="panel panel-default">
 
-    {% if cnr.components.header %}
+    {% if cnr.header %}
         <div class="panel-heading">
-            {{ cnr.components.header | raw }}
+            {{ cnr.header | raw }}
         </div>
     {% endif %}
 
-    {% if cnr.components.body %}
+    {% if cnr.body %}
         <div class="panel-body">
-            {{ cnr.components.body | raw }}
+            {{ cnr.body | raw }}
         </div>
     {% endif %}
 
-    {% if cnr.components.footer %}
+    {% if cnr.footer %}
         <div class="panel-footer">
-            {{ cnr.components.footer | raw }}
+            {{ cnr.footer | raw }}
         </div>
     {% endif %}
 

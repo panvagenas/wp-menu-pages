@@ -22,7 +22,6 @@ namespace Pan\MenuPages\Fields;
  */
 class Select2 extends Select {
     protected $select2options = [ ];
-    protected $multiple;
 
     public function getTemplateName() {
         return 'fields/select2.twig';
@@ -66,10 +65,6 @@ class Select2 extends Select {
         $this->setSelect2option( 'data', $optionsData );
 
         return $this;
-    }
-
-    public function getMultiple() {
-        return $this->multiple;
     }
 
     public function setMultiple( $multiple ) {

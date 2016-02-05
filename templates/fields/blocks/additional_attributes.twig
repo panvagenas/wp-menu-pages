@@ -6,7 +6,7 @@
  # @since 1.0.0
  # @copyright Copyright (c) 2015 Panagiotis Vagenas
  #}
-{% for name, value in fld.additional_attributes %}
+{% for name, value in fld.additionalAttributes %}
     {% if name and value %}
         {{ name | e('html_attr') }}="{{ value | e('html_attr') }}"
     {% endif %}

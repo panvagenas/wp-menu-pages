@@ -61,38 +61,6 @@
                 {% if fld.disabled %}
                     disabled
                 {% endif %}
-
-                {% if fld.alt %}
-                    alt="{{ fld.alt | e('html_attr') }}"
-                {% endif %}
-
-                {% if fld.height %}
-                    height="{{ fld.height | e('html_attr') }}"
-                {% endif %}
-
-                {% if fld.width %}
-                    width="{{ fld.width | e('html_attr') }}"
-                {% endif %}
-
-                {% if fld.src %}
-                    src="{{ fld.src | e('html_attr') }}"
-                {% endif %}
-
-                {% if fld.accept %}
-                    accept="{{ fld.accept | e('html_attr') }}"
-                {% endif %}
-
-                {% if fld.min %}
-                    min="{{ fld.min }}"
-                {% endif %}
-
-                {% if fld.max %}
-                    max="{{ fld.max }}"
-                {% endif %}
-
-                {% if fld.step %}
-                    step="{{ fld.step }}"
-                {% endif %}
             {% endblock %}
 
             {% block additional_attributes %}
@@ -102,8 +70,8 @@
         >
         {% if fld.description %}
             <span id="{{ fld.id | e('html_attr') }}" class="help-block field-description">
-                        {{ fld.description }}
-                    </span>
+                {{ fld.description }}
+            </span>
         {% endif %}
     </div>
 </div>

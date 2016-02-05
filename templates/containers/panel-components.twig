@@ -1,8 +1,8 @@
 <div class="panel panel-default">
 
-    {% if cnr.components.header or cnr.title %}
+    {% if cnr.components.head or cnr.title %}
         <div class="panel-heading">
-            {% for cmpId, cmp in cnr.components.header %}
+            {% for cmpId, cmp in cnr.components.head %}
                 {% include cmp.templateName %}
             {% endfor %}
             {% if cnr.title %}

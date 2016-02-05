@@ -22,15 +22,4 @@ namespace Pan\MenuPages\Fields;
  */
 class MultiSelect extends Select {
     protected $multiple = 'multiple';
-
-    /**
-     * @return mixed
-     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-     * @since  1.0.0
-     * @see    AbsSelect::$multiple
-     * @codeCoverageIgnore
-     */
-    public function getMultiple() {
-        return $this->multiple;
-    }
 }

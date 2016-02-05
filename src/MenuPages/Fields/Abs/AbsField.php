@@ -33,6 +33,8 @@ abstract class AbsField implements IfcDisplayable {
      */
     protected $menuPageComponent;
 
+    protected $additionalAttributes = [ ];
+
     /**
      * AbsField constructor.
      *
@@ -73,5 +75,30 @@ abstract class AbsField implements IfcDisplayable {
      */
     public function getTwig() {
         return $this->menuPageComponent->getTwig();
+    }
+
+    /**
+     * @return array
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  1.0.0
+     * @see    AbsField::$additional_attributes
+     * @codeCoverageIgnore
+     */
+    public function getAdditionalAttributes() {
+        return $this->additionalAttributes;
+    }
+
+    /**
+     * @param array $additional_attributes
+     *
+     * @return $this
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @since  1.0.0
+     * @codeCoverageIgnore
+     */
+    public function setAdditionalAttributes( $additional_attributes ) {
+        $this->additional_attributes = $additional_attributes;
+
+        return $this;
     }
 }

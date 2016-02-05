@@ -1,0 +1,25 @@
+{#
+ # ${FILE_NAME} description
+ #
+ # @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+ # @date 2015-11-18
+ # @since 1.0.0
+ # @copyright Copyright (c) 2015 Panagiotis Vagenas
+ #}
+{% extends "fields/input.twig" %}
+
+{% block input_attributes %}
+    {{ parent() }}
+
+    {% if fld.min %}
+        min="{{ fld.min }}"
+    {% endif %}
+
+    {% if fld.max %}
+        max="{{ fld.max }}"
+    {% endif %}
+
+    {% if fld.step %}
+        step="{{ fld.step }}"
+    {% endif %}
+{% endblock %}
