@@ -65,7 +65,7 @@ class Twig {
         $twigOptions = [ ];
 
         if ( $this->cachePath ) {
-            $twigOptions['cache'] = $sysTmpDir;
+            $twigOptions['cache'] = $this->cachePath;
         }
 
         if ( IfcConstants::DEV ) {
@@ -73,7 +73,6 @@ class Twig {
             $twigOptions['auto_reload']      = true;
             $twigOptions['strict_variables'] = true;
         }
-
 
         /**
          * Allows the ability to define extra locations when looking for templates.
