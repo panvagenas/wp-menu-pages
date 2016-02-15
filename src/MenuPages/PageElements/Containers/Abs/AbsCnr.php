@@ -2,12 +2,11 @@
 
 namespace Pan\MenuPages\PageElements\Containers\Abs;
 
-use Pan\MenuPages\Ifc\IfcDisplayable;
 use Pan\MenuPages\PageElements\Abs\AbsElement;
 use Pan\MenuPages\Pages\Abs\AbsMenuPage;
 use Pan\MenuPages\Templates\Twig;
 
-abstract class AbsCnr extends AbsElement implements IfcDisplayable {
+abstract class AbsCnr extends AbsElement {
 
     /**
      * @var \Pan\MenuPages\Pages\Abs\AbsMenuPage

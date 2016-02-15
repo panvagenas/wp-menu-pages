@@ -263,6 +263,17 @@ class Options {
         return $this->save();
     }
 
+    public function addOptions($data){
+        foreach ( $data as $key => $defaultValue ) {
+            if(!isset($this->options[$key])){
+                $this->options[$key] = $defaultValue;
+            }if(!isset($this->defaults[$key])){
+                $this->defaults[$key] = $defaultValue;
+            }
+        }
+        $this->save();
+    }
+
     /**
      * Get the default value of an option.
      *

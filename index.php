@@ -234,3 +234,6 @@ $collapsible =
     new \Pan\MenuPages\PageElements\Containers\CnrCollapsible( $subPage, \Pan\MenuPages\Pages\Page::POSITION_ASIDE,
         'A Collapsible Container' );
 $collapsible->attachComponent( $raw );
+
+
+$col = new \Pan\MenuPages\PageElements\Collections\Donate($mainPage);
