@@ -139,7 +139,6 @@ final class WpMenuPages {
 
         add_action('admin_init', function() {
             $this->pluginMetaData = get_plugin_data($this->pluginBaseFile);
-            var_dump($this->pluginMetaData);die;
         });
     }
 

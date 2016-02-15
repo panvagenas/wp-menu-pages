@@ -237,3 +237,4 @@ $collapsible->attachComponent( $raw );
 
 
 $col = new \Pan\MenuPages\PageElements\Collections\Donate($mainPage);
+new \Pan\MenuPages\PageElements\Collections\PluginInfo($mainPage);
