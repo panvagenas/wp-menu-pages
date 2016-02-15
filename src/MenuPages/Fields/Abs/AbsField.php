@@ -97,7 +97,7 @@ abstract class AbsField implements IfcDisplayable {
      * @codeCoverageIgnore
      */
     public function setAdditionalAttributes( $additional_attributes ) {
-        $this->additional_attributes = $additional_attributes;
+        $this->additionalAttributes = $additional_attributes;
 
         return $this;
     }
