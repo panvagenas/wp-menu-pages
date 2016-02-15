@@ -67,6 +67,8 @@ final class WpMenuPages {
      */
     protected $options;
 
+    protected $pluginMetaData = [];
+
     /**
      * WpMenuPages constructor.
      *
@@ -134,6 +136,11 @@ final class WpMenuPages {
         } else {
             throw new \InvalidArgumentException( 'Invalid argument $options in ' . __METHOD__ );
         }
+
+        add_action('admin_init', function() {
+            $this->pluginMetaData = get_plugin_data($this->pluginBaseFile);
+            var_dump($this->pluginMetaData);die;
+        });
     }
 
     /**
@@ -303,5 +310,16 @@ final class WpMenuPages {
         }
 
         return isset( $this->menuPages[ $page ] );
+    }
+
+    /**
+     * @return array
+     *
+     * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+     * @see    WpMenuPages::$pluginMetaData
+     * @since  1.0.0
+     */
+    public function getPluginMetaData() {
+        return $this->pluginMetaData;
     }
 }
