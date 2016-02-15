@@ -119,7 +119,7 @@ class AjaxHandler extends AbsPageSingleton {
 
         if ( isset( $newOptions[ Options::PAGE_OPT_STATE ] ) ) {
             foreach ( $newOptions[ Options::PAGE_OPT_STATE ] as $state => $identifier ) {
-                $this->menuPage->setElementState($identifier, $state == 'active');
+                $this->menuPage->setElementState( $identifier, $state == 'active' );
             }
             unset( $newOptions[ Options::PAGE_OPT_STATE ] );
         }
@@ -139,9 +139,16 @@ class AjaxHandler extends AbsPageSingleton {
         $options = $this->menuPage->getOptions()->getOptions();
         unset( $options[ Options::PAGE_OPT ] );
 
+        $pluginMeta = $this->menuPage->getWpMenuPages()->getPluginMetaData();
+        $name = isset( $pluginMeta['Name'] )
+            ? $pluginMeta['Name']
+            : basename( $this->menuPage->getOptions()->getOptionsBaseName() );
+
+        $name .= '.settings';
+
         $response = [
             'options' => json_encode( $options ),
-            'name'    => basename( $this->menuPage->getOptions()->getOptionsBaseName() ),
+            'name'    => $name,
         ];
         wp_send_json_success( $response );
     }
@@ -223,6 +230,7 @@ class AjaxHandler extends AbsPageSingleton {
          * ```
          * [ $newOptions, $validationResults, $allValid, $match]
          * ```
+         *
          * @param array $validationResults
          *
          * @since 1.0.0
