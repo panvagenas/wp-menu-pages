@@ -714,6 +714,7 @@
 
     WpmForm = {
         getOptions: function ($form) {
+            // FIXME Doesn't get empty multi-select
             $form = WpmSelect.getJqueryInstance($form);
             return $form.serialize();
         },

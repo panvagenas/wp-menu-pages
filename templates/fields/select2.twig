@@ -59,7 +59,7 @@
 
             data-type="select2"
             {% for optionName, optionValue in fld.select2options %}
-                data-{{ optionName }}="{{ optionValue }}"
+                data-{{ optionName }}="{{ optionValue | e('html_attr') }}"
             {% endfor %}
         >
             {% set selected = fld.value %}
