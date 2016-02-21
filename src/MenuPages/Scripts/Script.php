@@ -79,9 +79,18 @@ class Script extends AbsPageSingleton {
         /**
          * Action called after enqueueing menu pages scripts.
          * You can use this to enqueue your own scripts.
+         *
          * @since 1.0.0
          */
-        do_action("MenuPages\\Scripts\\Script::printScripts@{$this->menuPage->getOptions()->getOptionsBaseName()}");
+        do_action( $this->getPrintScriptsAction() );
+    }
+
+    public function getPrintScriptsAction() {
+        return "MenuPages\\Scripts\\Script::printScripts@{$this->menuPage->getOptions()->getOptionsBaseName()}";
+    }
+
+    public function getJsObjectFilter() {
+        return "MenuPages\\Scripts\\Script::getArrayForJsObj@{$this->menuPage->getOptions()->getOptionsBaseName()}";
     }
 
     protected function getArrayForJsObj() {
@@ -98,7 +107,8 @@ class Script extends AbsPageSingleton {
         $options = $this->menuPage->getOptions();
 
         $data = [
-            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'ajaxUrl'            => admin_url( 'admin-ajax.php' ),
+            'select2'            => [ ],
             'options'            => [
                 'defaults' => $options->getDefaults(),
                 'options'  => $options->getOptions(),
@@ -145,10 +155,7 @@ class Script extends AbsPageSingleton {
          *
          * @since 1.0.0
          */
-        $data = apply_filters(
-            "MenuPages\\Scripts\\Script::getArrayForJsObj@{$this->menuPage->getOptions()->getOptionsBaseName()}",
-            $data
-        );
+        $data = apply_filters( $this->getJsObjectFilter(), $data );
 
         return $data;
     }
@@ -236,6 +243,6 @@ class Script extends AbsPageSingleton {
          *
          * @since 1.0.0
          */
-        do_action("MenuPages\\Scripts\\Script::init@{$this->menuPage->getOptions()->getOptionsBaseName()}");
+        do_action( "MenuPages\\Scripts\\Script::init@{$this->menuPage->getOptions()->getOptionsBaseName()}" );
     }
 }

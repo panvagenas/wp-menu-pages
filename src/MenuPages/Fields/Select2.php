@@ -11,6 +11,9 @@
 
 namespace Pan\MenuPages\Fields;
 
+use Pan\MenuPages\PageElements\Components\Abs\AbsCmpFields;
+use Pan\MenuPages\Scripts\Script;
+
 /**
  * Class Select2
  *
@@ -22,6 +25,20 @@ namespace Pan\MenuPages\Fields;
  */
 class Select2 extends Select {
     protected $select2options = [ ];
+
+    public function __construct( AbsCmpFields $component, $name ) {
+        parent::__construct( $component, $name );
+        add_filter( Script::getInstance(
+            $this->menuPageComponent->getMenuPage() )->getJsObjectFilter(),
+            [ $this, 'filterJsObjForOptions' ]
+        );
+    }
+
+    public function filterJsObjForOptions( $data ) {
+        $data['select2'][ $this->name ]['options'] = (object)$this->select2options;
+
+        return $data;
+    }
 
     public function getTemplateName() {
         return 'fields/select2.twig';

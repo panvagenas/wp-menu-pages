@@ -2,11 +2,8 @@
  * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @date 2016-01-27
  * @copyright Panagiotis Vagenas <pan.vagenas@gmail.com>
+ * @preserve
  */
-
-
-
-
 (function($){
     //noinspection JSUnresolvedVariable
     WpMenuPages = {
@@ -484,7 +481,6 @@
                     return false;
                 }
 
-
                 WpmAlerts.success('Options Saved!', 2000);
                 return true;
             };
@@ -607,7 +603,7 @@
                     var newOptions = JSON.parse(e.target.result);
                     WpmAjax.import(newOptions, complete, error, success, 'json');
                 } catch (error) {
-                    alert('There was an error reading options file:\n' + error.message)
+                    alert('There was an error reading options file:\n' + error.message);
                     WpmControls.endLoading(WpmSelect.allControls(), true);
                 }
             });
@@ -846,7 +842,11 @@
         },
 
         getElementOptions: function ($element) {
-            return $element.data();
+            var elName = $element.attr('id');
+            if(wpMenuPagesDefinitions.select2.hasOwnProperty(elName)){
+                return wpMenuPagesDefinitions.select2[elName]['options'];
+            }
+            return {};
         },
 
         isBinded: function ($element) {
@@ -868,7 +868,6 @@
                 handler.maybeUnbind($element);
 
                 var options = handler.getElementOptions($element);
-                //noinspection JSUnresolvedFunction
                 $element.select2(options);
             });
         },

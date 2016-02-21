@@ -174,7 +174,7 @@ $select2 = new \Pan\MenuPages\Fields\Select2( $tabSelectFields, 'select2' );
 $select2->setLabel( 'Select2 Demo' )->setOptions( $selectOptions );
 
 $select2multiple = new \Pan\MenuPages\Fields\Select2( $tabSelectFields, 'select2multiple' );
-$select2multiple->setLabel( 'Select2 Multiple Demo' )->setOptions( $selectOptionGroups )->setMultiple( true );
+$select2multiple->setLabel( 'Select2 Multiple Demo' )->setOptions( $selectOptionGroups )->setMultiple( true )->setSelect2option('closeOnSelect', false);
 
 $switch = new \Pan\MenuPages\Fields\SwitchField( $tabRadioFields, 'switch' );
 $switch->setLabel( 'Switch Demo' );

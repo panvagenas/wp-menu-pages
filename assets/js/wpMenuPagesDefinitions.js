@@ -1,5 +1,6 @@
 
 var wpMenuPagesDefinitions = {
+    select2: {},
     options: {
         defaults: {},
         options: {},
