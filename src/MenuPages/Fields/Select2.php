@@ -28,6 +28,7 @@ class Select2 extends Select {
 
     public function __construct( AbsCmpFields $component, $name ) {
         parent::__construct( $component, $name );
+        $this->setSelect2option('placeholder', 'Please make a selection');
         add_filter( Script::getInstance(
             $this->menuPageComponent->getMenuPage() )->getJsObjectFilter(),
             [ $this, 'filterJsObjForOptions' ]

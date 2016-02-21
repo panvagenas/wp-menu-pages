@@ -458,6 +458,7 @@
             var newOptions = WpmForm.getOptionsFromActiveTab();
 
             WpmControls.startLoading(WpmSelect.saveBtn(), true);
+            WpmControls.startLoading(WpmSelect.saveTabBtn(), true);
 
             var s = function(response){
                 if (response.data != undefined && response.data.options != undefined) {
@@ -491,6 +492,7 @@
 
             var c = function () {
                 WpmControls.endLoading(WpmSelect.saveBtn(), true);
+                WpmControls.endLoading(WpmSelect.saveTabBtn(), true);
             };
 
             WpmAjax.save(newOptions, c, e, s, 'json');
@@ -534,7 +536,48 @@
             WpmAjax.reset(include, complete, error, success, 'json');
         },
         saveOptions: function (ev) {
-            // TODO Implement
+
+            ev.preventDefault();
+
+            var newOptions = WpmForm.getOptions('form');
+
+            WpmControls.startLoading(WpmSelect.saveBtn(), true);
+
+            var s = function(response){
+                if (response.data != undefined && response.data.options != undefined) {
+                    var fields = response.data.options;
+                    for (var fieldName in fields) {
+                        if (!fields.hasOwnProperty(fieldName)) {
+                            continue;
+                        }
+
+                        if (fields[fieldName].valid) {
+                            WpmField.markValid(fieldName);
+                            continue;
+                        }
+
+                        WpmField.markInvalid(fieldName, fields[fieldName].errors);
+                    }
+                }
+
+                if (response.success == undefined || response.success == false) {
+                    WpmAlerts.danger('There was an error saving the options');
+                    return false;
+                }
+
+                WpmAlerts.success('Options Saved!', 2000);
+                return true;
+            };
+
+            var e = function () {
+                WpmAlerts.danger('There was an error saving the options');
+            };
+
+            var c = function () {
+                WpmControls.endLoading(WpmSelect.saveBtn(), true);
+            };
+
+            WpmAjax.save(newOptions, c, e, s, 'json');
         },
         exportOptions: function (ev) {
             ev.preventDefault();
@@ -609,7 +652,6 @@
             });
         },
         bind: function () {
-            // TODO Implement saveBtn
             WpmSelect.saveBtn().click(WpmControls.saveOptions);
             WpmSelect.saveTabBtn().click(WpmControls.saveTab);
             WpmSelect.resetBtn().click(WpmControls.resetOptions);
@@ -715,6 +757,7 @@
             return $form.serialize();
         },
         getOptionsFromActiveTab: function () {
+            // FIXME Doesn't get empty multi-select
             return WpmForm.getOptions(WpmTab.activeTab());
         }
     };
@@ -722,7 +765,7 @@
     WpmSelect = {
         $: jQuery,
         ctrlSaveBtnSelector: '.btn-save-options',
-        ctrlSaveAllBtnSelector: '.btn-save-options',
+        ctrlSaveAllBtnSelector: '.btn-save-all-options',
         ctrlResetBtnSelector: '.btn-reset-options',
         ctrlTabResetBtnSelector: '.btn-tab-reset-options',
         ctrlExportOptsSelector: '.btn-export-options',
@@ -742,7 +785,7 @@
          * @returns {*|jQuery|HTMLElement}
          */
         saveBtn: function () {
-            return $(WpmSelect.ctrlSaveBtnSelector);
+            return $(WpmSelect.ctrlSaveAllBtnSelector);
         },
         /**
          *

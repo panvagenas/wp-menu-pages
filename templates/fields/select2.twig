@@ -12,6 +12,11 @@
     {% endif %}
 
     <div class="col-md-{% if fld.label %}8{% else %}12{% endif %}">
+        {% if fld.multiple %}
+            {# FIXME Right now I can't see a better way to add empty array to request #}
+            <input type="hidden" name="{{ fld.name | e('html_attr') }}" value="[]" />
+        {% endif %}
+
         <select
             {% if fld.multiple %}
                 multiple="multiple"
