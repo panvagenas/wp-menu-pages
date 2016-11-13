@@ -82,7 +82,7 @@ interface IfcScripts extends IfcConstants {
     /**
      * FontAwesome CSS CDN
      */
-    const CDN_FONT_AWESOME_CSS = 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css';
+    const CDN_FONT_AWESOME_CSS = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css';
 
     /**
      *
@@ -92,7 +92,7 @@ interface IfcScripts extends IfcConstants {
     /**
      *
      */
-    const CDN_BOOTSTRAP_JS = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js';
+    const CDN_BOOTSTRAP_JS = 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js';
 
     /**
      *
