@@ -87,7 +87,7 @@ interface IfcScripts extends IfcConstants {
     /**
      *
      */
-    const CDN_SELECT2_JS = 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.full.min.js';
+    const CDN_SELECT2_JS = 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.min.js';
 
     /**
      *
