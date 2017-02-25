@@ -11,6 +11,7 @@
 
 namespace Pan\MenuPages\Fields\Abs;
 
+use Pan\MenuPages\Fields\Ifc\IfcRequirement;
 use Pan\MenuPages\Fields\Trt\TrtInputAttributes;
 use Pan\MenuPages\Fields\Trt\TrtValidation;
 use Pan\MenuPages\PageElements\Components\Abs\AbsCmpFields;
@@ -24,7 +25,7 @@ use Pan\MenuPages\PageElements\Components\Abs\AbsCmpFields;
  * @package   Pan\MenuPages\Fields\Abs
  * @copyright Copyright (c) 2015 Panagiotis Vagenas
  */
-abstract class AbsInput extends AbsInputBase {
+abstract class AbsInput extends AbsInputBase implements IfcRequirement{
     use TrtInputAttributes, TrtValidation;
 
     /**
